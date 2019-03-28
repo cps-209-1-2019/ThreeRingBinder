@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binder", "Binder.csproj", "{C646CF32-487C-4372-B6F8-AC9B1142FBEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C646CF32-487C-4372-B6F8-AC9B1142FBEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C646CF32-487C-4372-B6F8-AC9B1142FBEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C646CF32-487C-4372-B6F8-AC9B1142FBEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C646CF32-487C-4372-B6F8-AC9B1142FBEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDE79C99-B5E9-4878-B240-AA880DDC1990}
+	EndGlobalSection
+EndGlobal
