@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Binder.Environment
+namespace Binder.Environments
 {
     class Items
     {
