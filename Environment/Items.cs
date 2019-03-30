@@ -1,8 +1,7 @@
 ﻿//--------------------------------------------------------------------------------------------
-//File:   Building.cs
-//Desc:   This is the class that contains logic for the Buildings the player will be in.
+//File:   Items.cs
+//Desc:   This class contains logic for the items in the room.
 //---------------------------------------------------------------------------------------------
-
 
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,7 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class Building
+    class Items
     {
-
     }
 }

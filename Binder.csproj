@@ -66,6 +66,11 @@
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="Environment\Building.cs" />
+    <Compile Include="Environment\GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Environment\Items.cs" />
+    <Compile Include="Environment\Walls.cs" />
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
@@ -79,6 +84,10 @@
     </Compile>
     <Compile Include="SerialzationUnitTests.cs" />
     <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Environment\GameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
