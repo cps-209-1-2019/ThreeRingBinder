@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Binder
 {
-    public interface ISerialization
+    public interface ISerialization<T>
     {
         string Serialize();
 
-        void Deserialize(string obj);
+        T Deserialize(string obj);
     }
 }

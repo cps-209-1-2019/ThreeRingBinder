@@ -11,5 +11,7 @@ namespace Binder
     [TestFixture]
     class SerialzationUnitTests
     {
+
+
     }
 }
