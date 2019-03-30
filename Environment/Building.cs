@@ -12,8 +12,22 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class Building
+    //Added public accessibility modifier - Day
+    public class Building : ISerialization<Building>
     {
+
+        //Turn the object into a string
+        public string Serialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Take a strin and turn it into a Building object
+        public Building Deserialize(string obj)
+        {
+            throw new NotImplementedException();
+        }
+
         
     }
 }

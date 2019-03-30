@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace Binder.Environments
 {
-    class Items
+    //Added public accessibility - Day
+    public class Items
     {
         public string Name { get; set; }
         public string Image { get; set; }
@@ -19,13 +20,34 @@ namespace Binder.Environments
         public bool Found { get; set; }
     }
 
-    public class InventoryItem: Items
+    public class InventoryItem: Items, ISerialization<InventoryItem>
     {
-        
+        //Turn the object into a string
+        public string Serialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        //Take a string and return an InventoryItem object
+        public InventoryItem Deserialize(string obj)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 
-    public class DecoyItem: Items
+    public class DecoyItem: Items, ISerialization<DecoyItem>
     {
+        //Turn the object into a string
+        public string Serialize()
+        {
+            throw new NotImplementedException();
+        }
 
+        //Take a string and return a DecoyItem object
+        public DecoyItem Deserialize(string obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

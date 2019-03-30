@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class Walls
+    //Added public accessibility - Day
+    public class Walls : ISerialization<Walls>
     {
         public int Width { get; set; }
         public int Length { get; set; }
@@ -22,6 +23,16 @@ namespace Binder.Environment
             Width = width;
             Length = length;
             Position = pos;
+        }
+
+        public string Serialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Walls Deserialize(string obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }
