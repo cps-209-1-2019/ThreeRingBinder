@@ -22,7 +22,7 @@ namespace Binder
         public void HighScore_AlsoValid_LoadSuccess()
         {
             HighScore newScore = new HighScore(1450, "melchi");
-            Assert.IsTrue(HighScore.Load() == 1);
+            Assert.IsTrue(newScore.Deserialize("1450,melchi") == newScore);
         }
     }
 }

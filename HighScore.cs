@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Binder
 {
-    class HighScore
+    class HighScore: ISerialization<HighScore>
     {
         public int currentScore;
         public string playerName;
@@ -16,22 +16,20 @@ namespace Binder
             playerName = name;
         }
 
-        //Loads text from high score text file; returns 1 if successful
-        public static int Load()
+        //Turn the object into a string to be put in a text file
+        public string Serialize()
         {
-            return 1;
+            throw new NotImplementedException();
         }
 
-        //Adds new name and score to `text`
-        public void AddScore(string text)
+
+        //Takes a string representing the 
+        public HighScore Deserialize(string obj)
         {
-
+            throw new NotImplementedException();
         }
+        
 
-        //Writes `text` to the high score text file
-        public void Write(string text)
-        {
-
-        }
+        
     }
 }
