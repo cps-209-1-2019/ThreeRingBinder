@@ -13,5 +13,19 @@ namespace Binder.Environment
 {
     class Items
     {
+        public string Name { get; set; }
+        public string Image { get; set; }
+        public int[] Position { get; set; }
+        public bool Found { get; set; }
+    }
+
+    public class InventoryItem: Items
+    {
+        
+    }
+
+    public class DecoyItem: Items
+    {
+
     }
 }

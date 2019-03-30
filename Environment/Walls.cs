@@ -13,5 +13,15 @@ namespace Binder.Environment
 {
     class Walls
     {
+        public int Width { get; set; }
+        public int Length { get; set; }
+        public int[] Position { get; set; }
+
+        public Walls(int width, int length, int[] pos)
+        {
+            Width = width;
+            Length = length;
+            Position = pos;
+        }
     }
 }

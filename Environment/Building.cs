@@ -14,6 +14,6 @@ namespace Binder.Environment
 {
     class Building
     {
-
+        
     }
 }
