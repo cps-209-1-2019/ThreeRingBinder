@@ -23,5 +23,15 @@ namespace Binder
         {
             InitializeComponent();
         }
+
+        private void BtnInstructions_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnPause_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

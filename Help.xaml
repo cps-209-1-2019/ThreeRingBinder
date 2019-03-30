@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="Help" Height="450" Width="800">
+        Title="Help" Height="350" Width="450">
     <Grid>
-        
+        <Button x:Name="btnInstructions" Content="Instructions" Width="75" Height="35" Click="BtnInstructions_Click"/>
+        <Button x:Name="btnPause" Width="75" Height="35" Margin="184,89,184.2,196.8" Click="BtnPause_Click" Content="Pause Game"/>
     </Grid>
 </Window>

@@ -9,15 +9,15 @@ namespace Binder
     class HighScore
     {
         public int currentScore;
-        public int playerName;
-        public HighScore(int score, int name)
+        public string playerName;
+        public HighScore(int score, string name)
         {
             currentScore = score;
             playerName = name;
         }
 
-        //Loads text from high score text file
-        public void Load()
+        //Loads text from high score text file; returns 1 if successful
+        public static int Load()
         {
 
         }

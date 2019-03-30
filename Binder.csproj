@@ -72,6 +72,7 @@
     <Compile Include="HighScoreList.xaml.cs">
       <DependentUpon>HighScoreList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HighScoreUnitTests.cs" />
     <Compile Include="NewHighScore.xaml.cs">
       <DependentUpon>NewHighScore.xaml</DependentUpon>
     </Compile>
@@ -124,6 +125,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="GameUML.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

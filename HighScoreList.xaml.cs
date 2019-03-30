@@ -23,5 +23,11 @@ namespace Binder
         {
             InitializeComponent();
         }
+
+        //Calls HighScore.Load() and writes the high scores to the window.
+        public void WriteScores()
+        {
+
+        }
     }
 }

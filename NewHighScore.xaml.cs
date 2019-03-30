@@ -23,5 +23,17 @@ namespace Binder
         {
             InitializeComponent();
         }
+
+        //Displays new high score
+        public void WriteNewScore()
+        {
+            
+        }
+
+        //Submits player name and instantiates HighScore
+        private void BtnSubmitName_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

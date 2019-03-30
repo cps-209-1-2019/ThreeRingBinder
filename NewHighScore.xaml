@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="NewHighScore" Height="450" Width="800">
+        Title="NewHighScore" Height="350" Width="450">
     <Grid>
-        
+        <TextBox x:Name="txtPlayerName" Width="150" Height="20" Margin="146,118,147.2,182.8"/>
+        <Button x:Name="btnSubmitName" Width="75" Height="35" Content="Enter" Click="BtnSubmitName_Click"/>
     </Grid>
 </Window>
