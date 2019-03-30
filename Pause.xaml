@@ -1,0 +1,15 @@
+﻿<Window x:Class="Binder.Pause"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Binder"
+        mc:Ignorable="d"
+        Title="Pause" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnSave" Width="75" Height="35" Margin="184,89,184.2,196.8" Click="BtnSave_Click" Content="Save Game"/>
+        <Button x:Name="btnSaveQuit" Width="75" Height="35" Margin="359,179,359.6,206" Click="BtnSaveQuit_Click" Content="Save and Quit"/>
+        <Button x:Name="btnHelp" Width="75" Height="35" Margin="359,219,359.6,166" Click="BtnHelp_Click" Content="Help"/>
+        <Label x:Name="lblRiddle" Width="200" Height="100" Margin="298,271,295.6,49"/>
+    </Grid>
+</Window>

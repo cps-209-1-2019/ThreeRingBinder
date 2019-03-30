@@ -28,10 +28,5 @@ namespace Binder
         {
 
         }
-
-        private void BtnPause_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

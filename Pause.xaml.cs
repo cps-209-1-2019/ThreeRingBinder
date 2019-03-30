@@ -15,17 +15,26 @@ using System.Windows.Shapes;
 namespace Binder
 {
     /// <summary>
-    /// Interaction logic for HighScores.xaml
+    /// Interaction logic for Pause.xaml
     /// </summary>
-    public partial class HighScoreList : Window
+    public partial class Pause : Window
     {
-        public HighScoreList()
+        public Pause()
         {
             InitializeComponent();
         }
 
-        //Calls HighScore.Load() and writes the high scores to the window.
-        public void WriteScores()
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSaveQuit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
 
         }

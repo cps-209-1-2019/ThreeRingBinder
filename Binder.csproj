@@ -82,6 +82,9 @@
     <Compile Include="NewHighScore.xaml.cs">
       <DependentUpon>NewHighScore.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pause.xaml.cs">
+      <DependentUpon>Pause.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SerialzationUnitTests.cs" />
     <Page Include="About.xaml">
       <SubType>Designer</SubType>
@@ -113,6 +116,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewHighScore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pause.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
