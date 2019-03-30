@@ -19,7 +19,7 @@ namespace Binder
         //Loads text from high score text file; returns 1 if successful
         public static int Load()
         {
-
+            return 1;
         }
 
         //Adds new name and score to `text`
