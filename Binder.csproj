@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Environment\Items.cs" />
     <Compile Include="Environment\Walls.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>

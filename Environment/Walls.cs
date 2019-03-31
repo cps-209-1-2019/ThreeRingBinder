@@ -42,4 +42,18 @@ namespace Binder.Environment
             throw new NotImplementedException();
         }
     }
+
+    //Defines a class Block from which the walls will be built.
+    public class Block: Walls
+    {
+        public  Block(int width, int length, int[] pos): base(width, length, pos)
+        {           
+        }
+
+        //Detects whether the player is close or not
+        public void Detect()
+        {
+
+        }
+    }
 }
