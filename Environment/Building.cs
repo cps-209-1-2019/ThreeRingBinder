@@ -3,7 +3,6 @@
 //Desc:   This is the class that contains logic for the Buildings the player will be in.
 //---------------------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,17 @@ namespace Binder.Environment
     //Added public accessibility modifier - Day
     public class Building : ISerialization<Building>
     {
+        public int Width { get; set; }
+        public int Length { get; set; }
+
+        public Dictionary<string, Items> Collection;
+
+
+        //Adds the Item object in its params to the Collection
+        public void AddItem(Items item)
+        {
+            Collection[item.Name] = item;
+        }
 
         //Turn the object into a string
         public string Serialize()

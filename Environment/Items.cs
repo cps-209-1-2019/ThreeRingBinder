@@ -12,16 +12,33 @@ using System.Threading.Tasks;
 namespace Binder.Environments
 {
     //Added public accessibility - Day
-    public class Items
+    class Items
     {
         public string Name { get; set; }
         public string Image { get; set; }
         public int[] Position { get; set; }
         public bool Found { get; set; }
+
+        public Items(string name, string image, int[] pos)
+        {
+            Name = name;
+            Image = image;
+            Position = pos;
+        }
+
+        //Returns the string for the GUI to display
+        public string Show()
+        {
+            return Image;
+        }
+
+        public abstract string Serialize();
+        public abstract Items Deserialize();
     }
 
     public class InventoryItem: Items, ISerialization<InventoryItem>
     {
+
         //Turn the object into a string
         public string Serialize()
         {
