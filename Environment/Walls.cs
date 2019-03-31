@@ -17,12 +17,19 @@ namespace Binder.Environment
         public int Width { get; set; }
         public int Length { get; set; }
         public int[] Position { get; set; }
+        public int Orientation { get; set; }
 
         public Walls(int width, int length, int[] pos)
         {
             Width = width;
             Length = length;
             Position = pos;
+        }
+
+        //Builds a wall with respect to the Length
+        public void Build()
+        {
+            
         }
 
         public string Serialize()

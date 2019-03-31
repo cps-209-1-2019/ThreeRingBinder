@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Binder.Environment;
 
 namespace Binder
 {
@@ -23,6 +24,12 @@ namespace Binder
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GameWindow gameWin = new GameWindow();
+            gameWin.Show();
         }
     }
 }

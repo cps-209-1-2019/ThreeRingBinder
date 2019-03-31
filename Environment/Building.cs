@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Binder.Environments
 
 namespace Binder.Environment
 {
@@ -25,6 +24,17 @@ namespace Binder.Environment
         public void AddItem(Items item)
         {
             Collection[item.Name] = item;
+        }
+
+        public void RmvItm(Items item)
+        {
+            Collection.Remove(item.Name);
+        }
+
+        //Moves the map with respect to the player position
+        public void Move(int[] pPos)
+        {
+
         }
 
         //Turn the object into a string

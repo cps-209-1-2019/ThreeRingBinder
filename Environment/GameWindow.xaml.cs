@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Binder.Environment
 {
@@ -22,6 +23,18 @@ namespace Binder.Environment
         public GameWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(Canvas.GetLeft(imgBl) + " " + Canvas.GetTop(imgBl));
+            Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
+            
         }
     }
 }
