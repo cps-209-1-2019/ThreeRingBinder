@@ -26,6 +26,7 @@ namespace Binder
             InitializeComponent();
         }
 
+        //Testing my GameWindow
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             GameWindow gameWin = new GameWindow();
