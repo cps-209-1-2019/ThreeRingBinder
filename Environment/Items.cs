@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Binder.Environments
 {
     //Added public accessibility - Day
-    class Items
+    public class Items
     {
         public string Name { get; set; }
         public string Image { get; set; }
