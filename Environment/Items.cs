@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Binder.Environment
 {
     //Added public accessibility - Day
-    public class Items
+    public class Items : WorldObject
     {
         public string Name { get; set; }
         public string Image { get; set; }
@@ -83,14 +83,14 @@ namespace Binder.Environment
     public class Binder: InventoryItem, ISerialization<Binder>
     {
         
-
-        public string Serialize()
+        //Take an object and turn it into a string
+        new public string Serialize()
         {
             throw new NotImplementedException();
         }
 
         //Take a string and return a DecoyItem object
-        public Binder Deserialize(string obj)
+        new public Binder Deserialize(string obj)
         {
             throw new NotImplementedException();
         }
