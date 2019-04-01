@@ -20,8 +20,10 @@ namespace Binder.Environment
     /// </summary>
     public partial class GameWindow : Window
     {
-        public GameWindow()
+        public GameWindow(bool cheat)
         {
+            Game theGame = new Game();
+            
             InitializeComponent();
         }
 
