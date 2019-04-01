@@ -32,5 +32,10 @@ namespace Binder
             GameWindow gameWin = new GameWindow();
             gameWin.Show();
         }
+
+        private void BtnCheat_Click(object sender, RoutedEventArgs e)
+        {
+            //Turn cheat on
+        }
     }
 }
