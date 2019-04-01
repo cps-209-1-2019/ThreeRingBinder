@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class AI : MovableCharacter
+    class WorldObject
     {
-        public void Patrol
-        {
-
-        }
-        public void Chase
-        {
-
-        }
+        public int[] Position { get; set; }
+        public string PictureName { get; set; }
     }
 }

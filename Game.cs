@@ -15,7 +15,7 @@ namespace Binder
         public int Composure { get; set; }          //Keeps track of the health of the Player
         public int Time { get; set; }               //Keeps track of the amount of time remaining
         public int NumItems { get; set; }           //Keeps track of the number of items in players inventory
-
+        public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
 
         public string Serialize()
         {

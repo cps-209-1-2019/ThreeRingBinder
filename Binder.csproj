@@ -75,6 +75,7 @@
     <Compile Include="Environment\Items.cs" />
     <Compile Include="Environment\Player.cs" />
     <Compile Include="Environment\Walls.cs" />
+    <Compile Include="Environment\WorldObject.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
