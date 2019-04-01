@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder.Environment"
         mc:Ignorable="d"
-        Title="GameWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="GameWindow" Height="900" Width="1440"
+        >
+    <Canvas x:Name="cnvsGame">
+        <Image x:Name="imgfl" Source="floor.png" Canvas.Top="0" Canvas.Left="0"/>
+        <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="50" Canvas.Left="1450"/>
+        <Button Height="20" Width="20" Click="Button_Click"/>
+    </Canvas>
 </Window>
