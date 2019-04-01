@@ -43,7 +43,7 @@ namespace Binder.Environment
             throw new NotImplementedException();
         }
 
-        //Take a strin and turn it into a Building object
+        //Take a string and turn it into a Building object
         public Building Deserialize(string obj)
         {
             throw new NotImplementedException();
