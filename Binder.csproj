@@ -65,11 +65,14 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Environment\AI.cs" />
     <Compile Include="Environment\Building.cs" />
+    <Compile Include="Environment\MovableCharacter.cs" />
     <Compile Include="Environment\GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Environment\Items.cs" />
+    <Compile Include="Environment\Player.cs" />
     <Compile Include="Environment\Walls.cs" />
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
