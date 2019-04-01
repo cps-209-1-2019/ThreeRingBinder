@@ -21,6 +21,7 @@ namespace Binder
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool isCheatOn = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,13 +30,13 @@ namespace Binder
         //Testing my GameWindow
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GameWindow gameWin = new GameWindow();
+            GameWindow gameWin = new GameWindow(isCheatOn);
             gameWin.Show();
         }
 
         private void BtnCheat_Click(object sender, RoutedEventArgs e)
         {
-            //Turn cheat on
+            isCheatOn = true;
         }
     }
 }
