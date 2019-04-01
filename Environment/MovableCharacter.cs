@@ -19,7 +19,7 @@ namespace Binder.Environment
             Speed = speed;
         }
 
-        public void Move()
+        public virtual void Move()
         {
 
         }
