@@ -15,6 +15,7 @@ namespace Binder
         public int Composure { get; set; }          //Keeps track of the health of the Player
         public int Time { get; set; }               //Keeps track of the amount of time remaining
         public int NumItems { get; set; }           //Keeps track of the number of items in players inventory
+        public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
 
 
         public string Serialize()
