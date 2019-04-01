@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Binder.Environment
 {
     //Added public accessibility modifier - Day
-    public class Building : ISerialization<Building>
+    public class Building : ISerialization<Building>, WorldObject
     {
         public int Width { get; set; }
         public int Length { get; set; }

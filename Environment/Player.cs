@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class Player
+    class Player : ISerialization<Player>, MovableCharcter
     {
         public string Name { get; set; }
-        public List<String> Inventory { get; set; }
+        public List<Items> Inventory { get; set; }
         public Player(string name)
         {
             Name = name;
@@ -17,6 +17,16 @@ namespace Binder.Environment
         public void Enteract()
         {
 
+        }
+
+        public string Serialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Player Deserialize(string obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }
