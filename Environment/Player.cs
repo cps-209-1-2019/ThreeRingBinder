@@ -14,7 +14,7 @@ namespace Binder.Environment
         {
             Name = name;
         }
-        public void Enteract
+        public void Enteract()
         {
 
         }

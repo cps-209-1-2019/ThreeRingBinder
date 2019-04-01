@@ -8,11 +8,11 @@ namespace Binder.Environment
 {
     class AI : ISerialization<AI>;
     {
-        public void Patrol
+        public void Patrol()
         {
 
         }
-        public void Chase
+        public void Chase()
         {
 
         }
