@@ -16,5 +16,15 @@ namespace Binder.Environment
         {
 
         }
+
+        public string Serialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public AI Deserialize(string obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
