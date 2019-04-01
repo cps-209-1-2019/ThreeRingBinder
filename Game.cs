@@ -34,9 +34,6 @@ namespace Binder
             using (StreamReader rd = new StreamReader(filename))
             {
                 rd.ReadLine();
-                string building = rd.ReadLine();
-                Building build = new Building();
-                build.Deserialize(building);
                 CurrScore = int.Parse(rd.ReadLine());
                 HighScore = int.Parse(rd.ReadLine());
                 Composure = int.Parse(rd.ReadLine());
@@ -46,6 +43,10 @@ namespace Binder
                 string[] startPoints = stPoint.Split(',');
                 StartPoint[0] = int.Parse(startPoints[0]);
                 StartPoint[1] = int.Parse(startPoints[1]);
+                IsCheatOn = bool.Parse(rd.ReadLine());
+                string building = rd.ReadLine();
+                Building build = new Building();
+                build.Deserialize(building);
                 Player player = new Player("");
                 player.Deserialize(rd.ReadLine());
                 AI ai = new AI();
@@ -68,20 +69,28 @@ namespace Binder
             using (StreamWriter wr = new StreamWriter(filename))
             {
                 wr.WriteLine("BEGIN");
-                wr.WriteLine();
-                wr.WriteLine("BUILDING,WIDTH,LENGTH");
-                wr.WriteLine("LVLNUMBER");
-                wr.WriteLine("ENVIRONMENTIMAGE");
-                wr.WriteLine("REMAININGAI");
-                wr.WriteLine(Time);
-                wr.WriteLine(NumItems);
                 wr.WriteLine(CurrScore);
                 wr.WriteLine(HighScore);
-                wr.WriteLine("PLAYER,XPOSITION,YPOSITION," + Composure.ToString() + ",INVENTORY1,INVENTORY2,INVENTORY3,INVENTORY4");
-                wr.WriteLine("AI,XPOSITION,YPOSITION,HEALTH,PATHX,PATHY");
-                wr.WriteLine("WALLS,WIDTH,LENGTH,POSX,POSY");
-                wr.WriteLine("INVENTORYITEM,NAME,IMAGE,POSX,POSY,FOUND");
-                wr.WriteLine("DECOYITEM,NAME,IMAGE,POSX,POSY,FOUND");
+                wr.WriteLine(Composure);
+                wr.WriteLine(Time);
+                wr.WriteLine(NumItems);
+                wr.WriteLine(StartPoint);
+                wr.WriteLine(IsCheatOn);
+                Building building = new Building();
+                wr.WriteLine(building.Serialize());
+                Player player = new Player("fred");
+                wr.WriteLine(player.Serialize());
+                AI ai = new AI();
+                wr.WriteLine(ai.Serialize());
+                int[] ar = new int[2] { 0, 0 };
+                Walls walls = new Walls(0, 0, ar);
+                wr.WriteLine(walls.Serialize());
+                InventoryItem inventoryItem = new InventoryItem();
+                wr.WriteLine(inventoryItem.Serialize());
+                DecoyItem decoyItem = new DecoyItem();
+                wr.WriteLine(decoyItem.Serialize());
+                Environment.Binder binder = new Environment.Binder();
+                wr.WriteLine(binder.Serialize());
                 wr.WriteLine("END");
             }
         }
