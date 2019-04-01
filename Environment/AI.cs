@@ -6,15 +6,25 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class AI : MovableCharacter
+    class AI : ISerialization<AI>, MovableCharacter
     {
-        public void Patrol
+        public void Patrol()
         {
 
         }
-        public void Chase
+        public void Chase()
         {
 
+        }
+
+        public string Serialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public AI Deserialize(string obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

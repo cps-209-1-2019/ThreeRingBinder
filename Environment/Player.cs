@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class Player : MovableCharcter
+    class Player : ISerialization<Player>, MovableCharcter
     {
         public string Name { get; set; }
         public List<Items> Inventory { get; set; }
@@ -14,9 +14,19 @@ namespace Binder.Environment
         {
             Name = name;
         }
-        public void Enteract
+        public void Enteract()
         {
 
+        }
+
+        public string Serialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Player Deserialize(string obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }
