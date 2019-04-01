@@ -22,8 +22,8 @@ namespace Binder.Environment
     {
         public GameWindow(bool cheat)
         {
-            Game theGame = new Game();
-            
+            Game binderGame = new Game();
+            binderGame.IsCheatOn = cheat;
             InitializeComponent();
         }
 
