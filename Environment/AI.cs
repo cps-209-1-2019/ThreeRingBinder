@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class AI : ISerialization<AI>, MovableCharacter
+    public class AI : MovableCharacter, ISerialization<AI> 
     {
+
+        public AI(int health, int damage, int speed)
+        {
+            Health = health;
+            Damage = damage;
+            Speed = speed;
+        }
         public void Patrol()
         {
 

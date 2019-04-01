@@ -87,7 +87,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Binder.Environment.Walls">
-    <Position X="4.5" Y="3.75" Width="1.5" />
+    <Position X="6" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAgAAAAAEBAACBAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>Environment\Walls.cs</FileName>

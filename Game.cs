@@ -16,6 +16,8 @@ namespace Binder
         public int Time { get; set; }               //Keeps track of the amount of time remaining
         public int NumItems { get; set; }           //Keeps track of the number of items in players inventory
         public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
+        public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
+        public int Difficulty { get; set; }        //Holds difficulty level
 
         public string Serialize()
         {
@@ -33,19 +35,25 @@ namespace Binder
             using (StreamReader rd = new StreamReader(filename))
             {
                 rd.ReadLine();
-                string building = rd.ReadLine();
-                Building build = new Building();
-                build.Deserialize(building);
                 CurrScore = int.Parse(rd.ReadLine());
                 HighScore = int.Parse(rd.ReadLine());
                 Composure = int.Parse(rd.ReadLine());
                 NumItems = int.Parse(rd.ReadLine());
                 Time = int.Parse(rd.ReadLine());
+                string stPoint = rd.ReadLine();
+                string[] startPoints = stPoint.Split(',');
+                StartPoint[0] = int.Parse(startPoints[0]);
+                StartPoint[1] = int.Parse(startPoints[1]);
+                IsCheatOn = bool.Parse(rd.ReadLine());
+                string building = rd.ReadLine();
+                Building build = new Building();
+                build.Deserialize(building);
                 Player player = new Player("");
                 player.Deserialize(rd.ReadLine());
-                AI ai = new AI();
+                AI ai = new AI(0, 0, 0);
                 ai.Deserialize(rd.ReadLine());
-                Walls walls = new Walls(0, 0, [0,0] );
+                int[] ar = new int[2]{0, 0};
+                Walls walls = new Walls(0, 0, ar);
                 walls.Deserialize(rd.ReadLine());
                 InventoryItem inventoryItem = new InventoryItem();
                 inventoryItem.Deserialize(rd.ReadLine());
@@ -62,20 +70,28 @@ namespace Binder
             using (StreamWriter wr = new StreamWriter(filename))
             {
                 wr.WriteLine("BEGIN");
-                wr.WriteLine();
-                wr.WriteLine("BUILDING,WIDTH,LENGTH");
-                wr.WriteLine("LVLNUMBER");
-                wr.WriteLine("ENVIRONMENTIMAGE");
-                wr.WriteLine("REMAININGAI");
-                wr.WriteLine(Time);
-                wr.WriteLine(NumItems);
                 wr.WriteLine(CurrScore);
                 wr.WriteLine(HighScore);
-                wr.WriteLine("PLAYER,XPOSITION,YPOSITION," + Composure.ToString() + ",INVENTORY1,INVENTORY2,INVENTORY3,INVENTORY4");
-                wr.WriteLine("AI,XPOSITION,YPOSITION,HEALTH,PATHX,PATHY");
-                wr.WriteLine("WALLS,WIDTH,LENGTH,POSX,POSY");
-                wr.WriteLine("INVENTORYITEM,NAME,IMAGE,POSX,POSY,FOUND");
-                wr.WriteLine("DECOYITEM,NAME,IMAGE,POSX,POSY,FOUND");
+                wr.WriteLine(Composure);
+                wr.WriteLine(Time);
+                wr.WriteLine(NumItems);
+                wr.WriteLine(StartPoint);
+                wr.WriteLine(IsCheatOn);
+                Building building = new Building();
+                wr.WriteLine(building.Serialize());
+                Player player = new Player("fred");
+                wr.WriteLine(player.Serialize());
+                AI ai = new AI(0, 0, 0);
+                wr.WriteLine(ai.Serialize());
+                int[] ar = new int[2] { 0, 0 };
+                Walls walls = new Walls(0, 0, ar);
+                wr.WriteLine(walls.Serialize());
+                InventoryItem inventoryItem = new InventoryItem();
+                wr.WriteLine(inventoryItem.Serialize());
+                DecoyItem decoyItem = new DecoyItem();
+                wr.WriteLine(decoyItem.Serialize());
+                Environment.Binder binder = new Environment.Binder();
+                wr.WriteLine(binder.Serialize());
                 wr.WriteLine("END");
             }
         }

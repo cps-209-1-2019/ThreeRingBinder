@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Binder.Environment
 {
     //Added public accessibility modifier - Day
-    public class Building : ISerialization<Building>, WorldObject
+    public class Building : WorldObject, ISerialization<Building> 
     {
         public int Width { get; set; }
         public int Length { get; set; }
@@ -26,6 +26,7 @@ namespace Binder.Environment
             Collection[item.Name] = item;
         }
 
+        //Removes an item object from the Collection of items in the Building
         public void RmvItm(Items item)
         {
             Collection.Remove(item.Name);

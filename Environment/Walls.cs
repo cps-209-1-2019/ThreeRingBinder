@@ -14,11 +14,12 @@ namespace Binder.Environment
     //Added public accessibility - Day
     public class Walls : ISerialization<Walls>
     {
-        public int Width { get; set; }
-        public int Length { get; set; }
-        public int[] Position { get; set; }
-        public int Orientation { get; set; }
+        public int Width { get; set; }                      //Contains the thickness of the wall
+        public int Length { get; set; }                     //The number of blocks the wall will contain
+        public int[] Position { get; set; }                 //Takes two arguments an x and y coordinate respectively
+        public int Orientation { get; set; }                //1 = Horizontal, 2 = Vertical 
 
+        //public constructor for the walls class
         public Walls(int width, int length, int[] pos)
         {
             Width = width;
