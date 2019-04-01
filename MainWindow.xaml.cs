@@ -38,7 +38,10 @@ namespace Binder
 
         private void BtnCheat_Click(object sender, RoutedEventArgs e)
         {
-            isCheatOn = true;
+            if (isCheatOn)
+                isCheatOn = false;
+            else
+                isCheatOn = true;
         }
 
         private void SldrDifficulty_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
