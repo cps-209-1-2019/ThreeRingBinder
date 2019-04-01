@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class AI : ISerialization<AI>
+    class AI : ISerialization<AI>, MovableCharacter
     {
         public void Patrol()
         {

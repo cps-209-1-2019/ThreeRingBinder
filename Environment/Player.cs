@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class Player : ISerialization<Player>
+    class Player : ISerialization<Player>, MovableCharcter
     {
         public string Name { get; set; }
-        public List<String> Inventory { get; set; }
+        public List<Items> Inventory { get; set; }
         public Player(string name)
         {
             Name = name;
