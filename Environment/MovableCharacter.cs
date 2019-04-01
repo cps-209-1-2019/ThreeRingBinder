@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class MovableCharacter : WorldObject
+    public class MovableCharacter : WorldObject
     {
         public int Health { get; set; }
         public int Damage { get; set; }
