@@ -41,11 +41,16 @@ namespace Binder
                 Composure = int.Parse(rd.ReadLine());
                 NumItems = int.Parse(rd.ReadLine());
                 Time = int.Parse(rd.ReadLine());
+                string stPoint = rd.ReadLine();
+                string[] startPoints = stPoint.Split(',');
+                StartPoint[0] = int.Parse(startPoints[0]);
+                StartPoint[1] = int.Parse(startPoints[1]);
                 Player player = new Player("");
                 player.Deserialize(rd.ReadLine());
                 AI ai = new AI();
                 ai.Deserialize(rd.ReadLine());
-                Walls walls = new Walls(0, 0, [0,0] );
+                int[] ar = new int[2]{0, 0};
+                Walls walls = new Walls(0, 0, ar);
                 walls.Deserialize(rd.ReadLine());
                 InventoryItem inventoryItem = new InventoryItem();
                 inventoryItem.Deserialize(rd.ReadLine());
