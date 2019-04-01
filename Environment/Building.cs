@@ -17,7 +17,7 @@ namespace Binder.Environment
         public int Width { get; set; }
         public int Length { get; set; }
 
-        public Dictionary<string, Items> Collection;
+        public Dictionary<string, Items> Collection;            //
 
 
         //Adds the Item object in its params to the Collection
@@ -26,6 +26,7 @@ namespace Binder.Environment
             Collection[item.Name] = item;
         }
 
+        //Removes an item object from the Collection of items in the Building
         public void RmvItm(Items item)
         {
             Collection.Remove(item.Name);
