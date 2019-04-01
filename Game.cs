@@ -45,7 +45,7 @@ namespace Binder
                 player.Deserialize(rd.ReadLine());
                 AI ai = new AI();
                 ai.Deserialize(rd.ReadLine());
-                Walls walls = new Walls(0, 0, [0,0] );
+                Walls walls = new Walls(0, 0, new int[2] {0, 0} );
                 walls.Deserialize(rd.ReadLine());
                 InventoryItem inventoryItem = new InventoryItem();
                 inventoryItem.Deserialize(rd.ReadLine());
