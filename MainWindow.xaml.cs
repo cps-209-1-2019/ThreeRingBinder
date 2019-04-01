@@ -23,6 +23,7 @@ namespace Binder
     {
         bool isCheatOn = false;
         int difficulty = 1;
+        bool isLoaded = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -42,8 +43,10 @@ namespace Binder
 
         private void SldrDifficulty_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (isLoaded) {
             difficulty = Convert.ToInt32(sldrDifficulty.Value);
             lblDifficulty.Content = Convert.ToInt32(difficulty);
+            }
         }
     }
 }

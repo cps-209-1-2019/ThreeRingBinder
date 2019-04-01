@@ -50,7 +50,7 @@ namespace Binder
                 build.Deserialize(building);
                 Player player = new Player("");
                 player.Deserialize(rd.ReadLine());
-                AI ai = new AI();
+                AI ai = new AI(0, 0, 0);
                 ai.Deserialize(rd.ReadLine());
                 int[] ar = new int[2]{0, 0};
                 Walls walls = new Walls(0, 0, ar);
@@ -81,7 +81,7 @@ namespace Binder
                 wr.WriteLine(building.Serialize());
                 Player player = new Player("fred");
                 wr.WriteLine(player.Serialize());
-                AI ai = new AI();
+                AI ai = new AI(0, 0, 0);
                 wr.WriteLine(ai.Serialize());
                 int[] ar = new int[2] { 0, 0 };
                 Walls walls = new Walls(0, 0, ar);

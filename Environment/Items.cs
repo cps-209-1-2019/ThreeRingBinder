@@ -16,7 +16,6 @@ namespace Binder.Environment
     {
         public string Name { get; set; }
         public string Image { get; set; }
-        public int[] Position { get; set; }
         public bool Found { get; set; }
 
         //public Items(string name, string image, int[] pos)
