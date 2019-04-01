@@ -17,6 +17,7 @@ namespace Binder
         public int NumItems { get; set; }           //Keeps track of the number of items in players inventory
         public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
+        public int Difficulty { get; set; }        //Holds difficulty level
 
         public string Serialize()
         {
@@ -49,7 +50,7 @@ namespace Binder
                 build.Deserialize(building);
                 Player player = new Player("");
                 player.Deserialize(rd.ReadLine());
-                AI ai = new AI();
+                AI ai = new AI(0, 0, 0);
                 ai.Deserialize(rd.ReadLine());
                 int[] ar = new int[2]{0, 0};
                 Walls walls = new Walls(0, 0, ar);
@@ -80,7 +81,7 @@ namespace Binder
                 wr.WriteLine(building.Serialize());
                 Player player = new Player("fred");
                 wr.WriteLine(player.Serialize());
-                AI ai = new AI();
+                AI ai = new AI(0, 0, 0);
                 wr.WriteLine(ai.Serialize());
                 int[] ar = new int[2] { 0, 0 };
                 Walls walls = new Walls(0, 0, ar);

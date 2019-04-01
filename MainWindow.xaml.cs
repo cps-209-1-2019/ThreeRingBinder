@@ -22,6 +22,8 @@ namespace Binder
     public partial class MainWindow : Window
     {
         bool isCheatOn = false;
+        int difficulty = 1;
+        bool isLoaded = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,13 +32,24 @@ namespace Binder
         //Testing my GameWindow
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GameWindow gameWin = new GameWindow(isCheatOn);
+            GameWindow gameWin = new GameWindow(isCheatOn, difficulty);
             gameWin.Show();
         }
 
         private void BtnCheat_Click(object sender, RoutedEventArgs e)
         {
-            isCheatOn = true;
+            if (isCheatOn)
+                isCheatOn = false;
+            else
+                isCheatOn = true;
+        }
+
+        private void SldrDifficulty_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (isLoaded) {
+            difficulty = Convert.ToInt32(sldrDifficulty.Value);
+            lblDifficulty.Content = Convert.ToInt32(difficulty);
+            }
         }
     }
 }
