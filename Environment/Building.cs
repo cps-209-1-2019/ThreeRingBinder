@@ -17,7 +17,7 @@ namespace Binder.Environment
         public int Width { get; set; }
         public int Length { get; set; }
 
-        public Dictionary<string, Items> Collection;            //
+        public Dictionary<string, Items> Collection;
 
 
         //Adds the Item object in its params to the Collection

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class Player : ISerialization<Player>, MovableCharcter
+    class Player : MovableCharacter, ISerialization<Player>
     {
         public string Name { get; set; }
         public List<Items> Inventory { get; set; }
@@ -15,6 +15,11 @@ namespace Binder.Environment
             Name = name;
         }
         public void Enteract()
+        {
+
+        }
+
+        public override void Move()
         {
 
         }

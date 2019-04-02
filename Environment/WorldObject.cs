@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class WorldObject
+    public class WorldObject
     {
         public int[] Position { get; set; }
         public string PictureName { get; set; }
