@@ -19,6 +19,11 @@ namespace Binder.Environment
 
         }
 
+        public override void Move()
+        {
+
+        }
+
         public string Serialize()
         {
             throw new NotImplementedException();

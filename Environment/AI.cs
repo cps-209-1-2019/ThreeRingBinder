@@ -19,7 +19,13 @@ namespace Binder.Environment
         {
 
         }
+
         public void Chase()
+        {
+
+        }
+
+        public override void Move()
         {
 
         }

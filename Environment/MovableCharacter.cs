@@ -12,7 +12,7 @@ namespace Binder.Environment
         public int Damage { get; set; }
         public int Speed { get; set; }
 
-        public void Move()
+        public virtual void Move()
         {
 
         }
