@@ -26,7 +26,7 @@
   <Class Name="Binder.MainWindow" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABABABAAAAAAAAIACAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -51,7 +51,7 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>HighScoreList.xaml.cs</FileName>
-      <NewMemberFileName>HighScore.cs</NewMemberFileName>
+      <NewMemberFileName>HighScoreList.cs</NewMemberFileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -74,7 +74,7 @@
   <Class Name="Binder.Environment.Items">
     <Position X="8.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgACAAAAQAAAAEABAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAAAAEABAAAAAAAAAAAAA=</HashCode>
       <FileName>Environment\Items.cs</FileName>
     </TypeIdentifier>
   </Class>
