@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Binder.About" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>About.xaml.cs</FileName>
@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Binder.Help" BaseTypeListCollapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
       <FileName>Help.xaml.cs</FileName>
@@ -17,22 +17,22 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Binder.HighScoreUnitTests">
-    <Position X="4" Y="3.75" Width="1.5" />
+    <Position X="4.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAEAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>HighScoreUnitTests.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Binder.MainWindow" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="0.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABABABAAAAAAAAIACAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Binder.NewHighScore" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="3.75" Width="1.5" />
+    <Position X="2.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NewHighScore.xaml.cs</FileName>
@@ -40,14 +40,14 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Binder.SerialzationUnitTests">
-    <Position X="13.75" Y="5.25" Width="1.5" />
+    <Position X="3.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SerialzationUnitTests.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Binder.HighScoreList" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="3.75" Width="1.5" />
+    <Position X="0.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>HighScoreList.xaml.cs</FileName>
@@ -56,7 +56,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Binder.Environment.InventoryItem">
-    <Position X="11.5" Y="2.25" Width="1.5" />
+    <Position X="10" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAAAAAAAAACBEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Environment\Items.cs</FileName>
@@ -64,7 +64,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Binder.Environment.DecoyItem">
-    <Position X="11.5" Y="0.5" Width="1.5" />
+    <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Environment\Items.cs</FileName>
@@ -72,14 +72,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Binder.Environment.Items">
-    <Position X="9.75" Y="0.5" Width="1.5" />
+    <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAACAAAAQAAAAEABAAAAAAAAAAAAA=</HashCode>
       <FileName>Environment\Items.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Binder.Environment.Building">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAQAAAAAAAAEBAgCBAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>Environment\Building.cs</FileName>
@@ -87,15 +87,38 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Binder.Environment.Walls">
-    <Position X="6" Y="4" Width="1.5" />
+    <Position X="8" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAgAAAAAEBAACBAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>Environment\Walls.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="Binder.Environment.AI">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAIAAAAAAAAAAAAAAACBAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Environment\AI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Binder.Environment.MovableCharacter" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAIAAAAAAAAAAAAABAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Environment\MovableCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Binder.Environment.Player">
+    <Position X="11.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAQAACJAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Environment\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="Binder.ISerialization&lt;T&gt;">
-    <Position X="12.25" Y="5.25" Width="1.5" />
+    <Position X="1.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISerialization.cs</FileName>
