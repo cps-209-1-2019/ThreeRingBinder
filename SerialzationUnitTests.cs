@@ -18,10 +18,11 @@ namespace Binder
 
             game.Load("C:\\Users\\zdd73\\OneDrive - Bob Jones University\\Freshman\\Spring\\CpS 209\\Project\\ThreeRingBinder\\LoadTest.txt");
 
-            Assert.IsTrue(game.HighScore == 550);
-            Assert.IsTrue(game.Composure == 2);
+            Assert.IsTrue(game.HighScore == 1500);
+            Assert.IsTrue(game.Composure == 3);
             Assert.IsTrue(game.CurrScore == 200);
-            Assert.IsTrue(game.Time == 500);
+            Assert.IsTrue(game.Time == 400);
+            Assert.IsTrue(game.IsCheatOn);
         }
 
         [Test]
