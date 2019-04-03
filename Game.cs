@@ -20,9 +20,9 @@ namespace Binder
         public int Difficulty { get; set; }         //Holds difficulty level
         public List<WorldObject> Eviron { get; set; }
 
-        public Game(List<WorldObject> eviron)
+        public Game()
         {
-            Eviron = eviron;
+            Eviron = new List<WorldObject>();
         }
         
         //Creaated Load method with initial loading algorithm
