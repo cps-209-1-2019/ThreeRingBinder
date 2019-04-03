@@ -39,5 +39,10 @@ namespace Binder.Environment
             Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
             
         }
+
+        private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
