@@ -19,37 +19,45 @@ namespace Binder.Environment
 
         }
 
-        public override void Move(string direction, Game game)
+        public override void Move(char direction, Game game)
         {
             if (direction == 'w')
             {
                 if (IsNotWall())
                 {
-                    game.StartPoint[0]++;
-
+                    foreach (WorldObject thing in game.eviron)
+                        thing.Position[0]++;
                 }
             }
             else if (direction == 'n')
             {
                 if (IsNotWall())
                 {
-                    game.StartPoint[1]++;
+                    foreach (WorldObject thing in game.eviron)
+                        thing.Position[1]++;
                 }
             }
             else if (direction == 'e')
             {
                 if (IsNotWall())
                 {
-                    game.StartPoint[0]--;
+                    foreach (WorldObject thing in game.eviron)
+                        thing.Position[0]--;
                 }
             }
             else if (direction == 's')
             {
                 if (IsNotWall())
                 {
-                    game.StartPoint[1]--;
+                    foreach (WorldObject thing in game.eviron)
+                        thing.Position[1]--;
                 }
             }
+        }
+
+        public bool IsNotWall()
+        {
+            return true;
         }
 
         public string Serialize()
@@ -61,5 +69,6 @@ namespace Binder.Environment
         {
             throw new NotImplementedException();
         }
+
     }
 }
