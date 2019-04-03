@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="HighScores" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="txtScores" Text=""/>
     </Grid>
 </Window>

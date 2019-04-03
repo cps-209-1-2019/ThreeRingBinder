@@ -64,6 +64,7 @@ namespace Binder.Environment
 
     public class DecoyItem: Items, ISerialization<DecoyItem>
     {
+
         //Turn the object into a string
         public string Serialize()
         {

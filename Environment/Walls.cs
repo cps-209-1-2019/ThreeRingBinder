@@ -26,6 +26,7 @@ namespace Binder.Environment
             //Width = width;
             Length = length;
             Position = pos;
+
         }
 
         //Builds a wall with respect to the Length
