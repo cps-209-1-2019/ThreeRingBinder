@@ -10,7 +10,7 @@ namespace Binder
 {
     class Game : ISerialization<Game>
     {
-        public List<object> environArray { get; set; }
+        public Dictionary<int[], object> environDict { get; set; }
         public int CurrScore { get; set; }          //Keeps track of the current score as player plays
         public int HighScore { get; set; }          //Keeps track of the High Score so far
         public int Composure { get; set; }          //Keeps track of the health of the Player
@@ -24,7 +24,7 @@ namespace Binder
         {
             StartPoint[0] = 0;
             StartPoint[1] = 0;
-            environArray = new List<object>();
+            environDict = new Dictionary<int[], object>();
             //Load();
         }
 
@@ -66,7 +66,7 @@ namespace Binder
                 {
                     int[] ar = new int[2] { i * 40, 75 };
                     walls = new Walls(1, 50, ar);
-                    environArray.Add(walls);
+                    environDict.Add(walls);
                     walls.Deserialize(rd.ReadLine());
 
                 }
