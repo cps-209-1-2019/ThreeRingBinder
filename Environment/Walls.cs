@@ -17,14 +17,16 @@ namespace Binder.Environment
         //public int Width { get; set; }                      //Contains the thickness of the wall
         public int Length { get; set; }                     //The number of blocks the wall will contain
         public int[] Position { get; set; }                 //Takes two arguments an x and y coordinate respectively
-        public int Orientation { get; set; }                //1 = Horizontal, 2 = Vertical 
+        public int Width { get; set; }                //1 = Horizontal, 2 = Vertical 
+        
 
         //public constructor for the walls class
-        public Walls(int orient, int length, int[] pos)
+        public Walls(int width, int length, int[] pos)
         {
-            Orientation = orient;
+            Width = width;
             Length = length;
             Position = pos;
+
         }
 
         //Builds a wall with respect to the Length
