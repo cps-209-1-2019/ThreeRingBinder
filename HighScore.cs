@@ -6,30 +6,14 @@ using System.Threading.Tasks;
 
 namespace Binder
 {
-    class HighScore: ISerialization<HighScore>
+    class HighScore
     {
-        public int currentScore;
-        public string playerName;
-        public HighScore(int score, string name)
+        public string CurrentScore { get; set; }
+        public string PlayerName { get; set; }
+        public HighScore(string score, string name)
         {
-            currentScore = score;
-            playerName = name;
-        }
-
-        //Turn the object into a string to be put in a text file
-        public string Serialize()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        //Takes a string representing the 
-        public HighScore Deserialize(string obj)
-        {
-            throw new NotImplementedException();
-        }
-        
-
-        
+            CurrentScore = score;
+            PlayerName = name;
+        }        
     }
 }

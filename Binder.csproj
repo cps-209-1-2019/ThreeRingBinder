@@ -97,6 +97,7 @@
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
     <Compile Include="HighScore.cs" />
+    <Compile Include="HighScoreHolder.cs" />
     <Compile Include="HighScoreList.xaml.cs">
       <DependentUpon>HighScoreList.xaml</DependentUpon>
     </Compile>
@@ -183,6 +184,11 @@
     <Resource Include="Environment\blocks.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="scores.txt" />
+    <Content Include="Sounds\GamePlay.mp3" />
+    <Content Include="Sounds\paperHit.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
