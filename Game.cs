@@ -10,6 +10,7 @@ namespace Binder
 {
     class Game : ISerialization<Game>
     {
+        public List<object> environArray { get; set; }
         public int CurrScore { get; set; }          //Keeps track of the current score as player plays
         public int HighScore { get; set; }          //Keeps track of the High Score so far
         public int Composure { get; set; }          //Keeps track of the health of the Player
@@ -18,6 +19,14 @@ namespace Binder
         public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public int Difficulty { get; set; }        //Holds difficulty level
+
+        public Game()
+        {
+            StartPoint[0] = 0;
+            StartPoint[1] = 0;
+            environArray = new List<object>();
+            //Load();
+        }
 
         public string Serialize()
         {
@@ -52,9 +61,16 @@ namespace Binder
                 player.Deserialize(rd.ReadLine());
                 AI ai = new AI(0, 0, 0);
                 ai.Deserialize(rd.ReadLine());
-                int[] ar = new int[2]{0, 0};
-                Walls walls = new Walls(0, 0, ar);
-                walls.Deserialize(rd.ReadLine());
+                Walls walls;
+                for (int i = 1; i <= 3; i++)
+                {
+                    int[] ar = new int[2] { i * 40, 75 };
+                    walls = new Walls(1, 50, ar);
+                    environArray.Add(walls);
+                    walls.Deserialize(rd.ReadLine());
+
+                }
+                
                 InventoryItem inventoryItem = new InventoryItem();
                 inventoryItem.Deserialize(rd.ReadLine());
                 DecoyItem decoyItem = new DecoyItem();
