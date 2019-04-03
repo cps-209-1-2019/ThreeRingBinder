@@ -10,6 +10,7 @@ namespace Binder
 {
     class Game : ISerialization<Game>
     {
+        public List<object> environArray { get; set; }
         public int CurrScore { get; set; }          //Keeps track of the current score as player plays
         public int HighScore { get; set; }          //Keeps track of the High Score so far
         public int Composure { get; set; }          //Keeps track of the health of the Player
@@ -23,6 +24,7 @@ namespace Binder
         {
             StartPoint[0] = 0;
             StartPoint[1] = 0;
+            environArray = new List<object>();
             //Load();
         }
 
@@ -59,14 +61,16 @@ namespace Binder
                 player.Deserialize(rd.ReadLine());
                 AI ai = new AI(0, 0, 0);
                 ai.Deserialize(rd.ReadLine());
-                int[] ar = new int[2]{0, 50};
-                for (int i = 0; i < 15; i++)
+                Walls walls;
+                for (int i = 1; i <= 3; i++)
                 {
-                    ar[0] += 20;
-
-                    Walls walls = new Walls(8, 20, ar);
+                    int[] ar = new int[2] { i * 40, 75 };
+                    walls = new Walls(1, 50, ar);
+                    environArray.Add(walls);
                     walls.Deserialize(rd.ReadLine());
+
                 }
+                
                 InventoryItem inventoryItem = new InventoryItem();
                 inventoryItem.Deserialize(rd.ReadLine());
                 DecoyItem decoyItem = new DecoyItem();
