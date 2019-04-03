@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
         Title="Pause" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="btnSave" Width="75" Height="35" Margin="184,89,184.2,196.8" Click="BtnSave_Click" Content="Save Game"/>
-        <Button x:Name="btnSaveQuit" Width="75" Height="35" Margin="359,179,359.6,206" Click="BtnSaveQuit_Click" Content="Save and Quit"/>
-        <Button x:Name="btnHelp" Width="75" Height="35" Margin="359,219,359.6,166" Click="BtnHelp_Click" Content="Help"/>
-        <Label x:Name="lblRiddle" Width="200" Height="100" Margin="298,271,295.6,49"/>
-    </Grid>
+    <Canvas>
+        <Button x:Name="btnSave" Width="100" Height="35" Click="BtnSave_Click" Content="Save Game" Canvas.Left="350" Canvas.Top="100"/>
+        <Label x:Name="lblSaved" Content="" Canvas.Left="470" Canvas.Top="100"/>
+        <Button x:Name="btnSaveQuit" Width="100" Height="35" Click="BtnSaveQuit_Click" Content="Save and Quit" Canvas.Left="350" Canvas.Top="150"/>
+        <Button x:Name="btnHelp" Width="100" Height="35" Click="BtnHelp_Click" Content="Help" Canvas.Left="350" Canvas.Top="200"/>
+        <Label x:Name="lblRiddle" Width="200" Height="100" Canvas.Left="300" Canvas.Top="280"/>
+    </Canvas>
 </Window>

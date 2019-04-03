@@ -20,9 +20,10 @@ namespace Binder.Environment
     /// </summary>
     public partial class GameWindow : Window
     {
+        Game binderGame;
         public GameWindow(bool cheat, int difficulty)
         {
-            Game binderGame = new Game();
+            binderGame = new Game();
             binderGame.IsCheatOn = cheat;
             binderGame.Difficulty = difficulty;
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace Binder.Environment
         {
             Debug.WriteLine(Canvas.GetLeft(imgBl) + " " + Canvas.GetTop(imgBl));
             Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
+            //cnvsGame.Children.Remove(btnStart);
             
         }
 
@@ -44,19 +46,36 @@ namespace Binder.Environment
         {
             if (e.Key == Key.Up)
             {
-
+                //binderGame.Marcus.Move('n', binderGame);
+                Canvas.SetTop(imgBl, Canvas.GetTop(imgBl) - 50);
             }
-            if (e.Key == Key.Down)
+            else if (e.Key == Key.Down)
             {
-
+                //binderGame.Marcus.Move('s', binderGame);
+                Canvas.SetTop(imgBl, Canvas.GetTop(imgBl) + 50);
             }
-            if (e.Key == Key.Left)
+            else if (e.Key == Key.Left)
             {
-
+                //binderGame.Marcus.Move('w', binderGame);
+                Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
             }
-            if (e.Key == Key.Right)
+            else if (e.Key == Key.Right)
             {
-
+                //binderGame.Marcus.Move('e', binderGame);
+                Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) + 50);
+            }
+            else if (e.Key == Key.C)
+            {
+                binderGame.Marcus.Attack();
+            }
+            else if (e.Key == Key.X)
+            {
+                binderGame.Marcus.Enteract();
+            }
+            else if (e.Key == Key.Escape)
+            {
+                Pause pauseWindow = new Pause(binderGame);
+                pauseWindow.Show();
             }
         }
     }

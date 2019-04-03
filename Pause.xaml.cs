@@ -19,24 +19,29 @@ namespace Binder
     /// </summary>
     public partial class Pause : Window
     {
-        public Pause()
+        Game binderGame;
+        public Pause(Game game)
         {
+            binderGame = game;
             InitializeComponent();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            lblSaved.Content = "Saved!";
+            binderGame.Save("some_filename");
         }
 
         private void BtnSaveQuit_Click(object sender, RoutedEventArgs e)
         {
-
+            binderGame.Save("some_filename");
+            Application.Current.Shutdown();
         }
 
         private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
-
+            Help helpWindow = new Help();
+            helpWindow.Show();
         }
     }
 }
