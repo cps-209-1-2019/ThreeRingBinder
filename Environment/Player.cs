@@ -19,13 +19,13 @@ namespace Binder.Environment
 
         }
 
-        public override void Move(char direction, Game game)
+        public void Move(char direction, Game game) //Removed override keyword for buildability
         {
             if (direction == 'w')
             {
                 if (IsNotWall())
                 {
-                    foreach (WorldObject thing in game.eviron)
+                    foreach (WorldObject thing in game.Eviron)
                         thing.Position[0]++;
                 }
             }
@@ -33,7 +33,7 @@ namespace Binder.Environment
             {
                 if (IsNotWall())
                 {
-                    foreach (WorldObject thing in game.eviron)
+                    foreach (WorldObject thing in game.Eviron)
                         thing.Position[1]++;
                 }
             }
@@ -41,7 +41,7 @@ namespace Binder.Environment
             {
                 if (IsNotWall())
                 {
-                    foreach (WorldObject thing in game.eviron)
+                    foreach (WorldObject thing in game.Eviron)
                         thing.Position[0]--;
                 }
             }
@@ -49,7 +49,7 @@ namespace Binder.Environment
             {
                 if (IsNotWall())
                 {
-                    foreach (WorldObject thing in game.eviron)
+                    foreach (WorldObject thing in game.Eviron)
                         thing.Position[1]--;
                 }
             }
