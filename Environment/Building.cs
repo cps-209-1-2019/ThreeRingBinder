@@ -47,7 +47,28 @@ namespace Binder.Environment
         //Take a string and turn it into a Building object
         public Building Deserialize(string obj)
         {
-            string[] properties = obj.Split(',');
+            List<string> properties = new List<string>(obj.Split(','));
+
+            int start = 0;
+            int end = 0;
+            for (int i = 0; i < properties.Count; i++)
+            {
+                if (properties[i].Contains("]"))
+                {
+                    end = i;
+                }
+                else if (properties[i].Contains("["))
+                {
+                    start = i;
+                }
+            }
+            
+            for (int i = start; i < end; i++)
+            {
+                properties[start] = properties[start] + "," + properties[start + 1];
+                properties.RemoveAt(start + 1);
+            }
+
 
             Width = int.Parse(properties[1].Split('!')[1]);
             Length = int.Parse(properties[2].Split('!')[1]);

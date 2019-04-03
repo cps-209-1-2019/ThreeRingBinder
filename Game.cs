@@ -31,16 +31,12 @@ namespace Binder
             using (StreamReader rd = new StreamReader(filename))
             {
                 rd.ReadLine();
-                CurrScore = int.Parse(rd.ReadLine());
-                HighScore = int.Parse(rd.ReadLine());
-                Composure = int.Parse(rd.ReadLine());
-                NumItems = int.Parse(rd.ReadLine());
-                Time = int.Parse(rd.ReadLine());
-                string stPoint = rd.ReadLine();
-                string[] startPoints = stPoint.Split(',');
-                StartPoint[0] = int.Parse(startPoints[0]);
-                StartPoint[1] = int.Parse(startPoints[1]);
-                IsCheatOn = bool.Parse(rd.ReadLine());
+                CurrScore = int.Parse(rd.ReadLine().Split('!')[1]);
+                HighScore = int.Parse(rd.ReadLine().Split('!')[1]);
+                Composure = int.Parse(rd.ReadLine().Split('!')[1]);
+                NumItems = int.Parse(rd.ReadLine().Split('!')[1]);
+                Time = int.Parse(rd.ReadLine().Split('!')[1]);
+                IsCheatOn = "TRUE" == rd.ReadLine().Split('!')[1];
                 string building = rd.ReadLine();
                 Building build = new Building();
                 build.Deserialize(building);
