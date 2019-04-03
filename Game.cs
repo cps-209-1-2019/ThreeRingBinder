@@ -19,6 +19,13 @@ namespace Binder
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public int Difficulty { get; set; }        //Holds difficulty level
 
+        public Game()
+        {
+            StartPoint[0] = 0;
+            StartPoint[1] = 0;
+            //Load();
+        }
+
         public string Serialize()
         {
             throw new NotImplementedException();
@@ -52,9 +59,14 @@ namespace Binder
                 player.Deserialize(rd.ReadLine());
                 AI ai = new AI(0, 0, 0);
                 ai.Deserialize(rd.ReadLine());
-                int[] ar = new int[2]{0, 0};
-                Walls walls = new Walls(0, 0, ar);
-                walls.Deserialize(rd.ReadLine());
+                int[] ar = new int[2]{0, 50};
+                for (int i = 0; i < 15; i++)
+                {
+                    ar[0] += 20;
+
+                    Walls walls = new Walls(8, 20, ar);
+                    walls.Deserialize(rd.ReadLine());
+                }
                 InventoryItem inventoryItem = new InventoryItem();
                 inventoryItem.Deserialize(rd.ReadLine());
                 DecoyItem decoyItem = new DecoyItem();
