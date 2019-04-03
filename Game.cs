@@ -66,7 +66,7 @@ namespace Binder
                 {
                     int[] ar = new int[2] { i * 40, 75 };
                     walls = new Walls(1, 50, ar);
-                    environDict.Add(walls);
+                    environDict.Add(ar, walls);
                     walls.Deserialize(rd.ReadLine());
 
                 }
