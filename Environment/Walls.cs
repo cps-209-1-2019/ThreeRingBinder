@@ -27,7 +27,7 @@ namespace Binder.Environment
             Position = pos;
         }
 
-        Builds a wall with respect to the Length
+        //Builds a wall with respect to the Length
         public void Build()
         {
 

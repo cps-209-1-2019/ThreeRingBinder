@@ -19,9 +19,37 @@ namespace Binder.Environment
 
         }
 
-        public override void Move()
+        public override void Move(string direction, Game game)
         {
+            if (direction == 'w')
+            {
+                if (IsNotWall())
+                {
+                    game.StartPoint[0]++;
 
+                }
+            }
+            else if (direction == 'n')
+            {
+                if (IsNotWall())
+                {
+                    game.StartPoint[1]++;
+                }
+            }
+            else if (direction == 'e')
+            {
+                if (IsNotWall())
+                {
+                    game.StartPoint[0]--;
+                }
+            }
+            else if (direction == 's')
+            {
+                if (IsNotWall())
+                {
+                    game.StartPoint[1]--;
+                }
+            }
         }
 
         public string Serialize()
