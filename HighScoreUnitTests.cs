@@ -11,18 +11,23 @@ namespace Binder
     class HighScoreUnitTests
     {
         [Test]
-        public void HighScore_ValidScoreName_Success()
+        public void HighScoreHolder_ValidScore_Success()
         {
-            HighScore newScore = new HighScore(300, "zach");
-            Assert.IsTrue(newScore.currentScore == 300);
-            Assert.IsTrue(newScore.playerName == "zach");
+            HighScore score = new HighScore("300", "Bob");
+            HighScoreHolder testHolder = new HighScoreHolder();
+            testHolder.AddHighScore(score);
+            Assert.IsTrue(testHolder.scoreList[0].CurrentScore == "300");
         }
 
         [Test]
-        public void HighScore_AlsoValid_LoadSuccess()
+        public void HighScoreHolder_Valid_LoadWriteSuccess()
         {
-            HighScore newScore = new HighScore(1450, "melchi");
-            Assert.IsTrue(newScore.Deserialize("1450,melchi") == newScore);
+            HighScore score = new HighScore("600", "Joe");
+            HighScoreHolder testHolder = new HighScoreHolder();
+            testHolder.AddHighScore(score);
+            testHolder.Save();
+            testHolder.Load();
+            Assert.IsTrue(testHolder.scoreList[0].PlayerName == "Joe");
         }
     }
 }
