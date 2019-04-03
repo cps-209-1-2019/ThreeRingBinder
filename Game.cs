@@ -8,8 +8,9 @@ using System.IO;  //added IO using statement - ZD
 
 namespace Binder
 {
-    class Game
+    public class Game
     {
+        public Player Marcus { get; set; }
         public int CurrScore { get; set; }          //Keeps track of the current score as player plays
         public int HighScore { get; set; }          //Keeps track of the High Score so far
         public int Composure { get; set; }          //Keeps track of the health of the Player

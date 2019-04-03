@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class Player : MovableCharacter, ISerialization<Player>
+    public class Player : MovableCharacter, ISerialization<Player>
     {
         public string Name { get; set; }
         public List<Items> Inventory { get; set; }

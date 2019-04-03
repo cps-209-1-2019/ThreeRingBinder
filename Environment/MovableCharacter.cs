@@ -14,7 +14,7 @@ namespace Binder.Environment
 
         public virtual void Move()
         {
-
+            
         }
         public void Attack()
         {

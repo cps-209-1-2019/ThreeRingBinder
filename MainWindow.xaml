@@ -15,7 +15,7 @@
         <CheckBox Content="Be a Cheater" x:Name="btnCheat" Click="BtnCheat_Click" Canvas.Left="155" Canvas.Top="340"/>
         <Slider x:Name="sldrDifficulty" ValueChanged="SldrDifficulty_ValueChanged" Minimum="1" Maximum="3" Width="50" Canvas.Top="230" Canvas.Left="200"/>
         <Label Content="Difficulty Level" Canvas.Left="92" Canvas.Top="230" />
-        <Label x:Name="lblDifficulty" Canvas.Left="303" Canvas.Top="238" Content="1"/>
+        <Label x:Name="lblDifficulty" Canvas.Left="303" Canvas.Top="238" Content=""/>
 
     </Canvas>
 </Window>
