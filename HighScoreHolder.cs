@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,37 +10,36 @@ namespace Binder
 {
     class HighScoreHolder
     {
+        string filename = Path.Combine(TestContext.CurrentContext.TestDirectory, "scores.txt");
         public string highScoreText = "";
         public List<HighScore> scoreList = new List<HighScore>();
 
         public void Load()
         {
-            using (FileStream stream = new FileStream("scores.txt", FileMode.Create))
+            using (StreamReader reader = new StreamReader(filename))
             {
-                using (StreamReader reader = new StreamReader(stream))
+                scoreList = new List<HighScore>();
+                for (int i = 0; i < 10; i++)
                 {
-                    for (int i = 0; i < 10; i++)
+                    string[] scoreArray = new string[2];
+                    string scoreLine = reader.ReadLine();
+                    if (scoreLine != null)
                     {
-                        string[] scoreArray = new string[2];
-                        string scoreLine = reader.ReadLine();
-                        if (scoreLine != null)
-                        {
-                            highScoreText += scoreLine + "\n";
-                        }
+                        highScoreText += scoreLine + "\n";
                         scoreArray = scoreLine.Split(new char[] { ' ' });
                         HighScore highScore = new HighScore(scoreArray[1], scoreArray[0]);
                         scoreList.Insert(0, highScore);
-                        scoreList.RemoveAt(-1);
+                        if (scoreList.Count() > 9)
+                            scoreList.RemoveAt(10);
                     }
+                    
                 }
             }
         }
 
         public void Save()
         {
-            using (FileStream stream = new FileStream("scores.txt", FileMode.Create))
-            {
-                using (StreamWriter writer = new StreamWriter(stream))
+            using (StreamWriter writer = new StreamWriter(filename))
                 {
                     foreach (HighScore score in scoreList)
                     {
@@ -50,14 +50,13 @@ namespace Binder
                         }
                     }
                 }
-            }
-            
         }
 
         public void AddHighScore(HighScore score)
         {
             scoreList.Insert(0, score);
-            scoreList.RemoveAt(-1);
+            if (scoreList.Count() > 9)
+                scoreList.RemoveAt(10);
         }
     }
 }

@@ -27,7 +27,9 @@ namespace Binder
         //Calls HighScore.Load() and writes the high scores to the window.
         public void WriteScores()
         {
-
+            HighScoreHolder holder = new HighScoreHolder();
+            holder.Load();
+            txtScores.Text = holder.highScoreText;
         }
     }
 }

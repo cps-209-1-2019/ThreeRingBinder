@@ -19,21 +19,23 @@ namespace Binder
     /// </summary>
     public partial class NewHighScore : Window
     {
-        public NewHighScore()
+        string newHighScore;
+        public NewHighScore(int score)
         {
             InitializeComponent();
-        }
-
-        //Displays new high score
-        public void WriteNewScore()
-        {
-            
+            newHighScore = Convert.ToString(score);
+            lblScore.Content = Convert.ToString(newHighScore);
         }
 
         //Submits player name and instantiates HighScore
         private void BtnSubmitName_Click(object sender, RoutedEventArgs e)
         {
-
+            string[] nameArray = new string[10];
+            nameArray = txtPlayerName.Text.Split(new char[] { ' ' } );
+            HighScore newScore = new HighScore(newHighScore, nameArray[0]);
+            HighScoreHolder newHolder = new HighScoreHolder();
+            newHolder.AddHighScore(newScore);
+            newHolder.Save();
         }
     }
 }
