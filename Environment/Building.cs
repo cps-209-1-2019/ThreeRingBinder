@@ -32,10 +32,10 @@ namespace Binder.Environment
             Collection.Remove(item.Name);
         }
 
-        //Moves the map with respect to the player position
-        public void Move(int[] pPos)
+        //Moves the map with respect to the player position and direction
+        public void Move(int[] pPos, int dir)
         {
-
+            
         }
 
         //Turn the object into a string

@@ -46,7 +46,7 @@ namespace Binder.Environment
         //Provides ability to use the object
         public void Use()
         {
-            
+
         }
         //Turn the object into a string
         public string Serialize()
@@ -64,7 +64,6 @@ namespace Binder.Environment
 
     public class DecoyItem: Items, ISerialization<DecoyItem>
     {
-
         //Turn the object into a string
         public string Serialize()
         {
