@@ -47,7 +47,39 @@ namespace Binder.Environment
         //Take a string and turn it into a Building object
         public Building Deserialize(string obj)
         {
-            throw new NotImplementedException();
+            string[] properties = obj.Split(',');
+
+            Width = int.Parse(properties[1].Split('!')[1]);
+            Length = int.Parse(properties[2].Split('!')[1]);
+
+            string[] collectA = properties[3].Split('!');
+            string[] collectB = collectA[1].Split(';');
+            foreach (string s in collectB)
+            {
+                string[] item = s.Split();
+                string value = item[1].Trim('[',']');
+                string[] nextObj = value.Split(',');
+                Items nextItem = new Items();
+                switch (nextObj[0])
+                {
+                    case "INVENTORYITEM":
+                        InventoryItem inven = new InventoryItem();
+                        inven.Deserialize(value);
+                        nextItem = inven as Items;
+                        break;
+                    case "DECOYITEM":
+                        DecoyItem decoy = new DecoyItem();
+                        decoy.Deserialize(value);
+                        nextItem = decoy as Items;
+                        break;
+                }
+
+                Collection.Add(item[0],nextItem);
+            }
+
+
+
+            return this;
         }
 
         

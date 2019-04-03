@@ -8,7 +8,7 @@ using System.IO;  //added IO using statement - ZD
 
 namespace Binder
 {
-    class Game : ISerialization<Game>
+    class Game
     {
         public int CurrScore { get; set; }          //Keeps track of the current score as player plays
         public int HighScore { get; set; }          //Keeps track of the High Score so far
@@ -19,16 +19,7 @@ namespace Binder
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public int Difficulty { get; set; }        //Holds difficulty level
 
-        public string Serialize()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Game Deserialize(string obj)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         //Creaated Load method with initial loading algorithm
         public void Load(string filename)
         {
@@ -48,17 +39,17 @@ namespace Binder
                 string building = rd.ReadLine();
                 Building build = new Building();
                 build.Deserialize(building);
-                Player player = new Player("");
-                player.Deserialize(rd.ReadLine());
-                AI ai = new AI(0, 0, 0);
-                ai.Deserialize(rd.ReadLine());
-                int[] ar = new int[2]{0, 0};
-                Walls walls = new Walls(0, 0, ar);
-                walls.Deserialize(rd.ReadLine());
-                InventoryItem inventoryItem = new InventoryItem();
-                inventoryItem.Deserialize(rd.ReadLine());
-                DecoyItem decoyItem = new DecoyItem();
-                decoyItem.Deserialize(rd.ReadLine());
+                 //Player player = new Player("");
+                rd.ReadLine();//player.Deserialize(rd.ReadLine());
+                //AI ai = new AI(0, 0, 0);
+                rd.ReadLine();//ai.Deserialize(rd.ReadLine());
+                //int[] ar = new int[2]{0, 0};
+                //Walls walls = new Walls(0, 0, ar);
+                rd.ReadLine();//walls.Deserialize(rd.ReadLine());
+                //InventoryItem inventoryItem = new InventoryItem();
+                rd.ReadLine();//inventoryItem.Deserialize(rd.ReadLine());
+                //DecoyItem decoyItem = new DecoyItem();
+                rd.ReadLine();//decoyItem.Deserialize(rd.ReadLine());
                 rd.ReadLine();
             }
         }
