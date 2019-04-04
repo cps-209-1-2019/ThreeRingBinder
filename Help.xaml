@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="Help" Height="350" Width="300">
+        Title="Help" Height="350" Width="300"
+        MinHeight="350"
+        MaxHeight="350"
+        MinWidth="300"
+        MaxWidth="300">
     <Window.Background>
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>

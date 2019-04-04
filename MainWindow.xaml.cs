@@ -70,5 +70,11 @@ namespace Binder
             Instructions instructions = new Instructions();
             instructions.Show();
         }
+
+        private void BtnHighScores_Click(object sender, RoutedEventArgs e)
+        {
+            HighScoreList highScoreList = new HighScoreList();
+            highScoreList.Show();
+        }
     }
 }

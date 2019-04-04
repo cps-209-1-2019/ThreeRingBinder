@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="450">
+        Title="MainWindow" Height="500" Width="450"
+        MinHeight="500"
+        MaxHeight="500"
+        MinWidth="450"
+        MaxWidth="450">
     <Window.Background>
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
@@ -19,6 +23,7 @@
         <Slider x:Name="sldrDifficulty" ValueChanged="SldrDifficulty_ValueChanged" Minimum="1" Maximum="3" Width="50" Canvas.Top="230" Canvas.Left="200"/>
         <Label Content="Difficulty Level" Canvas.Left="92" Canvas.Top="230" />
         <Label x:Name="lblDifficulty" Canvas.Left="303" Canvas.Top="230" Content=""/>
-        <Button Width="140" Canvas.Left="155" Canvas.Top="380" Height="30" Content="Instructions" Click="Instruction_Click" Background="DarkSalmon"/>
+        <Button Width="140" Canvas.Left="70" Canvas.Top="380" Height="30" Content="Instructions" Click="Instruction_Click" Background="DarkSalmon"/>
+        <Button x:Name="btnHighScores" Width="140" Canvas.Left="240" Canvas.Top="380" Height="30" Content="High Scores" Click="BtnHighScores_Click" Background="DarkSalmon"/>
     </Canvas>
 </Window>

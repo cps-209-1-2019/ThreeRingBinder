@@ -18,7 +18,7 @@ namespace Binder.Environment
         {
             //Perimeter
             new int[4] {-2016, -1547, 5476, 24},
-            new int[3] {}
+            new int[3] {0, 0, 0}
         };
 
         public int Width { get; set; }

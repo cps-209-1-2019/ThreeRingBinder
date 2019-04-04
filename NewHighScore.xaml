@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="NewHighScore" Height="350" Width="400">
+        Title="NewHighScore" Height="350" Width="400"
+        MinHeight="350"
+        MaxHeight="350"
+        MinWidth="400"
+        MaxWidth="400">
     <Window.Background>
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
