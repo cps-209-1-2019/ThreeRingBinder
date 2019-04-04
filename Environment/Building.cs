@@ -17,8 +17,10 @@ namespace Binder.Environment
         public List<int[]> LibPlans = new List<int[]>()
         {
             //Perimeter
-
+            new int[4] {-2016, -1547, 5476, 24},
+            new int[3] {}
         };
+
         public int Width { get; set; }
         public int Length { get; set; }
 
@@ -38,11 +40,11 @@ namespace Binder.Environment
             Collection.Remove(item.Name);
         }
 
-        //Moves the map with respect to the player position and direction
-        public void Move(int[] pPos, int dir)
-        {
+        ////Moves the map with respect to the player position and direction
+        //public void Move(int[] pPos, int dir)
+        //{
             
-        }
+        //}
 
         //Turn the object into a string
         public string Serialize()
