@@ -1,0 +1,29 @@
+﻿<Window x:Class="Binder.Environment.Instructions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Binder.Environment"
+        mc:Ignorable="d"
+        Title="Instructions" Height="450" Width="800">
+    <Canvas>
+        <Label Content="Game Instructions" FontSize="30" Foreground="DarkSalmon" Width="250" Canvas.Left="275" Canvas.Top="10"/>
+        <TextBlock xml:space="preserve">
+            
+            
+            
+            
+            Your Goal: Find all three binder rings and assemble the legendary binder.
+            
+            Roam the building in search of an object that will allow you to discover the next ring.
+            Once you discover the correct object, a riddle will appear, telling you where to find the ring.
+            After solving the riddle, move to the correct location and use the correct object there.
+            
+            But watch out! 
+            The Psi Zeta Bullfrogs will be waiting for you, ready to whip their scarves at you. To shame and stop them, throw paper airplanes at them.
+            
+            To learn what buttons to use, check the help screen below.           
+        </TextBlock>
+        <Button x:Name="btnHelp" Width="100" Height="35" Click="BtnHelp_Click" Content="Help" Canvas.Left="350" Canvas.Top="280" Background="DarkSalmon"/>
+    </Canvas>
+</Window>

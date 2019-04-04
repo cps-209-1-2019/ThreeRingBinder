@@ -53,5 +53,11 @@ namespace Binder
             }
             isLoaded = true;
         }
+
+        private void Instruction_Click(object sender, RoutedEventArgs e)
+        {
+            Instructions instructions = new Instructions();
+            instructions.Show();
+        }
     }
 }
