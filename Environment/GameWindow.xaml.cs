@@ -85,5 +85,14 @@ namespace Binder.Environment
             //Debug.WriteLine(Canvas.GetLeft(imgBl) + " " + Canvas.GetTop(imgBl));
             //Debug.WriteLine(imgBl.RenderTransform.Value);
         }
+
+        //Builds Walls with Blocks on GUI 
+        public void BuildWalls(List<int[]> coords)
+        {
+            Label block = new Label()
+            {
+
+            };
+        }
     }
 }
