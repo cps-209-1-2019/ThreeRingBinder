@@ -46,7 +46,7 @@ namespace Binder.Environment
         //Provides ability to use the object
         public void Use()
         {
-            
+
         }
         //Turn the object into a string
         public string Serialize()
@@ -64,9 +64,8 @@ namespace Binder.Environment
 
     public class DecoyItem: Items, ISerialization<DecoyItem>
     {
-        public int Strength { get; set; }
+        public int Strength { get; set; }           //
 
-        //Decreases the Health of the Player by the Strength amount
         public void DecrHealth()
         {
 

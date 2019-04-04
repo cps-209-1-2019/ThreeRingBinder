@@ -14,10 +14,16 @@ namespace Binder.Environment
     //Added public accessibility modifier - Day
     public class Building : WorldObject, ISerialization<Building> 
     {
+        public List<int[]> LibPlans = new List<int[]>()
+        {
+            //Perimeter
+
+        };
         public int Width { get; set; }
         public int Length { get; set; }
 
         public Dictionary<string, Items> Collection;
+        public List<Walls> WallsCol;
 
 
         //Adds the Item object in its params to the Collection
@@ -32,10 +38,10 @@ namespace Binder.Environment
             Collection.Remove(item.Name);
         }
 
-        //Moves the map with respect to the player position
-        public void Move(int[] pPos)
+        //Moves the map with respect to the player position and direction
+        public void Move(int[] pPos, int dir)
         {
-
+            
         }
 
         //Turn the object into a string

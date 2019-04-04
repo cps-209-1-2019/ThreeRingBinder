@@ -77,7 +77,7 @@ namespace Binder
                 AI ai = new AI(0, 0, 0);
                 wr.WriteLine(ai.Serialize());
                 int[] ar = new int[2] { 0, 0 };
-                Walls walls = new Walls(0, 0, ar);
+                Walls walls = new Walls(24,0, ar);
                 wr.WriteLine(walls.Serialize());
                 InventoryItem inventoryItem = new InventoryItem();
                 wr.WriteLine(inventoryItem.Serialize());
