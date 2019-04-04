@@ -18,7 +18,7 @@ namespace Binder.Environment
         public int Length { get; set; }                     //The number of blocks the wall will contain
         public int[] Position { get; set; }                 //Takes two arguments an x and y coordinate respectively
         public int Orientation { get; set; }                //1 = Horizontal, 2 = Vertical 
-        public List<Block> Blocks { get; set; }                 //Holds the blocks that make up the wall
+        public List<Block> Blocks { get; set; }              //Holds the blocks that make up the wall
 
         //public constructor for the walls class
         public Walls(int length, int[] pos)
