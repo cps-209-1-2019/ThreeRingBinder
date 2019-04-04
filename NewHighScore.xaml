@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="NewHighScore" Height="350" Width="450">
-    <Grid>
+        Title="NewHighScore" Height="350" Width="400">
+    <Canvas>
         <Label x:Name="lblScore" Content=""/>
-        <TextBox x:Name="txtPlayerName" Width="150" Height="20" Margin="146,118,147.2,182.8"/>
-        <Button x:Name="btnSubmitName" Width="75" Height="35" Content="Enter" Click="BtnSubmitName_Click"/>
-    </Grid>
+        <TextBox x:Name="txtPlayerName" Width="150" Height="20" Canvas.Top="130" Canvas.Left="125"/>
+        <Button x:Name="btnSubmitName" Width="80" Height="35" Content="Enter" Click="BtnSubmitName_Click" Background="DarkSalmon" Canvas.Top="170" Canvas.Left="160"/>
+    </Canvas>
 </Window>
