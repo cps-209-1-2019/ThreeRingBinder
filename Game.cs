@@ -21,10 +21,12 @@ namespace Binder
         public int Difficulty { get; set; }         //Holds difficulty level
         public List<WorldObject> Eviron { get; set; }
         public Building CurBuilding { get; set; }
+        public static bool isPaused { get; set; }    //Determines if the game is paused
 
         public Game()
         {
             Eviron = new List<WorldObject>();
+            isPaused = false;
         }
         
         //Creaated Load method with initial loading algorithm
