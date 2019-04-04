@@ -10,5 +10,11 @@ namespace Binder.Environment
     {
         public int[] Position { get; set; }
         public string PictureName { get; set; }
+
+        public void Pos(int x, int y)
+        {
+            Position[0] = x;
+            Position[1] = y;
+        }
     }
 }
