@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Pause" Height="450" Width="800">
     <Canvas>
-        <Label Content="Game Paused" FontSize="30" Foreground="DarkSlateBlue" Width="190" Canvas.Left="305" Canvas.Top="50"/>
+        <Label Content="Game Paused" FontSize="30" Foreground="DarkSlateBlue" Width="190" Canvas.Left="305" Canvas.Top="40"/>
+        <Button x:Name="btnResume" Width="100" Height="35" Click="BtnResume_Click" Content="Resume" Canvas.Left="350" Canvas.Top="100" Background="DarkSalmon"/>
         <Button x:Name="btnSave" Width="100" Height="35" Click="BtnSave_Click" Content="Save Game" Canvas.Left="280" Canvas.Top="150" Background="DarkSalmon"/>
         <Label x:Name="lblSaved" Content="" Canvas.Left="550" Canvas.Top="100"/>
         <Button x:Name="btnSaveQuit" Width="100" Height="35" Click="BtnSaveQuit_Click" Content="Save and Quit" Canvas.Left="420" Canvas.Top="150" Background="DarkSalmon"/>

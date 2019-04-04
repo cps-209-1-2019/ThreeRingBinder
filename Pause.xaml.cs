@@ -49,5 +49,11 @@ namespace Binder
             About aboutWindow = new About();
             aboutWindow.Show();
         }
+
+        private void BtnResume_Click(object sender, RoutedEventArgs e)
+        {
+            Game.isPaused = false;
+            this.Close();
+        }
     }
 }
