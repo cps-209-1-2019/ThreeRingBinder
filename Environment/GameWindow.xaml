@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="GameWindow" Height="900" Width="1440"
         >
-    <Canvas x:Name="cnvsGame">
+    <Canvas x:Name="cnvsGame" KeyDown="CnvsGame_KeyDown">
         <Image x:Name="imgfl" Source="floor.png" Canvas.Top="0" Canvas.Left="0"/>
-        <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="50" Canvas.Left="1450"/>
-        <Button Height="20" Width="20" Click="Button_Click"/>
+        <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="242" Canvas.Left="1141"/>
+        <Button Height="100" Width="300" Click="Button_Click" Content="Start!" FontSize="40" Canvas.Left="650" Canvas.Top="200" x:Name="btnStart"/>
     </Canvas>
 </Window>

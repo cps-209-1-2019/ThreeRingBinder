@@ -27,6 +27,7 @@ namespace Binder
         public MainWindow()
         {
             InitializeComponent();
+            lblDifficulty.Content = "1";
         }
 
         //Testing my GameWindow
@@ -48,8 +49,9 @@ namespace Binder
         {
             if (isLoaded) {
             difficulty = Convert.ToInt32(sldrDifficulty.Value);
-            lblDifficulty.Content = Convert.ToInt32(difficulty);
+            lblDifficulty.Content = Convert.ToString(difficulty);
             }
+            isLoaded = true;
         }
     }
 }

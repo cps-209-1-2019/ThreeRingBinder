@@ -8,9 +8,9 @@ using System.IO;  //added IO using statement - ZD
 
 namespace Binder
 {
-    class Game : ISerialization<Game>
+    public class Game
     {
-        public Dictionary<int[], object> environDict { get; set; }
+        public Player Marcus { get; set; }
         public int CurrScore { get; set; }          //Keeps track of the current score as player plays
         public int HighScore { get; set; }          //Keeps track of the High Score so far
         public int Composure { get; set; }          //Keeps track of the health of the Player
@@ -18,63 +18,40 @@ namespace Binder
         public int NumItems { get; set; }           //Keeps track of the number of items in players inventory
         public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
-        public int Difficulty { get; set; }        //Holds difficulty level
+        public int Difficulty { get; set; }         //Holds difficulty level
+        public List<WorldObject> Eviron { get; set; }
 
         public Game()
         {
-            StartPoint[0] = 0;
-            StartPoint[1] = 0;
-            environDict = new Dictionary<int[], object>();
-            //Load();
+            Eviron = new List<WorldObject>();
         }
-
-        public string Serialize()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Game Deserialize(string obj)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         //Creaated Load method with initial loading algorithm
         public void Load(string filename)
         {
             using (StreamReader rd = new StreamReader(filename))
             {
                 rd.ReadLine();
-                CurrScore = int.Parse(rd.ReadLine());
-                HighScore = int.Parse(rd.ReadLine());
-                Composure = int.Parse(rd.ReadLine());
-                NumItems = int.Parse(rd.ReadLine());
-                Time = int.Parse(rd.ReadLine());
-                string stPoint = rd.ReadLine();
-                string[] startPoints = stPoint.Split(',');
-                StartPoint[0] = int.Parse(startPoints[0]);
-                StartPoint[1] = int.Parse(startPoints[1]);
-                IsCheatOn = bool.Parse(rd.ReadLine());
+                CurrScore = int.Parse(rd.ReadLine().Split('!')[1]);
+                HighScore = int.Parse(rd.ReadLine().Split('!')[1]);
+                Composure = int.Parse(rd.ReadLine().Split('!')[1]);
+                NumItems = int.Parse(rd.ReadLine().Split('!')[1]);
+                Time = int.Parse(rd.ReadLine().Split('!')[1]);
+                IsCheatOn = "TRUE" == rd.ReadLine().Split('!')[1];
                 string building = rd.ReadLine();
                 Building build = new Building();
                 build.Deserialize(building);
-                Player player = new Player("");
-                player.Deserialize(rd.ReadLine());
-                AI ai = new AI(0, 0, 0);
-                ai.Deserialize(rd.ReadLine());
-                Walls walls;
-                for (int i = 1; i <= 3; i++)
-                {
-                    int[] ar = new int[2] { i * 40, 75 };
-                    walls = new Walls(1, 50, ar);
-                    environDict.Add(ar, walls);
-                    walls.Deserialize(rd.ReadLine());
-
-                }
-                
-                InventoryItem inventoryItem = new InventoryItem();
-                inventoryItem.Deserialize(rd.ReadLine());
-                DecoyItem decoyItem = new DecoyItem();
-                decoyItem.Deserialize(rd.ReadLine());
+                 //Player player = new Player("");
+                rd.ReadLine();//player.Deserialize(rd.ReadLine());
+                //AI ai = new AI(0, 0, 0);
+                rd.ReadLine();//ai.Deserialize(rd.ReadLine());
+                //int[] ar = new int[2]{0, 0};
+                //Walls walls = new Walls(0, 0, ar);
+                rd.ReadLine();//walls.Deserialize(rd.ReadLine());
+                //InventoryItem inventoryItem = new InventoryItem();
+                rd.ReadLine();//inventoryItem.Deserialize(rd.ReadLine());
+                //DecoyItem decoyItem = new DecoyItem();
+                rd.ReadLine();//decoyItem.Deserialize(rd.ReadLine());
                 rd.ReadLine();
             }
         }

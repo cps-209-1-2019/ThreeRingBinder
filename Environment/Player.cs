@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    class Player : MovableCharacter, ISerialization<Player>
+    public class Player : MovableCharacter, ISerialization<Player>
     {
         public string Name { get; set; }
         public List<Items> Inventory { get; set; }
@@ -19,37 +19,45 @@ namespace Binder.Environment
 
         }
 
-        public override void Move(string direction, Game game)
+        public void Move(char direction, Game game) //Removed override keyword for buildability
         {
             if (direction == 'w')
             {
                 if (IsNotWall())
                 {
-                    game.StartPoint[0]++;
-
+                    foreach (WorldObject thing in game.Eviron)
+                        thing.Position[0]++;
                 }
             }
             else if (direction == 'n')
             {
                 if (IsNotWall())
                 {
-                    game.StartPoint[1]++;
+                    foreach (WorldObject thing in game.Eviron)
+                        thing.Position[1]++;
                 }
             }
             else if (direction == 'e')
             {
                 if (IsNotWall())
                 {
-                    game.StartPoint[0]--;
+                    foreach (WorldObject thing in game.Eviron)
+                        thing.Position[0]--;
                 }
             }
             else if (direction == 's')
             {
                 if (IsNotWall())
                 {
-                    game.StartPoint[1]--;
+                    foreach (WorldObject thing in game.Eviron)
+                        thing.Position[1]--;
                 }
             }
+        }
+
+        public bool IsNotWall()
+        {
+            return true;
         }
 
         public string Serialize()
@@ -61,5 +69,6 @@ namespace Binder.Environment
         {
             throw new NotImplementedException();
         }
+
     }
 }
