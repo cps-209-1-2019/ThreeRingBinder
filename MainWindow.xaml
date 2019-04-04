@@ -11,11 +11,11 @@
         <TextBlock Text="THE LEGEND OF" Width="175" Canvas.Top="75" Canvas.Left="137.5" HorizontalAlignment="Center" FontFamily="Goudy Stout" Foreground="BurlyWood"/>
         <TextBlock Text="THE" Width="50" Canvas.Top="100" Canvas.Left="200" HorizontalAlignment="Center" FontFamily="Goudy Stout" Foreground="BurlyWood"/>
         <TextBlock Text="THREE RING BINDER" Width="290" Canvas.Top="130" Canvas.Left="80" HorizontalAlignment="Center" FontFamily="Goudy Stout" FontSize="15" Foreground="Firebrick"/>
-        <Button Height="50" Width="140" Canvas.Left="155" Canvas.Top="280" Content="Start Game!" Click="Button_Click" Background="DarkSalmon"/>
+        <Button Height="50" Width="140" Canvas.Left="155" Canvas.Top="280" Content="Start Game!" Click="Button_Click" Background="Salmon"/>
         <CheckBox Content="Be a Cheater" x:Name="btnCheat" Click="BtnCheat_Click" Canvas.Left="155" Canvas.Top="340"/>
         <Slider x:Name="sldrDifficulty" ValueChanged="SldrDifficulty_ValueChanged" Minimum="1" Maximum="3" Width="50" Canvas.Top="230" Canvas.Left="200"/>
         <Label Content="Difficulty Level" Canvas.Left="92" Canvas.Top="230" />
         <Label x:Name="lblDifficulty" Canvas.Left="303" Canvas.Top="238" Content=""/>
-
+        <Button Width="140" Canvas.Left="155" Canvas.Top="390" Height="30" Content="Instructions" Click="Instruction_Click" Background="DarkSalmon"/>
     </Canvas>
 </Window>
