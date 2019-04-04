@@ -7,9 +7,18 @@
         mc:Ignorable="d"
         Title="GameWindow" Height="900" Width="1440"
         >
+
     <Canvas x:Name="cnvsGame" KeyDown="CnvsGame_KeyDown">
-        <Image x:Name="imgfl" Source="floor.png" Canvas.Top="0" Canvas.Left="0"/>
-        <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="242" Canvas.Left="1141"/>
-        <Button Height="100" Width="300" Click="Button_Click" Content="Start!" FontSize="40" Canvas.Left="650" Canvas.Top="200" x:Name="btnStart"/>
+        <Image x:Name="imgfl" Source="floor.png" Canvas.Left="-1884" Canvas.Top="-871"/>
+        <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="0" Canvas.Left="0" RenderTransformOrigin="-14.25,-0.625">
+            <Image.RenderTransform>
+                <TranslateTransform X="50" Y="90"/>
+            </Image.RenderTransform>
+        </Image>
+       
+        <Button Height="100" Width="300" Click="Button_Click" Content="Start!" FontSize="40" Canvas.Left="650" Canvas.Top="200" x:Name="btnStart">
+        </Button>       
+       
     </Canvas>
+
 </Window>

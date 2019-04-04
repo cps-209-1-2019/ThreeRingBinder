@@ -14,10 +14,16 @@ namespace Binder.Environment
     //Added public accessibility modifier - Day
     public class Building : WorldObject, ISerialization<Building> 
     {
+        public List<int[]> LibPlans = new List<int[]>()
+        {
+            //Perimeter
+
+        };
         public int Width { get; set; }
         public int Length { get; set; }
 
         public Dictionary<string, Items> Collection;
+        public Dictionary<int[], Walls> WallsCol;
 
 
         //Adds the Item object in its params to the Collection
