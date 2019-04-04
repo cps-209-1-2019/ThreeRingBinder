@@ -20,6 +20,7 @@ namespace Binder
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public int Difficulty { get; set; }         //Holds difficulty level
         public List<WorldObject> Eviron { get; set; }
+        public Building CurBuilding { get; set; }
 
         public Game()
         {
