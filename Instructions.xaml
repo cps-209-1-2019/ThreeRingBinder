@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Binder.Environment"
         mc:Ignorable="d"
         Title="Instructions" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="Screen.PNG"/>
+    </Window.Background>
     <Canvas>
         <Label Content="Game Instructions" FontSize="30" Foreground="DarkSalmon" Width="250" Canvas.Left="275" Canvas.Top="10"/>
         <TextBlock xml:space="preserve">
@@ -17,6 +20,7 @@
             
             Roam the building in search of an object that will allow you to discover the next ring.
             Once you discover the correct object, a riddle will appear, telling you where to find the ring.
+            
             After solving the riddle, move to the correct location and use the correct object there.
             
             But watch out! 
