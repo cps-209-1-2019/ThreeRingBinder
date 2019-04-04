@@ -194,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="scores.txt" />
+    <Resource Include="Screen.PNG" />
     <Content Include="Sounds\GamePlay.mp3" />
     <Content Include="Sounds\paperHit.wav" />
   </ItemGroup>

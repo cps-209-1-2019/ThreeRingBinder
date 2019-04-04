@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
         Title="Help" Height="350" Width="300">
+    <Window.Background>
+        <ImageBrush ImageSource="Screen.PNG"/>
+    </Window.Background>
     <Canvas>
         <Label Content="Game Help" FontSize="30" Foreground="DarkSlateBlue" Width="160" Canvas.Left="70" Canvas.Top="10"/>
         <TextBlock Text="To move your character, use the arrow keys." Canvas.Left="10" Canvas.Top="60"/>

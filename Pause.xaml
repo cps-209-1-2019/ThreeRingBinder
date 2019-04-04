@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
         Title="Pause" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="Screen.PNG"/>
+    </Window.Background>
     <Canvas>
         <Label Content="Game Paused" FontSize="30" Foreground="DarkSlateBlue" Width="190" Canvas.Left="305" Canvas.Top="40"/>
         <Button x:Name="btnResume" Width="100" Height="35" Click="BtnResume_Click" Content="Resume" Canvas.Left="350" Canvas.Top="100" Background="DarkSalmon"/>
