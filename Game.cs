@@ -32,7 +32,10 @@ namespace Binder
             isPaused = false;
 
             CurBuilding = new Building() { Length = 1000, Width = 2000 };
+            CurBuilding.BuildWalls(CurBuilding.LibPlans);
         }
+
+
 
 
 

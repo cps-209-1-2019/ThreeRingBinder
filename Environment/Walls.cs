@@ -48,8 +48,6 @@ namespace Binder.Environment
             }
         }
 
-
-
         public string Serialize()
         {
             throw new NotImplementedException();
