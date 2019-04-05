@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="HighScores" Height="450" Width="800">
-    <Grid>
+        Title="HighScores" Height="450" Width="800"
+        MinHeight="450"
+        MaxHeight="450"
+        MinWidth="800"
+        MaxWidth="800">
+    <Window.Background>
+        <ImageBrush ImageSource="Screen.PNG"/>
+    </Window.Background>
+    <Canvas>
         <TextBox x:Name="txtScores" Text=""/>
-    </Grid>
+    </Canvas>
 </Window>

@@ -5,14 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="Help" Height="350" Width="450">
+        Title="Help" Height="350" Width="300"
+        MinHeight="350"
+        MaxHeight="350"
+        MinWidth="300"
+        MaxWidth="300">
+    <Window.Background>
+        <ImageBrush ImageSource="Screen.PNG"/>
+    </Window.Background>
     <Canvas>
-        <TextBlock Text="To move your character, use the arrow keys." Canvas.Left="10"/>
-        <TextBlock Text="To throw a paper airplane, press" Canvas.Left="10" Canvas.Top="30"/>
-        <Button Content="C" Width="20" Canvas.Left="184" Canvas.Top="28"/>
-        <TextBlock Text="To pick up an object, press" Canvas.Left="10" Canvas.Top="60"/>
-        <Button Content="X" Width="20" Canvas.Left="159" Canvas.Top="61"/>
-        <TextBlock Text="To interact with an object, press" Canvas.Left="10" Canvas.Top="90"/>
-        <Button Content="Z" Width="20" Canvas.Left="184" Canvas.Top="87"/>
+        <Label Content="Game Help" FontSize="30" Foreground="DarkSlateBlue" Width="160" Canvas.Left="70" Canvas.Top="10"/>
+        <TextBlock Text="To move your character, use the arrow keys." Canvas.Left="10" Canvas.Top="60"/>
+        <TextBlock Text="To throw a paper airplane, press" Canvas.Left="10" Canvas.Top="90"/>
+        <Button Content="C" Width="20" Canvas.Left="184" Canvas.Top="88"/>
+        <TextBlock Text="To pick up an object, press" Canvas.Left="10" Canvas.Top="120"/>
+        <Button Content="X" Width="20" Canvas.Left="159" Canvas.Top="117"/>
+        <TextBlock Text="To interact with an object, press" Canvas.Left="10" Canvas.Top="150"/>
+        <Button Content="Z" Width="20" Canvas.Left="184" Canvas.Top="149"/>
+        <TextBlock Text="To pause the game, press" Canvas.Left="10" Canvas.Top="180"/>
+        <Button Content="esc" Width="25" Canvas.Left="159" Canvas.Top="181"/>
     </Canvas>
 </Window>

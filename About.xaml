@@ -5,21 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="About" Height="450" Width="800">
+        Title="About" Height="450" Width="800"
+        MinHeight="450"
+        MaxHeight="450"
+        MinWidth="800"
+        MaxWidth="800">
+    <Window.Background>
+        <ImageBrush ImageSource="Screen.PNG"/>
+    </Window.Background>
     <Grid>
         <Label Content="About This Game" HorizontalAlignment="Center" FontSize="30" Foreground="DarkSalmon"/>
         <TextBlock xml:space="preserve">
             
             
-            At Bill John's University, a legend has passed the ears of every student, professor, and staff member
+                At Bill John's University, a legend has passed the ears of every student, professor, and staff member
             who has set foot on the campus. The legend tells of a binder that gives its owner the ability to perfectly 
             recall any knowledge put into it. Recently, a student has discovered what may be the first piece of the 
             binder. After all, when you went from being a C student to an A student after picking up a clip ring you 
             needed for some Heritage of Peoples notecards, you realized that the legend may be true after all. Using a 
-            clue derived from the ring, you begin your search for the other two rings and the binder itself. But you
-            must hurry and be careful, because the Gamma Psi Zeta Bullfrogs have heard word of your discovery and they 
-            want it for themselves. Be on the lookout for their trademark aqua-orange scarf. In Legend of the Three 
-            Ring Binder, a time-based adventure game, you will search three buildings to find an item and a location 
+            clue derived from the ring, you begin your search for the other two rings and the binder itself. 
+            
+                But you must hurry and be careful, because the Gamma Psi Zeta Bullfrogs have heard word of your discovery
+            and they want it for themselves. Be on the lookout for their trademark aqua-orange scarf. In Legend of the
+            Three Ring Binder, a time-based adventure game, you will search three buildings to find an item and a location 
             reveal a piece of the binder. You have been given a riddle that cryptically explains where you can find 
             the piece. 
             But you're against the clock. You still need time to study, and Psi Zeta members are looking for the piece 

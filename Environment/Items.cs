@@ -83,10 +83,16 @@ namespace Binder.Environment
             throw new NotImplementedException();
         }
     }
-    
+
     //Defines the methods and actions for the Binder class
-    public class Binder: InventoryItem, ISerialization<Binder>
+    public class Binder : InventoryItem, ISerialization<Binder>
     {
+
+        //Reveals the Binder Image;
+        public void Reveal(InventoryItem item)
+        {
+
+        }
         
         //Take an object and turn it into a string
         new public string Serialize()

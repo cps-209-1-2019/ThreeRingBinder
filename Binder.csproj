@@ -84,6 +84,9 @@
     </Compile>
     <Compile Include="Environment\AI.cs" />
     <Compile Include="Environment\Building.cs" />
+    <Compile Include="Instructions.xaml.cs">
+      <DependentUpon>Instructions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Environment\MovableCharacter.cs" />
     <Compile Include="Environment\GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
@@ -114,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Environment\GameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Instructions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -187,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="scores.txt" />
+    <Resource Include="Screen.PNG" />
     <Content Include="Sounds\GamePlay.mp3" />
     <Content Include="Sounds\paperHit.wav" />
   </ItemGroup>

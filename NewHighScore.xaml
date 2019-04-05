@@ -5,10 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Binder"
         mc:Ignorable="d"
-        Title="NewHighScore" Height="350" Width="400">
+        Title="NewHighScore" Height="350" Width="400"
+        MinHeight="350"
+        MaxHeight="350"
+        MinWidth="400"
+        MaxWidth="400">
+    <Window.Background>
+        <ImageBrush ImageSource="Screen.PNG"/>
+    </Window.Background>
     <Canvas>
+        <Label Content="YOU MADE A NEW HIGH SCORE!" FontSize="20" Width="300" Canvas.Left="50" Canvas.Top="20"/>
         <Label x:Name="lblScore" Content=""/>
-        <TextBox x:Name="txtPlayerName" Width="150" Height="20" Canvas.Top="130" Canvas.Left="125"/>
+        <TextBox x:Name="txtPlayerName" Width="150" Height="20" Canvas.Top="130" Canvas.Left="125" Text="Enter your name"/>
         <Button x:Name="btnSubmitName" Width="80" Height="35" Content="Enter" Click="BtnSubmitName_Click" Background="DarkSalmon" Canvas.Top="170" Canvas.Left="160"/>
     </Canvas>
 </Window>
