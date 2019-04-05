@@ -49,24 +49,64 @@ namespace Binder.Environment
         {
             List<string> properties = new List<string>(obj.Split(','));
 
-            int start = 0;
-            int end = 0;
+            int[] start = new int[obj.Length];
+            int[] end = new int[obj.Length];
+
+            int j = 0;
+            int k = 0;
             for (int i = 0; i < properties.Count; i++)
             {
+                if (properties[i].Contains("["))
+                {
+                    start[j] = i;
+                    j++;
+                }
                 if (properties[i].Contains("]"))
                 {
-                    end = i;
+                    end[k] = i;
+                    k++;
                 }
-                else if (properties[i].Contains("["))
+
+            }
+
+
+
+            int[] startPair = new int[obj.Length];
+            int[] endPair = new int[obj.Length];
+                
+            for (int s = 0; s< start.Length; s++)
+            {
+                if (start[s] != 0)
                 {
-                    start = i;
+                    for (int e = s; e < end.Length; e++)
+                    {
+                        if ((end[e] <= start[s + 1]  && end[e] != 0) || end[e] > start[s])
+                        {
+                            //pair start[s] and end[e]
+                            startPair[s] = start[s];
+                            endPair[s] = end[e];
+                            break;
+                        }
+                    }
                 }
             }
-            
-            for (int i = start; i < end; i++)
+
+
+            for (int i = 0; i < endPair.Length; i++)
             {
-                properties[start] = properties[start] + "," + properties[start + 1];
-                properties.RemoveAt(start + 1);
+                if (startPair[i] != 0)
+                {
+                    int q = startPair[i];
+                    for(int o = startPair[i]; o < endPair[i]; o++)
+                    {
+                        properties[q] = properties[q] + "," + properties[q + 1];
+                        properties.RemoveAt(q + 1);
+                        for(int p = 0; p < endPair.Length; p++)
+                        {
+                            endPair[p] = endPair[p] - 1;
+                        }
+                    }
+                }
             }
 
 
