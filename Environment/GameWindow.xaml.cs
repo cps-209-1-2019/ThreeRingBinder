@@ -38,6 +38,8 @@ namespace Binder.Environment
         {
             TranslateTransform transform = new TranslateTransform(50, 20);
             imgBl.RenderTransform = transform;
+
+            BuildWalls();
             //Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
             //cnvsGame.Children.Remove(btnStart);
             
@@ -45,8 +47,6 @@ namespace Binder.Environment
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
         {
-           
-
             if (e.Key == Key.Up)
             {
                 //binderGame.Marcus.Move('n', binderGame);
@@ -89,12 +89,26 @@ namespace Binder.Environment
         }
 
         //Builds Walls with Blocks on GUI 
-        public void BuildWalls(List<int[]> coords)
+        public void BuildWalls()
         {
+            //List<int[]> coords(params not yet needed)
+            int[] c = new int[] { 200, 50 };
+            Block b = new Block(24, 24, c);
+
+            Image img = new Image()
+            {
+                Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
+            };
             Label block = new Label()
             {
-
+                Content = img
             };
+            block.DataContext = b;
+            block.SetBinding(render, "Position");
+
+            cnvsGame.Children.Add(block);
+            Canvas.SetTop(block, 0);
+            Canvas.SetLeft(block, 0);
         }
     }
 }
