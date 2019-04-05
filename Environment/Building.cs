@@ -21,7 +21,6 @@ namespace Binder.Environment
             get;
             set;
         }
-
         public Dictionary<string, Items> Collection;
         public List<Walls> WallsCol;
 
@@ -33,6 +32,12 @@ namespace Binder.Environment
             new int[4] {0, 0, 1000, 24},
             new int[4] {2000, 0, 1000, 24}
         };
+
+        public Building()
+        {
+            Collection = new Dictionary<string, Items>();
+            WallsCol = new List<Walls>();
+        }
 
         //Adds the Item object in its params to the Collection
         public void AddItem(Items item)
