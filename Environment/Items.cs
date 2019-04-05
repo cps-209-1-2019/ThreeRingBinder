@@ -57,7 +57,25 @@ namespace Binder.Environment
         //Take a string and return an InventoryItem object
         public InventoryItem Deserialize(string obj)
         {
-            throw new NotImplementedException();
+            List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
+
+            for(int i = 0; i < properties.Count; i++)
+            {
+                switch (properties[i])
+                {
+                    case "NAME":
+                        Name = properties[i + 1];
+                        break;
+                    case "IMAGE":
+                        Image = properties[i + 1];
+                        break;
+                    case "FOUND":
+                        Found = "TRUE" == properties[i + 1];
+                        break;
+                }
+            }
+
+            return this;
         }
 
     }
