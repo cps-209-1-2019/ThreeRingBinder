@@ -93,8 +93,8 @@ namespace Binder.Environment
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            
-            Block b = new Block(24, 24, );
+            int[] c = new int[2] { 0, 0 };
+            Block b = new Block(24, 24, c );
 
             Image img = new Image()
             {
@@ -104,6 +104,8 @@ namespace Binder.Environment
             {
                 Content = img
             };
+
+            Canvas.
             
         }
     }
