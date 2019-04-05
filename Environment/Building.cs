@@ -12,21 +12,27 @@ using System.Threading.Tasks;
 namespace Binder.Environment
 {
     //Added public accessibility modifier - Day
-    public class Building : WorldObject, ISerialization<Building> 
+    public class Building : WorldObject, ISerialization<Building>
     {
-        public List<int[]> LibPlans = new List<int[]>()
-        {
-            //Perimeter
-            new int[4] {-2016, -1547, 5476, 24},
-            new int[3] {0, 0, 0}
-        };
-
+        private int length = 0;
         public int Width { get; set; }
-        public int Length { get; set; }
+        public int Length
+        {
+            get;
+            set;
+        }
 
         public Dictionary<string, Items> Collection;
         public List<Walls> WallsCol;
 
+        public List<int[]> LibPlans = new List<int[]>()
+        {
+            //Coords Format: `x`, `y`, `l`, `w`
+            new int[4] {0, 0, 24, 2000},
+            new int[4] {0, 1000, 24, 2000},
+            new int[4] {0, 0, 1000, 24},
+            new int[4] {2000, 0, 1000, 24}
+        };
 
         //Adds the Item object in its params to the Collection
         public void AddItem(Items item)
@@ -38,6 +44,17 @@ namespace Binder.Environment
         public void RmvItm(Items item)
         {
             Collection.Remove(item.Name);
+        }
+
+        //Builds walls from the List of Coords
+        public void BuildWalls(List<int[]> coords)
+        {
+            foreach(int[] dt in coords)
+            {
+                int[] wcoord = new int[2] { dt[0], dt[1] };
+                Walls wall = new Walls(dt[2], dt[3], wcoord);
+                WallsCol.Add(wall);
+            }
         }
 
         ////Moves the map with respect to the player position and direction
@@ -55,99 +72,34 @@ namespace Binder.Environment
         //Take a string and turn it into a Building object
         public Building Deserialize(string obj)
         {
-            List<string> properties = new List<string>(obj.Split(','));
+            List<string> properties = new List<string>(obj.Split(',','!','#',':','?',';'));
 
-            int[] start = new int[obj.Length];
-            int[] end = new int[obj.Length];
 
-            int j = 0;
-            int k = 0;
             for (int i = 0; i < properties.Count; i++)
             {
-                if (properties[i].Contains("["))
+                switch (properties[i])
                 {
-                    start[j] = i;
-                    j++;
-                }
-                if (properties[i].Contains("]"))
-                {
-                    end[k] = i;
-                    k++;
-                }
-
-            }
-
-
-
-            int[] startPair = new int[obj.Length];
-            int[] endPair = new int[obj.Length];
-                
-            for (int s = 0; s< start.Length; s++)
-            {
-                if (start[s] != 0)
-                {
-                    for (int e = s; e < end.Length; e++)
-                    {
-                        if ((end[e] <= start[s + 1]  && end[e] != 0) || end[e] > start[s])
-                        {
-                            //pair start[s] and end[e]
-                            startPair[s] = start[s];
-                            endPair[s] = end[e];
-                            break;
-                        }
-                    }
-                }
-            }
-
-
-            for (int i = 0; i < endPair.Length; i++)
-            {
-                if (startPair[i] != 0)
-                {
-                    int q = startPair[i];
-                    for(int o = startPair[i]; o < endPair[i]; o++)
-                    {
-                        properties[q] = properties[q] + "," + properties[q + 1];
-                        properties.RemoveAt(q + 1);
-                        for(int p = 0; p < endPair.Length; p++)
-                        {
-                            endPair[p] = endPair[p] - 1;
-                        }
-                    }
-                }
-            }
-
-
-            Width = int.Parse(properties[1].Split('!')[1]);
-            Length = int.Parse(properties[2].Split('!')[1]);
-
-            string[] collectA = properties[3].Split('!');
-            string[] collectB = collectA[1].Split(';');
-            foreach (string s in collectB)
-            {
-                string[] item = s.Split();
-                string value = item[1].Trim('[',']');
-                string[] nextObj = value.Split(',');
-                Items nextItem = new Items();
-                switch (nextObj[0])
-                {
-                    case "INVENTORYITEM":
-                        InventoryItem inven = new InventoryItem();
-                        inven.Deserialize(value);
-                        nextItem = inven as Items;
+                    case "WIDTH":
+                        Width = int.Parse(properties[i + 1]);
                         break;
-                    case "DECOYITEM":
-                        DecoyItem decoy = new DecoyItem();
-                        decoy.Deserialize(value);
-                        nextItem = decoy as Items;
+                    case "LENGTH":
+                        Length = int.Parse(properties[i + 1]);
+                        break;
+                    case "COLLECTION":
+                        for (int j = i; j < properties.Count; j++)
+                        {
+                            if (properties[j] == "INVENTORYITEM")
+                            {
+                                InventoryItem inventory = new InventoryItem();
+
+                                string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7}", properties[j], properties[j+1],properties[j+2],properties[j+3],properties[j+4],properties[j+5],properties[j+6],properties[j+7]);
+
+                                Collection.Add(properties[j-1], inventory.Deserialize(inven));
+                            }
+                        }
                         break;
                 }
-
-                Collection.Add(item[0],nextItem);
             }
-
-
-
             return this;
         }
 

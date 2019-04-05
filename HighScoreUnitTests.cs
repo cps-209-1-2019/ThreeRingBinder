@@ -16,7 +16,10 @@ namespace Binder
             HighScore score = new HighScore("300", "Bob");
             HighScoreHolder testHolder = new HighScoreHolder();
             testHolder.AddHighScore(score);
-            Assert.IsTrue(testHolder.scoreList[0].CurrentScore == "300");
+            HighScore scoreTwo = new HighScore("400", "Joe");
+            testHolder.AddHighScore(scoreTwo);
+            Assert.IsTrue(testHolder.scoreList[0].CurrentScore == "400");
+            Assert.IsTrue(testHolder.scoreList[1].PlayerName == "Bob");
         }
 
         [Test]
@@ -26,8 +29,9 @@ namespace Binder
             HighScoreHolder testHolder = new HighScoreHolder();
             testHolder.AddHighScore(score);
             testHolder.Save();
-            testHolder.Load();
-            Assert.IsTrue(testHolder.scoreList[0].PlayerName == "Joe");
+            HighScoreHolder testHolderTwo = new HighScoreHolder();
+            testHolderTwo.Load();
+            Assert.IsTrue(testHolderTwo.scoreList[0].PlayerName == "Joe");
         }
     }
 }

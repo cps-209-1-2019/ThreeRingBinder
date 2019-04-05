@@ -45,7 +45,7 @@ namespace Binder
                     {
                         if (score != null)
                         {
-                            string scoreLine = score.PlayerName + " " + score.CurrentScore;
+                            string scoreLine = score.PlayerName + "              " + score.CurrentScore;
                             writer.WriteLine(scoreLine);
                         }
                     }
@@ -57,6 +57,8 @@ namespace Binder
             scoreList.Insert(0, score);
             if (scoreList.Count() > 9)
                 scoreList.RemoveAt(10);
+            scoreList = scoreList.OrderBy(o => o.CurrentScore).ToList();
+            scoreList.Reverse();
         }
     }
 }

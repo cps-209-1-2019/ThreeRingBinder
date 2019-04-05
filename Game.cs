@@ -30,6 +30,8 @@ namespace Binder
         {
             Eviron = new List<WorldObject>();
             isPaused = false;
+
+            CurBuilding = new Building() { Length = 1000, Width = 2000 };
         }
 
 

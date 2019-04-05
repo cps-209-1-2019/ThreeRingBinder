@@ -22,12 +22,18 @@ namespace Binder
         public HighScoreList()
         {
             InitializeComponent();
+            WriteScores();
         }
 
         //Calls HighScore.Load() and writes the high scores to the window.
         public void WriteScores()
         {
             HighScoreHolder holder = new HighScoreHolder();
+            HighScore score = new HighScore("300", "Jim");
+            holder.AddHighScore(score);
+            HighScore scoreTwo = new HighScore("200", "Bob");
+            holder.AddHighScore(scoreTwo);
+            holder.Save();
             holder.Load();
             txtScores.Text = holder.highScoreText;
         }
