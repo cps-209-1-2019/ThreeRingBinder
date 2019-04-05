@@ -21,6 +21,8 @@ namespace Binder.Environment
     public partial class GameWindow : Window
     {
         Game binderGame;
+        Building building;
+
         public GameWindow(bool cheat, int difficulty)
         {
             binderGame = new Game();
@@ -29,10 +31,10 @@ namespace Binder.Environment
             InitializeComponent();
         }
 
-        private void Window_Unloaded(object sender, RoutedEventArgs e)
-        {
+        //private void Window_Unloaded(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -91,9 +93,8 @@ namespace Binder.Environment
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            //List<int[]> coords(params not yet needed)
-            int[] c = new int[] { 200, 50 };
-            Block b = new Block(24, 24, c);
+            
+            Block b = new Block(24, 24, );
 
             Image img = new Image()
             {
@@ -103,12 +104,7 @@ namespace Binder.Environment
             {
                 Content = img
             };
-            block.DataContext = b;
-            block.SetBinding(render, "Position");
-
-            cnvsGame.Children.Add(block);
-            Canvas.SetTop(block, 0);
-            Canvas.SetLeft(block, 0);
+            
         }
     }
 }

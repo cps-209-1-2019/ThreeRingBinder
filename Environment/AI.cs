@@ -20,14 +20,21 @@ namespace Binder.Environment
 
         }
 
-        public void Chase()
+        public void Chase(Player player)
         {
-
+            
         }
 
-        public override void Move()
+        public void Move(Player player)
         {
-
+            if ((75 * 75) >= (((Position[0] -  player.Position[0]) * (Position[0] - player.Position[0] )) + ((Position[1] - player.Position[1]) * (Position[1] - player.Position[1]))))
+            {
+                Chase(player);
+            }
+            else
+            {
+                Patrol();
+            }
         }
 
         public string Serialize()
