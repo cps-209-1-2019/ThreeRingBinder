@@ -15,7 +15,7 @@
         <!-- <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="-1733" Canvas.Left="3417" RenderTransformOrigin="-14.25,-0.625">  -->
         <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="45" Canvas.Left="3" RenderTransformOrigin="-14.25,-0.625">
             <Image.RenderTransform>
-                <TranslateTransform X="50" Y="90"/>
+                <TranslateTransform X="200" Y="90"/>
             </Image.RenderTransform>
         </Image>
 
