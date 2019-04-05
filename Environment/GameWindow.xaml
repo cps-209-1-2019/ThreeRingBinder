@@ -12,7 +12,7 @@
         <Image x:Name="imgfl" Source="floor.png" Canvas.Left="-1884" Canvas.Top="-871"/>
         <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="0" Canvas.Left="0" RenderTransformOrigin="-14.25,-0.625">
             <Image.RenderTransform>
-                <TranslateTransform X="50" Y="90"/>
+                <TranslateTransform X="200" Y="90"/>
             </Image.RenderTransform>
         </Image>
        
