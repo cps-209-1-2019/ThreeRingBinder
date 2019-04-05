@@ -105,7 +105,7 @@ namespace Binder.Environment
                 Content = img
             };
 
-            Canvas.
+            //Canvas.
             
         }
     }
