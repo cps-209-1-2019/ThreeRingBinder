@@ -12,21 +12,27 @@ using System.Threading.Tasks;
 namespace Binder.Environment
 {
     //Added public accessibility modifier - Day
-    public class Building : WorldObject, ISerialization<Building> 
+    public class Building : WorldObject, ISerialization<Building>
     {
-        public List<int[]> LibPlans = new List<int[]>()
-        {
-            //Perimeter
-            new int[4] {-2016, -1547, 5476, 24},
-            new int[3] {0, 0, 0}
-        };
-
+        private int length = 0;
         public int Width { get; set; }
-        public int Length { get; set; }
+        public int Length
+        {
+            get;
+            set;
+        }
 
         public Dictionary<string, Items> Collection;
         public List<Walls> WallsCol;
 
+        public List<int[]> LibPlans = new List<int[]>()
+        {
+            //Coords Format: `x`, `y`, `l`, `w`
+            new int[4] {0, 0, 24, 2000},
+            new int[4] {0, 1000, 24, 2000},
+            new int[4] {0, 0, 1000, 24},
+            new int[4] {2000, 0, 1000, 24}
+        };
 
         //Adds the Item object in its params to the Collection
         public void AddItem(Items item)
@@ -38,6 +44,17 @@ namespace Binder.Environment
         public void RmvItm(Items item)
         {
             Collection.Remove(item.Name);
+        }
+
+        //Builds walls from the List of Coords
+        public void BuildWalls(List<int[]> coords)
+        {
+            foreach(int[] dt in coords)
+            {
+                int[] wcoord = new int[2] { dt[0], dt[1] };
+                Walls wall = new Walls(dt[2], dt[3], wcoord);
+                WallsCol.Add(wall);
+            }
         }
 
         ////Moves the map with respect to the player position and direction
@@ -74,10 +91,7 @@ namespace Binder.Environment
                     end[k] = i;
                     k++;
                 }
-
             }
-
-
 
             int[] startPair = new int[obj.Length];
             int[] endPair = new int[obj.Length];
