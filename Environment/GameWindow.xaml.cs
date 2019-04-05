@@ -29,6 +29,8 @@ namespace Binder.Environment
             binderGame.IsCheatOn = cheat;
             binderGame.Difficulty = difficulty;
             InitializeComponent();
+
+            cnvsGame.DataContext = building;
         }
 
         //private void Window_Unloaded(object sender, RoutedEventArgs e)
@@ -62,8 +64,6 @@ namespace Binder.Environment
             else if (e.Key == Key.Left)
             {
                 //binderGame.Marcus.Move('w', binderGame);
-                ////Point p = new Point(50, 0);
-                ////imgBl.RenderTransform.Transform(p);
                 Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
             }
             else if (e.Key == Key.Right)
@@ -105,7 +105,7 @@ namespace Binder.Environment
                 Content = img
             };
 
-            //Canvas.
+            
             
         }
     }
