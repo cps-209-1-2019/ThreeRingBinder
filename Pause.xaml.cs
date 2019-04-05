@@ -43,5 +43,17 @@ namespace Binder
             Help helpWindow = new Help();
             helpWindow.Show();
         }
+
+        private void BtnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            About aboutWindow = new About();
+            aboutWindow.Show();
+        }
+
+        private void BtnResume_Click(object sender, RoutedEventArgs e)
+        {
+            Game.isPaused = false;
+            this.Close();
+        }
     }
 }

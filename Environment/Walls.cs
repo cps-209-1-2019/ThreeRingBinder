@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 namespace Binder.Environment
 {
     //Added public accessibility - Day
-    public class Walls : ISerialization<Walls>
+    public class Walls: WorldObject, ISerialization<Walls> 
     {
-        //public int Width { get; set; }                      //Contains the thickness of the wall
+        public int Width { get; set; }                      //Contains the thickness of the wall
         public int Length { get; set; }                     //The number of blocks the wall will contain
-        public int[] Position { get; set; }                 //Takes two arguments an x and y coordinate respectively
-        public int Width { get; set; }                //1 = Horizontal, 2 = Vertical 
-        
+        //public int[] Position { get; set; }                 //Takes two arguments an x and y coordinate respectively
+        public int Orientation { get; set; }                //1 = Horizontal, 2 = Vertical 
+        public List<Block> Blocks { get; set; }              //Holds the blocks that make up the wall
 
         //public constructor for the walls class
         public Walls(int width, int length, int[] pos)
@@ -26,14 +26,29 @@ namespace Binder.Environment
             Width = width;
             Length = length;
             Position = pos;
-
         }
 
         //Builds a wall with respect to the Length
         public void Build()
         {
-
+            for(int i = 0; i < Length; i++)
+            {
+                if(Orientation == 1)
+                {
+                    int[] pos = new int[] { Position[0] + i, Position[1] };
+                    Block b = new Block(Width, 5, pos);
+                    Blocks.Add(b);
+                }
+                if(Orientation == 2)
+                {
+                    int[] pos = new int[] { Position[0], Position[1] + i };
+                    Block b = new Block(Width, 5, pos);
+                    Blocks.Add(b);
+                }
+            }
         }
+
+
 
         public string Serialize()
         {

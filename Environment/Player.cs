@@ -21,9 +21,10 @@ namespace Binder.Environment
 
         public void Move(char direction, Game game) //Removed override keyword for buildability
         {
+            
             if (direction == 'w')
             {
-                if (IsNotWall())
+                if (IsNotWall(1, 0, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Eviron)
                         thing.Position[0]++;
@@ -31,7 +32,7 @@ namespace Binder.Environment
             }
             else if (direction == 'n')
             {
-                if (IsNotWall())
+                if (IsNotWall(0, 1, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Eviron)
                         thing.Position[1]++;
@@ -39,7 +40,7 @@ namespace Binder.Environment
             }
             else if (direction == 'e')
             {
-                if (IsNotWall())
+                if (IsNotWall(-1, 0, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Eviron)
                         thing.Position[0]--;
@@ -47,7 +48,7 @@ namespace Binder.Environment
             }
             else if (direction == 's')
             {
-                if (IsNotWall())
+                if (IsNotWall(0, -1, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Eviron)
                         thing.Position[1]--;
@@ -55,8 +56,14 @@ namespace Binder.Environment
             }
         }
 
-        public bool IsNotWall()
+        public bool IsNotWall(int changeInX, int changeInY, Building building)
         {
+            foreach (Walls wall in building.WallsCol)
+            {
+                if ( (wall.Position[0] + changeInX ) < Position[0] && (wall.Position[0] + changeInX + wall.Width) > Position[0])
+                    if ( (wall.Position[1] + changeInY) < Position[1] && (wall.Position[1] + changeInY + wall.Length) > Position[1])
+                        return false; 
+            }
             return true;
         }
 

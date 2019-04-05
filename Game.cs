@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Binder.Environment;
 using System.IO;  //added IO using statement - ZD
+using System.ComponentModel;
 
 namespace Binder
 {
-    public class Game
+    public class Game: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Player Marcus { get; set; }
         public int CurrScore { get; set; }          //Keeps track of the current score as player plays
         public int HighScore { get; set; }          //Keeps track of the High Score so far
@@ -20,12 +23,17 @@ namespace Binder
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public int Difficulty { get; set; }         //Holds difficulty level
         public List<WorldObject> Eviron { get; set; }
+        public Building CurBuilding { get; set; }
+        public static bool isPaused { get; set; }    //Determines if the game is paused
 
         public Game()
         {
             Eviron = new List<WorldObject>();
+            isPaused = false;
         }
-        
+
+
+
         //Creaated Load method with initial loading algorithm
         public void Load(string filename)
         {
@@ -77,7 +85,7 @@ namespace Binder
                 AI ai = new AI(0, 0, 0);
                 wr.WriteLine(ai.Serialize());
                 int[] ar = new int[2] { 0, 0 };
-                Walls walls = new Walls(0, 0, ar);
+                Walls walls = new Walls(24,0, ar);
                 wr.WriteLine(walls.Serialize());
                 InventoryItem inventoryItem = new InventoryItem();
                 wr.WriteLine(inventoryItem.Serialize());

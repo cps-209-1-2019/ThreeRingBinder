@@ -36,14 +36,17 @@ namespace Binder.Environment
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(Canvas.GetLeft(imgBl) + " " + Canvas.GetTop(imgBl));
-            Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
+            TranslateTransform transform = new TranslateTransform(50, 20);
+            imgBl.RenderTransform = transform;
+            //Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
             //cnvsGame.Children.Remove(btnStart);
             
         }
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
         {
+           
+
             if (e.Key == Key.Up)
             {
                 //binderGame.Marcus.Move('n', binderGame);
@@ -57,6 +60,8 @@ namespace Binder.Environment
             else if (e.Key == Key.Left)
             {
                 //binderGame.Marcus.Move('w', binderGame);
+                ////Point p = new Point(50, 0);
+                ////imgBl.RenderTransform.Transform(p);
                 Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
             }
             else if (e.Key == Key.Right)
@@ -74,9 +79,22 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.Escape)
             {
+                Game.isPaused = true;
                 Pause pauseWindow = new Pause(binderGame);
                 pauseWindow.Show();
             }
+
+            //Debug.WriteLine(Canvas.GetLeft(imgBl) + " " + Canvas.GetTop(imgBl));
+            //Debug.WriteLine(imgBl.RenderTransform.Value);
+        }
+
+        //Builds Walls with Blocks on GUI 
+        public void BuildWalls(List<int[]> coords)
+        {
+            Label block = new Label()
+            {
+
+            };
         }
     }
 }
