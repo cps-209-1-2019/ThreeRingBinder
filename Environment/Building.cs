@@ -25,15 +25,17 @@ namespace Binder.Environment
         public List<int[]> LibPlans = new List<int[]>()
         {
             //Coords Format: `x`, `y`, `l`, `w`
-            
-            //TestWalls
-            new int[4] {0, 0, 24, 1400},
 
             //Perimeter
             new int[4] {-2732, -1250, 24, 5464},
             new int[4] {-2732, 1250, 24, 5464},
             new int[4] {-2732, -1250, 2500, 24},
-            new int[4] {2732, -1250, 2500, 24}           
+            new int[4] {2732, -1250, 2500, 24},
+            
+            //Computer Labs
+            new int[4] {-2510, 990, 260, 24},
+            new int[4] {-2289, 990, 260, 24 },
+            new int[4] { -2732, 960, 24, 443}
         };
 
         public Building()
