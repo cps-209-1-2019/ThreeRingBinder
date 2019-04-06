@@ -62,7 +62,7 @@ namespace Binder.Environment
 
         public bool IsNotWall(int changeInX, int changeInY, Building building)
         {
-            foreach (Walls wall in building.WallsCol)
+            foreach (Walls wall in Building.WallsCol)
             {
                 //if ( (wall.Position[0] + changeInX ) < Position[0] && (wall.Position[0] + changeInX + wall.Width) > Position[0])
                    // if ( (wall.Position[1] + changeInY) < Position[1] && (wall.Position[1] + changeInY + wall.Length) > Position[1])

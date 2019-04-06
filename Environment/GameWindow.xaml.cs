@@ -96,17 +96,34 @@ namespace Binder.Environment
         {
             int[] c = new int[2] { 0, 0 };
             Block b = new Block(24, 24, c );
-
-            Image img = new Image()
+            //Image img = new Image()
+            //{
+            //    Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
+            //};
+            //Label block = new Label()
+            //{
+            //    Content = img
+            //};
+            //Build walls
+            int[] pos = new int[2] { 100, 50 };
+            Walls modelWallOne = new Walls(30, 500, pos);
+            Building.WallsCol.Add(modelWallOne);
+            pos[0] = 200;
+            pos[1] = 100;
+            Walls modelWallTwo = new Walls(30, 700, pos);
+            Building.WallsCol.Add(modelWallOne);
+            foreach (Walls wall in Building.WallsCol)
             {
-                Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
-            };
-            Label block = new Label()
-            {
-                Content = img
-            };
-            
-            cnvsGame.Children.Add(block);
+                Rectangle wallOne = new Rectangle
+                {
+                    Width = wall.Length,
+                    Height = wall.Width
+                };
+                wallOne.Fill = new SolidColorBrush(Colors.Brown);
+                Canvas.SetLeft(wallOne, wall.Position[0]);
+                Canvas.SetTop(wallOne, wall.Position[1]);
+                cnvsGame.Children.Add(wallOne);
+            }
             
         }
     }

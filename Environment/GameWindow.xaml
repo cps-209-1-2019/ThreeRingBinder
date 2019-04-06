@@ -6,8 +6,6 @@
         xmlns:local="clr-namespace:Binder.Environment"
         mc:Ignorable="d"
         Title="GameWindow" Height="900" Width="1440"
-        WindowState="Normal"
-        WindowStyle="None"
         >
     <Canvas x:Name="cnvsGame" KeyDown="CnvsGame_KeyDown">
         <Image x:Name="imgfl" Source="floor.png" Canvas.Left="-1997" Canvas.Top="-1620"/>

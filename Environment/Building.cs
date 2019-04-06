@@ -22,7 +22,7 @@ namespace Binder.Environment
             set;
         }
         public Dictionary<string, Items> Collection;
-        public List<Walls> WallsCol;
+        public static List<Walls> WallsCol;
 
         public List<int[]> LibPlans = new List<int[]>()
         {
