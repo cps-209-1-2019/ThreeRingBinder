@@ -32,10 +32,8 @@ namespace Binder.Environment
             //Perimeter
             new int[4] {-2732, -1250, 24, 5464},
             new int[4] {-2732, 1250, 24, 5464},
-            new int[4] {-2732, -1250, 5464, 24},
-            new int[4] {2732, -1250, 1000, 24}
-
-            
+            new int[4] {-2732, -1250, 2500, 24},
+            new int[4] {2732, -1250, 2500, 24}           
         };
 
         public Building()
