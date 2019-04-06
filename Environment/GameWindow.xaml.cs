@@ -84,7 +84,7 @@ namespace Binder.Environment
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            foreach (Walls w in building.WallsCol)
+            foreach (Walls w in Building.WallsCol)
             {
                 foreach (Block b in w.Blocks)
                 {
