@@ -41,13 +41,7 @@ namespace Binder.Environment
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //TranslateTransform transform = new TranslateTransform(50, 20);
-            //imgBl.RenderTransform = transform;
-
             BuildWalls();
-            //Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
-            //cnvsGame.Children.Remove(btnStart);
-            
         }
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
@@ -125,6 +119,16 @@ namespace Binder.Environment
                 cnvsGame.Children.Add(wallOne);
             }
             
+        }
+        public void MoveItAll()
+        {
+            foreach (object control in cnvsGame.Children)
+            {
+                if (control != imgBl)
+                {
+                   // control.
+                }
+            }
         }
     }
 }
