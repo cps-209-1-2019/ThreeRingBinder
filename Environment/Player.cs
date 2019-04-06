@@ -13,6 +13,8 @@ namespace Binder.Environment
         public Player(string name)
         {
             Name = name;
+            X = 720;
+            Y = 450;
         }
         public void Enteract()
         {
@@ -27,8 +29,13 @@ namespace Binder.Environment
                 if (IsNotWall(1, 0, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Environ)
-                        //thing.Position[0]++;
-                        thing.Position[1] -= 50;
+                    {
+                        thing.X += 50;
+                    }
+                    foreach (Walls wall in Building.WallsCol)
+                    {
+                        wall.ChangeBlocks('X', 50);
+                    }
                 }
             }
             else if (direction == 'n')
@@ -36,8 +43,13 @@ namespace Binder.Environment
                 if (IsNotWall(0, 1, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Environ)
-                        //thing.Position[1]++;
-                        thing.Position[0] -= 50;
+                    {
+                        thing.Y += 50;
+                    }
+                    foreach (Walls wall in Building.WallsCol)
+                    {
+                        wall.ChangeBlocks('Y', 50);
+                    }
                 }
             }
             else if (direction == 'e')
@@ -45,25 +57,43 @@ namespace Binder.Environment
                 if (IsNotWall(-1, 0, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Environ)
-                        //thing.Position[0]--;
-                        thing.Position[1] += 50;
+                    {
+                        thing.X -= 50;
+                    }
+                    foreach (Walls wall in Building.WallsCol)
+                    {
+                        wall.ChangeBlocks('X', -50);
+                    }
                 }
             }
             else if (direction == 's')
             {
                 if (IsNotWall(0, -1, game.CurBuilding))
                 {
-                    foreach (WorldObject thing in game.Environ)
-                        //thing.Position[1]--;
-                        thing.Position[0] += 50;
+                    foreach (WorldObject thing in game.Environ) {
+                        thing.Y = thing.Y - 50;
+                    }
+                    foreach (Walls wall in Building.WallsCol)
+                    {
+                        wall.ChangeBlocks('Y', -50);
+                    }
                 }
             }
         }
 
         public bool IsNotWall(int changeInX, int changeInY, Building building)
         {
+            int testCoordX = X + changeInX;
+            int testCoordY = Y + changeInY;
             foreach (Walls wall in Building.WallsCol)
             {
+                foreach (Block block in wall.Blocks)
+                {
+                    if (((block.Y >= testCoordY) && (block.Y + 24 <= testCoordY)) || ((block.X >= testCoordX) && (block.X + 24 <= testCoordX)))
+                    {
+                        return false;
+                    }
+                }
                 //if ( (wall.Position[0] + changeInX ) < Position[0] && (wall.Position[0] + changeInX + wall.Width) > Position[0])
                    // if ( (wall.Position[1] + changeInY) < Position[1] && (wall.Position[1] + changeInY + wall.Length) > Position[1])
                      //   return false; 
