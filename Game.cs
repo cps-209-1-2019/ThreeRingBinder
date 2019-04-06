@@ -22,18 +22,19 @@ namespace Binder
         public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public int Difficulty { get; set; }         //Holds difficulty level
-        public List<WorldObject> Eviron { get; set; }
+        public List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
         public static bool isPaused { get; set; }    //Determines if the game is paused
 
         public Game()
         {
             Marcus = new Player("Marcus");
-            Eviron = new List<WorldObject>();
+            Environ = new List<WorldObject>();
             isPaused = false;
 
             CurBuilding = new Building() { Length = 2500, Width = 5464 };
             CurBuilding.BuildWalls(CurBuilding.LibPlans);
+            Environ.AddRange(Building.WallsCol);
         }
 
         //Creaated Load method with initial loading algorithm
@@ -51,7 +52,7 @@ namespace Binder
                 string building = rd.ReadLine();
                 Building build = new Building();
                 build.Deserialize(building);
-               
+                
 
                 //Player player = new Player("");
                 rd.ReadLine();//player.Deserialize(rd.ReadLine());
