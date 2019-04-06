@@ -48,22 +48,18 @@ namespace Binder.Environment
             if (e.Key == Key.Up)
             {
                 binderGame.Marcus.Move('n', binderGame);
-                Canvas.SetTop(imgBl, Canvas.GetTop(imgBl) - 50);
             }
             else if (e.Key == Key.Down)
             {
                 binderGame.Marcus.Move('s', binderGame);
-                Canvas.SetTop(imgBl, Canvas.GetTop(imgBl) + 50);
             }
             else if (e.Key == Key.Left)
             {
                 binderGame.Marcus.Move('w', binderGame);
-                Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
             }
             else if (e.Key == Key.Right)
             {
                 binderGame.Marcus.Move('e', binderGame);
-                Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) + 50);
             }
             else if (e.Key == Key.C)
             {
@@ -105,16 +101,6 @@ namespace Binder.Environment
 
 
                     cnvsGame.Children.Add(block);
-                }
-            }
-        }
-        public void MoveItAll()
-        {
-            foreach (object control in cnvsGame.Children)
-            {
-                if (control != imgBl)
-                {
-                   // control.
                 }
             }
         }

@@ -10,19 +10,7 @@
     <Canvas x:Name="cnvsGame" KeyDown="CnvsGame_KeyDown">
         <Image x:Name="imgfl" Source="floor.png" Canvas.Left="-2726" Canvas.Top="-1242"/>
         <!-- <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="-1733" Canvas.Left="3417" RenderTransformOrigin="-14.25,-0.625">  -->
-        <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="45" Canvas.Left="3" RenderTransformOrigin="-14.25,-0.625">
-            <Image.RenderTransform>
-                <TranslateTransform X="200" Y="90"/>
-            </Image.RenderTransform>
-            
-        </Image>
-        <Rectangle Canvas.Top="50" Width="200" Height="50">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <TranslateTransform x:Name="translate"/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
+        <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="450" Canvas.Left="720" RenderTransformOrigin="-14.25,-0.625"/>
         <Button Height="100" Width="300" Click="Button_Click" Content="Start!" FontSize="40" Canvas.Left="650" Canvas.Top="200" x:Name="btnStart">
         </Button>
 

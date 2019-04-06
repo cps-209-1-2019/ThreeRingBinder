@@ -24,7 +24,7 @@ namespace Binder.Environment
             set
             {
                 x = value;
-                Position[0] = x;
+                //Position[0] = x;
                 SetProperty("X");
             }
         }
@@ -37,7 +37,7 @@ namespace Binder.Environment
             set
             {
                 y = value;
-                Position[1] = y;
+                //Position[1] = y;
                 SetProperty("Y");
             }
         }
