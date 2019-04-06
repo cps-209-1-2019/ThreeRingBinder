@@ -51,10 +51,11 @@ namespace Binder
                 IsCheatOn = "TRUE" == rd.ReadLine().Split('!')[1];
                 string building = rd.ReadLine();
                 Building build = new Building();
-                build.Deserialize(building);
+                CurBuilding = build.Deserialize(building);
                 
-                Player player = new Player("");
-                player.Deserialize(rd.ReadLine());
+
+                //Player player = new Player("");
+                rd.ReadLine();//player.Deserialize(rd.ReadLine());
                 //AI ai = new AI(0, 0, 0);
                 rd.ReadLine();//ai.Deserialize(rd.ReadLine());
                 //int[] ar = new int[2]{0, 0};

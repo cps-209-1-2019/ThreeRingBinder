@@ -23,6 +23,16 @@ namespace Binder
             Assert.IsTrue(game.CurrScore == 200);
             Assert.IsTrue(game.Time == 400);
             Assert.IsTrue(game.IsCheatOn);
+            Assert.IsTrue(game.NumItems == 3);
+            Assert.IsTrue(game.CurBuilding.Length == 7300);
+            Assert.IsTrue(game.CurBuilding.Width == 2700);
+            Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Name == "BADGE");
+            Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Image == "badge.png");
+            Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Found == true);
+            Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Position[0] == 40);
+            Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Position[1] == 50);
+            Assert.IsTrue(game.CurBuilding.Collection["HAMMER"].Name == "HAMMER");
+            Assert.IsTrue(game.CurBuilding.Collection["BOOK"].Name == "BOOK");
         }
 
         [Test]

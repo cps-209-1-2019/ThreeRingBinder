@@ -76,7 +76,6 @@ namespace Binder.Environment
         {
             List<string> properties = new List<string>(obj.Split(',','!','#',':','?',';'));
 
-
             for (int i = 0; i < properties.Count; i++)
             {
                 switch (properties[i])
@@ -94,7 +93,7 @@ namespace Binder.Environment
                             {
                                 InventoryItem inventory = new InventoryItem();
 
-                                string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8},{9}", properties[j], properties[j+1],properties[j+2],properties[j+3],properties[j+4],properties[j+5],properties[j+6],properties[j+7], properties[j + 8], properties[j + 9]);
+                                string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", properties[j], properties[j+1],properties[j+2],properties[j+3],properties[j+4],properties[j+5],properties[j+6],properties[j+7], properties[j + 8], properties[j + 9], properties[j + 10], properties[j + 11]);
 
                                 Collection.Add(properties[j-1], inventory.Deserialize(inven));
                             }
