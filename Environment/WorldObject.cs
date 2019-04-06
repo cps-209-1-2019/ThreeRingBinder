@@ -48,9 +48,14 @@ namespace Binder.Environment
             }
             set
             {
+                int[] p = pos;
                 pos = value;
-                //X = pos[0];
-                //Y = pos[1];
+                if(p != null)
+                {
+                    X = pos[0];
+                    Y = pos[1];
+                }
+
                 SetProperty("Position");
             }
         }
