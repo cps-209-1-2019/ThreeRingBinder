@@ -106,5 +106,15 @@ namespace Binder.Environment
                 }
             }
         }
+        public void MoveItAll()
+        {
+            foreach (object control in cnvsGame.Children)
+            {
+                if (control != imgBl)
+                {
+                   // control.
+                }
+            }
+        }
     }
 }
