@@ -14,23 +14,28 @@ namespace Binder.Environment
     //Added public accessibility modifier - Day
     public class Building : WorldObject, ISerialization<Building>
     {
-        private int length = 0;
         public int Width { get; set; }
-        public int Length
-        {
-            get;
-            set;
-        }
+        public int Length{ get; set; }
+        public override int[] Position { get; set; }
+
+
         public Dictionary<string, Items> Collection;
         public List<Walls> WallsCol;
 
         public List<int[]> LibPlans = new List<int[]>()
         {
             //Coords Format: `x`, `y`, `l`, `w`
-            new int[4] {0, 0, 24, 2000},
-            new int[4] {0, 1000, 24, 2000},
-            new int[4] {0, 0, 1000, 24},
-            new int[4] {2000, 0, 1000, 24}
+            
+            //TestWalls
+            new int[4] {0, 0, 24, 1400},
+
+            //Perimeter
+            new int[4] {-2732, -1250, 24, 5464},
+            new int[4] {-2732, 1250, 24, 5464},
+            new int[4] {-2732, -1250, 5464, 24},
+            new int[4] {2732, -1250, 1000, 24}
+
+            
         };
 
         public Building()
@@ -57,16 +62,10 @@ namespace Binder.Environment
             foreach(int[] dt in coords)
             {
                 int[] wcoord = new int[2] { dt[0], dt[1] };
-                Walls wall = new Walls(dt[2], dt[3], wcoord);
+                Walls wall = new Walls(dt[3], dt[2], wcoord);
                 WallsCol.Add(wall);
             }
         }
-
-        ////Moves the map with respect to the player position and direction
-        //public void Move(int[] pPos, int dir)
-        //{
-            
-        //}
 
         //Turn the object into a string
         public string Serialize()

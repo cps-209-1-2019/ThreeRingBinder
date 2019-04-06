@@ -31,13 +31,9 @@ namespace Binder
             Eviron = new List<WorldObject>();
             isPaused = false;
 
-            CurBuilding = new Building() { Length = 1000, Width = 2000 };
+            CurBuilding = new Building() { Length = 2500, Width = 5464 };
             CurBuilding.BuildWalls(CurBuilding.LibPlans);
         }
-
-
-
-
 
         //Creaated Load method with initial loading algorithm
         public void Load(string filename)

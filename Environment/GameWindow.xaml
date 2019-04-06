@@ -11,7 +11,7 @@
         >
 
     <Canvas x:Name="cnvsGame" KeyDown="CnvsGame_KeyDown">
-        <Image x:Name="imgfl" Source="floor.png" Canvas.Left="-1997" Canvas.Top="-1620"/>
+        <Image x:Name="imgfl" Source="floor.png" Canvas.Left="-2726" Canvas.Top="-1242"/>
         <!-- <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="-1733" Canvas.Left="3417" RenderTransformOrigin="-14.25,-0.625">  -->
         <Image x:Name="imgBl" Source="blocks.png" Canvas.Top="45" Canvas.Left="3" RenderTransformOrigin="-14.25,-0.625">
             <Image.RenderTransform>

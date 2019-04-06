@@ -30,23 +30,15 @@ namespace Binder.Environment
             binderGame.Difficulty = difficulty;
             InitializeComponent();
 
-            cnvsGame.DataContext = building;
+            building = binderGame.CurBuilding;
+
+            //cnvsGame.DataContext = building;
         }
-
-        //private void Window_Unloaded(object sender, RoutedEventArgs e)
-        //{
-
-        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TranslateTransform transform = new TranslateTransform(50, 20);
-            imgBl.RenderTransform = transform;
-
             BuildWalls();
-            //Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
-            //cnvsGame.Children.Remove(btnStart);
-            
+            //cnvsGame.Children.Remove(btnStart);            
         }
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
@@ -85,28 +77,32 @@ namespace Binder.Environment
                 Pause pauseWindow = new Pause(binderGame);
                 pauseWindow.Show();
             }
-
-            //Debug.WriteLine(Canvas.GetLeft(imgBl) + " " + Canvas.GetTop(imgBl));
-            //Debug.WriteLine(imgBl.RenderTransform.Value);
         }
 
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            int[] c = new int[2] { 0, 0 };
-            Block b = new Block(24, 24, c );
-
-            Image img = new Image()
+            foreach (Walls w in building.WallsCol)
             {
-                Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
-            };
-            Label block = new Label()
-            {
-                Content = img
-            };
+                foreach (Block b in w.Blocks)
+                {
+                    Image img = new Image()
+                    {
+                        Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
+                    };
+                    Label block = new Label()
+                    {
+                        Content = img
+                    };
 
-            
-            
+                    block.DataContext = b;
+
+                    block.SetBinding(Canvas.LeftProperty, "X");
+                    block.SetBinding(Canvas.RightProperty, "Y");
+
+                    cnvsGame.Children.Add(block);
+                }
+            }
         }
     }
 }
