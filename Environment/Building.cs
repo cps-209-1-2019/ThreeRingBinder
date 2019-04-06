@@ -94,7 +94,7 @@ namespace Binder.Environment
                             {
                                 InventoryItem inventory = new InventoryItem();
 
-                                string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7}", properties[j], properties[j+1],properties[j+2],properties[j+3],properties[j+4],properties[j+5],properties[j+6],properties[j+7]);
+                                string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8},{9}", properties[j], properties[j+1],properties[j+2],properties[j+3],properties[j+4],properties[j+5],properties[j+6],properties[j+7], properties[j + 8], properties[j + 9]);
 
                                 Collection.Add(properties[j-1], inventory.Deserialize(inven));
                             }
