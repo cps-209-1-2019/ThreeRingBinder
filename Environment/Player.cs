@@ -26,43 +26,47 @@ namespace Binder.Environment
             {
                 if (IsNotWall(1, 0, game.CurBuilding))
                 {
-                    foreach (WorldObject thing in game.Eviron)
-                        thing.Position[0]++;
+                    foreach (WorldObject thing in game.Environ)
+                        //thing.Position[0]++;
+                        thing.Position[1] -= 50;
                 }
             }
             else if (direction == 'n')
             {
                 if (IsNotWall(0, 1, game.CurBuilding))
                 {
-                    foreach (WorldObject thing in game.Eviron)
-                        thing.Position[1]++;
+                    foreach (WorldObject thing in game.Environ)
+                        //thing.Position[1]++;
+                        thing.Position[0] -= 50;
                 }
             }
             else if (direction == 'e')
             {
                 if (IsNotWall(-1, 0, game.CurBuilding))
                 {
-                    foreach (WorldObject thing in game.Eviron)
-                        thing.Position[0]--;
+                    foreach (WorldObject thing in game.Environ)
+                        //thing.Position[0]--;
+                        thing.Position[1] += 50;
                 }
             }
             else if (direction == 's')
             {
                 if (IsNotWall(0, -1, game.CurBuilding))
                 {
-                    foreach (WorldObject thing in game.Eviron)
-                        thing.Position[1]--;
+                    foreach (WorldObject thing in game.Environ)
+                        //thing.Position[1]--;
+                        thing.Position[0] += 50;
                 }
             }
         }
 
         public bool IsNotWall(int changeInX, int changeInY, Building building)
         {
-            foreach (Walls wall in building.WallsCol)
+            foreach (Walls wall in Building.WallsCol)
             {
-                if ( (wall.Position[0] + changeInX ) < Position[0] && (wall.Position[0] + changeInX + wall.Width) > Position[0])
-                    if ( (wall.Position[1] + changeInY) < Position[1] && (wall.Position[1] + changeInY + wall.Length) > Position[1])
-                        return false; 
+                //if ( (wall.Position[0] + changeInX ) < Position[0] && (wall.Position[0] + changeInX + wall.Width) > Position[0])
+                   // if ( (wall.Position[1] + changeInY) < Position[1] && (wall.Position[1] + changeInY + wall.Length) > Position[1])
+                     //   return false; 
             }
             return true;
         }
