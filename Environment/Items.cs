@@ -60,6 +60,8 @@ namespace Binder.Environment
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
 
+            Position = new int[2];
+
             for(int i = 0; i < properties.Count; i++)
             {
                 switch (properties[i])
