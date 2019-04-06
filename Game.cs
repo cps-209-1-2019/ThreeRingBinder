@@ -28,6 +28,7 @@ namespace Binder
 
         public Game()
         {
+            Marcus = new Player("Marcus");
             Eviron = new List<WorldObject>();
             isPaused = false;
 
