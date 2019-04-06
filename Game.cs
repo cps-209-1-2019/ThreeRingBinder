@@ -28,6 +28,7 @@ namespace Binder
 
         public Game()
         {
+            Marcus = new Player("Marcus");
             Eviron = new List<WorldObject>();
             isPaused = false;
 
@@ -50,7 +51,9 @@ namespace Binder
                 string building = rd.ReadLine();
                 Building build = new Building();
                 build.Deserialize(building);
-                 //Player player = new Player("");
+               
+
+                //Player player = new Player("");
                 rd.ReadLine();//player.Deserialize(rd.ReadLine());
                 //AI ai = new AI(0, 0, 0);
                 rd.ReadLine();//ai.Deserialize(rd.ReadLine());

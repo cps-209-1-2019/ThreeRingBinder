@@ -19,6 +19,7 @@ namespace Binder
             using (StreamReader reader = new StreamReader(filename))
             {
                 scoreList = new List<HighScore>();
+                highScoreText = null;
                 for (int i = 0; i < 10; i++)
                 {
                     string[] scoreArray = new string[2];
@@ -29,7 +30,7 @@ namespace Binder
                         scoreArray = scoreLine.Split(new char[] { ' ' });
                         HighScore highScore = new HighScore(scoreArray[1], scoreArray[0]);
                         scoreList.Insert(0, highScore);
-                        if (scoreList.Count() > 9)
+                        if (scoreList.Count() > 10)
                             scoreList.RemoveAt(10);
                     }
                     
@@ -45,7 +46,7 @@ namespace Binder
                     {
                         if (score != null)
                         {
-                            string scoreLine = score.PlayerName + "              " + score.CurrentScore;
+                            string scoreLine = score.PlayerName + " " + score.CurrentScore;
                             writer.WriteLine(scoreLine);
                         }
                     }
@@ -55,10 +56,10 @@ namespace Binder
         public void AddHighScore(HighScore score)
         {
             scoreList.Insert(0, score);
-            if (scoreList.Count() > 9)
-                scoreList.RemoveAt(10);
             scoreList = scoreList.OrderBy(o => o.CurrentScore).ToList();
             scoreList.Reverse();
+            if (scoreList.Count() > 10)
+                scoreList.RemoveAt(10);
         }
     }
 }

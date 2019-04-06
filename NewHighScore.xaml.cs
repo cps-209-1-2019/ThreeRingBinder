@@ -34,8 +34,10 @@ namespace Binder
             nameArray = txtPlayerName.Text.Split(new char[] { ' ' } );
             HighScore newScore = new HighScore(newHighScore, nameArray[0]);
             HighScoreHolder newHolder = new HighScoreHolder();
+            newHolder.Load();
             newHolder.AddHighScore(newScore);
             newHolder.Save();
+            this.Close();
         }
     }
 }

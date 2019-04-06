@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 
@@ -25,6 +26,7 @@ namespace Binder.Environment
 
         public GameWindow(bool cheat, int difficulty)
         {
+            //NameScope.SetNameScope(this, new NameScope());
             binderGame = new Game();
             binderGame.IsCheatOn = cheat;
             binderGame.Difficulty = difficulty;
@@ -45,22 +47,22 @@ namespace Binder.Environment
         {
             if (e.Key == Key.Up)
             {
-                //binderGame.Marcus.Move('n', binderGame);
+                binderGame.Marcus.Move('n', binderGame);
                 Canvas.SetTop(imgBl, Canvas.GetTop(imgBl) - 50);
             }
             else if (e.Key == Key.Down)
             {
-                //binderGame.Marcus.Move('s', binderGame);
+                binderGame.Marcus.Move('s', binderGame);
                 Canvas.SetTop(imgBl, Canvas.GetTop(imgBl) + 50);
             }
             else if (e.Key == Key.Left)
             {
-                //binderGame.Marcus.Move('w', binderGame);
+                binderGame.Marcus.Move('w', binderGame);
                 Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
             }
             else if (e.Key == Key.Right)
             {
-                //binderGame.Marcus.Move('e', binderGame);
+                binderGame.Marcus.Move('e', binderGame);
                 Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) + 50);
             }
             else if (e.Key == Key.C)
