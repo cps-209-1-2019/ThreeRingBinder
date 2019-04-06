@@ -27,8 +27,12 @@ namespace Binder.Environment
                 if (IsNotWall(1, 0, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Environ)
-                        //thing.Position[0]++;
-                        thing.Position[1] -= 50;
+                    {
+
+                        thing.X += 50;
+                        Walls walls = (Walls)thing;
+                        walls.ChangeBlocks('X', 50);
+                    }
                 }
             }
             else if (direction == 'n')
@@ -36,8 +40,12 @@ namespace Binder.Environment
                 if (IsNotWall(0, 1, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Environ)
-                        //thing.Position[1]++;
-                        thing.Position[0] -= 50;
+                    {
+
+                        thing.Y += 50;
+                        Walls walls = (Walls)thing;
+                        walls.ChangeBlocks('Y', 50);
+                    }
                 }
             }
             else if (direction == 'e')
@@ -45,17 +53,24 @@ namespace Binder.Environment
                 if (IsNotWall(-1, 0, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Environ)
-                        //thing.Position[0]--;
-                        thing.Position[1] += 50;
+                    {
+
+                        thing.X -= 50;
+                        Walls walls = (Walls)thing;
+                        walls.ChangeBlocks('X', -50);
+                    }
                 }
             }
             else if (direction == 's')
             {
                 if (IsNotWall(0, -1, game.CurBuilding))
                 {
-                    foreach (WorldObject thing in game.Environ)
-                        //thing.Position[1]--;
-                        thing.Position[0] += 50;
+                    foreach (WorldObject thing in game.Environ) {
+
+                        thing.Y = thing.Y - 50;
+                        Walls walls = (Walls)thing;
+                        walls.ChangeBlocks('Y', -50);
+                    }
                 }
             }
         }

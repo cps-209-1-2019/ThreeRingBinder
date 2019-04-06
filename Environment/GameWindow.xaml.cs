@@ -100,7 +100,9 @@ namespace Binder.Environment
                     block.DataContext = b;
 
                     block.SetBinding(Canvas.LeftProperty, "X");
-                    block.SetBinding(Canvas.RightProperty, "Y");
+                    block.SetBinding(Canvas.TopProperty, "Y");
+                    
+
 
                     cnvsGame.Children.Add(block);
                 }

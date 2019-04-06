@@ -65,11 +65,9 @@ namespace Binder.Environment
             Blocks = new List<Block>();
             Width = width;
             Length = length;
-
+            Position = pos;
             X = pos[0];
             Y = pos[1];
-
-            Position = pos;
 
             Build();
 
@@ -106,6 +104,17 @@ namespace Binder.Environment
         public Walls Deserialize(string obj)
         {
             throw new NotImplementedException();
+        }
+
+        public void ChangeBlocks(char dir, int moveNum)
+        {
+            foreach (Block block in Blocks)
+            {
+                if (dir == 'Y')
+                    block.Y += moveNum;
+                else if (dir == 'X')
+                    block.X += moveNum;
+            }
         }
     }
 
