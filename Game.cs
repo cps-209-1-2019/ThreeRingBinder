@@ -51,7 +51,7 @@ namespace Binder
                 IsCheatOn = "TRUE" == rd.ReadLine().Split('!')[1];
                 string building = rd.ReadLine();
                 Building build = new Building();
-                build.Deserialize(building);
+                CurBuilding = build.Deserialize(building);
                 
 
                 //Player player = new Player("");

@@ -60,6 +60,8 @@ namespace Binder.Environment
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
 
+            Position = new int[2];
+
             for(int i = 0; i < properties.Count; i++)
             {
                 switch (properties[i])
@@ -72,6 +74,12 @@ namespace Binder.Environment
                         break;
                     case "FOUND":
                         Found = "TRUE" == properties[i + 1];
+                        break;
+                    case "POSX":
+                        Position[0] = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSY":
+                        Position[1] = int.Parse(properties[i + 1]);
                         break;
                 }
             }
