@@ -73,6 +73,12 @@ namespace Binder.Environment
                     case "FOUND":
                         Found = "TRUE" == properties[i + 1];
                         break;
+                    case "POSX":
+                        Position[0] = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSY":
+                        Position[1] = int.Parse(properties[i + 1]);
+                        break;
                 }
             }
 
