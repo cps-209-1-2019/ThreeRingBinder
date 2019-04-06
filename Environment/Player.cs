@@ -13,6 +13,8 @@ namespace Binder.Environment
         public Player(string name)
         {
             Name = name;
+            X = 720;
+            Y = 450;
         }
         public void Enteract()
         {
@@ -28,10 +30,11 @@ namespace Binder.Environment
                 {
                     foreach (WorldObject thing in game.Environ)
                     {
-
                         thing.X += 50;
-                        Walls walls = (Walls)thing;
-                        walls.ChangeBlocks('X', 50);
+                    }
+                    foreach (Walls wall in Building.WallsCol)
+                    {
+                        wall.ChangeBlocks('X', 50);
                     }
                 }
             }
@@ -41,10 +44,11 @@ namespace Binder.Environment
                 {
                     foreach (WorldObject thing in game.Environ)
                     {
-
                         thing.Y += 50;
-                        Walls walls = (Walls)thing;
-                        walls.ChangeBlocks('Y', 50);
+                    }
+                    foreach (Walls wall in Building.WallsCol)
+                    {
+                        wall.ChangeBlocks('Y', 50);
                     }
                 }
             }
@@ -54,10 +58,11 @@ namespace Binder.Environment
                 {
                     foreach (WorldObject thing in game.Environ)
                     {
-
                         thing.X -= 50;
-                        Walls walls = (Walls)thing;
-                        walls.ChangeBlocks('X', -50);
+                    }
+                    foreach (Walls wall in Building.WallsCol)
+                    {
+                        wall.ChangeBlocks('X', -50);
                     }
                 }
             }
@@ -66,10 +71,11 @@ namespace Binder.Environment
                 if (IsNotWall(0, -1, game.CurBuilding))
                 {
                     foreach (WorldObject thing in game.Environ) {
-
                         thing.Y = thing.Y - 50;
-                        Walls walls = (Walls)thing;
-                        walls.ChangeBlocks('Y', -50);
+                    }
+                    foreach (Walls wall in Building.WallsCol)
+                    {
+                        wall.ChangeBlocks('Y', -50);
                     }
                 }
             }
@@ -77,8 +83,17 @@ namespace Binder.Environment
 
         public bool IsNotWall(int changeInX, int changeInY, Building building)
         {
+            int testCoordX = X + changeInX;
+            int testCoordY = Y + changeInY;
             foreach (Walls wall in Building.WallsCol)
             {
+                foreach (Block block in wall.Blocks)
+                {
+                    if (((block.Y >= testCoordY) && (block.Y + 24 <= testCoordY)) || ((block.X >= testCoordX) && (block.X + 24 <= testCoordX)))
+                    {
+                        return false;
+                    }
+                }
                 //if ( (wall.Position[0] + changeInX ) < Position[0] && (wall.Position[0] + changeInX + wall.Width) > Position[0])
                    // if ( (wall.Position[1] + changeInY) < Position[1] && (wall.Position[1] + changeInY + wall.Length) > Position[1])
                      //   return false; 
