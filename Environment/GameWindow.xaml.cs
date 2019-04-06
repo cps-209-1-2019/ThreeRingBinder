@@ -31,17 +31,16 @@ namespace Binder.Environment
             binderGame.IsCheatOn = cheat;
             binderGame.Difficulty = difficulty;
             InitializeComponent();
-            cnvsGame.DataContext = building;
+
+            building = binderGame.CurBuilding;
+
+            //cnvsGame.DataContext = building;
         }
-
-        //private void Window_Unloaded(object sender, RoutedEventArgs e)
-        //{
-
-        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             BuildWalls();
+            //cnvsGame.Children.Remove(btnStart);            
         }
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
@@ -80,45 +79,32 @@ namespace Binder.Environment
                 Pause pauseWindow = new Pause(binderGame);
                 pauseWindow.Show();
             }
-
-            //Debug.WriteLine(Canvas.GetLeft(imgBl) + " " + Canvas.GetTop(imgBl));
-            //Debug.WriteLine(imgBl.RenderTransform.Value);
         }
 
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            int[] c = new int[2] { 0, 0 };
-            Block b = new Block(24, 24, c );
-            //Image img = new Image()
-            //{
-            //    Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
-            //};
-            //Label block = new Label()
-            //{
-            //    Content = img
-            //};
-            //Build walls
-            int[] pos = new int[2] { 100, 50 };
-            Walls modelWallOne = new Walls(30, 500, pos);
-            Building.WallsCol.Add(modelWallOne);
-            pos[0] = 200;
-            pos[1] = 100;
-            Walls modelWallTwo = new Walls(30, 700, pos);
-            Building.WallsCol.Add(modelWallOne);
-            foreach (Walls wall in Building.WallsCol)
+            foreach (Walls w in building.WallsCol)
             {
-                Rectangle wallOne = new Rectangle
+                foreach (Block b in w.Blocks)
                 {
-                    Width = wall.Length,
-                    Height = wall.Width
-                };
-                wallOne.Fill = new SolidColorBrush(Colors.Brown);
-                Canvas.SetLeft(wallOne, wall.Position[0]);
-                Canvas.SetTop(wallOne, wall.Position[1]);
-                cnvsGame.Children.Add(wallOne);
+                    Image img = new Image()
+                    {
+                        Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
+                    };
+                    Label block = new Label()
+                    {
+                        Content = img
+                    };
+
+                    block.DataContext = b;
+
+                    block.SetBinding(Canvas.LeftProperty, "X");
+                    block.SetBinding(Canvas.RightProperty, "Y");
+
+                    cnvsGame.Children.Add(block);
+                }
             }
-            
         }
         public void MoveItAll()
         {
