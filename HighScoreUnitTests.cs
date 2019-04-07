@@ -13,13 +13,13 @@ namespace Binder
         [Test]
         public void HighScoreHolder_ValidScore_Success()
         {
-            HighScore score = new HighScore("300", "Bob");
+            HighScore score = new HighScore("400", "Bob");
             HighScoreHolder testHolder = new HighScoreHolder();
             testHolder.AddHighScore(score);
-            HighScore scoreTwo = new HighScore("400", "Joe");
+            HighScore scoreTwo = new HighScore("300", "Joe");
             testHolder.AddHighScore(scoreTwo);
             Assert.IsTrue(testHolder.scoreList[0].CurrentScore == "400");
-            Assert.IsTrue(testHolder.scoreList[1].PlayerName == "Bob");
+            Assert.IsTrue(testHolder.scoreList[1].PlayerName == "Joe");
         }
 
         [Test]

@@ -17,6 +17,7 @@ namespace Binder.Environment
         public string Name { get; set; }
         public string Image { get; set; }
         public bool Found { get; set; }
+        public override int[] Position { get; set; }
 
         //public Items(string name, string image, int[] pos)
         //{
@@ -57,7 +58,33 @@ namespace Binder.Environment
         //Take a string and return an InventoryItem object
         public InventoryItem Deserialize(string obj)
         {
-            throw new NotImplementedException();
+            List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
+
+            Position = new int[2];
+
+            for(int i = 0; i < properties.Count; i++)
+            {
+                switch (properties[i])
+                {
+                    case "NAME":
+                        Name = properties[i + 1];
+                        break;
+                    case "IMAGE":
+                        Image = properties[i + 1];
+                        break;
+                    case "FOUND":
+                        Found = "TRUE" == properties[i + 1];
+                        break;
+                    case "POSX":
+                        Position[0] = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSY":
+                        Position[1] = int.Parse(properties[i + 1]);
+                        break;
+                }
+            }
+
+            return this;
         }
 
     }

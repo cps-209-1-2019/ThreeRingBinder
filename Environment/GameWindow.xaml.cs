@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 
@@ -21,53 +22,44 @@ namespace Binder.Environment
     public partial class GameWindow : Window
     {
         Game binderGame;
+        Building building;
+
         public GameWindow(bool cheat, int difficulty)
         {
+            //NameScope.SetNameScope(this, new NameScope());
             binderGame = new Game();
             binderGame.IsCheatOn = cheat;
             binderGame.Difficulty = difficulty;
             InitializeComponent();
-        }
 
-        private void Window_Unloaded(object sender, RoutedEventArgs e)
-        {
+            building = binderGame.CurBuilding;
 
+            //cnvsGame.DataContext = building;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TranslateTransform transform = new TranslateTransform(50, 20);
-            imgBl.RenderTransform = transform;
-
             BuildWalls();
-            //Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
-            //cnvsGame.Children.Remove(btnStart);
-            
+            //cnvsGame.Children.Remove(btnStart);            
         }
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Up)
             {
-                //binderGame.Marcus.Move('n', binderGame);
-                Canvas.SetTop(imgBl, Canvas.GetTop(imgBl) - 50);
+                binderGame.Marcus.Move('n', binderGame);
             }
             else if (e.Key == Key.Down)
             {
-                //binderGame.Marcus.Move('s', binderGame);
-                Canvas.SetTop(imgBl, Canvas.GetTop(imgBl) + 50);
+                binderGame.Marcus.Move('s', binderGame);
             }
             else if (e.Key == Key.Left)
             {
-                //binderGame.Marcus.Move('w', binderGame);
-                ////Point p = new Point(50, 0);
-                ////imgBl.RenderTransform.Transform(p);
-                Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) - 50);
+                binderGame.Marcus.Move('w', binderGame);
             }
             else if (e.Key == Key.Right)
             {
-                //binderGame.Marcus.Move('e', binderGame);
-                Canvas.SetLeft(imgBl, Canvas.GetLeft(imgBl) + 50);
+                binderGame.Marcus.Move('e', binderGame);
             }
             else if (e.Key == Key.C)
             {
@@ -83,32 +75,34 @@ namespace Binder.Environment
                 Pause pauseWindow = new Pause(binderGame);
                 pauseWindow.Show();
             }
-
-            //Debug.WriteLine(Canvas.GetLeft(imgBl) + " " + Canvas.GetTop(imgBl));
-            //Debug.WriteLine(imgBl.RenderTransform.Value);
         }
 
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            //List<int[]> coords(params not yet needed)
-            int[] c = new int[] { 200, 50 };
-            Block b = new Block(24, 24, c);
-
-            Image img = new Image()
+            foreach (Walls w in Building.WallsCol)
             {
-                Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
-            };
-            Label block = new Label()
-            {
-                Content = img
-            };
-            block.DataContext = b;
-            block.SetBinding(render, "Position");
+                foreach (Block b in w.Blocks)
+                {
+                    Image img = new Image()
+                    {
+                        Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
+                    };
+                    Label block = new Label()
+                    {
+                        Content = img
+                    };
 
-            cnvsGame.Children.Add(block);
-            Canvas.SetTop(block, 0);
-            Canvas.SetLeft(block, 0);
+                    block.DataContext = b;
+
+                    block.SetBinding(Canvas.LeftProperty, "X");
+                    block.SetBinding(Canvas.TopProperty, "Y");
+                    
+
+
+                    cnvsGame.Children.Add(block);
+                }
+            }
         }
     }
 }

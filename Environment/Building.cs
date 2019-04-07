@@ -14,25 +14,35 @@ namespace Binder.Environment
     //Added public accessibility modifier - Day
     public class Building : WorldObject, ISerialization<Building>
     {
-        private int length = 0;
         public int Width { get; set; }
-        public int Length
-        {
-            get;
-            set;
-        }
+        public int Length{ get; set; }
+        public override int[] Position { get; set; }
+
 
         public Dictionary<string, Items> Collection;
-        public List<Walls> WallsCol;
+        public static List<Walls> WallsCol;
 
         public List<int[]> LibPlans = new List<int[]>()
         {
             //Coords Format: `x`, `y`, `l`, `w`
-            new int[4] {0, 0, 24, 2000},
-            new int[4] {0, 1000, 24, 2000},
-            new int[4] {0, 0, 1000, 24},
-            new int[4] {2000, 0, 1000, 24}
+
+            //Perimeter
+            new int[4] {-2732, -1250, 24, 5464},
+            new int[4] {-2732, 1250, 24, 5464},
+            new int[4] {-2732, -1250, 2500, 24},
+            new int[4] {2732, -1250, 2500, 24},
+            
+            //Computer Labs
+            new int[4] {-2510, 990, 260, 24},
+            new int[4] {-2289, 990, 260, 24 },
+            new int[4] { -2732, 960, 24, 443}
         };
+
+        public Building()
+        {
+            Collection = new Dictionary<string, Items>();
+            WallsCol = new List<Walls>();
+        }
 
         //Adds the Item object in its params to the Collection
         public void AddItem(Items item)
@@ -52,16 +62,10 @@ namespace Binder.Environment
             foreach(int[] dt in coords)
             {
                 int[] wcoord = new int[2] { dt[0], dt[1] };
-                Walls wall = new Walls(dt[2], dt[3], wcoord);
+                Walls wall = new Walls(dt[3], dt[2], wcoord);
                 WallsCol.Add(wall);
             }
         }
-
-        ////Moves the map with respect to the player position and direction
-        //public void Move(int[] pPos, int dir)
-        //{
-            
-        //}
 
         //Turn the object into a string
         public string Serialize()
@@ -73,7 +77,6 @@ namespace Binder.Environment
         public Building Deserialize(string obj)
         {
             List<string> properties = new List<string>(obj.Split(',','!','#',':','?',';'));
-
 
             for (int i = 0; i < properties.Count; i++)
             {
@@ -92,7 +95,7 @@ namespace Binder.Environment
                             {
                                 InventoryItem inventory = new InventoryItem();
 
-                                string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7}", properties[j], properties[j+1],properties[j+2],properties[j+3],properties[j+4],properties[j+5],properties[j+6],properties[j+7]);
+                                string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", properties[j], properties[j+1],properties[j+2],properties[j+3],properties[j+4],properties[j+5],properties[j+6],properties[j+7], properties[j + 8], properties[j + 9], properties[j + 10], properties[j + 11]);
 
                                 Collection.Add(properties[j-1], inventory.Deserialize(inven));
                             }

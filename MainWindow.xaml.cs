@@ -73,7 +73,10 @@ namespace Binder
 
         private void BtnHighScores_Click(object sender, RoutedEventArgs e)
         {
+            NewHighScore newHighScore = new NewHighScore(500);
+            newHighScore.Show();
             HighScoreList highScoreList = new HighScoreList();
+            
             highScoreList.Show();
         }
     }
