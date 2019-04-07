@@ -72,12 +72,10 @@ namespace Binder.Environment
         {
             string theBuild = "";
             string theCollection = "";
-
+            
             foreach (string key in Collection.Keys)
-            {
-                InventoryItem item = Collection[key] as InventoryItem;
-
-                theCollection += key + ":" + item.Serialize() + ";"; 
+            { 
+                theCollection += key + ":" + Collection[key].Serialize() + ";"; 
             }
 
 

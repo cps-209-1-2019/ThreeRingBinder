@@ -32,7 +32,16 @@ namespace Binder.Environment
             return Image;
         }
 
-        //public abstract string Serialize();
+
+
+        public string Serialize()
+        {
+            string theItem = "";
+
+            theItem = string.Format("INVENTORYITEM?5,NAME!{0},IMAGE!{1},FOUND!{2},POSX!{3},POSY!{4}", Name.ToUpper(), Image, Found.ToString().ToUpper(), X, Y);
+
+            return theItem;
+        }
         //public abstract Items Deserialize();
     }
 
@@ -50,7 +59,7 @@ namespace Binder.Environment
 
         }
         //Turn the object into a string
-        public string Serialize()
+        new public string Serialize()
         {
             string theItem = "";
 

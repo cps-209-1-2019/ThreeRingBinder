@@ -93,6 +93,7 @@ namespace Binder.Environment
 
         public string Serialize()
         {
+            Inventory = new List<Items>();
             string thePlayer = "";
             string theInventory = "";
             foreach(Items items in Inventory)
