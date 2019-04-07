@@ -70,7 +70,20 @@ namespace Binder.Environment
         //Turn the object into a string
         public string Serialize()
         {
-            throw new NotImplementedException();
+            string theBuild = "";
+            string theCollection = "";
+
+            foreach (string key in Collection.Keys)
+            {
+                InventoryItem item = Collection[key] as InventoryItem;
+
+                theCollection += key + ":" + item.Serialize() + ";"; 
+            }
+
+
+            theBuild = string.Format("BUILDING?3,WIDTH!{0},LENGTH!{1},COLLECTION#{2}!{3}", Width, Length, Collection.Count,  theCollection);
+
+            return theBuild;
         }
 
         //Take a string and turn it into a Building object

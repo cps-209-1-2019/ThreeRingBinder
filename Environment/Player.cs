@@ -93,7 +93,18 @@ namespace Binder.Environment
 
         public string Serialize()
         {
-            throw new NotImplementedException();
+            string thePlayer = "";
+            string theInventory = "";
+            foreach(Items items in Inventory)
+            {
+                InventoryItem inv = items as InventoryItem;
+                theInventory += inv.Serialize() + ";";
+            }
+
+
+            thePlayer = string.Format("PLAYER?5,NAME!{0},HEALTH!{1},DAMAGE!{2},SPEED!{3},INVENTORY#{4}!{5}", Name, Health, Damage, Speed, Inventory.Count, theInventory);
+
+            return thePlayer;
         }
 
         public Player Deserialize(string obj)
@@ -101,7 +112,7 @@ namespace Binder.Environment
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
             Inventory = new List<Items>();
 
-            for (int i = 0; i < properties.Count; i += 2)
+            for (int i = 1; i < properties.Count; i += 2)
             {
                 switch (properties[i])
                 {

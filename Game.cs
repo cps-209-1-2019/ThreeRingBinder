@@ -35,67 +35,81 @@ namespace Binder
             CurBuilding = new Building() { Length = 2500, Width = 5464 };
             CurBuilding.BuildWalls(CurBuilding.LibPlans);
             Environ.AddRange(Building.WallsCol);
+            StartPoint = new int[] { 0, 0 };
         }
 
         //Creaated Load method with initial loading algorithm
         public void Load(string filename)
         {
+            StartPoint = new int[2];
+
             using (StreamReader rd = new StreamReader(filename))
             {
-                rd.ReadLine();
-                CurrScore = int.Parse(rd.ReadLine().Split('!')[1]);
-                HighScore = int.Parse(rd.ReadLine().Split('!')[1]);
-                Composure = int.Parse(rd.ReadLine().Split('!')[1]);
-                NumItems = int.Parse(rd.ReadLine().Split('!')[1]);
-                Time = int.Parse(rd.ReadLine().Split('!')[1]);
-                IsCheatOn = "TRUE" == rd.ReadLine().Split('!')[1];
-                Difficulty = int.Parse(rd.ReadLine().Split('!')[1]);
-                string building = rd.ReadLine();
-                Building build = new Building();
-                CurBuilding = build.Deserialize(building);
-                Marcus = Marcus.Deserialize(rd.ReadLine());
-                AI ai = new AI(0, 0, 0);
-                ai.Deserialize(rd.ReadLine());
-                //int[] ar = new int[2]{0, 0};
-                //Walls walls = new Walls(0, 0, ar);
-                rd.ReadLine();//walls.Deserialize(rd.ReadLine());
-                //InventoryItem inventoryItem = new InventoryItem();
-                rd.ReadLine();//inventoryItem.Deserialize(rd.ReadLine());
-                //DecoyItem decoyItem = new DecoyItem();
-                rd.ReadLine();//decoyItem.Deserialize(rd.ReadLine());
-                rd.ReadLine();
+                string line = rd.ReadLine();
+
+                while (line != "END")
+                {
+                    string identify = line.Split(',', '!', '#', ':', '?', ';')[0];
+                    switch (identify)
+                    {
+                        case "CURRSCORE":
+                            CurrScore = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "HIGHSCORE":
+                            HighScore = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "COMPOSURE":
+                            Composure = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "NUMITEMS":
+                            NumItems = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "TIME":
+                            Time = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "DIFFICULTY":
+                            Difficulty = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "ISCHEATON":
+                            IsCheatOn = "TRUE" == line.Split('!')[1];
+                            break;
+                        case "CURBUILDING":
+                            Building build = new Building();
+                            CurBuilding = build.Deserialize(line);
+                            break;
+                        case "MARCUS":
+                            Marcus = Marcus.Deserialize(line);
+                            break;
+                        case "STARTPOINTX":
+                            StartPoint[0] = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "STARTPOINTY":
+                            StartPoint[1] = int.Parse(line.Split('!')[1]);
+                            break;
+                    }
+
+                    line = rd.ReadLine();
+                }
+
             }
         }
 
         //Created Save method with initial saving algorithm
         public void Save(string filename)
         {
-
             using (StreamWriter wr = new StreamWriter(filename))
             {
                 wr.WriteLine("BEGIN");
-                wr.WriteLine(CurrScore);
-                wr.WriteLine(HighScore);
-                wr.WriteLine(Composure);
-                wr.WriteLine(Time);
-                wr.WriteLine(NumItems);
-                wr.WriteLine(StartPoint);
-                wr.WriteLine(IsCheatOn);
-                Building building = new Building();
-                wr.WriteLine(building.Serialize());
-                Player player = new Player("fred");
-                wr.WriteLine(player.Serialize());
-                AI ai = new AI(0, 0, 0);
-                wr.WriteLine(ai.Serialize());
-                int[] ar = new int[2] { 0, 0 };
-                Walls walls = new Walls(24,0, ar);
-                wr.WriteLine(walls.Serialize());
-                InventoryItem inventoryItem = new InventoryItem();
-                wr.WriteLine(inventoryItem.Serialize());
-                DecoyItem decoyItem = new DecoyItem();
-                wr.WriteLine(decoyItem.Serialize());
-                Environment.Binder binder = new Environment.Binder();
-                wr.WriteLine(binder.Serialize());
+                wr.WriteLine("CURRSCORE!" + CurrScore);
+                wr.WriteLine("HIGHSCORE!" + HighScore);
+                wr.WriteLine("COMPOSURE!" + Composure);
+                wr.WriteLine("TIME!" + Time);
+                wr.WriteLine("NUMITEMS!" + NumItems);
+                wr.WriteLine("STARTPOINTX!" + StartPoint[0]);
+                wr.WriteLine("STARTPOINTY!" + StartPoint[1]);
+                wr.WriteLine("ISCHEATON!" + IsCheatOn.ToString().ToUpper());
+                wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
+                wr.WriteLine("MARCUS!"+ Marcus.Serialize());
                 wr.WriteLine("END");
             }
         }

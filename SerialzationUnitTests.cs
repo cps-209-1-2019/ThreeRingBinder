@@ -12,7 +12,7 @@ namespace Binder
     class SerialzationUnitTests
     {
         [Test]
-        public void Load_InitialTest_Unknown()
+        public void Load_InitialTest_Success()
         {
             Game game = new Game();
 
@@ -53,7 +53,10 @@ namespace Binder
         [Test]
         public void Save_InitialTest_Unknown()
         {
-            Game game = new Game() { CurrScore = 330, Time = 450, Composure = 3, HighScore = 1800 };
+            Game game = new Game() { CurrScore = 330, Time = 450, Composure = 3, HighScore = 1800, Difficulty = 3, IsCheatOn = false, NumItems = 1, StartPoint = new int[2] { 15, 50 } };
+            game.CurBuilding = new Environment.Building() { Length = 20, Width = 360, X = 60, Y = 90  };
+            game.CurBuilding.Collection.Add("PIPE", new Environment.Items() { Name = "PIPE", Image = "pipe.png", Position = new int[] { 55, 80 }, Found = false});
+            game.Marcus = new Environment.Player("MARCUS"){ Health = 3, Speed = 30, Damage = 2 };
 
             game.Save("C:\\Users\\zdd73\\OneDrive - Bob Jones University\\Freshman\\Spring\\CpS 209\\Project\\ThreeRingBinder\\SaveTest.txt");
 
@@ -66,8 +69,5 @@ namespace Binder
             Assert.IsTrue(otherGame.CurrScore == 330);
             Assert.IsTrue(otherGame.Time == 450);
         }
-
-
-
     }
 }
