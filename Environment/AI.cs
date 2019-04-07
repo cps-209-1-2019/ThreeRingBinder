@@ -17,12 +17,21 @@ namespace Binder.Environment
         }
         public void Patrol()
         {
-
+            Random rand = new Random();
+            int direc = rand.Next(4);
+            //if ()
         }
 
         public void Chase(Player player)
         {
-            
+            if (player.Position[0] < Position[0])
+                Position[0]--;
+            else if (player.Position[0] > Position[0])
+                Position[0]++;
+            if (player.Position[1] < Position[1])
+                Position[1]--;
+            else if (player.Position[1] > Position[1])
+                Position[1]++;
         }
 
         public void Move(Player player)
