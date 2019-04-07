@@ -63,7 +63,7 @@ namespace Binder.Environment
                     }
                     foreach (Walls wall in Building.WallsCol)
                     {
-                        wall.ChangeBlocks('X', changeNum * -1);
+                        wall.ChangeBlocks('X', -changeNum);
                     }
                 }
             }
@@ -76,7 +76,7 @@ namespace Binder.Environment
                     }
                     foreach (Walls wall in Building.WallsCol)
                     {
-                        wall.ChangeBlocks('Y', changeNum * -1);
+                        wall.ChangeBlocks('Y', -changeNum);
                     }
                 }
             }
