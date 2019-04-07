@@ -44,7 +44,25 @@ namespace Binder.Environment
 
         public AI Deserialize(string obj)
         {
-            throw new NotImplementedException();
+            List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
+
+            for (int i = 0; i < properties.Count; i += 2)
+            {
+                switch (properties[i])
+                {
+                    case "HEALTH":
+                        Health = int.Parse(properties[i + 1]);
+                        break;
+                    case "DAMAGE":
+                        Damage = int.Parse(properties[i + 1]);
+                        break;
+                    case "SPEED":
+                        Speed = int.Parse(properties[i + 1]);
+                        break;
+                }
+            }
+
+            return this;
         }
     }
 }

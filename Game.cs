@@ -49,15 +49,13 @@ namespace Binder
                 NumItems = int.Parse(rd.ReadLine().Split('!')[1]);
                 Time = int.Parse(rd.ReadLine().Split('!')[1]);
                 IsCheatOn = "TRUE" == rd.ReadLine().Split('!')[1];
+                Difficulty = int.Parse(rd.ReadLine().Split('!')[1]);
                 string building = rd.ReadLine();
                 Building build = new Building();
                 CurBuilding = build.Deserialize(building);
-                
-
-                //Player player = new Player("");
-                rd.ReadLine();//player.Deserialize(rd.ReadLine());
-                //AI ai = new AI(0, 0, 0);
-                rd.ReadLine();//ai.Deserialize(rd.ReadLine());
+                Marcus = Marcus.Deserialize(rd.ReadLine());
+                AI ai = new AI(0, 0, 0);
+                ai.Deserialize(rd.ReadLine());
                 //int[] ar = new int[2]{0, 0};
                 //Walls walls = new Walls(0, 0, ar);
                 rd.ReadLine();//walls.Deserialize(rd.ReadLine());

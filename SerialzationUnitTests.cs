@@ -24,6 +24,8 @@ namespace Binder
             Assert.IsTrue(game.Time == 400);
             Assert.IsTrue(game.IsCheatOn);
             Assert.IsTrue(game.NumItems == 3);
+            Assert.IsTrue(game.Difficulty == 2);
+
             Assert.IsTrue(game.CurBuilding.Length == 7300);
             Assert.IsTrue(game.CurBuilding.Width == 2700);
             Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Name == "BADGE");
@@ -33,6 +35,19 @@ namespace Binder
             Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Position[1] == 50);
             Assert.IsTrue(game.CurBuilding.Collection["HAMMER"].Name == "HAMMER");
             Assert.IsTrue(game.CurBuilding.Collection["BOOK"].Name == "BOOK");
+
+            Assert.IsTrue(game.Marcus.Name == "MARCUS");
+            Assert.IsTrue(game.Marcus.Health == 3);
+            Assert.IsTrue(game.Marcus.Damage == 1);
+            Assert.IsTrue(game.Marcus.Speed == 30);
+            Assert.IsTrue(game.Marcus.Inventory[0].Name == "BADGE");
+            Assert.IsTrue(game.Marcus.Inventory[0].Image == "badge.png");
+            Assert.IsTrue(game.Marcus.Inventory[0].Found == true);
+            Assert.IsTrue(game.Marcus.Inventory[0].Position[0] == 40);
+            Assert.IsTrue(game.Marcus.Inventory[0].Position[1] == 50);
+            Assert.IsTrue(game.Marcus.Inventory[1].Name == "BOOK");
+
+
         }
 
         [Test]
