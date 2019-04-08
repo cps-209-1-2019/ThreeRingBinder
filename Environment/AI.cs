@@ -15,29 +15,33 @@ namespace Binder.Environment
             Damage = damage;
             Speed = speed;
         }
-        public void Patrol()
+        public void Patrol(Building building)
         {
             Random rand = new Random();
             int direc = rand.Next(4);
             if (direc == 0)
             {
                 //west
-                X -= changeNum;
+                if (IsNotWall((-changeNum / 2), 0, building))
+                    X -= changeNum / 2;
             }
             else if (direc == 1)
             {
                 //east
-                X += changeNum;
+                if (IsNotWall((changeNum / 2), 0, building))
+                    X += changeNum / 2;
             }
             else if (direc == 2)
             {
                 //north
-                Y -= changeNum;
+                if (IsNotWall(0, (-changeNum / 2), building))
+                    Y -= changeNum / 2;
             }
             else if (direc == 3)
             {
                 //south
-                Y += changeNum;
+                if (IsNotWall(0, (changeNum / 2), building))
+                    Y += changeNum / 2;
             }
         }
 
@@ -50,10 +54,10 @@ namespace Binder.Environment
                 if (IsNotWall((changeNum / 2), 0, game.CurBuilding))
                     X += changeNum / 2;
             if (game.Marcus.Y < Y)
-                if (IsNotWall((-changeNum / 2), 0, game.CurBuilding))
+                if (IsNotWall(0, (-changeNum / 2), game.CurBuilding))
                     Y -= changeNum / 2;
             else if (game.Marcus.Y > Y)
-                if (IsNotWall((changeNum / 2), 0, game.CurBuilding))
+                if (IsNotWall(0, (changeNum / 2), game.CurBuilding))
                     Y += changeNum / 2;
         }
 
@@ -65,7 +69,7 @@ namespace Binder.Environment
             }
             else
             {
-                Patrol();
+                Patrol(game.CurBuilding);
             }
         }
 
