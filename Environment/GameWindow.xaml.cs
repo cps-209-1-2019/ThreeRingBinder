@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Windows.Threading;
 
 namespace Binder.Environment
 {
@@ -23,6 +24,7 @@ namespace Binder.Environment
     {
         Game binderGame;
         Building building;
+        DispatcherTimer timer;
 
         public GameWindow(bool cheat, int difficulty)
         {
@@ -35,8 +37,24 @@ namespace Binder.Environment
             BuildWalls();
             building = binderGame.CurBuilding;
             //cnvsGame.DataContext = building;
+            MakeAI(binderGame);
+            timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            foreach (WorldObject wObj in binderGame.Environ)
+            {
+                if (wObj is AI)
+                {
+                    AI ai = (AI)wObj;
+                    ai.Move(binderGame);
+                }
+            }
+        }
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
         {
@@ -98,6 +116,30 @@ namespace Binder.Environment
                     cnvsGame.Children.Add(block);
                 }
             }
+        }
+
+        public void MakeAI(Game game)
+        {
+            Image img = new Image()
+            {
+                Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
+            };
+            Label block = new Label()
+            {
+                Content = img
+            };
+
+            AI ai = new AI(10, 300000, 20);
+            ai.X = 700;
+            ai.Y = 400;
+            game.Environ.Add(ai);
+            block.DataContext = ai;
+
+            block.SetBinding(Canvas.LeftProperty, "X");
+            block.SetBinding(Canvas.TopProperty, "Y");
+
+
+            cnvsGame.Children.Add(block);
         }
     }
 }
