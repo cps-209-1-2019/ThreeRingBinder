@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Binder.Environment"
         mc:Ignorable="d"
         Title="GameWindow" Height="900" Width="1440"
-        
+        WindowState="Maximized"
+        WindowStyle="None"
         >
     <Canvas x:Name="cnvsGame">
         <Image x:Name="imgfl" Source="floor.png" Canvas.Left="-2726" Canvas.Top="-1242"/>
