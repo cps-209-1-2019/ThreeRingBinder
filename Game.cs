@@ -42,6 +42,7 @@ namespace Binder
         public void Load(string filename)
         {
             StartPoint = new int[2];
+            
 
             using (StreamReader rd = new StreamReader(filename))
             {

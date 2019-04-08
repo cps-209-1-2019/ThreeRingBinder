@@ -55,7 +55,7 @@ namespace Binder.Environment
         //Provides ability to use the object
         public void Use()
         {
-
+            
         }
         //Turn the object into a string
         new public string Serialize()
@@ -124,7 +124,7 @@ namespace Binder.Environment
     }
 
     //Defines the methods and actions for the Binder class
-    public class Binder : InventoryItem, ISerialization<Binder>
+    public class BinderRing : InventoryItem, ISerialization<BinderRing>
     {
 
         //Reveals the Binder Image;
@@ -140,7 +140,7 @@ namespace Binder.Environment
         }
 
         //Take a string and return a DecoyItem object
-        new public Binder Deserialize(string obj)
+        new public BinderRing Deserialize(string obj)
         {
             throw new NotImplementedException();
         }
