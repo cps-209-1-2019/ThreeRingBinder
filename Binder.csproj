@@ -193,10 +193,29 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Sprites\paperAirplaneDown.jpg" />
+    <Resource Include="Sprites\paperAirplaneLeft.jpg" />
+    <Resource Include="Sprites\paperAirplaneRight.jpg" />
+    <Resource Include="Sprites\paperAirplaneUp.jpg" />
+    <Resource Include="Sprites\binderRingGold.png" />
+    <Resource Include="Sprites\binderRingSilver.png" />
+    <Resource Include="Sprites\GameLogo.png" />
+    <Resource Include="Sprites\Marcus.png" />
+    <Resource Include="Sprites\MarcusBack.png" />
+    <Resource Include="Sprites\MarcusFront.png" />
+    <Resource Include="Sprites\MarcusLeft.png" />
+    <Resource Include="Sprites\MarcusRight.png" />
+    <Resource Include="Sprites\PsiZeta.png" />
+    <Resource Include="Sprites\PsiZetaBack.png" />
+    <Resource Include="Sprites\PsiZetaFront.png" />
+    <Resource Include="Sprites\PsiZetaLeft.png" />
+    <Resource Include="Sprites\PsiZetaRight.png" />
+    <Resource Include="Sprites\schaubJacket.png" />
     <Resource Include="Screen.PNG" />
     <Content Include="Sounds\GamePlay.mp3" />
     <Content Include="Sounds\paperHit.wav" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
