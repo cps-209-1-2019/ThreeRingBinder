@@ -193,6 +193,10 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Sprites\MarcusBack1.png" />
+    <Resource Include="Sprites\MarcusBack2.png" />
+    <Resource Include="Sprites\MarcusFront1.png" />
+    <Resource Include="Sprites\MarcusFront2.png" />
     <Resource Include="Sprites\paperAirplaneDown.jpg" />
     <Resource Include="Sprites\paperAirplaneLeft.jpg" />
     <Resource Include="Sprites\paperAirplaneRight.jpg" />

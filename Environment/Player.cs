@@ -81,7 +81,7 @@ namespace Binder.Environment
             }
 
 
-            thePlayer = string.Format("PLAYER?5,NAME!{0},HEALTH!{1},DAMAGE!{2},SPEED!{3},INVENTORY#{4}!{5}", Name, Health, Damage, Speed, Inventory.Count, theInventory);
+            thePlayer = string.Format("PLAYER?5,NAME!{0},HEALTH!{1},DAMAGE!{2},SPEED!{3},POSX!{4},POSY!{5},INVENTORY#{6}!{7}", Name, Health, Damage, Speed, X, Y, Inventory.Count, theInventory);
 
             return thePlayer;
         }
@@ -106,6 +106,12 @@ namespace Binder.Environment
                         break;
                     case "SPEED":
                         Speed = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSX":
+                        X = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSY":
+                        Y = int.Parse(properties[i + 1]);
                         break;
                     case "INVENTORYITEM":
                         InventoryItem item = new InventoryItem();
