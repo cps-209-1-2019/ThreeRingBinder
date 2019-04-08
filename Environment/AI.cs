@@ -19,7 +19,26 @@ namespace Binder.Environment
         {
             Random rand = new Random();
             int direc = rand.Next(4);
-            //if ()
+            if (direc == 0)
+            {
+                //west
+                Position[0] -= changeNum;
+            }
+            else if (direc == 1)
+            {
+                //east
+                Position[0] += changeNum;
+            }
+            else if (direc == 2)
+            {
+                //north
+                Position[1] -= changeNum;
+            }
+            else if (direc == 3)
+            {
+                //south
+                Position[1] += changeNum;
+            }
         }
 
         public void Chase(Player player)

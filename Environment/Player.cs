@@ -8,7 +8,7 @@ namespace Binder.Environment
 {
     public class Player : MovableCharacter, ISerialization<Player>
     {
-        public const int changeNum = 24;
+        
         public string Name { get; set; }
         public List<Items> Inventory { get; set; }
         public Player(string name)
