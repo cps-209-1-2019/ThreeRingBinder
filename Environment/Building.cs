@@ -37,8 +37,23 @@ namespace Binder.Environment
             new int[4] { -2732, 960, 24, 443}
         };
 
+        public List<int[]> FAPlans = new List<int[]>()
+        {
+            //Perimeter
+            new int[4] {-2732, -1250, 24, 5464},
+            new int[4] {-2732, 1250, 24, 5464},
+            new int[4] {-2732, -1250, 2500, 24},
+            new int[4] {2732, -1250, 2500, 24},
+
+            //Rooms
+            //new int[4] {-2049, -1250, 1000, 24},
+            new int[4] {-2049, 250, 1000, 24}
+
+        };
+
         public Building()
         {
+            BuildFA();
             Collection = new Dictionary<string, Items>();
             WallsCol = new List<Walls>();
         }
@@ -63,6 +78,28 @@ namespace Binder.Environment
                 int[] wcoord = new int[2] { dt[0], dt[1] };
                 Walls wall = new Walls(dt[3], dt[2], wcoord);
                 WallsCol.Add(wall);
+            }
+        }
+
+        void BuildFA()
+        {
+            bool full = false;
+            
+            for(int i = 683; i < 5464; i+= 683)
+            {
+                int[] coords = new int[4] { -2732 + i, -1250, 1000, 24};
+                
+                if(i + 683 > 5464)
+                {
+                    coords = new int[4] { -2732 + i, 250, 1000, 24};
+                    if(full != true)
+                    {
+                        i = 683;
+                        full = true;
+                    }                   
+                }
+
+                FAPlans.Add(coords);
             }
         }
 

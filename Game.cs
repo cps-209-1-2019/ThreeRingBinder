@@ -33,7 +33,7 @@ namespace Binder
             isPaused = false;
 
             CurBuilding = new Building() { Length = 2500, Width = 5464 };
-            CurBuilding.BuildWalls(CurBuilding.LibPlans);
+            CurBuilding.BuildWalls(CurBuilding.FAPlans);
             Environ.AddRange(Building.WallsCol);
             StartPoint = new int[] { 0, 0 };
         }

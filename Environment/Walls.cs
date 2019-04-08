@@ -79,19 +79,19 @@ namespace Binder.Environment
                 X = posW[0];
                 Y = posW[1];
 
-                foreach(Block b in Blocks)
-                {
-                    if(x != posW[0])
-                    {
-                        int xChanged = posW[0] - x;
-                        b.X += xChanged;
-                    }
-                    if(y != posW[1])
-                    {
-                        int yChanged = posW[1] - y;
-                        b.Y += yChanged;
-                    }
-                }
+                //foreach(Block b in Blocks)
+                //{
+                //    if(x != posW[0])
+                //    {
+                //        int xChanged = posW[0] - x;
+                //        b.X += xChanged;
+                //    }
+                //    if(y != posW[1])
+                //    {
+                //        int yChanged = posW[1] - y;
+                //        b.Y += yChanged;
+                //    }
+                //}
             }
         }
 

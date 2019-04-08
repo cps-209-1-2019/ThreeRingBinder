@@ -14,6 +14,7 @@ namespace Binder.Environment
         private int x;
         private int y;
         private int[] pos;
+        private string pic;
 
         public virtual int X
         {
@@ -61,7 +62,15 @@ namespace Binder.Environment
                 SetProperty("Position");
             }
         }
-        public string PictureName { get; set; }
+        public string PictureName
+        {
+            get { return pic; }
+            set
+            {
+                pic = value;
+                SetProperty("PictureName");
+            }
+        }
 
         public void Pos(int x, int y)
         {
