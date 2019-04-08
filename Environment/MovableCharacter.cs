@@ -15,11 +15,19 @@ namespace Binder.Environment
 
         public virtual void Move()
         {
-            
+
         }
         public void Attack()
         {
 
+        }
+        public bool IsNotWall(int changeInX, int changeInY, Building building)
+        {
+            foreach (Walls wall in Building.WallsCol)
+                if ((wall.X + changeInX) < X && (wall.X + changeInX + wall.Width) > X)
+                    if ((wall.Y + changeInY) < Y && (wall.Y + changeInY + wall.Length) > Y)
+                        return false;
+            return true;
         }
     }
 }
