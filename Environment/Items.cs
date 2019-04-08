@@ -32,7 +32,16 @@ namespace Binder.Environment
             return Image;
         }
 
-        //public abstract string Serialize();
+
+
+        public string Serialize()
+        {
+            string theItem = "";
+
+            theItem = string.Format("INVENTORYITEM?5,NAME!{0},IMAGE!{1},FOUND!{2},POSX!{3},POSY!{4}", Name.ToUpper(), Image, Found.ToString().ToUpper(), X, Y);
+
+            return theItem;
+        }
         //public abstract Items Deserialize();
     }
 
@@ -50,9 +59,13 @@ namespace Binder.Environment
 
         }
         //Turn the object into a string
-        public string Serialize()
+        new public string Serialize()
         {
-            throw new NotImplementedException();
+            string theItem = "";
+
+            theItem = string.Format("INVENTORYITEM?5,NAME!{0},IMAGE!{1},FOUND!{2},POSX!{3},POSY!{4}",Name.ToUpper(), Image, Found.ToString().ToUpper(), X, Y);
+
+            return theItem;
         }
 
         //Take a string and return an InventoryItem object
@@ -76,10 +89,10 @@ namespace Binder.Environment
                         Found = "TRUE" == properties[i + 1];
                         break;
                     case "POSX":
-                        Position[0] = int.Parse(properties[i + 1]);
+                        X = int.Parse(properties[i + 1]);
                         break;
                     case "POSY":
-                        Position[1] = int.Parse(properties[i + 1]);
+                        Y = int.Parse(properties[i + 1]);
                         break;
                 }
             }

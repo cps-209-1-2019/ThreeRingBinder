@@ -12,7 +12,7 @@ namespace Binder
     class SerialzationUnitTests
     {
         [Test]
-        public void Load_InitialTest_Unknown()
+        public void Load_InitialTest_Success()
         {
             Game game = new Game();
 
@@ -24,6 +24,8 @@ namespace Binder
             Assert.IsTrue(game.Time == 400);
             Assert.IsTrue(game.IsCheatOn);
             Assert.IsTrue(game.NumItems == 3);
+            Assert.IsTrue(game.Difficulty == 2);
+
             Assert.IsTrue(game.CurBuilding.Length == 7300);
             Assert.IsTrue(game.CurBuilding.Width == 2700);
             Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Name == "BADGE");
@@ -33,12 +35,28 @@ namespace Binder
             Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Position[1] == 50);
             Assert.IsTrue(game.CurBuilding.Collection["HAMMER"].Name == "HAMMER");
             Assert.IsTrue(game.CurBuilding.Collection["BOOK"].Name == "BOOK");
+
+            Assert.IsTrue(game.Marcus.Name == "MARCUS");
+            Assert.IsTrue(game.Marcus.Health == 3);
+            Assert.IsTrue(game.Marcus.Damage == 1);
+            Assert.IsTrue(game.Marcus.Speed == 30);
+            Assert.IsTrue(game.Marcus.Inventory[0].Name == "BADGE");
+            Assert.IsTrue(game.Marcus.Inventory[0].Image == "badge.png");
+            Assert.IsTrue(game.Marcus.Inventory[0].Found == true);
+            Assert.IsTrue(game.Marcus.Inventory[0].Position[0] == 40);
+            Assert.IsTrue(game.Marcus.Inventory[0].Position[1] == 50);
+            Assert.IsTrue(game.Marcus.Inventory[1].Name == "BOOK");
+
+
         }
 
         [Test]
         public void Save_InitialTest_Unknown()
         {
-            Game game = new Game() { CurrScore = 330, Time = 450, Composure = 3, HighScore = 1800 };
+            Game game = new Game() { CurrScore = 330, Time = 450, Composure = 3, HighScore = 1800, Difficulty = 3, IsCheatOn = false, NumItems = 1, StartPoint = new int[2] { 15, 50 } };
+            game.CurBuilding = new Environment.Building() { Length = 20, Width = 360, X = 60, Y = 90  };
+            game.CurBuilding.Collection.Add("PIPE", new Environment.Items() { Name = "PIPE", Image = "pipe.png", Position = new int[] { 55, 80 }, Found = false});
+            game.Marcus = new Environment.Player("MARCUS"){ Health = 3, Speed = 30, Damage = 2 };
 
             game.Save("C:\\Users\\zdd73\\OneDrive - Bob Jones University\\Freshman\\Spring\\CpS 209\\Project\\ThreeRingBinder\\SaveTest.txt");
 
@@ -51,8 +69,5 @@ namespace Binder
             Assert.IsTrue(otherGame.CurrScore == 330);
             Assert.IsTrue(otherGame.Time == 450);
         }
-
-
-
     }
 }

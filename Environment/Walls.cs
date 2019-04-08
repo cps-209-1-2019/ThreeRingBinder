@@ -15,6 +15,42 @@ namespace Binder.Environment
     //Added public accessibility - Day
     public class Walls: WorldObject, ISerialization<Walls>
     {
+        private int x;
+        private int y;
+
+        public override int X {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                int xtemp = x;
+                x = value;
+
+                int xChanged = x - xtemp;
+                UpdateBlocks(xChanged, 0);
+                SetProperty("X");
+            }
+        }
+        public override int Y
+        {
+            get
+            {
+                return y;
+
+            }
+            set
+            {
+                int yTemp = y;
+                y = value;
+
+                int yChanged = y - yTemp;
+                UpdateBlocks(0, yChanged);
+                SetProperty("Y");
+            }
+        }
+
         private int[] posW;
         public int Width { get; set; }                      //Contains the thickness of the wall
         public int Length { get; set; }                     //The number of blocks the wall will contain              
@@ -96,6 +132,14 @@ namespace Binder.Environment
             }
         }
 
+        void UpdateBlocks(int x, int y)
+        {
+            foreach(Block b in Blocks)
+            {
+                b.X += x;
+                b.Y += y;
+            }
+        }
         public string Serialize()
         {
             throw new NotImplementedException();
@@ -103,7 +147,39 @@ namespace Binder.Environment
 
         public Walls Deserialize(string obj)
         {
-            throw new NotImplementedException();
+            List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
+
+            for (int i = 0; i < properties.Count; i += 2)
+            {
+                switch (properties[i])
+                {
+                    case "LENGTH":
+                        Length = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSX":
+                        X = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSY":
+                        Y = int.Parse(properties[i + 1]);
+                        break;
+                    case "ORIENTATION":
+                        if (properties[i + 1] == "VERTICAL")
+                        {
+                            Orientation = 2;
+                        }
+                        else if (properties[i + 1] == "HORIZAONTAL")
+                        {
+                            Orientation = 1;
+                        }
+                        else
+                        {
+                            throw new ArgumentException("The orientation must be 'VERTICAL' or 'HORIZONTAL'");
+                        }
+                        break;
+                }
+            }
+
+            return this;
         }
 
         public void ChangeBlocks(char dir, int moveNum)

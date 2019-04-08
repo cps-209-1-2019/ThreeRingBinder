@@ -17,12 +17,40 @@ namespace Binder.Environment
         }
         public void Patrol()
         {
-
+            Random rand = new Random();
+            int direc = rand.Next(4);
+            if (direc == 0)
+            {
+                //west
+                Position[0] -= changeNum;
+            }
+            else if (direc == 1)
+            {
+                //east
+                Position[0] += changeNum;
+            }
+            else if (direc == 2)
+            {
+                //north
+                Position[1] -= changeNum;
+            }
+            else if (direc == 3)
+            {
+                //south
+                Position[1] += changeNum;
+            }
         }
 
         public void Chase(Player player)
         {
-            
+            if (player.Position[0] < Position[0])
+                Position[0]--;
+            else if (player.Position[0] > Position[0])
+                Position[0]++;
+            if (player.Position[1] < Position[1])
+                Position[1]--;
+            else if (player.Position[1] > Position[1])
+                Position[1]++;
         }
 
         public void Move(Player player)
@@ -44,7 +72,25 @@ namespace Binder.Environment
 
         public AI Deserialize(string obj)
         {
-            throw new NotImplementedException();
+            List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
+
+            for (int i = 0; i < properties.Count; i += 2)
+            {
+                switch (properties[i])
+                {
+                    case "HEALTH":
+                        Health = int.Parse(properties[i + 1]);
+                        break;
+                    case "DAMAGE":
+                        Damage = int.Parse(properties[i + 1]);
+                        break;
+                    case "SPEED":
+                        Speed = int.Parse(properties[i + 1]);
+                        break;
+                }
+            }
+
+            return this;
         }
     }
 }
