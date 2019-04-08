@@ -29,12 +29,12 @@ namespace Binder
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             lblSaved.Content = "Saved!";
-            binderGame.Save("some_filename");
+            binderGame.Save("some_filename.txt");
         }
 
         private void BtnSaveQuit_Click(object sender, RoutedEventArgs e)
         {
-            binderGame.Save("some_filename");
+            binderGame.Save("some_filename.txt");
             Application.Current.Shutdown();
         }
 

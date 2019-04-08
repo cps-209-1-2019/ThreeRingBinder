@@ -17,6 +17,6 @@
         <Label Content="YOU MADE A NEW HIGH SCORE!" FontSize="20" Width="300" Canvas.Left="50" Canvas.Top="20"/>
         <Label x:Name="lblScore" Content=""/>
         <TextBox x:Name="txtPlayerName" Width="150" Height="20" Canvas.Top="130" Canvas.Left="125" Text="Enter your name"/>
-        <Button x:Name="btnSubmitName" Width="80" Height="35" Content="Enter" Click="BtnSubmitName_Click" Background="DarkSalmon" Canvas.Top="170" Canvas.Left="160"/>
+        <Button x:Name="btnSubmitName" Width="80" Height="35" Content="Enter" Click="BtnSubmitName_Click" Background="#e4c027" Canvas.Top="170" Canvas.Left="160"/>
     </Canvas>
 </Window>

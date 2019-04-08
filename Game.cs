@@ -25,6 +25,8 @@ namespace Binder
         public List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
         public static bool isPaused { get; set; }    //Determines if the game is paused
+        public BinderRing ring;                      //Current binder ring
+        public bool isRingFound;                     //Determines if the player has found the ring
 
         public Game()
         {
@@ -42,6 +44,9 @@ namespace Binder
         public void Load(string filename)
         {
             StartPoint = new int[2];
+            ring = new BinderRing();
+            ring.X = 200;
+            ring.Y = 500;
 
             using (StreamReader rd = new StreamReader(filename))
             {
