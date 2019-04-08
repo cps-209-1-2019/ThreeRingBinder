@@ -15,7 +15,7 @@ namespace Binder.Environment
         private int y;
         private int[] pos;
 
-        public int X
+        public virtual int X
         {
             get
             {
@@ -28,7 +28,7 @@ namespace Binder.Environment
                 SetProperty("X");
             }
         }
-        public int Y
+        public virtual int Y
         {
             get
             {
