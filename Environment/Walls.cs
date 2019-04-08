@@ -103,7 +103,39 @@ namespace Binder.Environment
 
         public Walls Deserialize(string obj)
         {
-            throw new NotImplementedException();
+            List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
+
+            for (int i = 0; i < properties.Count; i += 2)
+            {
+                switch (properties[i])
+                {
+                    case "LENGTH":
+                        Length = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSX":
+                        X = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSY":
+                        Y = int.Parse(properties[i + 1]);
+                        break;
+                    case "ORIENTATION":
+                        if (properties[i + 1] == "VERTICAL")
+                        {
+                            Orientation = 2;
+                        }
+                        else if (properties[i + 1] == "HORIZAONTAL")
+                        {
+                            Orientation = 1;
+                        }
+                        else
+                        {
+                            throw new ArgumentException("The orientation must be 'VERTICAL' or 'HORIZONTAL'");
+                        }
+                        break;
+                }
+            }
+
+            return this;
         }
 
         public void ChangeBlocks(char dir, int moveNum)

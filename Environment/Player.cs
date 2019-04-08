@@ -93,12 +93,52 @@ namespace Binder.Environment
 
         public string Serialize()
         {
-            throw new NotImplementedException();
+            Inventory = new List<Items>();
+            string thePlayer = "";
+            string theInventory = "";
+            foreach(Items items in Inventory)
+            {
+                InventoryItem inv = items as InventoryItem;
+                theInventory += inv.Serialize() + ";";
+            }
+
+
+            thePlayer = string.Format("PLAYER?5,NAME!{0},HEALTH!{1},DAMAGE!{2},SPEED!{3},INVENTORY#{4}!{5}", Name, Health, Damage, Speed, Inventory.Count, theInventory);
+
+            return thePlayer;
         }
 
         public Player Deserialize(string obj)
         {
-            throw new NotImplementedException();
+            List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
+            Inventory = new List<Items>();
+
+            for (int i = 1; i < properties.Count; i += 2)
+            {
+                switch (properties[i])
+                {
+                    case "NAME":
+                        Name = properties[i + 1];
+                        break;
+                    case "HEALTH":
+                        Health = int.Parse(properties[i + 1]);
+                        break;
+                    case "DAMAGE":
+                        Damage = int.Parse(properties[i + 1]);
+                        break;
+                    case "SPEED":
+                        Speed = int.Parse(properties[i + 1]);
+                        break;
+                    case "INVENTORYITEM":
+                        InventoryItem item = new InventoryItem();
+                        string itemString = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", properties[i], properties[i + 1], properties[i + 2], properties[i + 3], properties[i + 4], properties[i + 5], properties[i + 6], properties[i + 7], properties[i + 8], properties[i + 9], properties[i + 10], properties[i + 11]);
+                        Inventory.Add(item.Deserialize(itemString));
+                        i = i + 10;
+                        break;
+                }
+            }
+
+            return this;
         }
 
     }
