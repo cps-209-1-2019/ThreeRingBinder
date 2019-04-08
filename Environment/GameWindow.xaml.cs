@@ -31,17 +31,12 @@ namespace Binder.Environment
             binderGame.IsCheatOn = cheat;
             binderGame.Difficulty = difficulty;
             InitializeComponent();
-
+            this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
+            BuildWalls();
             building = binderGame.CurBuilding;
-
             //cnvsGame.DataContext = building;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            BuildWalls();
-            //cnvsGame.Children.Remove(btnStart);            
-        }
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
         {
