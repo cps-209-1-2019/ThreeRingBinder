@@ -46,12 +46,15 @@ namespace Binder.Environment
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+            if (binderGame.isRingFound == true)
+                MessageBox.Show("You Found the Ring!");
             foreach (WorldObject wObj in binderGame.Environ)
             {
                 if (wObj is AI)
                 {
                     AI ai = (AI)wObj;
                     ai.Move(binderGame);
+                    
                 }
             }
         }

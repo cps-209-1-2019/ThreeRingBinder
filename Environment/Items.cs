@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Binder;
 
 namespace Binder.Environment
 {
@@ -53,9 +54,12 @@ namespace Binder.Environment
         }
 
         //Provides ability to use the object
-        public void Use()
+        public void Use(Game game)
         {
-            
+            if ((40 * 40) >= (((X - game.ring.X) * (X - game.ring.X)) + ((Y - game.ring.Y) * (Y - game.ring.Y))))
+            {
+                game.isRingFound = true;
+            }
         }
         //Turn the object into a string
         new public string Serialize()

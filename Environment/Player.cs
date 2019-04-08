@@ -16,6 +16,7 @@ namespace Binder.Environment
             Name = name;
             X = 720;
             Y = 450;
+            
         }
         public void Enteract()
         {

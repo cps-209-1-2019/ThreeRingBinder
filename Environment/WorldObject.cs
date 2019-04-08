@@ -39,6 +39,7 @@ namespace Binder.Environment
                 y = value;
                 //Position[1] = y;
                 SetProperty("Y");
+                
             }
         }
 
