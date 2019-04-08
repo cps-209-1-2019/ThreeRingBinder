@@ -15,6 +15,42 @@ namespace Binder.Environment
     //Added public accessibility - Day
     public class Walls: WorldObject, ISerialization<Walls>
     {
+        private int x;
+        private int y;
+
+        public override int X {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                int xtemp = x;
+                x = value;
+
+                int xChanged = x - xtemp;
+                UpdateBlocks(xChanged, 0);
+                SetProperty("X");
+            }
+        }
+        public override int Y
+        {
+            get
+            {
+                return y;
+
+            }
+            set
+            {
+                int yTemp = y;
+                y = value;
+
+                int yChanged = y - yTemp;
+                UpdateBlocks(0, yChanged);
+                SetProperty("Y");
+            }
+        }
+
         private int[] posW;
         public int Width { get; set; }                      //Contains the thickness of the wall
         public int Length { get; set; }                     //The number of blocks the wall will contain              
@@ -96,6 +132,14 @@ namespace Binder.Environment
             }
         }
 
+        void UpdateBlocks(int x, int y)
+        {
+            foreach(Block b in Blocks)
+            {
+                b.X += x;
+                b.Y += y;
+            }
+        }
         public string Serialize()
         {
             throw new NotImplementedException();

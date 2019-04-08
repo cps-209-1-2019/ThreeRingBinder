@@ -8,7 +8,7 @@ namespace Binder.Environment
 {
     public class Player : MovableCharacter, ISerialization<Player>
     {
-        public const int changeNum = 24;
+        
         public string Name { get; set; }
         public List<Items> Inventory { get; set; }
         public Player(string name)
@@ -33,10 +33,6 @@ namespace Binder.Environment
                     {
                         thing.X += changeNum;
                     }
-                    foreach (Walls wall in Building.WallsCol)
-                    {
-                        wall.ChangeBlocks('X', changeNum);
-                    }
                 }
             }
             else if (direction == 'n')
@@ -46,10 +42,6 @@ namespace Binder.Environment
                     foreach (WorldObject thing in game.Environ)
                     {
                         thing.Y += changeNum;
-                    }
-                    foreach (Walls wall in Building.WallsCol)
-                    {
-                        wall.ChangeBlocks('Y', changeNum);
                     }
                 }
             }
@@ -61,10 +53,6 @@ namespace Binder.Environment
                     {
                         thing.X -= changeNum;
                     }
-                    foreach (Walls wall in Building.WallsCol)
-                    {
-                        wall.ChangeBlocks('X', -changeNum);
-                    }
                 }
             }
             else if (direction == 's')
@@ -74,22 +62,11 @@ namespace Binder.Environment
                     foreach (WorldObject thing in game.Environ) {
                         thing.Y = thing.Y - changeNum;
                     }
-                    foreach (Walls wall in Building.WallsCol)
-                    {
-                        wall.ChangeBlocks('Y', -changeNum);
-                    }
                 }
             }
         }
 
-        public bool IsNotWall(int changeInX, int changeInY, Building building)
-        {
-            foreach (Walls wall in Building.WallsCol)
-            if ((wall.X + changeInX) < X && (wall.X + changeInX + wall.Width) > X)
-                if ((wall.Y + changeInY) < Y && (wall.Y + changeInY + wall.Length) > Y)
-                    return false;
-        return true;
-    }
+
 
         public string Serialize()
         {

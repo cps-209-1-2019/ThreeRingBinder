@@ -19,26 +19,49 @@ namespace Binder.Environment
         {
             Random rand = new Random();
             int direc = rand.Next(4);
-            //if ()
-        }
-
-        public void Chase(Player player)
-        {
-            if (player.Position[0] < Position[0])
-                Position[0]--;
-            else if (player.Position[0] > Position[0])
-                Position[0]++;
-            if (player.Position[1] < Position[1])
-                Position[1]--;
-            else if (player.Position[1] > Position[1])
-                Position[1]++;
-        }
-
-        public void Move(Player player)
-        {
-            if ((75 * 75) >= (((Position[0] -  player.Position[0]) * (Position[0] - player.Position[0] )) + ((Position[1] - player.Position[1]) * (Position[1] - player.Position[1]))))
+            if (direc == 0)
             {
-                Chase(player);
+                //west
+                X -= changeNum;
+            }
+            else if (direc == 1)
+            {
+                //east
+                X += changeNum;
+            }
+            else if (direc == 2)
+            {
+                //north
+                Y -= changeNum;
+            }
+            else if (direc == 3)
+            {
+                //south
+                Y += changeNum;
+            }
+        }
+
+        public void Chase(Game game)
+        {
+            if (game.Marcus.X < X)
+                if(IsNotWall((-changeNum / 2), 0, game.CurBuilding))
+                    X -= changeNum / 2;
+            else if (game.Marcus.X > X)
+                if (IsNotWall((changeNum / 2), 0, game.CurBuilding))
+                    X += changeNum / 2;
+            if (game.Marcus.Y < Y)
+                if (IsNotWall((-changeNum / 2), 0, game.CurBuilding))
+                    Y -= changeNum / 2;
+            else if (game.Marcus.Y > Y)
+                if (IsNotWall((changeNum / 2), 0, game.CurBuilding))
+                    Y += changeNum / 2;
+        }
+
+        public void Move(Game game)
+        {
+            if ((75 * 75) >= (((X - game.Marcus.X) * (X - game.Marcus.X )) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
+            {
+                Chase(game);
             }
             else
             {

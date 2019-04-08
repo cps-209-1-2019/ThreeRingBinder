@@ -16,7 +16,6 @@ namespace Binder.Environment
     {
         public int Width { get; set; }
         public int Length{ get; set; }
-        public override int[] Position { get; set; }
 
 
         public Dictionary<string, Items> Collection;
