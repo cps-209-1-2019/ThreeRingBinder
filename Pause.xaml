@@ -15,12 +15,12 @@
     </Window.Background>
     <Canvas>
         <Label Content="Game Paused" FontSize="30" Foreground="DarkSlateBlue" Width="190" Canvas.Left="305" Canvas.Top="40"/>
-        <Button x:Name="btnResume" Width="100" Height="35" Click="BtnResume_Click" Content="Resume" Canvas.Left="350" Canvas.Top="100" Background="DarkSalmon"/>
-        <Button x:Name="btnSave" Width="100" Height="35" Click="BtnSave_Click" Content="Save Game" Canvas.Left="280" Canvas.Top="150" Background="DarkSalmon"/>
+        <Button x:Name="btnResume" Width="100" Height="35" Click="BtnResume_Click" Content="Resume" Canvas.Left="350" Canvas.Top="100" Background="Firebrick"/>
+        <Button x:Name="btnSave" Width="100" Height="35" Click="BtnSave_Click" Content="Save Game" Canvas.Left="280" Canvas.Top="150" Background="#e4c027"/>
         <Label x:Name="lblSaved" Content="" Canvas.Left="550" Canvas.Top="100"/>
-        <Button x:Name="btnSaveQuit" Width="100" Height="35" Click="BtnSaveQuit_Click" Content="Save and Quit" Canvas.Left="420" Canvas.Top="150" Background="DarkSalmon"/>
-        <Button x:Name="btnHelp" Width="100" Height="35" Click="BtnHelp_Click" Content="Help" Canvas.Left="280" Canvas.Top="200" Background="DarkSalmon"/>
-        <Button x:Name="btnAbout" Width="100" Height="35" Click="BtnAbout_Click" Content="About Game" Canvas.Left="420" Canvas.Top="200" Background="DarkSalmon"/>
+        <Button x:Name="btnSaveQuit" Width="100" Height="35" Click="BtnSaveQuit_Click" Content="Save and Quit" Canvas.Left="420" Canvas.Top="150" Background="#e4c027"/>
+        <Button x:Name="btnHelp" Width="100" Height="35" Click="BtnHelp_Click" Content="Help" Canvas.Left="280" Canvas.Top="200" Background="#e4c027"/>
+        <Button x:Name="btnAbout" Width="100" Height="35" Click="BtnAbout_Click" Content="About Game" Canvas.Left="420" Canvas.Top="200" Background="#e4c027"/>
         <Label x:Name="lblRiddle" Width="200" Height="100" Canvas.Left="300" Canvas.Top="270"/>
     </Canvas>
 </Window>

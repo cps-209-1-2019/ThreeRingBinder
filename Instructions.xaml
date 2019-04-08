@@ -32,6 +32,6 @@
             
             To learn what buttons to use, check the help screen below.           
         </TextBlock>
-        <Button x:Name="btnHelp" Width="100" Height="35" Click="BtnHelp_Click" Content="Help" Canvas.Left="350" Canvas.Top="280" Background="DarkSalmon"/>
+        <Button x:Name="btnHelp" Width="100" Height="35" Click="BtnHelp_Click" Content="Help" Canvas.Left="350" Canvas.Top="280" Background="#e4c027"/>
     </Canvas>
 </Window>
