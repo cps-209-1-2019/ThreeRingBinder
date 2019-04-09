@@ -27,7 +27,7 @@ After solving the riddle, move to the correct location and use the correct objec
 
 ## Recording
 
-![]()
+![Team 1: Alpha](https://youtu.be/6rzuHXgbI7w)
 
 ## Expenses
 
@@ -35,5 +35,5 @@ After solving the riddle, move to the correct location and use the correct objec
 |---|---|
 | Day | 25.5 |
 | Dulcio | 29 |
-| Shipe | 27 |
+| Shipe | 28 |
 | Tapp | 12.75 |
