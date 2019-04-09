@@ -127,19 +127,18 @@ namespace Binder.Environment
             {
                 Source = new BitmapImage(new Uri("/Sprites/PsiZetaFront.png", UriKind.Relative))
             };
-            img.Width = 30;
             Label block = new Label()
             {
                 Content = img
             };
 
             AI ai = new AI(10, 300000, 20);
-            
-            ai.X = 550;
+            ai.X = 750;
             ai.Y = 400;
             game.Environ.Add(ai);
             block.DataContext = ai;
-
+            block.Height = 80;
+            block.Width = 40;
             block.SetBinding(Canvas.LeftProperty, "X");
             block.SetBinding(Canvas.TopProperty, "Y");
 
