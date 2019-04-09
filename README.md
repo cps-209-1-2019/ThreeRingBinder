@@ -21,6 +21,6 @@ Use the arrow keys to move around.
 | Developer | Hours |
 |---|---|
 | Day | 25.5 |
-| Dulcio | |
+| Dulcio | 29 |
 | Shipe | |
 | Tapp | |
