@@ -16,7 +16,7 @@ namespace Binder
         {
             Game game = new Game();
 
-            game.Load("C:\\Users\\zdd73\\OneDrive - Bob Jones University\\Freshman\\Spring\\CpS 209\\Project\\ThreeRingBinder\\LoadTest.txt");
+            game.Load(System.IO.Path.Combine(TestContext.CurrentContext.TestDirectory, "LoadTest.txt"));
 
             Assert.IsTrue(game.HighScore == 1500);
             Assert.IsTrue(game.Composure == 3);
@@ -31,8 +31,8 @@ namespace Binder
             Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Name == "BADGE");
             Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Image == "badge.png");
             Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Found == true);
-            Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Position[0] == 40);
-            Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Position[1] == 50);
+            Assert.IsTrue(game.CurBuilding.Collection["BADGE"].X == 40);
+            Assert.IsTrue(game.CurBuilding.Collection["BADGE"].Y == 50);
             Assert.IsTrue(game.CurBuilding.Collection["HAMMER"].Name == "HAMMER");
             Assert.IsTrue(game.CurBuilding.Collection["BOOK"].Name == "BOOK");
 
@@ -43,8 +43,8 @@ namespace Binder
             Assert.IsTrue(game.Marcus.Inventory[0].Name == "BADGE");
             Assert.IsTrue(game.Marcus.Inventory[0].Image == "badge.png");
             Assert.IsTrue(game.Marcus.Inventory[0].Found == true);
-            Assert.IsTrue(game.Marcus.Inventory[0].Position[0] == 40);
-            Assert.IsTrue(game.Marcus.Inventory[0].Position[1] == 50);
+            Assert.IsTrue(game.Marcus.Inventory[0].X == 40);
+            Assert.IsTrue(game.Marcus.Inventory[0].Y == 50);
             Assert.IsTrue(game.Marcus.Inventory[1].Name == "BOOK");
 
 
@@ -58,16 +58,18 @@ namespace Binder
             game.CurBuilding.Collection.Add("PIPE", new Environment.Items() { Name = "PIPE", Image = "pipe.png", Position = new int[] { 55, 80 }, Found = false});
             game.Marcus = new Environment.Player("MARCUS"){ Health = 3, Speed = 30, Damage = 2 };
 
-            game.Save("C:\\Users\\zdd73\\OneDrive - Bob Jones University\\Freshman\\Spring\\CpS 209\\Project\\ThreeRingBinder\\SaveTest.txt");
+
+            game.Save(System.IO.Path.Combine(TestContext.CurrentContext.TestDirectory, "SaveTest.txt"));
 
             Game otherGame = new Game();
 
-            otherGame.Load("C:\\Users\\zdd73\\OneDrive - Bob Jones University\\Freshman\\Spring\\CpS 209\\Project\\ThreeRingBinder\\SaveTest.txt");
+            otherGame.Load(System.IO.Path.Combine(TestContext.CurrentContext.TestDirectory, "SaveTest.txt"));
 
             Assert.IsTrue(otherGame.HighScore == 1800);
             Assert.IsTrue(otherGame.Composure == 3);
             Assert.IsTrue(otherGame.CurrScore == 330);
             Assert.IsTrue(otherGame.Time == 450);
+            Assert.IsTrue(otherGame.IsCheatOn == false);
         }
     }
 }
