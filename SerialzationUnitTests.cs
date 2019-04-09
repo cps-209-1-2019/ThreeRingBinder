@@ -58,7 +58,6 @@ namespace Binder
             game.CurBuilding.Collection.Add("PIPE", new Environment.Items() { Name = "PIPE", Image = "pipe.png", Position = new int[] { 55, 80 }, Found = false});
             game.Marcus = new Environment.Player("MARCUS"){ Health = 3, Speed = 30, Damage = 2 };
 
-
             game.Save(System.IO.Path.Combine(TestContext.CurrentContext.TestDirectory, "SaveTest.txt"));
 
             Game otherGame = new Game(360);
