@@ -1,18 +1,18 @@
 # Legend of the Three Ring Binder
 Welcome to the _Legend of the Three Ring Binder_ repository.
 
-##Instructions
+## Instructions
 Use the arrow keys to move around. 
 
-##Work Completed
+## Work Completed
 
 
 
-##Known Issues
+## Known Issues
 
 
 
-##Recording
+## Recording
 
 ![]()
 
