@@ -16,11 +16,11 @@ Use the arrow keys to move around.
 
 ![]()
 
-##Expenses
+## Expenses
 
 | Developer | Hours |
 |---|---|
 | Day | 25.5 |
 | Dulcio | 29 |
-| Shipe | |
-| Tapp | |
+| Shipe | 27 |
+| Tapp | 12.75 |
