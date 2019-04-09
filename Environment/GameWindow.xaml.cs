@@ -125,15 +125,17 @@ namespace Binder.Environment
         {
             Image img = new Image()
             {
-                Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
+                Source = new BitmapImage(new Uri("/Sprites/PsiZetaFront.png", UriKind.Relative))
             };
+            img.Width = 30;
             Label block = new Label()
             {
                 Content = img
             };
 
             AI ai = new AI(10, 300000, 20);
-            ai.X = 700;
+            
+            ai.X = 550;
             ai.Y = 400;
             game.Environ.Add(ai);
             block.DataContext = ai;
