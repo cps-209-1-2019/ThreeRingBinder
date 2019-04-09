@@ -13,8 +13,12 @@ Once you discover the correct object, a riddle will appear, telling you where to
 After solving the riddle, move to the correct location and use the correct object there.
 
 ## Work Completed
-
-
+ * Basic game map implemented
+ * Basic AI movements implemented
+ * Character movement implemented
+ * Basic serialization finished
+ * All main auxilliary screens functional
+ * Main artwork completed
 
 ## Known Issues
 
