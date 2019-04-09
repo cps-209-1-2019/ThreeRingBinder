@@ -5,6 +5,7 @@ Welcome to the _Legend of the Three Ring Binder_ repository.
 Use the arrow keys to move around. 
 
 Instructions for the final game:
+
 Your Goal: Find all three binder rings and assemble the legendary binder.
 
 Roam the building in search of an object that will allow you to discover the next ring.
