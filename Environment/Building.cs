@@ -87,11 +87,18 @@ namespace Binder.Environment
             
             for(int i = 683; i < 5464; i+= 683)
             {
-                int[] coords = new int[4] { -2732 + i, -1250, 1000, 24};
-                
-                if(i + 683 > 5464)
+                int[] coords = null;
+                if (full == false)
                 {
-                    coords = new int[4] { -2732 + i, 250, 1000, 24};
+                    coords = new int[4] { -2732 + i, -1250, 1000, 24 };
+                }
+                if(full == true)
+                {
+                    coords = new int[4] { -2732 + i, 250, 1000, 24 };
+                }
+                
+                if(i + 683 >= 5464)
+                {                    
                     if(full != true)
                     {
                         i = 683;
