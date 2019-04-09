@@ -31,18 +31,18 @@ namespace Binder.Environment
                 if (IsNotWall((changeNum / 2), 0, building))
                     X += changeNum / 2;
             }
-            //else if (direc == 2)
-            //{
-            //    //north
-            //    if (IsNotWall(0, (-changeNum / 2), building))
-            //        Y -= changeNum / 2;
-            //}
-            //else if (direc == 3)
-            //{
-            //    //south
-            //    if (IsNotWall(0, (changeNum / 2), building))
-            //        Y += changeNum / 2;
-            //}
+            else if (direc == 2)
+            {
+                //north
+                if (IsNotWall(0, (-changeNum / 2), building))
+                    Y -= changeNum / 2;
+            }
+            else if (direc == 3)
+            {
+                //south
+                if (IsNotWall(0, (changeNum / 2), building))
+                    Y += changeNum / 2;
+            }
         }
 
         public void Chase(Game game)

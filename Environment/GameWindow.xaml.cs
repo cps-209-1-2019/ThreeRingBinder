@@ -125,7 +125,7 @@ namespace Binder.Environment
         {
             Image img = new Image()
             {
-                Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
+                Source = new BitmapImage(new Uri("/Sprites/PsiZetaFront.png", UriKind.Relative))
             };
             Label block = new Label()
             {
@@ -133,11 +133,12 @@ namespace Binder.Environment
             };
 
             AI ai = new AI(10, 300000, 20);
-            ai.X = 700;
+            ai.X = 750;
             ai.Y = 400;
             game.Environ.Add(ai);
             block.DataContext = ai;
-
+            block.Height = 80;
+            block.Width = 40;
             block.SetBinding(Canvas.LeftProperty, "X");
             block.SetBinding(Canvas.TopProperty, "Y");
 
