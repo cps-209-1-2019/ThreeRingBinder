@@ -32,9 +32,9 @@ After solving the riddle, move to the correct location and use the correct objec
 
 ## Expenses
 
-| Developer | Hours Used | Hours Remaining |
-|---|---|---|
-| Day | 25.5 | 34.5|
-| Dulcio | 29 | 31 |
-| Shipe | 28 | 32|
-| Tapp | 14.75 | 45.15 |
+| Developer | Hours Used | Hours Remaining | Journal Link
+|---|---|---|---|
+| Day | 25.5 | 34.5| [Day Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Day-Journal)
+| Dulcio | 29 | 31 | [Dulcio Log](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Dulcio-Log)
+| Shipe | 28 | 32| [Shipe Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Shipe-Journal)
+| Tapp | 14.75 | 45.15 | [Tapp Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Tapp-Journal)
