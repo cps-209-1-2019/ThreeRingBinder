@@ -77,6 +77,21 @@ namespace Binder.Environment
                                 }
                             }
                         }
+
+                        Rectangle rectangle = null;
+                        if (binderGame.currentItem == 1)
+                            rectangle = rectItemOne;
+                        else if (binderGame.currentItem == 2)
+                            rectangle = rectItemTwo;
+                        else if (binderGame.currentItem == 3)
+                            rectangle = rectItemThree;
+                        else if (binderGame.currentItem == 4)
+                            rectangle = rectItemFour;
+                        ImageBrush img = new ImageBrush()
+                        {
+                            ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))
+                        };
+                        rectangle.Fill = img;
                         Game.Environ.Remove(item);
                         break;
                     }

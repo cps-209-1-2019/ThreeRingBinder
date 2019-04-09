@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,8 @@ namespace Binder.Environment
         //Sets found to true to say that the player has picked up item.
         public void PickUp()
         {
+            string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
+            Image = dir + "/Sprites/schaubJacket.png";
             Game.itemsHeld.Add(this);
             if (Game.itemsHeld.Count > 4)
             {
