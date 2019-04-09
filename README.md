@@ -21,7 +21,8 @@ After solving the riddle, move to the correct location and use the correct objec
  * Main artwork completed
 
 ## Known Issues
-
+ * The AI player movements need to be perfected. It can sometimes move through walls
+ * The objects that can be used by the player have yet to be implemented
 
 
 ## Recording
