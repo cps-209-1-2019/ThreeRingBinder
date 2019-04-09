@@ -31,9 +31,9 @@ After solving the riddle, move to the correct location and use the correct objec
 
 ## Expenses
 
-| Developer | Hours |
-|---|---|
-| Day | 25.5 |
-| Dulcio | 29 |
-| Shipe | 28 |
-| Tapp | 12.75 |
+| Developer | Hours Used | Hours Remaining |
+|---|---|---|
+| Day | 25.5 | 34.5|
+| Dulcio | 29 | 31 |
+| Shipe | 28 | 32|
+| Tapp | 14.75 | 45.15 |
