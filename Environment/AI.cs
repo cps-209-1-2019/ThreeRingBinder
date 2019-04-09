@@ -71,13 +71,16 @@ namespace Binder.Environment
 
         public void Move(Game game)
         {
-            if ((200 * 200) >= (((X - game.Marcus.X) * (X - game.Marcus.X )) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
+            if (Game.isPaused != true)
             {
-                Chase(game);
-            }
-            else
-            {
-                Patrol(game.CurBuilding);
+                if ((200 * 200) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
+                {
+                    Chase(game);
+                }
+                else
+                {
+                    Patrol(game.CurBuilding);
+                }
             }
         }
 
