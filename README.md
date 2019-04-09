@@ -27,7 +27,7 @@ After solving the riddle, move to the correct location and use the correct objec
 
 ## Recording
 
-![Team 1: Alpha](https://youtu.be/6rzuHXgbI7w)
+[Team 1: Alpha](https://youtu.be/6rzuHXgbI7w)
 
 ## Expenses
 
