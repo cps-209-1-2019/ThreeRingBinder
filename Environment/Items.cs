@@ -32,8 +32,6 @@ namespace Binder.Environment
             return Image;
         }
 
-
-
         public string Serialize()
         {
             string theItem = "";
@@ -50,6 +48,11 @@ namespace Binder.Environment
         //Sets found to true to say that the player has picked up item.
         public void PickUp()
         {
+            Game.itemsHeld.Add(this);
+            if (Game.itemsHeld.Count > 4)
+            {
+                Game.itemsHeld.RemoveAt(4);
+            }
             Found = true;
         }
 
@@ -75,7 +78,7 @@ namespace Binder.Environment
         public InventoryItem Deserialize(string obj)
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
-
+            
             Position = new int[2];
 
             for(int i = 0; i < properties.Count; i++)
@@ -130,13 +133,6 @@ namespace Binder.Environment
     //Defines the methods and actions for the Binder class
     public class BinderRing : InventoryItem, ISerialization<BinderRing>
     {
-
-        //Reveals the Binder Image;
-        public void Reveal(InventoryItem item)
-        {
-
-        }
-        
         //Take an object and turn it into a string
         new public string Serialize()
         {
