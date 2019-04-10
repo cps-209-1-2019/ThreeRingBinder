@@ -28,7 +28,7 @@ namespace Binder
         public BinderRing ring;                      //Current binder ring
         public bool isRingFound;                     //Determines if the player has found the ring
         public static List<InventoryItem> itemsHeld = new List<InventoryItem>();   //Items currently held by the player
-        public int currentItem = 1;                          //Shows item that currently needs to be used
+        public int currentItem = 0;                          //Shows item that currently needs to be used
         public int PsiZetaShamed = 0;
         public double timeLeft;
         public Game(double startTime)
@@ -109,8 +109,9 @@ namespace Binder
         public void MakeItems()
         {
             InventoryItem item = new InventoryItem();
-            item.X = 400;
-            item.Y = 200;
+            item.X = 700;
+            item.Y = 450;
+            item.isTheOne = true;
             Environ.Add(item);
             InventoryItem itemTwo = new InventoryItem();
             itemTwo.X = 700;

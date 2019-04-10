@@ -25,6 +25,8 @@ namespace Binder.Environment
         Game binderGame;
         Building building;
         DispatcherTimer timer;
+        bool isRingShown = false;
+        List<Rectangle> rectangleList = new List<Rectangle>();
 
         public GameWindow(bool cheat, int difficulty, double startTime)
         {
@@ -48,10 +50,13 @@ namespace Binder.Environment
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (binderGame.isRingFound == true)
+            if ((binderGame.isRingFound == true) && (isRingShown == false))
             {
                 MessageBox.Show("You Found the Ring!");
-                SetObjectBinding("/Sprites/bindrRingSilver.png", binderGame.ring);
+                Label label = SetObjectBinding("/Sprites/bindrRingSilver.png", binderGame.ring);
+                label.Width = 30;
+                label.Height = 30;
+                isRingShown = true;
             }
             foreach (WorldObject wObj in Game.Environ)
             {
@@ -77,22 +82,29 @@ namespace Binder.Environment
                                 }
                             }
                         }
-
                         Rectangle rectangle = null;
-                        if (binderGame.currentItem == 1)
-                            rectangle = rectItemOne;
-                        else if (binderGame.currentItem == 2)
-                            rectangle = rectItemTwo;
-                        else if (binderGame.currentItem == 3)
-                            rectangle = rectItemThree;
-                        else if (binderGame.currentItem == 4)
-                            rectangle = rectItemFour;
-                        ImageBrush img = new ImageBrush()
+                        foreach (InventoryItem thing in Game.itemsHeld)
                         {
-                            ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))
-                        };
-                        rectangle.Fill = img;
-                        Game.Environ.Remove(item);
+                            if (thing == Game.itemsHeld[0])
+                                rectangle = rectItemOne;
+                            if (Game.itemsHeld.Count() >= 2) {
+                                if (thing == Game.itemsHeld[1])
+                                    rectangle = rectItemTwo;
+                                if (Game.itemsHeld.Count() >= 3)
+                                {
+                                    if (thing == Game.itemsHeld[2])
+                                        rectangle = rectItemThree;
+                                    if (Game.itemsHeld.Count() >= 4)
+                                    {
+                                        if (thing == Game.itemsHeld[3])
+                                            rectangle = rectItemFour;
+                                    }
+                                }
+                            }
+                            rectangleList = new List<Rectangle>();
+                            rectangleList.Add(rectangle);
+                            FillRectangle(rectangle, thing);
+                        }
                         break;
                     }
                         
@@ -100,8 +112,27 @@ namespace Binder.Environment
             }
         }
 
+        private void FillRectangle(Rectangle rectangle, InventoryItem item)
+        {
+            ImageBrush img = new ImageBrush()
+            {
+                ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))
+            };
+            if ((Game.itemsHeld.Count() >= binderGame.currentItem) && (item == Game.itemsHeld[binderGame.currentItem]))
+            {
+                rectangle.Stroke = Brushes.Chartreuse;
+            }
+            else
+            {
+                rectangle.Stroke = Brushes.DarkBlue;
+            }
+            rectangle.Fill = img;
+            Game.Environ.Remove(item);
+        }
+
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
         {
+            int oldCurrentItem = 0;
             if (e.Key == Key.Up)
             {
                 binderGame.Marcus.Move('n', binderGame);
@@ -128,7 +159,7 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.Z)
             {
-                if (Game.itemsHeld[0] != null)
+                if (Game.itemsHeld.Count() >= binderGame.currentItem)
                     Game.itemsHeld[binderGame.currentItem].Use(binderGame);
             }
             else if (e.Key == Key.Escape)
@@ -136,6 +167,36 @@ namespace Binder.Environment
                 Game.isPaused = true;
                 Pause pauseWindow = new Pause(binderGame);
                 pauseWindow.Show();
+            }
+            else if (e.Key == Key.D1)
+            {
+                oldCurrentItem = binderGame.currentItem;
+                binderGame.currentItem = 0;
+                FillRectangle(rectItemOne, Game.itemsHeld[binderGame.currentItem]);
+                if (rectangleList.Count() > oldCurrentItem)
+                    FillRectangle(rectangleList[oldCurrentItem], Game.itemsHeld[oldCurrentItem]);
+            }
+            else if (e.Key == Key.D2)
+            {
+                oldCurrentItem = binderGame.currentItem;
+                binderGame.currentItem = 1;
+                FillRectangle(rectItemTwo, Game.itemsHeld[binderGame.currentItem]);
+                if (rectangleList.Count() > oldCurrentItem)
+                    FillRectangle(rectangleList[oldCurrentItem], Game.itemsHeld[oldCurrentItem]);
+            }
+            else if (e.Key == Key.D3)
+            {
+                binderGame.currentItem = 2;
+                FillRectangle(rectItemThree, Game.itemsHeld[binderGame.currentItem]);
+                if (rectangleList.Count() > oldCurrentItem)
+                    FillRectangle(rectangleList[oldCurrentItem], Game.itemsHeld[oldCurrentItem]);
+            }
+            else if (e.Key == Key.D4)
+            {
+                binderGame.currentItem = 3;
+                FillRectangle(rectItemFour, Game.itemsHeld[binderGame.currentItem]);
+                if (rectangleList.Count() > oldCurrentItem)
+                    FillRectangle(rectangleList[oldCurrentItem], Game.itemsHeld[oldCurrentItem]);
             }
         }
 

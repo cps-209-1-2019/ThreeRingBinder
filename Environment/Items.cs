@@ -46,6 +46,7 @@ namespace Binder.Environment
 
     public class InventoryItem: Items, ISerialization<InventoryItem>
     {
+        public bool isTheOne = false;
         //Sets found to true to say that the player has picked up item.
         public void PickUp()
         {
@@ -62,9 +63,10 @@ namespace Binder.Environment
         //Provides ability to use the object
         public void Use(Game game)
         {
-            if ((40 * 40) >= (((X - game.ring.X) * (X - game.ring.X)) + ((Y - game.ring.Y) * (Y - game.ring.Y))))
+            if ((200 * 200) >= (((X - game.ring.X) * (X - game.ring.X)) + ((Y - game.ring.Y) * (Y - game.ring.Y))))
             {
-                game.isRingFound = true;
+                //if (isTheOne == true)
+                    game.isRingFound = true;
             }
         }
         //Turn the object into a string
