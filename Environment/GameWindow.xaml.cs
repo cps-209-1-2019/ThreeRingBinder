@@ -26,7 +26,7 @@ namespace Binder.Environment
         Building building;
         DispatcherTimer timer;
         bool isRingShown = false;
-        List<Rectangle> rectangleList = new List<Rectangle>();
+        //List<Rectangle> rectangleList = new List<Rectangle>();
 
         public GameWindow(bool cheat, int difficulty, double startTime)
         {
@@ -82,32 +82,16 @@ namespace Binder.Environment
                                 }
                             }
                         }
-                        Rectangle rectangle = null;
-                        foreach (InventoryItem thing in Game.itemsHeld)
-                        {
-                            if (thing == Game.itemsHeld[0])
-                                rectangle = rectItemOne;
-                            if (Game.itemsHeld.Count() >= 2) {
-                                if (thing == Game.itemsHeld[1])
-                                    rectangle = rectItemTwo;
-                                if (Game.itemsHeld.Count() >= 3)
-                                {
-                                    if (thing == Game.itemsHeld[2])
-                                        rectangle = rectItemThree;
-                                    if (Game.itemsHeld.Count() >= 4)
-                                    {
-                                        if (thing == Game.itemsHeld[3])
-                                            rectangle = rectItemFour;
-                                    }
-                                }
-                            }
-                            rectangleList = new List<Rectangle>();
-                            rectangleList.Add(rectangle);
-                            FillRectangle(rectangle, thing);
-                        }
-                        break;
+                    Rectangle rectangle = null;
+                    foreach (InventoryItem thing in Game.itemsHeld)
+                    {
+                        rectangle = GetRectangle(thing);
+                        //rectangleList = new List<Rectangle>();
+                        //rectangleList.Add(rectangle);
+                        FillRectangle(rectangle, thing);
                     }
-                        
+                    break;
+                    }                       
                 }
             }
         }
@@ -118,7 +102,7 @@ namespace Binder.Environment
             {
                 ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))
             };
-            if ((Game.itemsHeld.Count() >= binderGame.currentItem) && (item == Game.itemsHeld[binderGame.currentItem]))
+            if ((Game.itemsHeld.Count() > binderGame.currentItem) && (item == Game.itemsHeld[binderGame.currentItem]))
             {
                 rectangle.Stroke = Brushes.Chartreuse;
             }
@@ -132,7 +116,6 @@ namespace Binder.Environment
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
         {
-            int oldCurrentItem = 0;
             if (e.Key == Key.Up)
             {
                 binderGame.Marcus.Move('n', binderGame);
@@ -170,33 +153,31 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.D1)
             {
-                oldCurrentItem = binderGame.currentItem;
-                binderGame.currentItem = 0;
-                FillRectangle(rectItemOne, Game.itemsHeld[binderGame.currentItem]);
-                if (rectangleList.Count() > oldCurrentItem)
-                    FillRectangle(rectangleList[oldCurrentItem], Game.itemsHeld[oldCurrentItem]);
+                ResetRectangles(rectItemOne, 0);
             }
             else if (e.Key == Key.D2)
             {
-                oldCurrentItem = binderGame.currentItem;
-                binderGame.currentItem = 1;
-                FillRectangle(rectItemTwo, Game.itemsHeld[binderGame.currentItem]);
-                if (rectangleList.Count() > oldCurrentItem)
-                    FillRectangle(rectangleList[oldCurrentItem], Game.itemsHeld[oldCurrentItem]);
+                ResetRectangles(rectItemTwo, 1);
             }
             else if (e.Key == Key.D3)
             {
-                binderGame.currentItem = 2;
-                FillRectangle(rectItemThree, Game.itemsHeld[binderGame.currentItem]);
-                if (rectangleList.Count() > oldCurrentItem)
-                    FillRectangle(rectangleList[oldCurrentItem], Game.itemsHeld[oldCurrentItem]);
+                ResetRectangles(rectItemThree, 2);
             }
             else if (e.Key == Key.D4)
             {
-                binderGame.currentItem = 3;
-                FillRectangle(rectItemFour, Game.itemsHeld[binderGame.currentItem]);
-                if (rectangleList.Count() > oldCurrentItem)
-                    FillRectangle(rectangleList[oldCurrentItem], Game.itemsHeld[oldCurrentItem]);
+                ResetRectangles(rectItemFour, 3);
+            }
+        }
+
+        public void ResetRectangles(Rectangle firstRectangle, int num)
+        {
+            int oldCurrentItem = binderGame.currentItem;
+            binderGame.currentItem = num;
+            FillRectangle(firstRectangle, Game.itemsHeld[num]);
+            if (Game.itemsHeld.Count() > oldCurrentItem)
+            {
+                Rectangle rectangle = GetRectangle(Game.itemsHeld[oldCurrentItem]);
+                FillRectangle(rectangle, Game.itemsHeld[oldCurrentItem]);
             }
         }
 
@@ -255,6 +236,28 @@ namespace Binder.Environment
 
             cnvsGame.Children.Add(block);
             return block;
+        }
+        public Rectangle GetRectangle(InventoryItem thing)
+        {
+            Rectangle rectangle = null;
+            if (thing == Game.itemsHeld[0])
+                rectangle = rectItemOne;
+            else if (Game.itemsHeld.Count() >= 2)
+            {
+                if (thing == Game.itemsHeld[1])
+                    rectangle = rectItemTwo;
+                else if (Game.itemsHeld.Count() >= 3)
+                {
+                    if (thing == Game.itemsHeld[2])
+                        rectangle = rectItemThree;
+                    else if (Game.itemsHeld.Count() >= 4)
+                    {
+                        if (thing == Game.itemsHeld[3])
+                            rectangle = rectItemFour;
+                    }
+                }
+            }
+            return rectangle;
         }
     }
 }
