@@ -193,6 +193,14 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Sprites\PsiZetaBack1.png" />
+    <Resource Include="Sprites\PsiZetaBack2.png" />
+    <Resource Include="Sprites\PsiZetaFront1.png" />
+    <Resource Include="Sprites\PsiZetaFront2.png" />
+    <Resource Include="Sprites\PsiZetaLeft1.png" />
+    <Resource Include="Sprites\PsiZetaLeft2.png" />
+    <Resource Include="Sprites\PsiZetaRight1.png" />
+    <Resource Include="Sprites\PsiZetaRight2.png" />
     <Resource Include="Sprites\MarcusLeft1.png" />
     <Resource Include="Sprites\MarcusLeft2.png" />
     <Resource Include="Sprites\MarcusRight1.png" />
