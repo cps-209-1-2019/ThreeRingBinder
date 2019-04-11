@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,8 +33,6 @@ namespace Binder.Environment
             return Image;
         }
 
-
-
         public string Serialize()
         {
             string theItem = "";
@@ -47,18 +46,27 @@ namespace Binder.Environment
 
     public class InventoryItem: Items, ISerialization<InventoryItem>
     {
+        public bool isTheOne = false;
         //Sets found to true to say that the player has picked up item.
         public void PickUp()
         {
+            string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
+            Image = dir + "/Sprites/schaubJacket.png";
+            Game.itemsHeld.Add(this);
+            if (Game.itemsHeld.Count > 4)
+            {
+                Game.itemsHeld.RemoveAt(4);
+            }
             Found = true;
         }
 
         //Provides ability to use the object
         public void Use(Game game)
         {
-            if ((40 * 40) >= (((X - game.ring.X) * (X - game.ring.X)) + ((Y - game.ring.Y) * (Y - game.ring.Y))))
+            if ((200 * 200) >= (((X - game.ring.X) * (X - game.ring.X)) + ((Y - game.ring.Y) * (Y - game.ring.Y))))
             {
-                game.isRingFound = true;
+                if (isTheOne == true)
+                    game.isRingFound = true;
             }
         }
         //Turn the object into a string
@@ -75,7 +83,7 @@ namespace Binder.Environment
         public InventoryItem Deserialize(string obj)
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
-
+            
             Position = new int[2];
 
             for(int i = 0; i < properties.Count; i++)
@@ -130,13 +138,6 @@ namespace Binder.Environment
     //Defines the methods and actions for the Binder class
     public class BinderRing : InventoryItem, ISerialization<BinderRing>
     {
-
-        //Reveals the Binder Image;
-        public void Reveal(InventoryItem item)
-        {
-
-        }
-        
         //Take an object and turn it into a string
         new public string Serialize()
         {

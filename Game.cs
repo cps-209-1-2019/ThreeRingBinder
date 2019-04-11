@@ -22,14 +22,18 @@ namespace Binder
         public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public int Difficulty { get; set; }         //Holds difficulty level
-        public List<WorldObject> Environ { get; set; }
+        public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
         public static bool isPaused { get; set; }    //Determines if the game is paused
         public BinderRing ring;                      //Current binder ring
         public bool isRingFound;                     //Determines if the player has found the ring
-
-        public Game()
+        public static List<InventoryItem> itemsHeld = new List<InventoryItem>();   //Items currently held by the player
+        public int currentItem = 0;                          //Shows item that currently needs to be used
+        public int PsiZetaShamed = 0;
+        public double timeLeft;
+        public Game(double startTime)
         {
+            timeLeft = startTime;
             Marcus = new Player("Marcus");
             Environ = new List<WorldObject>();
             isPaused = false;
@@ -38,15 +42,17 @@ namespace Binder
             CurBuilding.BuildWalls(CurBuilding.FAPlans);
             Environ.AddRange(Building.WallsCol);
             StartPoint = new int[] { 0, 0 };
+
+            StartPoint = new int[2];
+            ring = new BinderRing();
+            ring.X = 700;
+            ring.Y = 450;
+            MakeItems();
         }
 
         //Creaated Load method with initial loading algorithm
         public void Load(string filename)
         {
-            StartPoint = new int[2];
-            ring = new BinderRing();
-            ring.X = 200;
-            ring.Y = 500;
 
             using (StreamReader rd = new StreamReader(filename))
             {
@@ -99,6 +105,24 @@ namespace Binder
             }
         }
 
+        //Instantiate InventoryItems
+        public void MakeItems()
+        {
+            InventoryItem item = new InventoryItem();
+            item.X = 700;
+            item.Y = 450;
+            item.isTheOne = true;
+            Environ.Add(item);
+            InventoryItem itemTwo = new InventoryItem();
+            itemTwo.X = 700;
+            itemTwo.Y = 900;
+            Environ.Add(itemTwo);
+            InventoryItem itemThree = new InventoryItem();
+            itemThree.X = 360;
+            itemThree.Y = 100;
+            Environ.Add(itemThree);
+        }
+
         //Created Save method with initial saving algorithm
         public void Save(string filename)
         {
@@ -117,6 +141,10 @@ namespace Binder
                 wr.WriteLine("MARCUS!"+ Marcus.Serialize());
                 wr.WriteLine("END");
             }
+        }
+        public int CalculateScores()
+        {
+            return Convert.ToInt32((PsiZetaShamed * 200) + (timeLeft * 15));
         }
     }
 }

@@ -20,48 +20,67 @@ namespace Binder.Environment
         }
         public void Enteract()
         {
-
+            InventoryItem itemToPickUp = null;
+            foreach (WorldObject thing in Game.Environ) {
+                int distanceNum = 100;
+                if (thing is InventoryItem)
+                {
+                    InventoryItem item = (InventoryItem)thing;
+                    if ((distanceNum * distanceNum) >= (((X - item.X) * (X - item.X)) + ((Y - item.Y) * (Y - item.Y))))
+                    {
+                        itemToPickUp = item;
+                        distanceNum = ((X - item.X) * (X - item.X)) + ((Y - item.Y) * (Y - item.Y));
+                    }
+                }
+            }
+            if (itemToPickUp != null)
+            {
+                itemToPickUp.PickUp();
+            }
         }
 
         public void Move(char direction, Game game) //Removed override keyword for buildability
         {
-            
-            if (direction == 'w')
+            if (Game.isPaused != true)
             {
-                if (IsNotWall(changeNum, 0, game.CurBuilding))
+                if (direction == 'w')
                 {
-                    foreach (WorldObject thing in game.Environ)
+                    if (IsNotWall(changeNum, 0, game.CurBuilding))
                     {
-                        thing.X += changeNum;
+                        foreach (WorldObject thing in Game.Environ)
+                        {
+                            thing.X += changeNum;
+                        }
                     }
                 }
-            }
-            else if (direction == 'n')
-            {
-                if (IsNotWall(0, changeNum, game.CurBuilding))
+                else if (direction == 'n')
                 {
-                    foreach (WorldObject thing in game.Environ)
+                    if (IsNotWall(0, changeNum, game.CurBuilding))
                     {
-                        thing.Y += changeNum;
+                        foreach (WorldObject thing in Game.Environ)
+                        {
+                            thing.Y += changeNum;
+                        }
                     }
                 }
-            }
-            else if (direction == 'e')
-            {
-                if (IsNotWall(changeNum * -1, 0, game.CurBuilding))
+                else if (direction == 'e')
                 {
-                    foreach (WorldObject thing in game.Environ)
+                    if (IsNotWall(changeNum * -1, 0, game.CurBuilding))
                     {
-                        thing.X -= changeNum;
+                        foreach (WorldObject thing in Game.Environ)
+                        {
+                            thing.X -= changeNum;
+                        }
                     }
                 }
-            }
-            else if (direction == 's')
-            {
-                if (IsNotWall(0, changeNum * -1, game.CurBuilding))
+                else if (direction == 's')
                 {
-                    foreach (WorldObject thing in game.Environ) {
-                        thing.Y = thing.Y - changeNum;
+                    if (IsNotWall(0, changeNum * -1, game.CurBuilding))
+                    {
+                        foreach (WorldObject thing in Game.Environ)
+                        {
+                            thing.Y = thing.Y - changeNum;
+                        }
                     }
                 }
             }
