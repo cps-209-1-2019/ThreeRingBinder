@@ -11,7 +11,8 @@
         >
     <Canvas x:Name="cnvsGame">
         <Image x:Name="imgfl" Source="floor.png" Canvas.Left="-2726" Canvas.Top="-1242"/>
-        <Image x:Name="imgBl" Width="40" Height="80" Source="../Sprites/MarcusFront.png" Canvas.Top="450" Canvas.Left="720" RenderTransformOrigin="-14.25,-0.625"/>
+        <Image x:Name="imgBl" Width="40" Height="80" Source="../Sprites/MarcusFront.png" Canvas.Top="459" Canvas.Left="703" RenderTransformOrigin="-14.25,-0.625"/>
+        <TextBlock Text="Level 1" FontFamily="French Script MT" Foreground="Yellow" FontSize="50" HorizontalAlignment="Center" Canvas.Top="50"/>
     </Canvas>
 
 </Window>

@@ -102,7 +102,10 @@ namespace Binder.Environment
                 {
                     Image img = new Image()
                     {
-                        Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative))
+                        Source = new BitmapImage(new Uri("/Environment/blocks.png", UriKind.Relative)),
+                        //Height = 50,
+                        //Width = 50,
+                        
                     };
                     Label block = new Label()
                     {
@@ -113,8 +116,6 @@ namespace Binder.Environment
 
                     block.SetBinding(Canvas.LeftProperty, "X");
                     block.SetBinding(Canvas.TopProperty, "Y");
-                    
-
 
                     cnvsGame.Children.Add(block);
                 }

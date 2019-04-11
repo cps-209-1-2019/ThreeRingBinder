@@ -216,6 +216,8 @@
     <Resource Include="Sprites\PsiZetaRight.png" />
     <Resource Include="Sprites\schaubJacket.png" />
     <Resource Include="Screen.PNG" />
+    <Resource Include="Environment\floor.jpg" />
+    <Resource Include="Environment\floor1.png" />
     <Content Include="Sounds\GamePlay.mp3" />
     <Content Include="Sounds\paperHit.wav" />
   </ItemGroup>
