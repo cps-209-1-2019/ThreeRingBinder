@@ -8,7 +8,8 @@ namespace Binder.Environment
 {
     public class Player : MovableCharacter, ISerialization<Player>
     {
-        
+        int front = 0;
+        int back = 0;
         public string Name { get; set; }
         public List<Items> Inventory { get; set; }
         public Player(string name)
@@ -17,6 +18,56 @@ namespace Binder.Environment
             X = 720;
             Y = 450;
             
+        }
+        public void ChangeXFrames(int changeInX)
+        {
+            if (changeInX > 0)
+            {
+                if (front == 0)
+                {
+                    PictureName = "/Sprites/MarcusFront1.png";
+                    front = 1;
+                }
+                else if (front == 1)
+                {
+                    PictureName = "/Sprites/MarcusFront1.png";
+                    front = 2;
+                }
+                else
+                {
+                    PictureName = "/Sprites/MarcusFront2.png";
+                    front = 0;
+                }
+            }
+            else if (changeInX < 0)
+            {
+                if (back == 0)
+                {
+                    PictureName = "/Sprites/MarcusBack1.png";
+                    back = 1;
+                }
+                else if (back == 1)
+                {
+                    PictureName = "/Sprites/MarcusBack1.png";
+                    back = 2;
+                }
+                else
+                {
+                    PictureName = "/Sprites/MarcusBack2.png";
+                    back = 0;
+                }
+            }
+        }
+        public void ChangeYFrames(int changeInX)
+        {
+            if (changeInX > 0)
+            {
+                PictureName = "/Sprites/MarcusRight.png";
+            }
+            else if (changeInX < 0)
+            {
+                PictureName = "/Sprites/MarcusLeft.png";
+            }
         }
         public void Enteract()
         {
@@ -52,6 +103,7 @@ namespace Binder.Environment
                             thing.X += changeNum;
                         }
                     }
+                    ChangeYFrames(-changeNum);
                 }
                 else if (direction == 'n')
                 {
@@ -62,6 +114,7 @@ namespace Binder.Environment
                             thing.Y += changeNum;
                         }
                     }
+                    ChangeXFrames(-changeNum);
                 }
                 else if (direction == 'e')
                 {
@@ -72,6 +125,7 @@ namespace Binder.Environment
                             thing.X -= changeNum;
                         }
                     }
+                    ChangeYFrames(changeNum);
                 }
                 else if (direction == 's')
                 {
@@ -82,6 +136,7 @@ namespace Binder.Environment
                             thing.Y = thing.Y - changeNum;
                         }
                     }
+                    ChangeXFrames(changeNum);
                 }
             }
         }

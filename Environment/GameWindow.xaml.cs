@@ -44,7 +44,11 @@ namespace Binder.Environment
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
             timer.Tick += Timer_Tick;
             timer.Start();
-            
+
+            binderGame.Marcus.PictureName = "/Sprites/MarcusFront.png";
+            imgBl.DataContext = binderGame.Marcus.PictureName;
+
+            //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -57,6 +61,7 @@ namespace Binder.Environment
                 label.Height = 30;
                 isRingShown = true;
             }
+            imgBl.Source = new BitmapImage(new Uri(binderGame.Marcus.PictureName, UriKind.Relative));
             foreach (WorldObject wObj in Game.Environ)
             {
                 if (wObj is AI)
@@ -98,7 +103,9 @@ namespace Binder.Environment
             ImageBrush img = new ImageBrush()
             {
                 ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))
+                
             };
+
             if ((Game.itemsHeld.Count() > binderGame.currentItem) && (item == Game.itemsHeld[binderGame.currentItem]))
             {
                 rectangle.Stroke = Brushes.Chartreuse;
@@ -209,8 +216,8 @@ namespace Binder.Environment
             Game.Environ.Add(ai);
             Label label = SetObjectBinding("/Sprites/PsiZetaFront.png", ai);
             label.DataContext = ai;
-            label.Width = 40;
-            label.Height = 80;
+            label.Width = 120;
+            label.Height = 120;
 
         }
         public Label SetObjectBinding(string uri, object b)
@@ -218,6 +225,7 @@ namespace Binder.Environment
             Image img = new Image()
             {
                 Source = new BitmapImage(new Uri(uri, UriKind.Relative))
+
             };
             Label block = new Label()
             {
