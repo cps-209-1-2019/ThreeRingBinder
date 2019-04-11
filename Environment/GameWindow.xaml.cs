@@ -45,10 +45,20 @@ namespace Binder.Environment
             timer.Tick += Timer_Tick;
             timer.Start();
 
+            DispatcherTimer timerTwo = new DispatcherTimer();
+            timerTwo.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            timerTwo.Tick += TimerTwo_Tick;
+            timerTwo.Start();
+
             binderGame.Marcus.PictureName = "/Sprites/MarcusFront.png";
             imgBl.DataContext = binderGame.Marcus.PictureName;
 
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
+        }
+
+        private void TimerTwo_Tick(object sender, EventArgs e)
+        {
+            imgBl.Source = new BitmapImage(new Uri(binderGame.Marcus.PictureName, UriKind.Relative));
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -61,7 +71,6 @@ namespace Binder.Environment
                 label.Height = 30;
                 isRingShown = true;
             }
-            imgBl.Source = new BitmapImage(new Uri(binderGame.Marcus.PictureName, UriKind.Relative));
             foreach (WorldObject wObj in Game.Environ)
             {
                 if (wObj is AI)
