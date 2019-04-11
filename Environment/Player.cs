@@ -25,7 +25,7 @@ namespace Binder.Environment
             {
                 if (front == 0)
                 {
-                    PictureName = "/Sprites/MarcusFront1.png";
+                    PictureName = "/Sprites/MarcusFront.png";
                     front = 1;
                 }
                 else if (front == 1)
@@ -43,7 +43,7 @@ namespace Binder.Environment
             {
                 if (back == 0)
                 {
-                    PictureName = "/Sprites/MarcusBack1.png";
+                    PictureName = "/Sprites/MarcusBack.png";
                     back = 1;
                 }
                 else if (back == 1)
