@@ -26,7 +26,6 @@ namespace Binder.Environment
         Building building;
         DispatcherTimer timer;
         bool isRingShown = false;
-        //List<Rectangle> rectangleList = new List<Rectangle>();
 
         public GameWindow(bool cheat, int difficulty, double startTime)
         {
@@ -53,7 +52,7 @@ namespace Binder.Environment
             if ((binderGame.isRingFound == true) && (isRingShown == false))
             {
                 MessageBox.Show("You Found the Ring!");
-                Label label = SetObjectBinding("/Sprites/bindrRingSilver.png", binderGame.ring);
+                Label label = SetObjectBinding("/Sprites/binderRingSilver.png", binderGame.ring);
                 label.Width = 30;
                 label.Height = 30;
                 isRingShown = true;
@@ -86,8 +85,6 @@ namespace Binder.Environment
                     foreach (InventoryItem thing in Game.itemsHeld)
                     {
                         rectangle = GetRectangle(thing);
-                        //rectangleList = new List<Rectangle>();
-                        //rectangleList.Add(rectangle);
                         FillRectangle(rectangle, thing);
                     }
                     break;

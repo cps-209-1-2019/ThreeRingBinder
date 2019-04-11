@@ -65,7 +65,7 @@ namespace Binder.Environment
         {
             if ((200 * 200) >= (((X - game.ring.X) * (X - game.ring.X)) + ((Y - game.ring.Y) * (Y - game.ring.Y))))
             {
-                //if (isTheOne == true)
+                if (isTheOne == true)
                     game.isRingFound = true;
             }
         }
