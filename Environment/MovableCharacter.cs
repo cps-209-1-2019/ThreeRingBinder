@@ -17,9 +17,21 @@ namespace Binder.Environment
         {
 
         }
-        public void Attack()
+        public void Attack(Game game)
         {
+            for (int i = 0; i < 4; i++)
+            {
+                foreach (WorldObject wObj in game.Environ)
+                {
+                    if (wObj is AI)
+                    {
+                        if ((X + i * 40) < wObj.X && wObj.X < (X + (i * 40) + 40))
+                        {
 
+                        }
+                    }
+                }
+            }
         }
         public bool IsNotWall(int changeInX, int changeInY, Building building)
         {
