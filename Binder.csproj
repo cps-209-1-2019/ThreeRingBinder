@@ -193,6 +193,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Sprites\composureTie.png" />
     <Resource Include="Sprites\PsiZetaLeftWhip.png" />
     <Resource Include="Sprites\PsiZetaRightWhip.png" />
     <Resource Include="Sprites\PsiZetaBackWhip.png" />
