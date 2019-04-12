@@ -8,7 +8,8 @@ namespace Binder.Environment
 {
     public class Player : MovableCharacter, ISerialization<Player>
     {
-        
+        int front = 0;
+        int back = 0;
         public string Name { get; set; }
         public List<Items> Inventory { get; set; }
         public Player(string name)
@@ -18,51 +19,124 @@ namespace Binder.Environment
             Y = 450;
             
         }
+        public void ChangeXFrames(int changeInX)
+        {
+            if (changeInX > 0)
+            {
+                if (front == 0)
+                {
+                    PictureName = "/Sprites/MarcusFront.png";
+                    front = 1;
+                }
+                else if (front == 1)
+                {
+                    PictureName = "/Sprites/MarcusFront1.png";
+                    front = 2;
+                }
+                else
+                {
+                    PictureName = "/Sprites/MarcusFront2.png";
+                    front = 0;
+                }
+            }
+            else if (changeInX < 0)
+            {
+                if (back == 0)
+                {
+                    PictureName = "/Sprites/MarcusBack.png";
+                    back = 1;
+                }
+                else if (back == 1)
+                {
+                    PictureName = "/Sprites/MarcusBack1.png";
+                    back = 2;
+                }
+                else
+                {
+                    PictureName = "/Sprites/MarcusBack2.png";
+                    back = 0;
+                }
+            }
+        }
+        public void ChangeYFrames(int changeInX)
+        {
+            if (changeInX > 0)
+            {
+                PictureName = "/Sprites/MarcusRight.png";
+            }
+            else if (changeInX < 0)
+            {
+                PictureName = "/Sprites/MarcusLeft.png";
+            }
+        }
         public void Enteract()
         {
-
+            InventoryItem itemToPickUp = null;
+            foreach (WorldObject thing in Game.Environ) {
+                int distanceNum = 100;
+                if (thing is InventoryItem)
+                {
+                    InventoryItem item = (InventoryItem)thing;
+                    if ((distanceNum * distanceNum) >= (((X - item.X) * (X - item.X)) + ((Y - item.Y) * (Y - item.Y))))
+                    {
+                        itemToPickUp = item;
+                        distanceNum = ((X - item.X) * (X - item.X)) + ((Y - item.Y) * (Y - item.Y));
+                    }
+                }
+            }
+            if (itemToPickUp != null)
+            {
+                itemToPickUp.PickUp();
+            }
         }
 
         public void Move(char direction, Game game) //Removed override keyword for buildability
         {
-            
-            if (direction == 'w')
+            if (Game.isPaused != true)
             {
-                if (IsNotWall(changeNum, 0, game.CurBuilding))
+                if (direction == 'w')
                 {
-                    foreach (WorldObject thing in game.Environ)
+                    if (IsNotWall(changeNum, 0, game.CurBuilding))
                     {
-                        thing.X += changeNum;
+                        foreach (WorldObject thing in Game.Environ)
+                        {
+                            thing.X += changeNum;
+                        }
                     }
+                    ChangeYFrames(-changeNum);
                 }
-            }
-            else if (direction == 'n')
-            {
-                if (IsNotWall(0, changeNum, game.CurBuilding))
+                else if (direction == 'n')
                 {
-                    foreach (WorldObject thing in game.Environ)
+                    if (IsNotWall(0, changeNum, game.CurBuilding))
                     {
-                        thing.Y += changeNum;
+                        foreach (WorldObject thing in Game.Environ)
+                        {
+                            thing.Y += changeNum;
+                        }
                     }
+                    ChangeXFrames(-changeNum);
                 }
-            }
-            else if (direction == 'e')
-            {
-                if (IsNotWall(changeNum * -1, 0, game.CurBuilding))
+                else if (direction == 'e')
                 {
-                    foreach (WorldObject thing in game.Environ)
+                    if (IsNotWall(changeNum * -1, 0, game.CurBuilding))
                     {
-                        thing.X -= changeNum;
+                        foreach (WorldObject thing in Game.Environ)
+                        {
+                            thing.X -= changeNum;
+                        }
                     }
+                    ChangeYFrames(changeNum);
                 }
-            }
-            else if (direction == 's')
-            {
-                if (IsNotWall(0, changeNum * -1, game.CurBuilding))
+                else if (direction == 's')
                 {
-                    foreach (WorldObject thing in game.Environ) {
-                        thing.Y = thing.Y - changeNum;
+                    if (IsNotWall(0, changeNum * -1, game.CurBuilding))
+                    {
+                        foreach (WorldObject thing in Game.Environ)
+                        {
+                            thing.Y = thing.Y - changeNum;
+                        }
                     }
+                    ChangeXFrames(changeNum);
                 }
             }
         }

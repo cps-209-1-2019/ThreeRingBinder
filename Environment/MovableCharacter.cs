@@ -11,7 +11,7 @@ namespace Binder.Environment
         public int Health { get; set; }
         public int Damage { get; set; }
         public int Speed { get; set; }
-        public const int changeNum = 24;
+        public const int changeNum = 69;
 
         public virtual void Move()
         {
@@ -39,6 +39,16 @@ namespace Binder.Environment
                 if ((wall.X + changeInX) < X && (wall.X + changeInX + wall.Width) > X)
                     if ((wall.Y + changeInY) < Y && (wall.Y + changeInY + wall.Length) > Y)
                         return false;
+            return true;
+        }
+        public bool AIIsNotWall(int changeInX, int changeInY)
+        {
+            foreach (Walls walls in Building.WallsCol)
+            {
+                if ((X + changeInX > walls.X) && (X + changeInX < walls.X + walls.Width))
+                    if ((Y + changeInY > walls.Y) && (Y + changeInY < walls.Y + walls.Length))
+                        return false;
+            }
             return true;
         }
     }

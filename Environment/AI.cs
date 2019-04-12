@@ -7,41 +7,135 @@ using System.Timers;
 
 namespace Binder.Environment
 {
+
     public class AI : MovableCharacter, ISerialization<AI> 
     {
+        int horizCount = 0;
+        int vertCount = 0;
+        string horizDirection = "west";
+        string vertDirection = "north";
+        bool patrolVertically = false;
         public AI(int health, int damage, int speed)
         {
             Health = health;
             Damage = damage;
             Speed = speed;
         }
+
+        public void PatrolVert(Game game)
+        {
+            vertCount++;
+            if (vertDirection == "north")
+            {
+                if (AIIsNotWall(0, -changeNum))
+                {
+                    Y -= changeNum;
+                }
+                else
+                {
+                    Y += changeNum;
+                    horizDirection = "south";
+                }
+            }
+            else if (horizDirection == "south")
+            {
+                if (AIIsNotWall(0, changeNum))
+                {
+                    Y += changeNum;
+                }
+                else
+                {
+                    Y -= changeNum;
+                    horizDirection = "north";
+                }
+            }
+            if (vertCount > 30)
+            {
+                patrolVertically = false;
+                vertCount = 0;
+            }
+        }
+        public void PatrolHoriz(Game game)
+        {
+            horizCount++;
+            if (horizDirection  == "west")
+            {
+                if  (AIIsNotWall(-changeNum, 0))
+                {
+                    X -= changeNum;
+                }
+                else
+                {
+                    X += changeNum;
+                    horizDirection = "east";
+                }
+            }
+            else if (horizDirection == "east")
+            {
+                if (AIIsNotWall(changeNum, 0))
+                {
+                    X += changeNum;
+                }
+                else
+                {
+                    X -= changeNum;
+                    horizDirection = "west";
+                }
+            }
+            if (horizCount > 25)
+            {
+                patrolVertically = true;
+                horizCount = 0;
+            }
+        }
         public void Patrol(Building building)
         {
-            Random rand = new Random();
-            int direc = rand.Next(4);
+            int direc = 0;
+            vertCount++;
+            if (vertCount > 10)
+            {
+                Random rand = new Random();
+                direc = rand.Next(4);
+            }
             if (direc == 0)
             {
                 //west
-                if (IsNotWall((-changeNum / 2), 0, building))
-                    X -= changeNum / 2;
+                if (AIIsNotWall(-changeNum / 2, 0))
+                    X -= changeNum;
+                else
+                {
+                    X += changeNum;
+                }
             }
             else if (direc == 1)
             {
                 //east
-                if (IsNotWall((changeNum / 2), 0, building))
-                    X += changeNum / 2;
+                if (AIIsNotWall((changeNum / 2), 0))
+                    X += changeNum;
+                else
+                {
+                    X -= changeNum;
+                }
             }
             else if (direc == 2)
             {
                 //north
-                if (IsNotWall(0, (-changeNum / 2), building))
-                    Y -= changeNum / 2;
+                if (AIIsNotWall(0, (-changeNum / 2)))
+                    Y -= changeNum;
+                else
+                {
+                    Y += changeNum;
+                }
             }
             else if (direc == 3)
             {
                 //south
-                if (IsNotWall(0, (changeNum / 2), building))
+                if (AIIsNotWall(0, (changeNum / 2)))
                     Y += changeNum / 2;
+                else
+                {
+                    Y -= changeNum / 2;
+                }
             }
         }
 
@@ -71,13 +165,22 @@ namespace Binder.Environment
 
         public void Move(Game game)
         {
-            if ((200 * 200) >= (((X - game.Marcus.X) * (X - game.Marcus.X )) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
+            if (Game.isPaused != true)
             {
-                Chase(game);
-            }
-            else
-            {
-                Patrol(game.CurBuilding);
+                if ((200 * 200) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
+                {
+                    Chase(game);
+                }
+                else
+                {
+                    //if (patrolVertically)
+                    //    PatrolVert(game);
+                    //else
+                    //{
+                    //    PatrolHoriz(game);
+                    //} 
+                    Patrol(game.CurBuilding);
+                }
             }
         }
 

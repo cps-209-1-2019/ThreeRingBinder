@@ -26,15 +26,15 @@ namespace Binder.Environment
             //Coords Format: `x`, `y`, `l`, `w`
 
             //Perimeter
-            new int[4] {-2732, -1250, 24, 5464},
-            new int[4] {-2732, 1250, 24, 5464},
-            new int[4] {-2732, -1250, 2500, 24},
-            new int[4] {2732, -1250, 2500, 24},
+            new int[4] {-2732, -1250, 69, 5464},
+            new int[4] {-2732, 1250, 69, 5464},
+            new int[4] {-2732, -1250, 2500, 69},
+            new int[4] {2732, -1250, 2500, 69},
             
             //Computer Labs
-            new int[4] {-2510, 990, 260, 24},
-            new int[4] {-2289, 990, 260, 24 },
-            new int[4] { -2732, 960, 24, 443}
+            new int[4] {-2510, 990, 260, 69},
+            new int[4] {-2289, 990, 260, 69 },
+            new int[4] { -2732, 960, 69, 443}
         };
 
         public List<int[]> FAPlans = new List<int[]>()
@@ -42,12 +42,12 @@ namespace Binder.Environment
             //Perimeter
             new int[4] {-2732, -1250, 24, 5464},
             new int[4] {-2732, 1250, 24, 5464},
-            new int[4] {-2732, -1250, 2500, 24},
-            new int[4] {2732, -1250, 2500, 24},
+            new int[4] {-2732, -1250, 2500, 69},
+            new int[4] {2732, -1250, 2500, 69},
 
             //Rooms
             //new int[4] {-2049, -1250, 1000, 24},
-            new int[4] {-2049, 250, 1000, 24}
+            new int[4] {-2049, 250, 1000, 69}
 
         };
 
@@ -90,11 +90,11 @@ namespace Binder.Environment
                 int[] coords = null;
                 if (full == false)
                 {
-                    coords = new int[4] { -2732 + i, -1250, 1000, 24 };
+                    coords = new int[4] { -2732 + i, -1250, 1000, 69 };
                 }
                 if(full == true)
                 {
-                    coords = new int[4] { -2732 + i, 250, 1000, 24 };
+                    coords = new int[4] { -2732 + i, 250, 1000, 69 };
                 }
                 
                 if(i + 683 >= 5464)
