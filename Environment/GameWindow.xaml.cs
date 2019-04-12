@@ -33,7 +33,9 @@ namespace Binder.Environment
             binderGame = new Game(startTime);
             binderGame.IsCheatOn = cheat;
             binderGame.Difficulty = difficulty;
+
             InitializeComponent();
+
             this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
             BuildWalls();
             BindItems();
