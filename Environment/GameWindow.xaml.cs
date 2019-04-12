@@ -131,6 +131,7 @@ namespace Binder.Environment
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.Key == Key.Up)
             {
                 binderGame.Marcus.Move('n', binderGame);
@@ -182,6 +183,7 @@ namespace Binder.Environment
             {
                 ResetRectangles(rectItemFour, 3);
             }
+
         }
 
         public void ResetRectangles(Rectangle firstRectangle, int num)

@@ -10,7 +10,7 @@
         WindowStyle="None"
         >
     <Canvas x:Name="cnvsGame">
-        <Image x:Name="imgfl" Source="floor.png" Canvas.Left="-2726" Canvas.Top="-1242"/>
+        <Image x:Name="imgfl" Source="floor5.png" Canvas.Top="-2" Canvas.Left="-2"/>
         <Image x:Name="imgBl" Width="120" Height="120" Source="../Sprites/MarcusFront.png" Canvas.Top="450" Canvas.Left="720" RenderTransformOrigin="-14.25,-0.625"/>
         <Rectangle x:Name="rectItemOne" Canvas.Bottom="20" Canvas.Left="20" Width="90" Height="60"/>
         <Rectangle x:Name="rectItemTwo" Canvas.Bottom="20" Canvas.Left="120" Width="90" Height="60"/>

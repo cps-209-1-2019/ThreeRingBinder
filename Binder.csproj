@@ -234,6 +234,9 @@
     <Resource Include="Screen.PNG" />
     <Resource Include="Environment\floor.jpg" />
     <Resource Include="Environment\floor1.png" />
+    <Resource Include="Environment\floor2.png" />
+    <Resource Include="Environment\floor3.png" />
+    <Resource Include="Environment\floor5.png" />
     <Content Include="Sounds\GamePlay.mp3" />
     <Content Include="Sounds\paperHit.wav" />
   </ItemGroup>
