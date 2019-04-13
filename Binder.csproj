@@ -193,6 +193,9 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Sprites\waterFountain.png" />
+    <Resource Include="Sprites\rubberDuck.png" />
+    <Resource Include="Sprites\composureTie.png" />
     <Resource Include="Sprites\PsiZetaLeftWhip.png" />
     <Resource Include="Sprites\PsiZetaRightWhip.png" />
     <Resource Include="Sprites\PsiZetaBackWhip.png" />
@@ -234,6 +237,9 @@
     <Resource Include="Screen.PNG" />
     <Resource Include="Environment\floor.jpg" />
     <Resource Include="Environment\floor1.png" />
+    <Resource Include="Environment\floor2.png" />
+    <Resource Include="Environment\floor3.png" />
+    <Resource Include="Environment\floor5.png" />
     <Content Include="Sounds\GamePlay.mp3" />
     <Content Include="Sounds\paperHit.wav" />
   </ItemGroup>
