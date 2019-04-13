@@ -33,7 +33,7 @@ namespace Binder
 
         public double timeLeft;
         private string time;
-        private int min = 0;
+        private int min = 2;
         private int sec = 60;
         public string TimeLeft
         {
@@ -75,7 +75,7 @@ namespace Binder
             if(sec == 0 && min != 0)
             {
                 min -= 1;
-                sec = 60;
+                sec = 59;
             }
             else
             {
