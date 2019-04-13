@@ -81,5 +81,20 @@ namespace Binder
             HighScoreList highScoreList = new HighScoreList();
             highScoreList.Show();
         }
+
+        private void BtnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            GameWindow gameWin = new GameWindow(isCheatOn, difficulty, startTime);
+            try
+            {
+                gameWin.binderGame.Load("gameFile.txt");
+            }
+            catch
+            {
+                
+            }
+            gameWin.Show();
+            this.Close();
+        }
     }
 }
