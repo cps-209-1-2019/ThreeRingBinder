@@ -33,7 +33,7 @@ namespace Binder.Environment
             //NameScope.SetNameScope(this, new NameScope());
             binderGame = new Game(startTime);
             binderGame.IsCheatOn = cheat;
-            binderGame.Difficulty = difficulty;
+            Game.Difficulty = difficulty;
 
             InitializeComponent();
 
