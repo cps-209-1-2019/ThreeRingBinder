@@ -10,6 +10,7 @@ namespace Binder.Environment
 
     public class AI : MovableCharacter, ISerialization<AI> 
     {
+        public bool isAttacking = false;
         int horizCount = 0;
         int vertCount = 0;
         string horizDirection = "west";
@@ -22,6 +23,138 @@ namespace Binder.Environment
             Speed = speed;
         }
 
+        public void ChangeXFrames(int changeInX)
+        {
+            if (changeInX > 0)
+            {
+                if (isAttacking)
+                {
+                    PictureName = "/Sprites/PsiZetaFrontWhip.png";
+                    isAttacking = false;
+                }
+                else
+                {
+                    if (front == 0)
+                    {
+                        PictureName = "/Sprites/PsiZetaFront.png";
+                        front = 1;
+                    }
+                    else if (front == 1)
+                    {
+                        PictureName = "/Sprites/PsiZetaFront1.png";
+                        front = 2;
+                    }
+                    else if (front == 2)
+                    {
+                        PictureName = "/Sprites/PsiZetaFront.png";
+                        front = 3;
+                    }
+                    else
+                    {
+                        PictureName = "/Sprites/PsiZetaFront2.png";
+                        front = 0;
+                    }
+                }
+            }
+            else if (changeInX < 0)
+            {
+                if (isAttacking)
+                {
+                    PictureName = "/Sprites/PsiZetaBackWhip.png";
+                    isAttacking = false;
+                }
+                else
+                {
+                    if (back == 0)
+                    {
+                        PictureName = "/Sprites/PsiZetaBack.png";
+                        back = 1;
+                    }
+                    else if (back == 1)
+                    {
+                        PictureName = "/Sprites/PsiZetaBack1.png";
+                        back = 2;
+                    }
+                    else if (back == 20)
+                    {
+                        PictureName = "/Sprites/PsiZetaBack.png";
+                        back = 3;
+                    }
+                    else
+                    {
+                        PictureName = "/Sprites/PsiZetaBack2.png";
+                        back = 0;
+                    }
+                }
+            }
+        }
+        public void ChangeYFrames(int changeInX)
+        {
+            if (changeInX > 0)
+            {
+                if (isAttacking)
+                {
+                    PictureName = "/Sprites/PsiZetaRightWhip.png";
+                    isAttacking = false;
+                }
+                else
+                {
+                    if (right == 0)
+                    {
+                        PictureName = "/Sprites/PsiZetaRight.png";
+                        right = 1;
+                    }
+                    else if (right == 1)
+                    {
+                        PictureName = "/Sprites/PsiZetaRight1.png";
+                        right = 2;
+                    }
+                    else if (right == 2)
+                    {
+                        PictureName = "/Sprites/PsiZetaRight.png";
+                        right = 3;
+                    }
+                    else
+                    {
+                        PictureName = "/Sprites/PsiZetaRight2.png";
+                        right = 0;
+                    }
+                }
+
+            }
+            else if (changeInX < 0)
+            {
+                if (isAttacking)
+                {
+                    PictureName = "/Sprites/PsiZetaLeftWhip.png";
+                    isAttacking = false;
+                }
+                else
+                {
+                    if (left == 0)
+                    {
+                        PictureName = "/Sprites/PsiZetaLeft.png";
+                        left = 1;
+                    }
+                    else if (left == 1)
+                    {
+                        PictureName = "/Sprites/PsiZetaLeft1.png";
+                        left = 2;
+                    }
+                    else if (left == 20)
+                    {
+                        PictureName = "/Sprites/PsiZetaLeft.png";
+                        left = 3;
+                    }
+                    else
+                    {
+                        PictureName = "/Sprites/PsiZetaLeft2.png";
+                        left = 0;
+                    }
+                }
+            }
+        }
+
         public void PatrolVert(Game game)
         {
             vertCount++;
@@ -30,11 +163,13 @@ namespace Binder.Environment
                 if (AIIsNotWall(0, -changeNum))
                 {
                     Y -= changeNum;
+                    ChangeXFrames(-changeNum);
                 }
                 else
                 {
                     Y += changeNum;
                     horizDirection = "south";
+                    ChangeXFrames(changeNum);
                 }
             }
             else if (horizDirection == "south")
@@ -42,11 +177,13 @@ namespace Binder.Environment
                 if (AIIsNotWall(0, changeNum))
                 {
                     Y += changeNum;
+                    ChangeXFrames(changeNum);
                 }
                 else
                 {
                     Y -= changeNum;
                     horizDirection = "north";
+                    ChangeXFrames(-changeNum);
                 }
             }
             if (vertCount > 30)
@@ -63,11 +200,13 @@ namespace Binder.Environment
                 if  (AIIsNotWall(-changeNum, 0))
                 {
                     X -= changeNum;
+                    ChangeYFrames(-changeNum);
                 }
                 else
                 {
                     X += changeNum;
                     horizDirection = "east";
+                    ChangeYFrames(changeNum);
                 }
             }
             else if (horizDirection == "east")
@@ -75,11 +214,13 @@ namespace Binder.Environment
                 if (AIIsNotWall(changeNum, 0))
                 {
                     X += changeNum;
+                    ChangeYFrames(changeNum);
                 }
                 else
                 {
                     X -= changeNum;
                     horizDirection = "west";
+                    ChangeYFrames(-changeNum);
                 }
             }
             if (horizCount > 25)
@@ -101,40 +242,56 @@ namespace Binder.Environment
             {
                 //west
                 if (AIIsNotWall(-changeNum / 2, 0))
+                {
                     X -= changeNum;
+                    ChangeYFrames(-changeNum);
+                }
                 else
                 {
                     X += changeNum;
+                    ChangeYFrames(changeNum);
                 }
             }
             else if (direc == 1)
             {
                 //east
                 if (AIIsNotWall((changeNum / 2), 0))
+                {
                     X += changeNum;
+                    ChangeYFrames(changeNum);
+                }
                 else
                 {
                     X -= changeNum;
+                    ChangeYFrames(-changeNum);
                 }
             }
             else if (direc == 2)
             {
                 //north
                 if (AIIsNotWall(0, (-changeNum / 2)))
+                {
                     Y -= changeNum;
+                    ChangeXFrames(-changeNum);
+                }
                 else
                 {
                     Y += changeNum;
+                    ChangeXFrames(changeNum);
                 }
             }
             else if (direc == 3)
             {
                 //south
                 if (AIIsNotWall(0, (changeNum / 2)))
+                {
                     Y += changeNum / 2;
+                    ChangeXFrames(changeNum);
+                }
                 else
                 {
                     Y -= changeNum / 2;
+                    ChangeXFrames(-changeNum);
                 }
             }
         }
@@ -144,22 +301,34 @@ namespace Binder.Environment
             if (game.Marcus.X < X)
             {
                 if (IsNotWall((-changeNum / 2), 0, game.CurBuilding))
+                {
                     X -= changeNum / 2;
+                    ChangeYFrames(-changeNum / 2);
+                }
             }
             else if (game.Marcus.X > X)
             {
                 if (IsNotWall((changeNum / 2), 0, game.CurBuilding))
+                {
                     X += changeNum / 2;
+                    ChangeYFrames(changeNum / 2);
+                }
             }
             if (game.Marcus.Y < Y)
             {
                 if (IsNotWall(0, (-changeNum / 2), game.CurBuilding))
+                {
                     Y -= changeNum / 2;
+                    ChangeXFrames(-changeNum / 2);
+                }
             }
             else if (game.Marcus.Y > Y)
             {
                 if (IsNotWall(0, (changeNum / 2), game.CurBuilding))
+                {
                     Y += changeNum / 2;
+                    ChangeXFrames(changeNum / 2);
+                }
             }
         }
 
@@ -167,9 +336,11 @@ namespace Binder.Environment
         {
             if (Game.isPaused != true)
             {
-                if ((200 * 200) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
+                if ((400 * 400) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
                 {
                     Chase(game);
+                    if ((150 * 150) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
+                        isAttacking = true;
                 }
                 else
                 {

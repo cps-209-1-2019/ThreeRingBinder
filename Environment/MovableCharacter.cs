@@ -8,6 +8,10 @@ namespace Binder.Environment
 {
     public abstract class MovableCharacter : WorldObject
     {
+        public int front = 0;
+        public int back = 0;
+        public int right = 0;
+        public int left = 0;
         public int Health { get; set; }
         public int Damage { get; set; }
         public int Speed { get; set; }
@@ -36,7 +40,7 @@ namespace Binder.Environment
         public bool IsNotWall(int changeInX, int changeInY, Building building)
         {
             foreach (Walls wall in Building.WallsCol)
-                if ((wall.X + changeInX) < X && (wall.X + changeInX + wall.Width) > X)
+                if (((wall.X + changeInX) < X && (wall.X + changeInX + wall.Width) > X))
                     if ((wall.Y + changeInY) < Y && (wall.Y + changeInY + wall.Length) > Y)
                         return false;
             return true;
