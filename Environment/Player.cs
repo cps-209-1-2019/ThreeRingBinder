@@ -8,12 +8,11 @@ namespace Binder.Environment
 {
     public class Player : MovableCharacter, ISerialization<Player>
     {
-        int front = 0;
-        int back = 0;
         public string Name { get; set; }
-        public List<Items> Inventory { get; set; }
+        public List<InventoryItem> Inventory { get; set; }
         public Player(string name)
         {
+            Inventory = new List<InventoryItem>();
             Name = name;
             X = 720;
             Y = 450;
@@ -35,6 +34,11 @@ namespace Binder.Environment
                     PictureName = "/Sprites/MarcusFront1.png";
                     front = 2;
                 }
+                else if (front == 2)
+                {
+                    PictureName = "/Sprites/MarcusFront.png";
+                    front = 3;
+                }
                 else
                 {
                     PictureName = "/Sprites/MarcusFront2.png";
@@ -53,6 +57,11 @@ namespace Binder.Environment
                     PictureName = "/Sprites/MarcusBack1.png";
                     back = 2;
                 }
+                else if (back == 20)
+                {
+                    PictureName = "/Sprites/MarcusBack.png";
+                    back = 3;
+                }
                 else
                 {
                     PictureName = "/Sprites/MarcusBack2.png";
@@ -64,14 +73,52 @@ namespace Binder.Environment
         {
             if (changeInX > 0)
             {
-                PictureName = "/Sprites/MarcusRight.png";
+                if (right == 0)
+                {
+                    PictureName = "/Sprites/MarcusRight.png";
+                    right = 1;
+                }
+                else if (right == 1)
+                {
+                    PictureName = "/Sprites/MarcusRight1.png";
+                    right = 2;
+                }
+                else if (right == 2)
+                {
+                    PictureName = "/Sprites/MarcusRight.png";
+                    right = 3;
+                }
+                else
+                {
+                    PictureName = "/Sprites/MarcusRight2.png";
+                    right = 0;
+                }
             }
             else if (changeInX < 0)
             {
-                PictureName = "/Sprites/MarcusLeft.png";
+                if (left == 0)
+                {
+                    PictureName = "/Sprites/MarcusLeft.png";
+                    left = 1;
+                }
+                else if (left == 1)
+                {
+                    PictureName = "/Sprites/MarcusLeft1.png";
+                    left = 2;
+                }
+                else if (left == 20)
+                {
+                    PictureName = "/Sprites/MarcusLeft.png";
+                    left = 3;
+                }
+                else
+                {
+                    PictureName = "/Sprites/MarcusLeft2.png";
+                    left = 0;
+                }
             }
         }
-        public void Enteract()
+        public void Enteract(Game game)
         {
             InventoryItem itemToPickUp = null;
             foreach (WorldObject thing in Game.Environ) {
@@ -88,7 +135,7 @@ namespace Binder.Environment
             }
             if (itemToPickUp != null)
             {
-                itemToPickUp.PickUp();
+                itemToPickUp.PickUp(game);
             }
         }
 
@@ -147,7 +194,7 @@ namespace Binder.Environment
 
         public string Serialize()
         {
-            Inventory = new List<Items>();
+            Inventory = new List<InventoryItem>();
             string thePlayer = "";
             string theInventory = "";
             foreach(Items items in Inventory)
@@ -165,7 +212,7 @@ namespace Binder.Environment
         public Player Deserialize(string obj)
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
-            Inventory = new List<Items>();
+            Inventory = new List<InventoryItem>();
 
             for (int i = 1; i < properties.Count; i += 2)
             {

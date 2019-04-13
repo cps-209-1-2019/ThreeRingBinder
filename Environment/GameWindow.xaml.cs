@@ -79,32 +79,49 @@ namespace Binder.Environment
                 {
                     AI ai = (AI)wObj;
                     ai.Move(binderGame);
+                    RemoveLabel(ai);
+                    Label label = SetObjectBinding(ai.PictureName, ai);
+                    if (ai.PictureName.Contains("Whip"))
+                    {
+                        label.Width = 180;
+                        label.Height = 180;
+                    }
+                    else
+                    {
+                        label.Width = 120;
+                        label.Height = 120;
+                    }
                 }
                 else if (wObj is InventoryItem)
                 {
                     InventoryItem item = (InventoryItem)wObj;
                     if (item.Found == true)
                     {
-                        foreach (object thing in cnvsGame.Children)
-                        {
-                            if (thing is Label)
-                            {
-                                Label label = (Label)thing;
-                                if (label.DataContext == item)
-                                {
-                                    cnvsGame.Children.Remove(label);
-                                    break;
-                                }
-                            }
-                        }
+                        RemoveLabel(item);
                     Rectangle rectangle = null;
-                    foreach (InventoryItem thing in Game.itemsHeld)
+                    foreach (InventoryItem thing in binderGame.Marcus.Inventory)
                     {
                         rectangle = GetRectangle(thing);
                         FillRectangle(rectangle, thing);
                     }
                     break;
                     }                       
+                }
+            }
+        }
+
+        public void RemoveLabel(object item)
+        {
+            foreach (object thing in cnvsGame.Children)
+            {
+                if (thing is Label)
+                {
+                    Label label = (Label)thing;
+                    if (label.DataContext == item)
+                    {
+                        cnvsGame.Children.Remove(label);
+                        break;
+                    }
                 }
             }
         }
@@ -117,7 +134,7 @@ namespace Binder.Environment
                 
             };
 
-            if ((Game.itemsHeld.Count() > binderGame.currentItem) && (item == Game.itemsHeld[binderGame.currentItem]))
+            if ((binderGame.Marcus.Inventory.Count() > binderGame.currentItem) && (item == binderGame.Marcus.Inventory[binderGame.currentItem]))
             {
                 rectangle.Stroke = Brushes.Chartreuse;
             }
@@ -130,7 +147,7 @@ namespace Binder.Environment
         }
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
-        {
+        {            
             if (e.Key == Key.Up)
             {
                 binderGame.Marcus.Move('n', binderGame);
@@ -149,16 +166,16 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.C)
             {
-                binderGame.Marcus.Attack();
+                binderGame.Marcus.Attack(binderGame);
             }
             else if (e.Key == Key.X)
             {
-                binderGame.Marcus.Enteract();
+                binderGame.Marcus.Enteract(binderGame);
             }
             else if (e.Key == Key.Z)
             {
-                if (Game.itemsHeld.Count() >= binderGame.currentItem)
-                    Game.itemsHeld[binderGame.currentItem].Use(binderGame);
+                if (binderGame.Marcus.Inventory.Count() > binderGame.currentItem)
+                    binderGame.Marcus.Inventory[binderGame.currentItem].Use(binderGame);
             }
             else if (e.Key == Key.Escape)
             {
@@ -182,17 +199,18 @@ namespace Binder.Environment
             {
                 ResetRectangles(rectItemFour, 3);
             }
+
         }
 
         public void ResetRectangles(Rectangle firstRectangle, int num)
         {
             int oldCurrentItem = binderGame.currentItem;
             binderGame.currentItem = num;
-            FillRectangle(firstRectangle, Game.itemsHeld[num]);
-            if (Game.itemsHeld.Count() > oldCurrentItem)
+            FillRectangle(firstRectangle, binderGame.Marcus.Inventory[num]);
+            if (binderGame.Marcus.Inventory.Count() > oldCurrentItem)
             {
-                Rectangle rectangle = GetRectangle(Game.itemsHeld[oldCurrentItem]);
-                FillRectangle(rectangle, Game.itemsHeld[oldCurrentItem]);
+                Rectangle rectangle = GetRectangle(binderGame.Marcus.Inventory[oldCurrentItem]);
+                FillRectangle(rectangle, binderGame.Marcus.Inventory[oldCurrentItem]);
             }
         }
 
@@ -202,7 +220,8 @@ namespace Binder.Environment
             {
                 if (thing is InventoryItem)
                 {
-                    SetObjectBinding("/Sprites/schaubJacket.png", thing);
+                    InventoryItem item = (InventoryItem)thing;
+                    SetObjectBinding(item.Image, thing);
                 }
             }
         }
@@ -225,11 +244,10 @@ namespace Binder.Environment
             ai.X = 750;
             ai.Y = 400;
             Game.Environ.Add(ai);
-            Label label = SetObjectBinding("/Sprites/PsiZetaFront.png", ai);
-            label.DataContext = ai;
+            ai.PictureName = "/Sprites/PsiZetaFront.png";
+            Label label = SetObjectBinding(ai.PictureName, ai);
             label.Width = 120;
             label.Height = 120;
-
         }
         public Label SetObjectBinding(string uri, object b)
         {
@@ -256,19 +274,19 @@ namespace Binder.Environment
         public Rectangle GetRectangle(InventoryItem thing)
         {
             Rectangle rectangle = null;
-            if (thing == Game.itemsHeld[0])
+            if (thing == binderGame.Marcus.Inventory[0])
                 rectangle = rectItemOne;
-            else if (Game.itemsHeld.Count() >= 2)
+            else if (binderGame.Marcus.Inventory.Count() >= 2)
             {
-                if (thing == Game.itemsHeld[1])
+                if (thing == binderGame.Marcus.Inventory[1])
                     rectangle = rectItemTwo;
-                else if (Game.itemsHeld.Count() >= 3)
+                else if (binderGame.Marcus.Inventory.Count() >= 3)
                 {
-                    if (thing == Game.itemsHeld[2])
+                    if (thing == binderGame.Marcus.Inventory[2])
                         rectangle = rectItemThree;
-                    else if (Game.itemsHeld.Count() >= 4)
+                    else if (binderGame.Marcus.Inventory.Count() >= 4)
                     {
-                        if (thing == Game.itemsHeld[3])
+                        if (thing == binderGame.Marcus.Inventory[3])
                             rectangle = rectItemFour;
                     }
                 }

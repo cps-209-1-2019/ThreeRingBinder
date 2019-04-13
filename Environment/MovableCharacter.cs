@@ -8,6 +8,10 @@ namespace Binder.Environment
 {
     public abstract class MovableCharacter : WorldObject
     {
+        public int front = 0;
+        public int back = 0;
+        public int right = 0;
+        public int left = 0;
         public int Health { get; set; }
         public int Damage { get; set; }
         public int Speed { get; set; }
