@@ -79,24 +79,17 @@ namespace Binder.Environment
                 {
                     AI ai = (AI)wObj;
                     ai.Move(binderGame);
+                    RemoveLabel(ai);
+                    Label label = SetObjectBinding(ai.PictureName, ai);
+                    label.Width = 120;
+                    label.Height = 120;
                 }
                 else if (wObj is InventoryItem)
                 {
                     InventoryItem item = (InventoryItem)wObj;
                     if (item.Found == true)
                     {
-                        foreach (object thing in cnvsGame.Children)
-                        {
-                            if (thing is Label)
-                            {
-                                Label label = (Label)thing;
-                                if (label.DataContext == item)
-                                {
-                                    cnvsGame.Children.Remove(label);
-                                    break;
-                                }
-                            }
-                        }
+                        RemoveLabel(item);
                     Rectangle rectangle = null;
                     foreach (InventoryItem thing in Game.itemsHeld)
                     {
@@ -105,6 +98,22 @@ namespace Binder.Environment
                     }
                     break;
                     }                       
+                }
+            }
+        }
+
+        public void RemoveLabel(object item)
+        {
+            foreach (object thing in cnvsGame.Children)
+            {
+                if (thing is Label)
+                {
+                    Label label = (Label)thing;
+                    if (label.DataContext == item)
+                    {
+                        cnvsGame.Children.Remove(label);
+                        break;
+                    }
                 }
             }
         }
@@ -149,7 +158,7 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.C)
             {
-                binderGame.Marcus.Attack();
+                binderGame.Marcus.Attack(binderGame);
             }
             else if (e.Key == Key.X)
             {
@@ -225,11 +234,10 @@ namespace Binder.Environment
             ai.X = 750;
             ai.Y = 400;
             Game.Environ.Add(ai);
-            Label label = SetObjectBinding("/Sprites/PsiZetaFront.png", ai);
-            label.DataContext = ai;
+            ai.PictureName = "/Sprites/PsiZetaFront.png";
+            Label label = SetObjectBinding(ai.PictureName, ai);
             label.Width = 120;
             label.Height = 120;
-
         }
         public Label SetObjectBinding(string uri, object b)
         {
