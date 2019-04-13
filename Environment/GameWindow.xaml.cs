@@ -22,7 +22,7 @@ namespace Binder.Environment
     /// </summary>
     public partial class GameWindow : Window
     {
-        Game binderGame;
+        public Game binderGame;
         Building building;
         DispatcherTimer timer;
         DispatcherTimer LimitTimer;
@@ -71,6 +71,7 @@ namespace Binder.Environment
             {
                 FontSize = 50,
                 FontFamily = new FontFamily("Algerian"),
+                
             };
         }
 
