@@ -301,7 +301,7 @@ namespace Binder.Environment
         {
             if (game.Marcus.X < X)
             {
-                if (IsNotWall((-changeNum / 2), 0, game.CurBuilding))
+                if (IsNotWall((-changeNum / 2), 0))
                 {
                     X -= changeNum / 2;
                     ChangeYFrames(-changeNum / 2);
@@ -309,7 +309,7 @@ namespace Binder.Environment
             }
             else if (game.Marcus.X > X)
             {
-                if (IsNotWall(changeNum / 2, 0, game.CurBuilding))
+                if (IsNotWall((changeNum / 2), 0))
                 {
                     X += changeNum / 2;
                     ChangeYFrames(changeNum / 2);
@@ -317,7 +317,7 @@ namespace Binder.Environment
             }
             if (game.Marcus.Y < Y)
             {
-                if (IsNotWall(0, -changeNum / 2, game.CurBuilding))
+                if (IsNotWall(0, (-changeNum / 2)))
                 {
                     Y -= changeNum / 2;
                     ChangeXFrames(-changeNum / 2);
@@ -325,7 +325,7 @@ namespace Binder.Environment
             }
             else if (game.Marcus.Y > Y)
             {
-                if (IsNotWall(0, changeNum / 2, game.CurBuilding))
+                if (IsNotWall(0, (changeNum / 2)))
                 {
                     Y += changeNum / 2;
                     ChangeXFrames(changeNum / 2);

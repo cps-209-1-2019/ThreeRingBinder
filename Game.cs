@@ -31,6 +31,20 @@ namespace Binder
         public int currentItem = 0;                          //Shows item that currently needs to be used
         public int PsiZetaShamed = 0;
         public double timeLeft;
+        private string time;
+        public string TimeLeft
+        {
+            get
+            {
+                return time;
+            }
+            set
+            {
+                time = value;
+                SetProperty("TimeLeft");
+            }
+        }
+
         public Game(double startTime)
         {
             timeLeft = startTime;
@@ -38,8 +52,10 @@ namespace Binder
             Environ = new List<WorldObject>();
             isPaused = false;
 
-            CurBuilding = new Building() { Length = 2500, Width = 5464 };
+            CurBuilding = new Building() { Length = 2500, Width = 5464};
             CurBuilding.BuildWalls(CurBuilding.FAPlans);
+            CurBuilding.Name = "Fine Arts";
+
             Environ.AddRange(Building.WallsCol);
             //StartPoint = new int[] { 0, 0 };
 
@@ -50,10 +66,15 @@ namespace Binder
             MakeItems();
         }
 
+        //Time Logic
+        public void DecrTime()
+        {
+
+        }
+
         //Creaated Load method with initial loading algorithm
         public void Load(string filename)
         {
-
             using (StreamReader rd = new StreamReader(filename))
             {
                 string line = rd.ReadLine();
@@ -190,5 +211,32 @@ namespace Binder
         {
             return Convert.ToInt32((PsiZetaShamed * 200) + (timeLeft * 15));
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        protected void SetProperty(string source)
+        {
+            PropertyChangedEventHandler handle = PropertyChanged;
+            if (handle != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(source));
+            }
+        }
+
     }
 }
