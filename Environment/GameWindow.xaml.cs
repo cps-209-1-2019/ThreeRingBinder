@@ -22,7 +22,7 @@ namespace Binder.Environment
     /// </summary>
     public partial class GameWindow : Window
     {
-        Game binderGame;
+        public Game binderGame;
         Building building;
         DispatcherTimer timer;
         DispatcherTimer LimitTimer;
@@ -268,7 +268,7 @@ namespace Binder.Environment
         public void MakeAI(Game game)
         {
             AI ai = new AI(10, 300000, 20);
-            ai.X = 750;
+            ai.X = 650;
             ai.Y = 400;
             Game.Environ.Add(ai);
             ai.PictureName = "/Sprites/PsiZetaFront.png";
