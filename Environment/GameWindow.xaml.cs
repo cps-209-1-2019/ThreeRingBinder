@@ -25,6 +25,7 @@ namespace Binder.Environment
         Game binderGame;
         Building building;
         DispatcherTimer timer;
+        DispatcherTimer LimitTimer;
         bool isRingShown = false;
 
         public GameWindow(bool cheat, int difficulty, double startTime)
@@ -56,6 +57,21 @@ namespace Binder.Environment
             imgBl.DataContext = binderGame.Marcus.PictureName;
 
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
+            LimitTimer = new DispatcherTimer()
+            {
+                
+            };
+            LimitTimer.Tick += LimitTimer_Tick;
+            LimitTimer.Start();
+        }
+
+        private void LimitTimer_Tick(object sender, EventArgs e)
+        {
+            TextBlock block = new TextBlock
+            {
+                FontSize = 50,
+                FontFamily = new FontFamily("Algerian"),
+            };
         }
 
         private void TimerTwo_Tick(object sender, EventArgs e)
