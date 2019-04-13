@@ -27,28 +27,28 @@ namespace Binder.Environment
             //Coords Format: `x`, `y`, `l`, `w`
 
             //Perimeter
-            new int[4] {-2732, -1250, 69, 5464},
-            new int[4] {-2732, 1250, 69, 5464},
-            new int[4] {-2732, -1250, 2500, 69},
-            new int[4] {2732, -1250, 2500, 69},
+            new int[4] {-3000, -1500, 69, 6000},
+            new int[4] {-3000, 1500, 69, 6000},
+            new int[4] {-3000, -1500, 3000, 69},
+            new int[4] {3000, -1500, 3000, 69},
             
             //Computer Labs
             new int[4] {-2510, 990, 260, 69},
-            new int[4] {-2289, 990, 260, 69 },
-            new int[4] { -2732, 960, 69, 443}
+            new int[4] {-2289, 990, 260, 69},
+            new int[4] { -3000, 960, 69, 443}
         };
 
         public List<int[]> FAPlans = new List<int[]>()
         {
             //Perimeter
-            new int[4] {-2732, -1250, 24, 5464},
-            new int[4] {-2732, 1250, 24, 5464},
-            new int[4] {-2732, -1250, 2500, 69},
-            new int[4] {2732, -1250, 2500, 69},
+            new int[4] {-3000, -1500, 24, 6000},
+            new int[4] {-3000, 1500, 24, 6000},
+            new int[4] {-3000, -1500, 2500, 69},
+            new int[4] {3000, -1500, 2500, 69},
 
             //Rooms
             //new int[4] {-2049, -1250, 1000, 24},
-            new int[4] {-2049, 250, 1000, 69}
+            new int[4] {-2049, 500, 1000, 69}
 
         };
 
@@ -86,23 +86,23 @@ namespace Binder.Environment
         {
             bool full = false;
             
-            for(int i = 683; i < 5464; i+= 683)
+            for(int i = 750; i < 6000; i+= 750)
             {
                 int[] coords = null;
                 if (full == false)
                 {
-                    coords = new int[4] { -2732 + i, -1250, 1000, 69 };
+                    coords = new int[4] { -3000 + i, -1500, 1000, 69 };
                 }
                 if(full == true)
                 {
-                    coords = new int[4] { -2732 + i, 250, 1000, 69 };
+                    coords = new int[4] { -3000 + i, 500, 1000, 69 };
                 }
                 
-                if(i + 683 >= 5464)
+                if(i + 750 >= 6000)
                 {                    
                     if(full != true)
                     {
-                        i = 683;
+                        i = 750;
                         full = true;
                     }                   
                 }
