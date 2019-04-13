@@ -240,6 +240,7 @@
     <Resource Include="Environment\floor2.png" />
     <Resource Include="Environment\floor3.png" />
     <Resource Include="Environment\floor5.png" />
+    <Resource Include="Environment\bush.png" />
     <Content Include="Sounds\GamePlay.mp3" />
     <Content Include="Sounds\paperHit.wav" />
   </ItemGroup>

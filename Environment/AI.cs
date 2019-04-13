@@ -16,6 +16,7 @@ namespace Binder.Environment
         string horizDirection = "west";
         string vertDirection = "north";
         bool patrolVertically = false;
+        int attackTime = 10;
         public AI(int health, int damage, int speed)
         {
             Health = health;
@@ -32,7 +33,7 @@ namespace Binder.Environment
                     PictureName = "/Sprites/PsiZetaFrontWhip.png";
                     isAttacking = false;
                 }
-                else
+                else if (attackTime > 5)
                 {
                     if (front == 0)
                     {
@@ -63,7 +64,7 @@ namespace Binder.Environment
                     PictureName = "/Sprites/PsiZetaBackWhip.png";
                     isAttacking = false;
                 }
-                else
+                else if (attackTime > 5)
                 {
                     if (back == 0)
                     {
@@ -97,7 +98,7 @@ namespace Binder.Environment
                     PictureName = "/Sprites/PsiZetaRightWhip.png";
                     isAttacking = false;
                 }
-                else
+                else if (attackTime > 5)
                 {
                     if (right == 0)
                     {
@@ -129,7 +130,7 @@ namespace Binder.Environment
                     PictureName = "/Sprites/PsiZetaLeftWhip.png";
                     isAttacking = false;
                 }
-                else
+                else if (attackTime > 5)
                 {
                     if (left == 0)
                     {
@@ -340,7 +341,16 @@ namespace Binder.Environment
                 {
                     Chase(game);
                     if ((150 * 150) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
-                        isAttacking = true;
+                    {
+                        attackTime++;
+                        if (attackTime > 10)
+                        {
+                            isAttacking = true;
+                            attackTime = 0;
+                        }
+                    }
+                    else
+                        attackTime = 10;
                 }
                 else
                 {

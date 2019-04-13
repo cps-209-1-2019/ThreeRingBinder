@@ -139,8 +139,7 @@ namespace Binder.Environment
         }
 
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
-        {
-            
+        {            
             if (e.Key == Key.Up)
             {
                 binderGame.Marcus.Move('n', binderGame);
