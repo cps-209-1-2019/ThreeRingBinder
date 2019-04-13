@@ -21,7 +21,7 @@ namespace Binder.Environment
         {
             for (int i = 0; i < 4; i++)
             {
-                foreach (WorldObject wObj in game.Environ)
+                foreach (WorldObject wObj in Game.Environ)
                 {
                     if (wObj is AI)
                     {
