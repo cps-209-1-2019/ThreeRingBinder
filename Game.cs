@@ -163,9 +163,24 @@ namespace Binder
 
                 string theItems = "";
 
-                foreach (InventoryItem item in Environ)
-                {
-                    theItems += item.Serialize() + ";";
+                foreach (WorldObject item in Environ)
+                { 
+                    if (item is AI)
+                    {
+                        theItems += (item as AI).Serialize() + ";";
+                    }
+                    else if (item is InventoryItem)
+                    {
+                        theItems += (item as InventoryItem).Serialize() + ";";
+                    }
+                    else if (item is Walls)
+                    {
+                        theItems += (item as Walls).Serialize() + ";";
+                    }
+                    else
+                    {
+                        throw new Exception("Houston we have a problem determining what 'item' is");
+                    }
                 }
                 wr.WriteLine(string.Format("ENVIRON?{0}!{1}", Environ.Count, theItems));
                 wr.WriteLine("END");
