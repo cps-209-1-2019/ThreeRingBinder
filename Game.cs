@@ -31,6 +31,20 @@ namespace Binder
         public int currentItem = 0;                          //Shows item that currently needs to be used
         public int PsiZetaShamed = 0;
         public double timeLeft;
+        private string time;
+        public string TimeLeft
+        {
+            get
+            {
+                return time;
+            }
+            set
+            {
+                time = value;
+                SetProperty("TimeLeft");
+            }
+        }
+
         public Game(double startTime)
         {
             timeLeft = startTime;
@@ -38,8 +52,10 @@ namespace Binder
             Environ = new List<WorldObject>();
             isPaused = false;
 
-            CurBuilding = new Building() { Length = 2500, Width = 5464 };
+            CurBuilding = new Building() { Length = 2500, Width = 5464};
             CurBuilding.BuildWalls(CurBuilding.FAPlans);
+            CurBuilding.Name = "Fine Arts";
+
             Environ.AddRange(Building.WallsCol);
             //StartPoint = new int[] { 0, 0 };
 
@@ -50,10 +66,15 @@ namespace Binder
             MakeItems();
         }
 
+        //Time Logic
+        public void DecrTime()
+        {
+
+        }
+
         //Creaated Load method with initial loading algorithm
         public void Load(string filename)
         {
-
             using (StreamReader rd = new StreamReader(filename))
             {
                 string line = rd.ReadLine();
@@ -94,13 +115,26 @@ namespace Binder
                         case "ENVIRON":
                             for (int j = 0; j < identify.Length; j++)
                             {
-                                if (identify[j] == "INVENTORYITEM")
+                                switch (identify[j])
                                 {
-                                    InventoryItem inventory = new InventoryItem();
+                                    case "INVENTORYITEM":
+                                        InventoryItem inventory = new InventoryItem();
 
-                                    string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11]);
+                                        string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11]);
 
-                                    Environ.Add(inventory.Deserialize(inven));
+                                        Environ.Add(inventory.Deserialize(inven));
+                                        break;
+
+                                    case "AI":
+                                        AI aI = new AI(0,0,0);
+                                        string aiStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9]);
+                                        Environ.Add(aI.Deserialize(aiStr));
+
+                                        break;
+
+                                    case "WALL":
+
+                                        break;
                                 }
                             }
                             break;
@@ -147,6 +181,29 @@ namespace Binder
                 wr.WriteLine("ISCHEATON!" + IsCheatOn.ToString().ToUpper());
                 wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
                 wr.WriteLine("MARCUS!"+ Marcus.Serialize());
+
+                string theItems = "";
+
+                foreach (WorldObject item in Environ)
+                { 
+                    if (item is AI)
+                    {
+                        theItems += (item as AI).Serialize() + ";";
+                    }
+                    else if (item is InventoryItem)
+                    {
+                        theItems += (item as InventoryItem).Serialize() + ";";
+                    }
+                    else if (item is Walls)
+                    {
+                        theItems += (item as Walls).Serialize() + ";";
+                    }
+                    else
+                    {
+                        throw new Exception("Houston we have a problem determining what 'item' is");
+                    }
+                }
+                wr.WriteLine(string.Format("ENVIRON?{0}!{1}", Environ.Count, theItems));
                 wr.WriteLine("END");
             }
         }
@@ -154,5 +211,32 @@ namespace Binder
         {
             return Convert.ToInt32((PsiZetaShamed * 200) + (timeLeft * 15));
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        protected void SetProperty(string source)
+        {
+            PropertyChangedEventHandler handle = PropertyChanged;
+            if (handle != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(source));
+            }
+        }
+
     }
 }

@@ -25,13 +25,15 @@ namespace Binder.Environment
         Game binderGame;
         Building building;
         DispatcherTimer timer;
+        DispatcherTimer LimitTimer;
         bool isRingShown = false;
 
         public GameWindow(bool cheat, int difficulty, double startTime)
         {
+            //NameScope.SetNameScope(this, new NameScope());
             binderGame = new Game(startTime);
             binderGame.IsCheatOn = cheat;
-            Game.Difficulty = difficulty;
+            binderGame.Difficulty = difficulty;
 
             InitializeComponent();
 
@@ -39,6 +41,7 @@ namespace Binder.Environment
             BuildWalls();
             BindItems();
             building = binderGame.CurBuilding;
+            //cnvsGame.DataContext = building;
             MakeAI(binderGame);
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
@@ -52,6 +55,23 @@ namespace Binder.Environment
 
             binderGame.Marcus.PictureName = "/Sprites/MarcusFront.png";
             imgBl.DataContext = binderGame.Marcus.PictureName;
+
+            //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
+            LimitTimer = new DispatcherTimer()
+            {
+                
+            };
+            LimitTimer.Tick += LimitTimer_Tick;
+            LimitTimer.Start();
+        }
+
+        private void LimitTimer_Tick(object sender, EventArgs e)
+        {
+            TextBlock block = new TextBlock
+            {
+                FontSize = 50,
+                FontFamily = new FontFamily("Algerian"),
+            };
         }
 
         private void TimerTwo_Tick(object sender, EventArgs e)
@@ -84,8 +104,8 @@ namespace Binder.Environment
                     }
                     else
                     {
-                        label.Width = 134;
-                        label.Height = 138;
+                        label.Width = 120;
+                        label.Height = 120;
                     }
                 }
                 else if (wObj is InventoryItem)
@@ -162,7 +182,7 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.C)
             {
-                binderGame.Marcus.Attack(binderGame);
+                binderGame.Marcus.Attack();
             }
             else if (e.Key == Key.X)
             {
@@ -242,8 +262,8 @@ namespace Binder.Environment
             Game.Environ.Add(ai);
             ai.PictureName = "/Sprites/PsiZetaFront.png";
             Label label = SetObjectBinding(ai.PictureName, ai);
-            label.Width = 134;
-            label.Height = 138;
+            label.Width = 120;
+            label.Height = 120;
         }
         public Label SetObjectBinding(string uri, object b)
         {

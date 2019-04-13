@@ -14,6 +14,7 @@ namespace Binder.Environment
     //Added public accessibility modifier - Day
     public class Building : WorldObject, ISerialization<Building>
     {
+        public string Name { get; set; }
         public int Width { get; set; }
         public int Length{ get; set; }
 
