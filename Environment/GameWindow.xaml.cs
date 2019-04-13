@@ -182,7 +182,7 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.C)
             {
-                binderGame.Marcus.Attack(binderGame);
+                binderGame.Marcus.Attack();
             }
             else if (e.Key == Key.X)
             {
