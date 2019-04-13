@@ -30,8 +30,11 @@ namespace Binder
         public static List<InventoryItem> itemsHeld = new List<InventoryItem>();   //Items currently held by the player
         public int currentItem = 0;                          //Shows item that currently needs to be used
         public int PsiZetaShamed = 0;
+
         public double timeLeft;
         private string time;
+        private int min = 0;
+        private int sec = 60;
         public string TimeLeft
         {
             get
@@ -69,7 +72,7 @@ namespace Binder
         //Time Logic
         public void DecrTime()
         {
-
+            //s
         }
 
         //Creaated Load method with initial loading algorithm
