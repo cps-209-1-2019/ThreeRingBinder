@@ -161,18 +161,13 @@ namespace Binder
                 wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
                 wr.WriteLine("MARCUS!"+ Marcus.Serialize());
 
-                string theEnviron = "";
                 string theItems = "";
 
                 foreach (InventoryItem item in Environ)
                 {
-                    theCollection += key + ":" + Collection[key].Serialize() + ";";
+                    theItems += item.Serialize() + ";";
                 }
-
-
-                theBuild = string.Format("BUILDING?3,WIDTH!{0},LENGTH!{1},COLLECTION#{2}!{3}", Width, Length, Collection.Count, theCollection);
-
-                wr.WriteLine("ENVIRON" + Environ);
+                wr.WriteLine(string.Format("ENVIRON?{0}!{1}", Environ.Count, theItems));
                 wr.WriteLine("END");
             }
         }
