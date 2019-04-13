@@ -172,7 +172,7 @@ namespace Binder
 
                 theBuild = string.Format("BUILDING?3,WIDTH!{0},LENGTH!{1},COLLECTION#{2}!{3}", Width, Length, Collection.Count, theCollection);
 
-                wr.WriteLine("ENVIRON" + Environ)
+                wr.WriteLine("ENVIRON" + Environ);
                 wr.WriteLine("END");
             }
         }
