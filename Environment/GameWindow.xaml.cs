@@ -167,7 +167,7 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.Z)
             {
-                if (Game.itemsHeld.Count() >= binderGame.currentItem)
+                if (Game.itemsHeld.Count() > binderGame.currentItem)
                     Game.itemsHeld[binderGame.currentItem].Use(binderGame);
             }
             else if (e.Key == Key.Escape)
@@ -213,7 +213,8 @@ namespace Binder.Environment
             {
                 if (thing is InventoryItem)
                 {
-                    SetObjectBinding("/Sprites/schaubJacket.png", thing);
+                    InventoryItem item = (InventoryItem)thing;
+                    SetObjectBinding(item.Image, thing);
                 }
             }
         }

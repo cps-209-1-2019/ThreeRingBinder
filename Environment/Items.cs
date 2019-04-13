@@ -51,7 +51,7 @@ namespace Binder.Environment
         public void PickUp()
         {
             string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
-            Image = dir + "/Sprites/schaubJacket.png";
+            Image = dir + Image;
             Game.itemsHeld.Add(this);
             if (Game.itemsHeld.Count > 4)
             {

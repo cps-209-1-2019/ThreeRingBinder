@@ -112,14 +112,17 @@ namespace Binder
             item.X = 700;
             item.Y = 450;
             item.isTheOne = true;
+            item.Image = "/Sprites/rubberDuck.png";
             Environ.Add(item);
             InventoryItem itemTwo = new InventoryItem();
             itemTwo.X = 700;
             itemTwo.Y = 900;
+            itemTwo.Image = "/Sprites/schaubJacket.png";
             Environ.Add(itemTwo);
             InventoryItem itemThree = new InventoryItem();
             itemThree.X = 360;
             itemThree.Y = 100;
+            itemThree.Image = "/Sprites/waterFountain.png";
             Environ.Add(itemThree);
         }
 
