@@ -367,7 +367,7 @@ namespace Binder.Environment
 
         public string Serialize()
         {
-            throw new NotImplementedException();
+            return string.Format("AI?5,HEALTH!{0},DAMAGE!{1},SPEED!{2},X!{3},Y!{4}", Health, Damage, Speed, X, Y);
         }
 
         public AI Deserialize(string obj)
@@ -386,6 +386,12 @@ namespace Binder.Environment
                         break;
                     case "SPEED":
                         Speed = int.Parse(properties[i + 1]);
+                        break;
+                    case "X":
+                        X = int.Parse(properties[i + 1]);
+                        break;
+                    case "Y":
+                        Y = int.Parse(properties[i + 1]);
                         break;
                 }
             }

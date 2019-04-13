@@ -94,13 +94,26 @@ namespace Binder
                         case "ENVIRON":
                             for (int j = 0; j < identify.Length; j++)
                             {
-                                if (identify[j] == "INVENTORYITEM")
+                                switch (identify[j])
                                 {
-                                    InventoryItem inventory = new InventoryItem();
+                                    case "INVENTORYITEM":
+                                        InventoryItem inventory = new InventoryItem();
 
-                                    string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11]);
+                                        string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11]);
 
-                                    Environ.Add(inventory.Deserialize(inven));
+                                        Environ.Add(inventory.Deserialize(inven));
+                                        break;
+
+                                    case "AI":
+                                        AI aI = new AI(0,0,0);
+                                        string aiStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9]);
+                                        Environ.Add(aI.Deserialize(aiStr));
+
+                                        break;
+
+                                    case "WALL":
+
+                                        break;
                                 }
                             }
                             break;
@@ -147,6 +160,19 @@ namespace Binder
                 wr.WriteLine("ISCHEATON!" + IsCheatOn.ToString().ToUpper());
                 wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
                 wr.WriteLine("MARCUS!"+ Marcus.Serialize());
+
+                string theEnviron = "";
+                string theItems = "";
+
+                foreach (InventoryItem item in Environ)
+                {
+                    theCollection += key + ":" + Collection[key].Serialize() + ";";
+                }
+
+
+                theBuild = string.Format("BUILDING?3,WIDTH!{0},LENGTH!{1},COLLECTION#{2}!{3}", Width, Length, Collection.Count, theCollection);
+
+                wr.WriteLine("ENVIRON" + Environ)
                 wr.WriteLine("END");
             }
         }
