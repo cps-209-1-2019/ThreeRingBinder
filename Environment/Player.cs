@@ -9,9 +9,10 @@ namespace Binder.Environment
     public class Player : MovableCharacter, ISerialization<Player>
     {
         public string Name { get; set; }
-        public List<Items> Inventory { get; set; }
+        public List<InventoryItem> Inventory { get; set; }
         public Player(string name)
         {
+            Inventory = new List<InventoryItem>();
             Name = name;
             X = 720;
             Y = 450;
@@ -115,7 +116,7 @@ namespace Binder.Environment
                 }
             }
         }
-        public void Enteract()
+        public void Enteract(Game game)
         {
             InventoryItem itemToPickUp = null;
             foreach (WorldObject thing in Game.Environ) {
@@ -132,7 +133,7 @@ namespace Binder.Environment
             }
             if (itemToPickUp != null)
             {
-                itemToPickUp.PickUp();
+                itemToPickUp.PickUp(game);
             }
         }
 
@@ -191,7 +192,7 @@ namespace Binder.Environment
 
         public string Serialize()
         {
-            Inventory = new List<Items>();
+            Inventory = new List<InventoryItem>();
             string thePlayer = "";
             string theInventory = "";
             foreach(Items items in Inventory)
@@ -209,7 +210,7 @@ namespace Binder.Environment
         public Player Deserialize(string obj)
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
-            Inventory = new List<Items>();
+            Inventory = new List<InventoryItem>();
 
             for (int i = 1; i < properties.Count; i += 2)
             {

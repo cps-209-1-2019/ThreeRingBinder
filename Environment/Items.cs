@@ -48,14 +48,14 @@ namespace Binder.Environment
     {
         public bool isTheOne = false;
         //Sets found to true to say that the player has picked up item.
-        public void PickUp()
+        public void PickUp(Game binderGame)
         {
             string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
             Image = dir + Image;
-            Game.itemsHeld.Add(this);
-            if (Game.itemsHeld.Count > 4)
+            binderGame.Marcus.Inventory.Add(this);
+            if (binderGame.Marcus.Inventory.Count > 4)
             {
-                Game.itemsHeld.RemoveAt(4);
+                binderGame.Marcus.Inventory.RemoveAt(4);
             }
             Found = true;
         }
