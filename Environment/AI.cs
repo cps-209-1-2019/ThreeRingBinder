@@ -143,22 +143,22 @@ namespace Binder.Environment
         {
             if (game.Marcus.X < X)
             {
-                if (IsNotWall((-changeNum / 2), 0, game.CurBuilding))
+                if (IsNotWall((-changeNum / 2), 0))
                     X -= changeNum / 2;
             }
             else if (game.Marcus.X > X)
             {
-                if (IsNotWall((changeNum / 2), 0, game.CurBuilding))
+                if (IsNotWall((changeNum / 2), 0))
                     X += changeNum / 2;
             }
             if (game.Marcus.Y < Y)
             {
-                if (IsNotWall(0, (-changeNum / 2), game.CurBuilding))
+                if (IsNotWall(0, (-changeNum / 2)))
                     Y -= changeNum / 2;
             }
             else if (game.Marcus.Y > Y)
             {
-                if (IsNotWall(0, (changeNum / 2), game.CurBuilding))
+                if (IsNotWall(0, (changeNum / 2)))
                     Y += changeNum / 2;
             }
         }

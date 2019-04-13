@@ -17,6 +17,8 @@ namespace Binder.Environment
             Name = name;
             X = 720;
             Y = 450;
+            Length = 138;
+            Width = 134;
             
         }
         public void ChangeXFrames(int changeInX)
@@ -96,7 +98,7 @@ namespace Binder.Environment
             {
                 if (direction == 'w')
                 {
-                    if (IsNotWall(changeNum, 0, game.CurBuilding))
+                    if (IsNotWall(changeNum, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -107,7 +109,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'n')
                 {
-                    if (IsNotWall(0, changeNum, game.CurBuilding))
+                    if (IsNotWall(0, changeNum))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -118,7 +120,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'e')
                 {
-                    if (IsNotWall(changeNum * -1, 0, game.CurBuilding))
+                    if (IsNotWall(changeNum * -1, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -129,7 +131,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 's')
                 {
-                    if (IsNotWall(0, changeNum * -1, game.CurBuilding))
+                    if (IsNotWall(0, changeNum * -1))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -199,5 +201,36 @@ namespace Binder.Environment
             return this;
         }
 
+    }
+
+    public class Airplane : WorldObject
+    {
+        public int Damage { get; set; }
+        public int Stage { get; set; }
+        public void Update()
+        {
+            Stage++;
+            if (Stage > 4)
+            {
+                Destroy();
+            }
+            foreach (WorldObject wObj in Game.Environ)
+            {
+
+            }
+
+        }
+        public bool isHit()
+        {
+            foreach (WorldObject thing in Game.Environ)
+                if (thing.X > (X + Width) || (thing.X + thing.Width) < X)
+                    if (thing.Y < (Y + Length) || (thing.Y + thing.Length) > Y)
+                        return true;
+            return false;
+        }
+        public void Destroy()
+        {
+
+        }
     }
 }
