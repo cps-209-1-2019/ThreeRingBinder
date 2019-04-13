@@ -10,6 +10,7 @@ namespace Binder.Environment
 
     public class AI : MovableCharacter, ISerialization<AI> 
     {
+        public bool isAttacking = false;
         int horizCount = 0;
         int vertCount = 0;
         string horizDirection = "west";
@@ -26,48 +27,64 @@ namespace Binder.Environment
         {
             if (changeInX > 0)
             {
-                if (front == 0)
+                if (isAttacking)
                 {
-                    PictureName = "/Sprites/PsiZetaFront.png";
-                    front = 1;
-                }
-                else if (front == 1)
-                {
-                    PictureName = "/Sprites/PsiZetaFront1.png";
-                    front = 2;
-                }
-                else if (front == 2)
-                {
-                    PictureName = "/Sprites/PsiZetaFront.png";
-                    front = 3;
+                    PictureName = "/Sprites/PsiZetaFrontWhip.png";
+                    isAttacking = false;
                 }
                 else
                 {
-                    PictureName = "/Sprites/PsiZetaFront2.png";
-                    front = 0;
+                    if (front == 0)
+                    {
+                        PictureName = "/Sprites/PsiZetaFront.png";
+                        front = 1;
+                    }
+                    else if (front == 1)
+                    {
+                        PictureName = "/Sprites/PsiZetaFront1.png";
+                        front = 2;
+                    }
+                    else if (front == 2)
+                    {
+                        PictureName = "/Sprites/PsiZetaFront.png";
+                        front = 3;
+                    }
+                    else
+                    {
+                        PictureName = "/Sprites/PsiZetaFront2.png";
+                        front = 0;
+                    }
                 }
             }
             else if (changeInX < 0)
             {
-                if (back == 0)
+                if (isAttacking)
                 {
-                    PictureName = "/Sprites/PsiZetaBack.png";
-                    back = 1;
-                }
-                else if (back == 1)
-                {
-                    PictureName = "/Sprites/PsiZetaBack1.png";
-                    back = 2;
-                }
-                else if (back == 20)
-                {
-                    PictureName = "/Sprites/PsiZetaBack.png";
-                    back = 3;
+                    PictureName = "/Sprites/PsiZetaBackWhip.png";
+                    isAttacking = false;
                 }
                 else
                 {
-                    PictureName = "/Sprites/PsiZetaBack2.png";
-                    back = 0;
+                    if (back == 0)
+                    {
+                        PictureName = "/Sprites/PsiZetaBack.png";
+                        back = 1;
+                    }
+                    else if (back == 1)
+                    {
+                        PictureName = "/Sprites/PsiZetaBack1.png";
+                        back = 2;
+                    }
+                    else if (back == 20)
+                    {
+                        PictureName = "/Sprites/PsiZetaBack.png";
+                        back = 3;
+                    }
+                    else
+                    {
+                        PictureName = "/Sprites/PsiZetaBack2.png";
+                        back = 0;
+                    }
                 }
             }
         }
@@ -75,48 +92,65 @@ namespace Binder.Environment
         {
             if (changeInX > 0)
             {
-                if (right == 0)
+                if (isAttacking)
                 {
-                    PictureName = "/Sprites/PsiZetaRight.png";
-                    right = 1;
-                }
-                else if (right == 1)
-                {
-                    PictureName = "/Sprites/PsiZetaRight1.png";
-                    right = 2;
-                }
-                else if (right == 2)
-                {
-                    PictureName = "/Sprites/PsiZetaRight.png";
-                    right = 3;
+                    PictureName = "/Sprites/PsiZetaRightWhip.png";
+                    isAttacking = false;
                 }
                 else
                 {
-                    PictureName = "/Sprites/PsiZetaRight2.png";
-                    right = 0;
+                    if (right == 0)
+                    {
+                        PictureName = "/Sprites/PsiZetaRight.png";
+                        right = 1;
+                    }
+                    else if (right == 1)
+                    {
+                        PictureName = "/Sprites/PsiZetaRight1.png";
+                        right = 2;
+                    }
+                    else if (right == 2)
+                    {
+                        PictureName = "/Sprites/PsiZetaRight.png";
+                        right = 3;
+                    }
+                    else
+                    {
+                        PictureName = "/Sprites/PsiZetaRight2.png";
+                        right = 0;
+                    }
                 }
+
             }
             else if (changeInX < 0)
             {
-                if (left == 0)
+                if (isAttacking)
                 {
-                    PictureName = "/Sprites/PsiZetaLeft.png";
-                    left = 1;
-                }
-                else if (left == 1)
-                {
-                    PictureName = "/Sprites/PsiZetaLeft1.png";
-                    left = 2;
-                }
-                else if (left == 20)
-                {
-                    PictureName = "/Sprites/PsiZetaLeft.png";
-                    left = 3;
+                    PictureName = "/Sprites/PsiZetaLeftWhip.png";
+                    isAttacking = false;
                 }
                 else
                 {
-                    PictureName = "/Sprites/PsiZetaLeft2.png";
-                    left = 0;
+                    if (left == 0)
+                    {
+                        PictureName = "/Sprites/PsiZetaLeft.png";
+                        left = 1;
+                    }
+                    else if (left == 1)
+                    {
+                        PictureName = "/Sprites/PsiZetaLeft1.png";
+                        left = 2;
+                    }
+                    else if (left == 20)
+                    {
+                        PictureName = "/Sprites/PsiZetaLeft.png";
+                        left = 3;
+                    }
+                    else
+                    {
+                        PictureName = "/Sprites/PsiZetaLeft2.png";
+                        left = 0;
+                    }
                 }
             }
         }
@@ -305,6 +339,8 @@ namespace Binder.Environment
                 if ((400 * 400) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
                 {
                     Chase(game);
+                    if ((150 * 150) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
+                        isAttacking = true;
                 }
                 else
                 {
