@@ -72,7 +72,25 @@ namespace Binder
         //Time Logic
         public void DecrTime()
         {
-            //s
+            if(sec == 0 && min != 0)
+            {
+                min -= 1;
+                sec = 60;
+            }
+            else
+            {
+                sec -= 1;
+            }
+
+            string minutes = min.ToString();
+            string seconds = sec.ToString();
+
+            if(seconds.Length == 1)
+            {
+                seconds = "0" + seconds;
+            }
+
+            TimeLeft = "Time: 0" + min + ":" + seconds;            
         }
 
         //Creaated Load method with initial loading algorithm

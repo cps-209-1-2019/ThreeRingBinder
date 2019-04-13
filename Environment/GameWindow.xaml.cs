@@ -28,6 +28,8 @@ namespace Binder.Environment
         DispatcherTimer LimitTimer;
         bool isRingShown = false;
 
+        TextBlock Time;
+
         public GameWindow(bool cheat, int difficulty, double startTime)
         {
             //NameScope.SetNameScope(this, new NameScope());
@@ -41,7 +43,7 @@ namespace Binder.Environment
             BuildWalls();
             BindItems();
             building = binderGame.CurBuilding;
-            //cnvsGame.DataContext = building;
+            cnvsGame.DataContext = building;
             MakeAI(binderGame);
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
@@ -56,22 +58,31 @@ namespace Binder.Environment
             binderGame.Marcus.PictureName = "/Sprites/MarcusFront.png";
             imgBl.DataContext = binderGame.Marcus.PictureName;
 
+            Time = new TextBlock()
+            {
+                FontSize = 50,
+                Foreground = Brushes.Yellow,
+                FontFamily = new FontFamily("Algerian"),
+            };
+            Time.SetBinding(TextBlock.TextProperty, "TimeLeft");
+
+            cnvsGame.Children.Add(Time);
+            Canvas.SetLeft(Time, 518);
+            Canvas.SetTop(Time, 15);
+
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
             LimitTimer = new DispatcherTimer()
             {
-                
+               Interval = new TimeSpan(0, 0, 0, 1) 
             };
+
             LimitTimer.Tick += LimitTimer_Tick;
             LimitTimer.Start();
         }
 
         private void LimitTimer_Tick(object sender, EventArgs e)
         {
-            TextBlock block = new TextBlock
-            {
-                FontSize = 50,
-                FontFamily = new FontFamily("Algerian"),
-            };
+            binderGame.DecrTime();            
         }
 
         private void TimerTwo_Tick(object sender, EventArgs e)
