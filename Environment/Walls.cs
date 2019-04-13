@@ -142,7 +142,7 @@ namespace Binder.Environment
         }
         public string Serialize()
         {
-            throw new NotImplementedException();
+            return string.Format("WALLS?2,X{0}Y{1}",X,Y);
         }
 
         public Walls Deserialize(string obj)
