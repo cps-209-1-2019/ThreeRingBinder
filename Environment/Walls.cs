@@ -51,7 +51,7 @@ namespace Binder.Environment
             }
         }
 
-        //private int[] posW;
+        private int[] posW;
         public int Width { get; set; }                      //Contains the thickness of the wall
         public int Length { get; set; }                     //The number of blocks the wall will contain              
         public int Orientation { get; set; }                //1 = Horizontal, 2 = Vertical 
