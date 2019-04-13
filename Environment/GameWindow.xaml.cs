@@ -258,7 +258,7 @@ namespace Binder.Environment
         public void MakeAI(Game game)
         {
             AI ai = new AI(10, 300000, 20);
-            ai.X = 750;
+            ai.X = 650;
             ai.Y = 400;
             Game.Environ.Add(ai);
             ai.PictureName = "/Sprites/PsiZetaFront.png";

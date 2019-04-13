@@ -153,7 +153,7 @@ namespace Binder
         public void MakeItems()
         {
             InventoryItem item = new InventoryItem();
-            item.X = 700;
+            item.X = 800;
             item.Y = 450;
             item.isTheOne = true;
             item.Image = "/Sprites/rubberDuck.png";
@@ -214,24 +214,6 @@ namespace Binder
         {
             return Convert.ToInt32((PsiZetaShamed * 200) + (timeLeft * 15));
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         protected void SetProperty(string source)
         {
             PropertyChangedEventHandler handle = PropertyChanged;

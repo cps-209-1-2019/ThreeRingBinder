@@ -106,7 +106,7 @@ namespace Binder.Environment
                     PictureName = "/Sprites/MarcusLeft1.png";
                     left = 2;
                 }
-                else if (left == 20)
+                else if (left == 2)
                 {
                     PictureName = "/Sprites/MarcusLeft.png";
                     left = 3;
@@ -145,7 +145,7 @@ namespace Binder.Environment
             {
                 if (direction == 'w')
                 {
-                    if (IsNotWall(changeNum, 0))
+                    if (IsNotWall(-changeNum, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -156,7 +156,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'n')
                 {
-                    if (IsNotWall(0, changeNum))
+                    if (IsNotWall(0, -changeNum))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -167,7 +167,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'e')
                 {
-                    if (IsNotWall(changeNum * -1, 0))
+                    if (IsNotWall(changeNum, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -178,7 +178,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 's')
                 {
-                    if (IsNotWall(0, changeNum * -1))
+                    if (IsNotWall(0, changeNum))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
