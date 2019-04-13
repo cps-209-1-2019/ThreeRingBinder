@@ -15,6 +15,9 @@ namespace Binder.Environment
         private int y;
         private int[] pos;
         private string pic;
+        public int Width { get; set; }
+        public int Length { get; set; }
+
 
         public virtual int X
         {

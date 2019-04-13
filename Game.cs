@@ -19,7 +19,7 @@ namespace Binder
         public int Composure { get; set; }          //Keeps track of the health of the Player
         public int Time { get; set; }               //Keeps track of the amount of time remaining
         public int NumItems { get; set; }           //Keeps track of the number of items in players inventory
-        public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
+        //public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
@@ -57,9 +57,9 @@ namespace Binder
             CurBuilding.Name = "Fine Arts";
 
             Environ.AddRange(Building.WallsCol);
-            StartPoint = new int[] { 0, 0 };
+            //StartPoint = new int[] { 0, 0 };
 
-            StartPoint = new int[2];
+            //StartPoint = new int[2];
             ring = new BinderRing();
             ring.X = 700;
             ring.Y = 450;
@@ -81,8 +81,8 @@ namespace Binder
 
                 while (line != "END")
                 {
-                    string identify = line.Split(',', '!', '#', ':', '?', ';')[0];
-                    switch (identify)
+                    string[] identify = line.Split(',', '!', '#', ':', '?', ';');
+                    switch (identify[0])
                     {
                         case "CURRSCORE":
                             CurrScore = int.Parse(line.Split('!')[1]);
@@ -112,11 +112,31 @@ namespace Binder
                         case "MARCUS":
                             Marcus = Marcus.Deserialize(line);
                             break;
-                        case "STARTPOINTX":
-                            StartPoint[0] = int.Parse(line.Split('!')[1]);
-                            break;
-                        case "STARTPOINTY":
-                            StartPoint[1] = int.Parse(line.Split('!')[1]);
+                        case "ENVIRON":
+                            for (int j = 0; j < identify.Length; j++)
+                            {
+                                switch (identify[j])
+                                {
+                                    case "INVENTORYITEM":
+                                        InventoryItem inventory = new InventoryItem();
+
+                                        string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11]);
+
+                                        Environ.Add(inventory.Deserialize(inven));
+                                        break;
+
+                                    case "AI":
+                                        AI aI = new AI(0,0,0);
+                                        string aiStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9]);
+                                        Environ.Add(aI.Deserialize(aiStr));
+
+                                        break;
+
+                                    case "WALL":
+
+                                        break;
+                                }
+                            }
                             break;
                     }
 
@@ -158,11 +178,17 @@ namespace Binder
                 wr.WriteLine("COMPOSURE!" + Composure);
                 wr.WriteLine("TIME!" + Time);
                 wr.WriteLine("NUMITEMS!" + NumItems);
-                wr.WriteLine("STARTPOINTX!" + StartPoint[0]);
-                wr.WriteLine("STARTPOINTY!" + StartPoint[1]);
                 wr.WriteLine("ISCHEATON!" + IsCheatOn.ToString().ToUpper());
                 wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
                 wr.WriteLine("MARCUS!"+ Marcus.Serialize());
+
+                string theItems = "";
+
+                foreach (InventoryItem item in Environ)
+                {
+                    theItems += item.Serialize() + ";";
+                }
+                wr.WriteLine(string.Format("ENVIRON?{0}!{1}", Environ.Count, theItems));
                 wr.WriteLine("END");
             }
         }

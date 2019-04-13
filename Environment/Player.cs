@@ -9,12 +9,15 @@ namespace Binder.Environment
     public class Player : MovableCharacter, ISerialization<Player>
     {
         public string Name { get; set; }
-        public List<Items> Inventory { get; set; }
+        public List<InventoryItem> Inventory { get; set; }
         public Player(string name)
         {
+            Inventory = new List<InventoryItem>();
             Name = name;
             X = 720;
             Y = 450;
+            Length = 138;
+            Width = 134;
             
         }
         public void ChangeXFrames(int changeInX)
@@ -115,7 +118,7 @@ namespace Binder.Environment
                 }
             }
         }
-        public void Enteract()
+        public void Enteract(Game game)
         {
             InventoryItem itemToPickUp = null;
             foreach (WorldObject thing in Game.Environ) {
@@ -132,7 +135,7 @@ namespace Binder.Environment
             }
             if (itemToPickUp != null)
             {
-                itemToPickUp.PickUp();
+                itemToPickUp.PickUp(game);
             }
         }
 
@@ -142,7 +145,7 @@ namespace Binder.Environment
             {
                 if (direction == 'w')
                 {
-                    if (IsNotWall(changeNum, 0, game.CurBuilding))
+                    if (IsNotWall(changeNum, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -153,7 +156,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'n')
                 {
-                    if (IsNotWall(0, changeNum, game.CurBuilding))
+                    if (IsNotWall(0, changeNum))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -164,7 +167,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'e')
                 {
-                    if (IsNotWall(changeNum * -1, 0, game.CurBuilding))
+                    if (IsNotWall(changeNum * -1, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -175,7 +178,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 's')
                 {
-                    if (IsNotWall(0, changeNum * -1, game.CurBuilding))
+                    if (IsNotWall(0, changeNum * -1))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -191,7 +194,7 @@ namespace Binder.Environment
 
         public string Serialize()
         {
-            Inventory = new List<Items>();
+            Inventory = new List<InventoryItem>();
             string thePlayer = "";
             string theInventory = "";
             foreach(Items items in Inventory)
@@ -209,7 +212,7 @@ namespace Binder.Environment
         public Player Deserialize(string obj)
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
-            Inventory = new List<Items>();
+            Inventory = new List<InventoryItem>();
 
             for (int i = 1; i < properties.Count; i += 2)
             {
@@ -245,5 +248,36 @@ namespace Binder.Environment
             return this;
         }
 
+    }
+
+    public class Airplane : WorldObject
+    {
+        public int Damage { get; set; }
+        public int Stage { get; set; }
+        public void Update()
+        {
+            Stage++;
+            if (Stage > 4)
+            {
+                Destroy();
+            }
+            foreach (WorldObject wObj in Game.Environ)
+            {
+
+            }
+
+        }
+        public bool isHit()
+        {
+            foreach (WorldObject thing in Game.Environ)
+                if (thing.X > (X + Width) || (thing.X + thing.Width) < X)
+                    if (thing.Y < (Y + Length) || (thing.Y + thing.Length) > Y)
+                        return true;
+            return false;
+        }
+        public void Destroy()
+        {
+
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace Binder.Environment
         string horizDirection = "west";
         string vertDirection = "north";
         bool patrolVertically = false;
+        int attackTime = 10;
         public AI(int health, int damage, int speed)
         {
             Health = health;
@@ -32,7 +33,7 @@ namespace Binder.Environment
                     PictureName = "/Sprites/PsiZetaFrontWhip.png";
                     isAttacking = false;
                 }
-                else
+                else if (attackTime > 5)
                 {
                     if (front == 0)
                     {
@@ -63,7 +64,7 @@ namespace Binder.Environment
                     PictureName = "/Sprites/PsiZetaBackWhip.png";
                     isAttacking = false;
                 }
-                else
+                else if (attackTime > 5)
                 {
                     if (back == 0)
                     {
@@ -97,7 +98,7 @@ namespace Binder.Environment
                     PictureName = "/Sprites/PsiZetaRightWhip.png";
                     isAttacking = false;
                 }
-                else
+                else if (attackTime > 5)
                 {
                     if (right == 0)
                     {
@@ -129,7 +130,7 @@ namespace Binder.Environment
                     PictureName = "/Sprites/PsiZetaLeftWhip.png";
                     isAttacking = false;
                 }
-                else
+                else if (attackTime > 5)
                 {
                     if (left == 0)
                     {
@@ -300,7 +301,7 @@ namespace Binder.Environment
         {
             if (game.Marcus.X < X)
             {
-                if (IsNotWall((-changeNum / 2), 0, game.CurBuilding))
+                if (IsNotWall((-changeNum / 2), 0))
                 {
                     X -= changeNum / 2;
                     ChangeYFrames(-changeNum / 2);
@@ -308,7 +309,7 @@ namespace Binder.Environment
             }
             else if (game.Marcus.X > X)
             {
-                if (IsNotWall((changeNum / 2), 0, game.CurBuilding))
+                if (IsNotWall((changeNum / 2), 0))
                 {
                     X += changeNum / 2;
                     ChangeYFrames(changeNum / 2);
@@ -316,7 +317,7 @@ namespace Binder.Environment
             }
             if (game.Marcus.Y < Y)
             {
-                if (IsNotWall(0, (-changeNum / 2), game.CurBuilding))
+                if (IsNotWall(0, (-changeNum / 2)))
                 {
                     Y -= changeNum / 2;
                     ChangeXFrames(-changeNum / 2);
@@ -324,7 +325,7 @@ namespace Binder.Environment
             }
             else if (game.Marcus.Y > Y)
             {
-                if (IsNotWall(0, (changeNum / 2), game.CurBuilding))
+                if (IsNotWall(0, (changeNum / 2)))
                 {
                     Y += changeNum / 2;
                     ChangeXFrames(changeNum / 2);
@@ -340,7 +341,16 @@ namespace Binder.Environment
                 {
                     Chase(game);
                     if ((150 * 150) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
-                        isAttacking = true;
+                    {
+                        attackTime++;
+                        if (attackTime > 10)
+                        {
+                            isAttacking = true;
+                            attackTime = 0;
+                        }
+                    }
+                    else
+                        attackTime = 10;
                 }
                 else
                 {
@@ -357,7 +367,7 @@ namespace Binder.Environment
 
         public string Serialize()
         {
-            throw new NotImplementedException();
+            return string.Format("AI?5,HEALTH!{0},DAMAGE!{1},SPEED!{2},X!{3},Y!{4}", Health, Damage, Speed, X, Y);
         }
 
         public AI Deserialize(string obj)
@@ -376,6 +386,12 @@ namespace Binder.Environment
                         break;
                     case "SPEED":
                         Speed = int.Parse(properties[i + 1]);
+                        break;
+                    case "X":
+                        X = int.Parse(properties[i + 1]);
+                        break;
+                    case "Y":
+                        Y = int.Parse(properties[i + 1]);
                         break;
                 }
             }

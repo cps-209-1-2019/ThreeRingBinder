@@ -21,27 +21,33 @@ namespace Binder.Environment
         {
 
         }
-        public void Attack(Game game)
+        public void Attack()
         {
-            for (int i = 0; i < 4; i++)
-            {
-                foreach (WorldObject wObj in Game.Environ)
-                {
-                    if (wObj is AI)
-                    {
-                        if ((X + i * 40) < wObj.X && wObj.X < (X + (i * 40) + 40))
-                        {
-
-                        }
-                    }
-                }
-            }
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    foreach (WorldObject wObj in Game.Environ)
+            //    {
+            //        if ((X + i * changeNum) < wObj.X && wObj.X < (X + (i * changeNum) + changeNum))
+            //        {
+            //            if (wObj is AI)
+            //            {
+            //                AI ai = (AI)wObj;
+            //                ai.Health -= Damage;
+            //                break;
+            //            }
+            //            else
+            //            {
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
         }
-        public bool IsNotWall(int changeInX, int changeInY, Building building)
+        public bool IsNotWall(int changeInX, int changeInY)
         {
             foreach (Walls wall in Building.WallsCol)
-                if (((wall.X + changeInX) < X && (wall.X + changeInX + wall.Width) > X))
-                    if ((wall.Y + changeInY) < Y && (wall.Y + changeInY + wall.Length) > Y)
+                if ((wall.X + changeInX) > (X + Width) || (wall.X + wall.Width + changeInX) < X)
+                    if ((wall.Y + changeInY) > (Y + Length) || (wall.Y + wall.Length + changeInY) < Y)
                         return false;
             return true;
         }
