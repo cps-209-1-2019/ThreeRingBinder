@@ -21,7 +21,7 @@ namespace Binder
         public int NumItems { get; set; }           //Keeps track of the number of items in players inventory
         //public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
-        public int Difficulty { get; set; }         //Holds difficulty level
+        public static int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
         public static bool isPaused { get; set; }    //Determines if the game is paused

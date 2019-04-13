@@ -24,6 +24,16 @@ namespace Binder
         {
             binderGame = game;
             InitializeComponent();
+            SetRiddle();
+        }
+
+        public void SetRiddle()
+        {
+            //if (level == 1)
+            txtRiddle1.Text = "Soft and squishy, yellow and fat,";
+            txtRiddle2.Text = "its sturdy frame never stays flat.";
+            txtRiddle3.Text = "Metal bin, so hard and cold,";
+            txtRiddle4.Text = "Spouting forth the taste of old.";
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)

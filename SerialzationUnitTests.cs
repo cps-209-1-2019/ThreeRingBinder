@@ -24,7 +24,7 @@ namespace Binder
             Assert.IsTrue(game.Time == 400);
             Assert.IsTrue(game.IsCheatOn);
             Assert.IsTrue(game.NumItems == 3);
-            Assert.IsTrue(game.Difficulty == 2);
+            Assert.IsTrue(Game.Difficulty == 2);
 
             Assert.IsTrue(game.CurBuilding.Length == 7300);
             Assert.IsTrue(game.CurBuilding.Width == 2700);
@@ -53,7 +53,7 @@ namespace Binder
         [Test]
         public void Save_InitialTest_Unknown()
         {
-            Game game = new Game(360) { CurrScore = 330, Time = 450, Composure = 3, HighScore = 1800, Difficulty = 3, IsCheatOn = false, NumItems = 1 };
+            Game game = new Game(360) { CurrScore = 330, Time = 450, Composure = 3, HighScore = 1800, IsCheatOn = false, NumItems = 1 };
             game.CurBuilding = new Environment.Building() { Length = 20, Width = 360, X = 60, Y = 90  };
             game.CurBuilding.Collection.Add("PIPE", new Environment.Items() { Name = "PIPE", Image = "pipe.png", Position = new int[] { 55, 80 }, Found = false});
             game.Marcus = new Environment.Player("MARCUS"){ Health = 3, Speed = 30, Damage = 2 };

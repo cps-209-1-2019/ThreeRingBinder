@@ -29,10 +29,9 @@ namespace Binder.Environment
 
         public GameWindow(bool cheat, int difficulty, double startTime)
         {
-            //NameScope.SetNameScope(this, new NameScope());
             binderGame = new Game(startTime);
             binderGame.IsCheatOn = cheat;
-            binderGame.Difficulty = difficulty;
+            Game.Difficulty = difficulty;
 
             InitializeComponent();
 
@@ -40,7 +39,6 @@ namespace Binder.Environment
             BuildWalls();
             BindItems();
             building = binderGame.CurBuilding;
-            //cnvsGame.DataContext = building;
             MakeAI(binderGame);
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
@@ -54,8 +52,6 @@ namespace Binder.Environment
 
             binderGame.Marcus.PictureName = "/Sprites/MarcusFront.png";
             imgBl.DataContext = binderGame.Marcus.PictureName;
-
-            //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
         }
 
         private void TimerTwo_Tick(object sender, EventArgs e)
@@ -88,8 +84,8 @@ namespace Binder.Environment
                     }
                     else
                     {
-                        label.Width = 120;
-                        label.Height = 120;
+                        label.Width = 134;
+                        label.Height = 138;
                     }
                 }
                 else if (wObj is InventoryItem)
@@ -246,8 +242,8 @@ namespace Binder.Environment
             Game.Environ.Add(ai);
             ai.PictureName = "/Sprites/PsiZetaFront.png";
             Label label = SetObjectBinding(ai.PictureName, ai);
-            label.Width = 120;
-            label.Height = 120;
+            label.Width = 134;
+            label.Height = 138;
         }
         public Label SetObjectBinding(string uri, object b)
         {
