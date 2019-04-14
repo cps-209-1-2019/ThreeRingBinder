@@ -32,28 +32,6 @@ namespace Binder.Environment
             new int[4] {4000, -1500, 3000, 69},
         };
 
-        public List<int[]> LibPlans = new List<int[]>()
-        {            
-            //Computer Labs
-            new int[4] {-2510, 990, 260, 69},
-            new int[4] {-2289, 990, 260, 69},
-            new int[4] { -3000, 960, 69, 443}
-        };
-
-        public List<int[]> FAPlans = new List<int[]>()
-        {
-            //Perimeter
-            new int[4] {-4000, -1500, 69, 8000},
-            new int[4] {-4000, 1500, 69, 8000},
-            new int[4] {-4000, -1500, 3000, 69},
-            new int[4] {4000, -1500, 3000, 69},
-
-            //Rooms
-            //new int[4] {-2049, -1250, 1000, 24},
-            new int[4] {-2049, 500, 1000, 69}
-
-        };
-
         public Building()
         {
             BuildPerim(Maze);
@@ -115,16 +93,6 @@ namespace Binder.Environment
             }
         }
 
-        public List<int[]> Maze = new List<int[]>()
-        {
-
-        };
-
-        void BuildPerim(List<int[]> plans)
-        {
-            plans.AddRange(Perimeter);
-        }
-
 
         //Turn the object into a string
         public string Serialize()
@@ -176,6 +144,49 @@ namespace Binder.Environment
             return this;
         }
 
-        
+
+
+
+
+
+
+        //Building Plans
+        public List<int[]> LibPlans = new List<int[]>()
+        {            
+            //Computer Labs
+            new int[4] {-2510, 990, 260, 69},
+            new int[4] {-2289, 990, 260, 69},
+            new int[4] { -3000, 960, 69, 443}
+        };
+
+        public List<int[]> FAPlans = new List<int[]>()
+        {
+            //Rooms
+            //new int[4] {-2049, -1250, 1000, 24},
+            new int[4] {-2049, 500, 1000, 69}
+
+        };
+
+
+        public List<int[]> Maze = new List<int[]>()
+        {
+            new int[4] {-4000, -1100, 69, 1000},
+            new int[4] {-3000, -1238, 200, 69},
+            new int[4] {-3000, -1238, 69, 700},
+            new int[4] {-2300, -1238, 800, 69 },
+            new int[4] {-3000, -438, 69, 700},
+            new int[4] {-3000, -438, 600, 69},
+            new int[4] {-3000, 181, 69, 700},
+
+            new int[4] {-3400, -1100, 600, 69},
+            new int[4] {-3400, -800, 69, 700},
+            new int[4] {-3500, -238, 69, 500}
+            
+        };
+
+        void BuildPerim(List<int[]> plans)
+        {
+            plans.AddRange(Perimeter);
+        }
     }
 }
