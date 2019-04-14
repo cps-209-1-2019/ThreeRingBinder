@@ -18,20 +18,22 @@ namespace Binder.Environment
         public int Width { get; set; }
         public int Length{ get; set; }
 
-
         public Dictionary<string, Items> Collection;
         public static List<Walls> WallsCol;
 
-        public List<int[]> LibPlans = new List<int[]>()
+        List<int[]> Perimeter = new List<int[]>()
         {
             //Coords Format: `x`, `y`, `l`, `w`
 
             //Perimeter
-            new int[4] {-3000, -1500, 69, 6000},
-            new int[4] {-3000, 1500, 69, 6000},
-            new int[4] {-3000, -1500, 3000, 69},
-            new int[4] {3000, -1500, 3000, 69},
-            
+            new int[4] {-4000, -1500, 69, 8000},
+            new int[4] {-4000, 1468, 69, 8000},
+            new int[4] {-4000, -1500, 3000, 69},
+            new int[4] {4000, -1500, 3000, 69},
+        };
+
+        public List<int[]> LibPlans = new List<int[]>()
+        {            
             //Computer Labs
             new int[4] {-2510, 990, 260, 69},
             new int[4] {-2289, 990, 260, 69},
@@ -41,10 +43,10 @@ namespace Binder.Environment
         public List<int[]> FAPlans = new List<int[]>()
         {
             //Perimeter
-            new int[4] {-3000, -1500, 24, 6000},
-            new int[4] {-3000, 1500, 24, 6000},
-            new int[4] {-3000, -1500, 2500, 69},
-            new int[4] {3000, -1500, 2500, 69},
+            new int[4] {-4000, -1500, 69, 8000},
+            new int[4] {-4000, 1500, 69, 8000},
+            new int[4] {-4000, -1500, 3000, 69},
+            new int[4] {4000, -1500, 3000, 69},
 
             //Rooms
             //new int[4] {-2049, -1250, 1000, 24},
@@ -54,9 +56,11 @@ namespace Binder.Environment
 
         public Building()
         {
+            BuildPerim(Maze);
             BuildFA();
             Collection = new Dictionary<string, Items>();
             WallsCol = new List<Walls>();
+
         }
 
         //Adds the Item object in its params to the Collection
@@ -86,16 +90,16 @@ namespace Binder.Environment
         {
             bool full = false;
             
-            for(int i = 750; i < 6000; i+= 750)
+            for(int i = 1000; i < 8000; i+= 1000)
             {
                 int[] coords = null;
                 if (full == false)
                 {
-                    coords = new int[4] { -3000 + i, -1500, 1000, 69 };
+                    coords = new int[4] { -4000 + i, -1500, 1000, 69 };
                 }
                 if(full == true)
                 {
-                    coords = new int[4] { -3000 + i, 500, 1000, 69 };
+                    coords = new int[4] { -4000 + i, 500, 1000, 69 };
                 }
                 
                 if(i + 750 >= 6000)
@@ -110,6 +114,17 @@ namespace Binder.Environment
                 FAPlans.Add(coords);
             }
         }
+
+        public List<int[]> Maze = new List<int[]>()
+        {
+
+        };
+
+        void BuildPerim(List<int[]> plans)
+        {
+            plans.AddRange(Perimeter);
+        }
+
 
         //Turn the object into a string
         public string Serialize()

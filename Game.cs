@@ -56,8 +56,8 @@ namespace Binder
             isPaused = false;
 
             CurBuilding = new Building() { Length = 2500, Width = 5464};
-            CurBuilding.BuildWalls(CurBuilding.FAPlans);
-            CurBuilding.Name = "Fine Arts";
+            CurBuilding.BuildWalls(CurBuilding.Maze);
+            CurBuilding.Name = "Maze";
 
             Environ.AddRange(Building.WallsCol);
             //StartPoint = new int[] { 0, 0 };
