@@ -33,7 +33,7 @@ namespace Binder
 
         public double timeLeft;
         private string time;
-        private int min = 0;
+        private int min = 2;
         private int sec = 60;
         public string TimeLeft
         {
@@ -72,7 +72,25 @@ namespace Binder
         //Time Logic
         public void DecrTime()
         {
-            //s
+            if(sec == 0 && min != 0)
+            {
+                min -= 1;
+                sec = 59;
+            }
+            else
+            {
+                sec -= 1;
+            }
+
+            string minutes = min.ToString();
+            string seconds = sec.ToString();
+
+            if(seconds.Length == 1)
+            {
+                seconds = "0" + seconds;
+            }
+
+            TimeLeft = "Time: 0" + min + ":" + seconds;            
         }
 
         //Creaated Load method with initial loading algorithm
@@ -153,7 +171,7 @@ namespace Binder
         public void MakeItems()
         {
             InventoryItem item = new InventoryItem();
-            item.X = 700;
+            item.X = 800;
             item.Y = 450;
             item.isTheOne = true;
             item.Image = "/Sprites/rubberDuck.png";
@@ -214,24 +232,6 @@ namespace Binder
         {
             return Convert.ToInt32((PsiZetaShamed * 200) + (timeLeft * 15));
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         protected void SetProperty(string source)
         {
             PropertyChangedEventHandler handle = PropertyChanged;

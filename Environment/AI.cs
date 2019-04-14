@@ -342,11 +342,14 @@ namespace Binder.Environment
                     Chase(game);
                     if ((150 * 150) >= (((X - game.Marcus.X) * (X - game.Marcus.X)) + ((Y - game.Marcus.Y) * (Y - game.Marcus.Y))))
                     {
-                        attackTime++;
-                        if (attackTime > 10)
+                        if (game.IsCheatOn != true)
                         {
-                            isAttacking = true;
-                            attackTime = 0;
+                            attackTime++;
+                            if (attackTime > 10)
+                            {
+                                isAttacking = true;
+                                attackTime = 0;
+                            }
                         }
                     }
                     else
