@@ -217,7 +217,7 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.C)
             {
-                binderGame.Marcus.Attack();
+                Airplane airplane = new Airplane(binderGame.Marcus);
             }
             else if (e.Key == Key.X)
             {
