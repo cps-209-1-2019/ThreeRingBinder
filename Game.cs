@@ -33,7 +33,7 @@ namespace Binder
 
         public double timeLeft;
         private string time;
-        private int min = 0;
+        private int min = 2;
         private int sec = 60;
         public string TimeLeft
         {
@@ -56,8 +56,8 @@ namespace Binder
             isPaused = false;
 
             CurBuilding = new Building() { Length = 2500, Width = 5464};
-            CurBuilding.BuildWalls(CurBuilding.FAPlans);
-            CurBuilding.Name = "Fine Arts";
+            CurBuilding.BuildWalls(CurBuilding.Maze);
+            CurBuilding.Name = "Maze";
 
             Environ.AddRange(Building.WallsCol);
             //StartPoint = new int[] { 0, 0 };
@@ -72,7 +72,25 @@ namespace Binder
         //Time Logic
         public void DecrTime()
         {
-            //s
+            if(sec == 0 && min != 0)
+            {
+                min -= 1;
+                sec = 59;
+            }
+            else
+            {
+                sec -= 1;
+            }
+
+            string minutes = min.ToString();
+            string seconds = sec.ToString();
+
+            if(seconds.Length == 1)
+            {
+                seconds = "0" + seconds;
+            }
+
+            TimeLeft = "Time: 0" + min + ":" + seconds;            
         }
 
         //Creaated Load method with initial loading algorithm

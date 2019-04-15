@@ -28,6 +28,9 @@ namespace Binder.Environment
         DispatcherTimer LimitTimer;
         bool isRingShown = false;
 
+        TextBlock Time;
+        TextBlock Level;
+
         public GameWindow(bool cheat, int difficulty, double startTime)
         {
             //NameScope.SetNameScope(this, new NameScope());
@@ -41,7 +44,7 @@ namespace Binder.Environment
             BuildWalls();
             BindItems();
             building = binderGame.CurBuilding;
-            //cnvsGame.DataContext = building;
+            cnvsGame.DataContext = building;
             MakeAI(binderGame);
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
@@ -56,23 +59,48 @@ namespace Binder.Environment
             binderGame.Marcus.PictureName = "/Sprites/MarcusFront.png";
             imgBl.DataContext = binderGame.Marcus.PictureName;
 
+            Time = new TextBlock()
+            {
+                FontSize = 50,
+                Foreground = Brushes.Yellow,
+                FontFamily = new FontFamily("Algerian"),
+                Text = "Time"
+            };
+            Time.DataContext = binderGame;
+            Time.SetBinding(TextBlock.TextProperty, "TimeLeft");
+
+            cnvsGame.Children.Add(Time);
+            Canvas.SetLeft(Time, 518);
+            Canvas.SetTop(Time, 15);
+
+
+            //TODO: Implement Level Progression, and use abstraction for how the text on the screen will look.
+            Level = new TextBlock()
+            {
+                FontSize = 50,
+                Foreground = Brushes.Yellow,
+                FontFamily = new FontFamily("Algerian"),
+            };
+            Level.DataContext = binderGame;
+            
+
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
             LimitTimer = new DispatcherTimer()
             {
-                
+               Interval = new TimeSpan(0, 0, 0, 0, 200) 
             };
+
             LimitTimer.Tick += LimitTimer_Tick;
             LimitTimer.Start();
         }
 
         private void LimitTimer_Tick(object sender, EventArgs e)
-        {
-            TextBlock block = new TextBlock
+        {            
+            binderGame.DecrTime();
+            if (binderGame.TimeLeft == "Time: 00:00")
             {
-                FontSize = 50,
-                FontFamily = new FontFamily("Algerian"),
-                
-            };
+                LimitTimer.Stop();
+            }
         }
 
         private void TimerTwo_Tick(object sender, EventArgs e)
