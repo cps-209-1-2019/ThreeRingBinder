@@ -99,14 +99,20 @@ namespace Binder.Environment
         {
             string theBuild = "";
             string theCollection = "";
+            string theWalls = "";
             
             foreach (string key in Collection.Keys)
             { 
                 theCollection += key + ":" + Collection[key].Serialize() + ";"; 
             }
 
+            foreach(Walls walls in WallsCol)
+            {
+                theWalls += walls.Serialize() + ";";
+            }
 
-            theBuild = string.Format("BUILDING?3,WIDTH!{0},LENGTH!{1},COLLECTION#{2}!{3}", Width, Length, Collection.Count, theCollection);
+
+            theBuild = string.Format("BUILDING?3,WIDTH!{0},LENGTH!{1},COLLECTION#{2}!{3}ENDLIST,WALLSCOL#{4}!{5}ENDLIST", Width, Length, Collection.Count, theCollection, WallsCol.Count, theWalls);
 
             return theBuild;
         }
@@ -114,7 +120,7 @@ namespace Binder.Environment
         //Take a string and turn it into a Building object
         public Building Deserialize(string obj)
         {
-            List<string> properties = new List<string>(obj.Split(',','!','#',':','?',';'));
+            List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
 
             for (int i = 0; i < properties.Count; i++)
             {
@@ -133,11 +139,31 @@ namespace Binder.Environment
                             {
                                 InventoryItem inventory = new InventoryItem();
 
-                                string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", properties[j], properties[j+1],properties[j+2],properties[j+3],properties[j+4],properties[j+5],properties[j+6],properties[j+7], properties[j + 8], properties[j + 9], properties[j + 10], properties[j + 11]);
+                                string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", properties[j], properties[j + 1], properties[j + 2], properties[j + 3], properties[j + 4], properties[j + 5], properties[j + 6], properties[j + 7], properties[j + 8], properties[j + 9], properties[j + 10], properties[j + 11]);
 
-                                Collection.Add(properties[j-1], inventory.Deserialize(inven));
+                                Collection.Add(properties[j - 1], inventory.Deserialize(inven));
+                            }
+                            else if (properties[j] == "ENDLIST")
+                            {
+                                break;
                             }
                         }
+                        break;
+                    case "WALLSCOL":
+                        for (int j = i; j < properties.Count; j++)
+                        {
+                            if (properties[j] == "WALLS")
+                            {
+                                Walls walls = new Walls(0, 0, new int[0]);
+                                string theWalls = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", properties[j], properties[j + 1], properties[j + 2], properties[j + 3], properties[j + 4], properties[j + 5], properties[j + 6], properties[j + 7], properties[j + 8], properties[j + 9]);
+                                WallsCol.Add(walls.Deserialize(theWalls));
+                            }
+                            else if (properties[j] == "ENDLIST")
+                            {
+                                break;
+                            }
+                        }
+
                         break;
                 }
             }
