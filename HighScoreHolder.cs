@@ -16,26 +16,30 @@ namespace Binder
 
         public void Load()
         {
-            using (StreamReader reader = new StreamReader(filename))
+            try
             {
-                scoreList = new List<HighScore>();
-                highScoreText = null;
-                for (int i = 0; i < 10; i++)
+                using (StreamReader reader = new StreamReader(filename))
                 {
-                    string[] scoreArray = new string[2];
-                    string scoreLine = reader.ReadLine();
-                    if (scoreLine != null)
+                    scoreList = new List<HighScore>();
+                    highScoreText = null;
+                    for (int i = 0; i < 10; i++)
                     {
-                        highScoreText += scoreLine + "\n";
-                        scoreArray = scoreLine.Split(new char[] { ' ' });
-                        HighScore highScore = new HighScore(scoreArray[1], scoreArray[0]);
-                        scoreList.Insert(0, highScore);
-                        if (scoreList.Count() > 10)
-                            scoreList.RemoveAt(10);
+                        string[] scoreArray = new string[2];
+                        string scoreLine = reader.ReadLine();
+                        if (scoreLine != null)
+                        {
+                            highScoreText += scoreLine + "\n";
+                            scoreArray = scoreLine.Split(new char[] { ' ' });
+                            HighScore highScore = new HighScore(scoreArray[1], scoreArray[0]);
+                            scoreList.Insert(0, highScore);
+                            if (scoreList.Count() > 10)
+                                scoreList.RemoveAt(10);
+                        }
+
                     }
-                    
                 }
             }
+            catch { }
         }
 
         public void Save()

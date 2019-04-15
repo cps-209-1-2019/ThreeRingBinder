@@ -9,6 +9,7 @@ namespace Binder.Environment
     public class Player : MovableCharacter, ISerialization<Player>
     {
         public string Name { get; set; }
+        public string Direction { get; set; }
         public List<InventoryItem> Inventory { get; set; }
         public Player(string name)
         {
@@ -18,12 +19,14 @@ namespace Binder.Environment
             Y = 448;
             Length = 138;
             Width = 134;
-            
+            Damage = 1;
+            Health = 3;
         }
         public void ChangeXFrames(int changeInX)
         {
             if (changeInX > 0)
             {
+                Direction = "down";
                 if (front == 0)
                 {
                     PictureName = "/Sprites/MarcusFront.png";
@@ -47,6 +50,7 @@ namespace Binder.Environment
             }
             else if (changeInX < 0)
             {
+                Direction = "up";
                 if (back == 0)
                 {
                     PictureName = "/Sprites/MarcusBack.png";
@@ -73,6 +77,7 @@ namespace Binder.Environment
         {
             if (changeInX > 0)
             {
+                Direction = "right";
                 if (right == 0)
                 {
                     PictureName = "/Sprites/MarcusRight.png";
@@ -96,6 +101,7 @@ namespace Binder.Environment
             }
             else if (changeInX < 0)
             {
+                Direction = "left";
                 if (left == 0)
                 {
                     PictureName = "/Sprites/MarcusLeft.png";
@@ -194,7 +200,6 @@ namespace Binder.Environment
 
         public string Serialize()
         {
-            Inventory = new List<InventoryItem>();
             string thePlayer = "";
             string theInventory = "";
             foreach(Items items in Inventory)
@@ -254,30 +259,92 @@ namespace Binder.Environment
     {
         public int Damage { get; set; }
         public int Stage { get; set; }
+        public bool Destroy { get; set; }
+        public string Direction { get; set; }
+        public Airplane(Player player)
+        {
+            Stage = 0;
+            Damage = player.Damage;
+            X = player.X + 30;
+            Y = player.Y + 40;
+            Direction = player.Direction;
+            if (player.Direction == "up")
+            { 
+                PictureName = "/Sprites/paperAirplaneUp.jpg";
+            }
+            else if (player.Direction == "down")
+            {
+                PictureName = "/Sprites/paperAirplaneDown.jpg";
+            }
+            else if (player.Direction == "left")
+            {
+                PictureName = "/Sprites/paperAirplaneLeft.jpg";
+            }
+            else if (player.Direction == "right")
+            {
+                PictureName = "/Sprites/paperAirplaneRight.jpg";
+            }
+        }
         public void Update()
         {
+            if (Direction == "up")
+            {
+                Y -= 69;
+                Hit(0, -69);
+            }
+            if (Direction == "down")
+            {
+                Y += 69;
+                Hit(0, 69);
+            }
+            if (Direction == "right")
+            {
+                X += 69;
+                Hit(69, 0);
+            }
+            if (Direction == "left")
+            {
+                X -= 69;
+                Hit(-69, 0);
+            }
             Stage++;
             if (Stage > 4)
             {
-                Destroy();
+                Destroy = true;
             }
-            foreach (WorldObject wObj in Game.Environ)
-            {
-
-            }
-
         }
-        public bool isHit()
+        public void Hit(int changeInX, int changeInY)
         {
             foreach (WorldObject thing in Game.Environ)
-                if (thing.X > (X + Width) || (thing.X + thing.Width) < X)
-                    if (thing.Y < (Y + Length) || (thing.Y + thing.Length) > Y)
-                        return true;
-            return false;
-        }
-        public void Destroy()
-        {
-
+            {
+                if (thing is Walls || thing is AI)
+                {
+                    if ((thing.X < (X + changeInX)) && ((thing.X + thing.Width) > (X + changeInX)))// || ((wall.X < (X + changeInX + 30)) && ((wall.X + wall.Width) > (X + changeInX + 30))))
+                    {
+                        if (((thing.Y < (Y + changeInY)) && ((thing.Y + thing.Length) > (Y + changeInY))) || ((thing.Y < (Y + changeInY + Length - 20)) && ((thing.Y + thing.Length) > (Y + changeInY + Length - 20))))
+                        {
+                            Destroy = true;
+                            if (thing is AI)
+                            {
+                                AI ai = (AI)thing;
+                                ai.Health -= Damage;
+                            }
+                        }
+                    }
+                }
+                //This AI code might be a little better
+                if (thing is AI)
+                {
+                    if ((100 * 100) > ((thing.X - X) * (thing.X - X)) + ((thing.Y -Y) * (thing.Y -Y))) { 
+                    //if ((thing.X + thing.Width + 50 > X) && (thing.X - 50 < X)) {
+                      //  if ((thing.Y + thing.Length + 100 > Y) && (thing.Y - 100 < Y)) {
+                            Destroy = true;
+                            AI ai = (AI)thing;
+                            ai.Health -= Damage;
+                        //}
+                    }
+                }
+            }
         }
     }
 }
