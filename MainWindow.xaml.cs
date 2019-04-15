@@ -34,7 +34,7 @@ namespace Binder
         //Testing my GameWindow
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GameWindow gameWin = new GameWindow(isCheatOn, difficulty, startTime);
+            GameWindow gameWin = new GameWindow(isCheatOn, difficulty, startTime, false);
             gameWin.Show();
             this.Close();
         }
@@ -84,15 +84,7 @@ namespace Binder
 
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {
-            GameWindow gameWin = new GameWindow(isCheatOn, difficulty, startTime);
-            try
-            {
-                gameWin.binderGame.Load("gameFile.txt");
-            }
-            catch
-            {
-                
-            }
+            GameWindow gameWin = new GameWindow(isCheatOn, difficulty, startTime, true);
             gameWin.Show();
             this.Close();
         }

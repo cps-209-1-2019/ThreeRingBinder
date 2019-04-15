@@ -129,6 +129,7 @@ namespace Binder
                         case "CURBUILDING":
                             Building build = new Building();
                             CurBuilding = build.Deserialize(line);
+                            CurBuilding.BuildWalls(CurBuilding.Maze);
                             break;
                         case "MARCUS":
                             Marcus = Marcus.Deserialize(line);
@@ -153,8 +154,10 @@ namespace Binder
 
                                         break;
 
-                                    case "WALL":
-
+                                    case "WALLS":
+                                        Walls walls = new Walls(0,0,new int[0]);
+                                        string wallsStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9]);
+                                        Environ.Add(walls.Deserialize(wallsStr));
                                         break;
                                 }
                             }
