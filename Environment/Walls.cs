@@ -137,7 +137,7 @@ namespace Binder.Environment
         }
         public string Serialize()
         {
-            return string.Format("WALLS?3,X!{0},Y!{1},WIDTH!{2},LENGTH!{3},ORIENTATION!{4}", X, Y, Width, Length,Orientation);
+            return string.Format("WALLS?3,X!{0},Y!{1},WIDTH!{2},LENGTH!{3},ORIENTATION!{4}", X, Y, Width, Length);//,Orientation);
         }
 
         public Walls Deserialize(string obj)
@@ -158,7 +158,7 @@ namespace Binder.Environment
                         Y = int.Parse(properties[i + 1]);
                         break;
                     case "ORIENTATION":
-                        Orientation = int.Parse(properties[i + 1]);
+//                        Orientation = int.Parse(properties[i + 1]);
                         break;
                     case "WIDTH":
                         Width = int.Parse(properties[i + 1]);
@@ -169,22 +169,21 @@ namespace Binder.Environment
             return this;
         }
 
-        public void ChangeBlocks(char dir, int moveNum)
-        {
-            foreach (Block block in Blocks)
-            {
-                if (dir == 'Y')
-                    block.Y += moveNum;
-                else if (dir == 'X')
-                    block.X += moveNum;
-            }
-        }
+        //public void ChangeBlocks(char dir, int moveNum)
+        //{
+        //    foreach (Block block in Blocks)
+        //    {
+        //        if (dir == 'Y')
+        //            block.Y += moveNum;
+        //        else if (dir == 'X')
+        //            block.X += moveNum;
+        //    }
+        //}
     }
 
     //Defines a class Block from which the walls will be built.
     public class Block : WorldObject
     {
-
         public Block(int[] pos)
         {
             Position = new int[2];

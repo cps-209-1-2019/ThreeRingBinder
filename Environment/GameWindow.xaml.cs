@@ -55,10 +55,13 @@ namespace Binder.Environment
 
             InitializeComponent();
 
+            building = binderGame.CurBuilding;
+
             this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
+            
             BuildWalls();
             BindItems();
-            building = binderGame.CurBuilding;
+            
             cnvsGame.DataContext = building;
             MakeAI(binderGame);
             timer = new DispatcherTimer();
@@ -280,7 +283,7 @@ namespace Binder.Environment
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            foreach (Walls w in Building.WallsCol)
+            foreach (Walls w in building.WallsCol)
             {
                 foreach (Block b in w.Blocks)
                 {

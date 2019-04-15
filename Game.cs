@@ -56,10 +56,10 @@ namespace Binder
             isPaused = false;
 
             CurBuilding = new Building() { Length = 2500, Width = 5464};
-            CurBuilding.BuildWalls(CurBuilding.Maze);
-            CurBuilding.Name = "Maze";
+            CurBuilding.BuildWalls(Building.LibPlans);
+            CurBuilding.Name = "Macey's Library";
 
-            Environ.AddRange(Building.WallsCol);
+            Environ.AddRange(CurBuilding.WallsCol);
             //StartPoint = new int[] { 0, 0 };
 
             //StartPoint = new int[2];

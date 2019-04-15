@@ -161,7 +161,7 @@ namespace Binder.Environment
             vertCount++;
             if (vertDirection == "north")
             {
-                if (AIIsNotWall(0, -changeNum))
+                if (AIIsNotWall(game.CurBuilding, 0, -changeNum))
                 {
                     Y -= changeNum;
                     ChangeXFrames(-changeNum);
@@ -175,7 +175,7 @@ namespace Binder.Environment
             }
             else if (horizDirection == "south")
             {
-                if (AIIsNotWall(0, changeNum))
+                if (AIIsNotWall(game.CurBuilding, 0, changeNum))
                 {
                     Y += changeNum;
                     ChangeXFrames(changeNum);
@@ -198,7 +198,7 @@ namespace Binder.Environment
             horizCount++;
             if (horizDirection  == "west")
             {
-                if  (AIIsNotWall(-changeNum, 0))
+                if  (AIIsNotWall(game.CurBuilding, -changeNum, 0))
                 {
                     X -= changeNum;
                     ChangeYFrames(-changeNum);
@@ -212,7 +212,7 @@ namespace Binder.Environment
             }
             else if (horizDirection == "east")
             {
-                if (AIIsNotWall(changeNum, 0))
+                if (AIIsNotWall(game.CurBuilding, changeNum, 0))
                 {
                     X += changeNum;
                     ChangeYFrames(changeNum);
@@ -242,7 +242,7 @@ namespace Binder.Environment
             if (direc == 0)
             {
                 //west
-                if (AIIsNotWall(-changeNum / 2, 0))
+                if (AIIsNotWall(building, -changeNum / 2, 0))
                 {
                     X -= changeNum;
                     ChangeYFrames(-changeNum);
@@ -256,7 +256,7 @@ namespace Binder.Environment
             else if (direc == 1)
             {
                 //east
-                if (AIIsNotWall((changeNum / 2), 0))
+                if (AIIsNotWall(building, (changeNum / 2), 0))
                 {
                     X += changeNum;
                     ChangeYFrames(changeNum);
@@ -270,7 +270,7 @@ namespace Binder.Environment
             else if (direc == 2)
             {
                 //north
-                if (AIIsNotWall(0, (-changeNum / 2)))
+                if (AIIsNotWall(building, 0, (-changeNum / 2)))
                 {
                     Y -= changeNum;
                     ChangeXFrames(-changeNum);
@@ -284,7 +284,7 @@ namespace Binder.Environment
             else if (direc == 3)
             {
                 //south
-                if (AIIsNotWall(0, (changeNum / 2)))
+                if (AIIsNotWall(building, 0, (changeNum / 2)))
                 {
                     Y += changeNum / 2;
                     ChangeXFrames(changeNum);
@@ -301,7 +301,7 @@ namespace Binder.Environment
         {
             if (game.Marcus.X < X)
             {
-                if (IsNotWall((-changeNum / 2), 0))
+                if (IsNotWall(game.CurBuilding, (-changeNum / 2), 0))
                 {
                     X -= changeNum / 2;
                     ChangeYFrames(-changeNum / 2);
@@ -309,7 +309,7 @@ namespace Binder.Environment
             }
             else if (game.Marcus.X > X)
             {
-                if (IsNotWall((changeNum / 2), 0))
+                if (IsNotWall(game.CurBuilding, (changeNum / 2), 0))
                 {
                     X += changeNum / 2;
                     ChangeYFrames(changeNum / 2);
@@ -317,7 +317,7 @@ namespace Binder.Environment
             }
             if (game.Marcus.Y < Y)
             {
-                if (IsNotWall(0, (-changeNum / 2)))
+                if (IsNotWall(game.CurBuilding, 0, (-changeNum / 2)))
                 {
                     Y -= changeNum / 2;
                     ChangeXFrames(-changeNum / 2);
@@ -325,7 +325,7 @@ namespace Binder.Environment
             }
             else if (game.Marcus.Y > Y)
             {
-                if (IsNotWall(0, (changeNum / 2)))
+                if (IsNotWall(game.CurBuilding,0, (changeNum / 2)))
                 {
                     Y += changeNum / 2;
                     ChangeXFrames(changeNum / 2);

@@ -15,30 +15,18 @@ namespace Binder.Environment
     public class Building : WorldObject, ISerialization<Building>
     {
         public string Name { get; set; }
-        public int Width { get; set; }
-        public int Length{ get; set; }
+        //public int Width { get; set; }
+        //public int Length{ get; set; }
 
         public Dictionary<string, Items> Collection;
-        public static List<Walls> WallsCol;
-
-        List<int[]> Perimeter = new List<int[]>()
-        {
-            //Coords Format: `x`, `y`, `l`, `w`
-
-            //Perimeter
-            new int[4] {-4000, -1500, 69, 8000},
-            new int[4] {-4000, 1468, 69, 8000},
-            new int[4] {-4000, -1500, 3000, 69},
-            new int[4] {4000, -1500, 3000, 69},
-        };
+        public List<Walls> WallsCol;
 
         public Building()
         {
-            BuildPerim(Maze);
+            
             BuildFA();
             Collection = new Dictionary<string, Items>();
             WallsCol = new List<Walls>();
-
         }
 
         //Adds the Item object in its params to the Collection
@@ -56,7 +44,8 @@ namespace Binder.Environment
         //Builds walls from the List of Coords
         public void BuildWalls(List<int[]> coords)
         {
-            foreach(int[] dt in coords)
+            BuildPerim(coords);
+            foreach (int[] dt in coords)
             {
                 int[] wcoord = new int[2] { dt[0], dt[1] };
                 Walls wall = new Walls(dt[3], dt[2], wcoord);
@@ -144,22 +133,27 @@ namespace Binder.Environment
             return this;
         }
 
+        List<int[]> Perimeter = new List<int[]>()
+        {
+            //Coords Format: `x`, `y`, `l`, `w`
 
-
-
-
-
-
-        //Building Plans
-        public List<int[]> LibPlans = new List<int[]>()
-        {            
-            //Computer Labs
-            new int[4] {-2510, 990, 260, 69},
-            new int[4] {-2289, 990, 260, 69},
-            new int[4] { -3000, 960, 69, 443}
+            //Perimeter
+            new int[4] {-3105, -1380, 69, 6210},
+            new int[4] {-3105, 1380, 69, 6210},
+            new int[4] {-3105, -1380, 2760, 69},
+            new int[4] {3105, -1380, 2760, 69},
         };
 
-        public List<int[]> FAPlans = new List<int[]>()
+        //Building Plans
+        public static List<int[]> LibPlans = new List<int[]>()
+        {            
+            //Computer Labs
+            new int[4] {-4400, -1000, 69 , 897},
+            new int[4] {-3379, -1000, 69, 414},
+            new int[4] { -2965, -1500, 500, 69},
+        };
+
+        public static List<int[]> FAPlans = new List<int[]>()
         {
             //Rooms
             //new int[4] {-2049, -1250, 1000, 24},
@@ -168,20 +162,20 @@ namespace Binder.Environment
         };
 
 
-        public List<int[]> Maze = new List<int[]>()
+        public static List<int[]> Maze = new List<int[]>()
         {
             new int[4] {-4000, -1100, 69, 1000},
             new int[4] {-3000, -1238, 200, 69},
             new int[4] {-3000, -1238, 69, 700},
-            new int[4] {-2300, -1238, 800, 69 },
+            new int[4] {-2300, -1238, 800, 69},
             new int[4] {-3000, -438, 69, 700},
             new int[4] {-3000, -438, 600, 69},
             new int[4] {-3000, 181, 69, 700},
 
             new int[4] {-3400, -1100, 600, 69},
             new int[4] {-3400, -800, 69, 700},
-            new int[4] {-3500, -238, 69, 500}
-            
+            new int[4] {-3500, -238, 69, 500},
+            new int[4] 
         };
 
         void BuildPerim(List<int[]> plans)
