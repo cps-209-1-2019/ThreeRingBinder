@@ -1,0 +1,22 @@
+﻿<Window x:Class="Binder.Environment.GameOver"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Binder.Environment"
+        mc:Ignorable="d"
+        Title="GameOver" Height="450" Width="400"
+        MinHeight="500"
+        MaxHeight="500"
+        MinWidth="450"
+        MaxWidth="450">
+    <Window.Background>
+        <ImageBrush ImageSource="Screen.PNG"/>
+    </Window.Background>
+    <Canvas>
+        <Label Content="GAME OVER!" Foreground="DarkSlateBlue" FontSize="40" Width="230" Canvas.Left="110" Canvas.Top="55"/>
+        <Label x:Name="lblResults" Content="" Canvas.Left="170" Canvas.Top="130" FontSize="30"/>
+        <Label Content="Play Again?" FontSize="20" Width="110" Canvas.Left="170" Canvas.Top="180" Foreground="DarkRed"/>
+        <Button Height="50" Width="140" Canvas.Left="155" Canvas.Top="240" Content="New Game" x:Name="btnNewGame" Click="BtnNewGame_Click" Background="#e4c027"/>
+    </Canvas>
+</Window>
