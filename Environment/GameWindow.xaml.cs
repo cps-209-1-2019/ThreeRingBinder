@@ -150,6 +150,12 @@ namespace Binder.Environment
                 if (wObj is AI)
                 {
                     AI ai = (AI)wObj;
+                    if (ai.Health <= 0)
+                    {
+                        RemoveLabel(ai);
+                        Game.Environ.Remove(ai);
+                        break;
+                    }
                     ai.Move(binderGame);
                     RemoveLabel(ai);
                     Label label = SetObjectBinding(ai.PictureName, ai);
@@ -183,8 +189,10 @@ namespace Binder.Environment
                 {
                     Airplane plane = (Airplane)wObj;
                     plane.Update();
-                    RemoveLabel(plane);
-                    Label label = SetObjectBinding(plane.PictureName, plane);
+                    if (plane.Destroy == true)
+                    {
+                        RemoveLabel(plane);
+                    }
                 }
                 CheckHealth();
             }
@@ -278,6 +286,10 @@ namespace Binder.Environment
             else if (e.Key == Key.C)
             {
                 Airplane airplane = new Airplane(binderGame.Marcus);
+                Game.Environ.Add(airplane);
+                Label label = SetObjectBinding(airplane.PictureName, airplane);
+                label.Width = 30;
+                label.Height = 30;
             }
             else if (e.Key == Key.X)
             {
@@ -351,7 +363,7 @@ namespace Binder.Environment
 
         public void MakeAI(Game game)
         {
-            AI ai = new AI(10, 300000, 20);
+            AI ai = new AI(10, 5, 10);
             ai.X = 650;
             ai.Y = 400;
             Game.Environ.Add(ai);

@@ -265,24 +265,24 @@ namespace Binder.Environment
         {
             Stage = 0;
             Damage = player.Damage;
-            X = player.X;
-            Y = player.Y;
+            X = player.X + 30;
+            Y = player.Y + 40;
             Direction = player.Direction;
             if (player.Direction == "up")
             { 
-                PictureName = "/Spites/paperAirplaneUp.jpg";
+                PictureName = "/Sprites/paperAirplaneUp.jpg";
             }
             else if (player.Direction == "down")
             {
-                PictureName = "/Spites/paperAirplaneDown.jpg";
+                PictureName = "/Sprites/paperAirplaneDown.jpg";
             }
             else if (player.Direction == "left")
             {
-                PictureName = "/Spites/paperAirplaneLeft.jpg";
+                PictureName = "/Sprites/paperAirplaneLeft.jpg";
             }
             else if (player.Direction == "right")
             {
-                PictureName = "/Spites/paperAirplaneRight.jpg";
+                PictureName = "/Sprites/paperAirplaneRight.jpg";
             }
         }
         public void Update()
@@ -330,6 +330,18 @@ namespace Binder.Environment
                                 ai.Health -= Damage;
                             }
                         }
+                    }
+                }
+                //This AI code might be a little better
+                if (thing is AI)
+                {
+                    if ((100 * 100) > ((thing.X - X) * (thing.X - X)) + ((thing.Y -Y) * (thing.Y -Y))) { 
+                    //if ((thing.X + thing.Width + 50 > X) && (thing.X - 50 < X)) {
+                      //  if ((thing.Y + thing.Length + 100 > Y) && (thing.Y - 100 < Y)) {
+                            Destroy = true;
+                            AI ai = (AI)thing;
+                            ai.Health -= Damage;
+                        //}
                     }
                 }
             }

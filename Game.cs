@@ -226,6 +226,10 @@ namespace Binder
                     {
                         theItems += (item as Walls).Serialize() + ";";
                     }
+                    else if (item is Airplane)
+                    {
+                        continue;
+                    }
                     else
                     {
                         throw new Exception("Houston we have a problem determining what 'item' is");
