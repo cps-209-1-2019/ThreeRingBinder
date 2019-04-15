@@ -45,6 +45,9 @@ namespace Binder.Environment
             if (binderGame.TimeLeft == "Time: 00:00")
             {
                 LimitTimer.Stop();
+                int score = binderGame.CalculateScores();
+                GameOver endGame = new GameOver(this, false, score);
+                endGame.Show();
             }
         }
 
@@ -157,6 +160,13 @@ namespace Binder.Environment
                     }
                     break;
                     }                       
+                }
+                else if (wObj is Airplane)
+                {
+                    Airplane plane = (Airplane)wObj;
+                    plane.Update();
+                    RemoveLabel(plane);
+                    Label label = SetObjectBinding(plane.PictureName, plane);
                 }
             }
         }
@@ -316,8 +326,6 @@ namespace Binder.Environment
 
             block.SetBinding(Canvas.LeftProperty, "X");
             block.SetBinding(Canvas.TopProperty, "Y");
-
-
 
             cnvsGame.Children.Add(block);
             return block;

@@ -20,7 +20,7 @@ namespace Binder.Environment
     public partial class GameOver : Window
     {
         GameWindow gameWindow;
-        public GameOver(GameWindow window, bool isGameWon)
+        public GameOver(GameWindow window, bool isGameWon, int points)
         {
             gameWindow = window;
             InitializeComponent();
@@ -28,6 +28,9 @@ namespace Binder.Environment
                 lblResults.Content = "You Win!";
             else
                 lblResults.Content = "You lost";
+            Game.isPaused = true;
+            lblPoints.Content = points + " Points!";
+            CheckHighScore(points);
         }
 
         private void BtnNewGame_Click(object sender, RoutedEventArgs e)
@@ -36,6 +39,17 @@ namespace Binder.Environment
             title.Show();
             this.Close();
             gameWindow.Close();
+        }
+        private void CheckHighScore(int score)
+        {
+            HighScoreHolder holder = new HighScoreHolder();
+            holder.Load();
+            int index = holder.scoreList.Count() - 1;
+            if (score > Convert.ToInt32(holder.scoreList[index].CurrentScore))
+            {
+                NewHighScore newScore = new NewHighScore(score);
+                newScore.Show();
+            }
         }
     }
 }
