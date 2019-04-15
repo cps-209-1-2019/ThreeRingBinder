@@ -33,7 +33,7 @@ namespace Binder
 
         public double timeLeft;
         private string time;
-        private int min = 0;
+        private int min = 2;
         private int sec = 60;
         public string TimeLeft
         {
@@ -56,8 +56,8 @@ namespace Binder
             isPaused = false;
 
             CurBuilding = new Building() { Length = 2500, Width = 5464};
-            CurBuilding.BuildWalls(CurBuilding.FAPlans);
-            CurBuilding.Name = "Fine Arts";
+            CurBuilding.BuildWalls(CurBuilding.Maze);
+            CurBuilding.Name = "Maze";
 
             Environ.AddRange(Building.WallsCol);
             //StartPoint = new int[] { 0, 0 };
@@ -72,7 +72,25 @@ namespace Binder
         //Time Logic
         public void DecrTime()
         {
-            //s
+            if(sec == 0 && min != 0)
+            {
+                min -= 1;
+                sec = 59;
+            }
+            else
+            {
+                sec -= 1;
+            }
+
+            string minutes = min.ToString();
+            string seconds = sec.ToString();
+
+            if(seconds.Length == 1)
+            {
+                seconds = "0" + seconds;
+            }
+
+            TimeLeft = "Time: 0" + min + ":" + seconds;            
         }
 
         //Creaated Load method with initial loading algorithm
@@ -153,20 +171,24 @@ namespace Binder
         public void MakeItems()
         {
             InventoryItem item = new InventoryItem();
-            item.X = 700;
+            item.X = 800;
             item.Y = 450;
             item.isTheOne = true;
             item.Image = "/Sprites/rubberDuck.png";
+            item.Name = "duck";
             Environ.Add(item);
             InventoryItem itemTwo = new InventoryItem();
             itemTwo.X = 700;
             itemTwo.Y = 900;
             itemTwo.Image = "/Sprites/schaubJacket.png";
+            itemTwo.Name = "jacket";
             Environ.Add(itemTwo);
             InventoryItem itemThree = new InventoryItem();
             itemThree.X = 360;
             itemThree.Y = 100;
             itemThree.Image = "/Sprites/waterFountain.png";
+            itemThree.canBePickedUp = false;
+            itemThree.Name = "fountain";
             Environ.Add(itemThree);
         }
 
@@ -214,24 +236,6 @@ namespace Binder
         {
             return Convert.ToInt32((PsiZetaShamed * 200) + (timeLeft * 15));
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         protected void SetProperty(string source)
         {
             PropertyChangedEventHandler handle = PropertyChanged;

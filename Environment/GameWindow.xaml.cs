@@ -22,18 +22,36 @@ namespace Binder.Environment
     /// </summary>
     public partial class GameWindow : Window
     {
-        Game binderGame;
+        public Game binderGame;
         Building building;
         DispatcherTimer timer;
         DispatcherTimer LimitTimer;
         bool isRingShown = false;
 
+        TextBlock Time;
+        TextBlock Level;
+
         public GameWindow(bool cheat, int difficulty, double startTime)
         {
-            //NameScope.SetNameScope(this, new NameScope());
             binderGame = new Game(startTime);
             binderGame.IsCheatOn = cheat;
             Game.Difficulty = difficulty;
+            LoadGame();
+        }
+
+        private void LimitTimer_Tick(object sender, EventArgs e)
+        {            
+            binderGame.DecrTime();
+            if (binderGame.TimeLeft == "Time: 00:00")
+            {
+                LimitTimer.Stop();
+            }
+        }
+
+        private void LoadGame()
+        {
+            //NameScope.SetNameScope(this, new NameScope());
+
 
             InitializeComponent();
 
@@ -41,7 +59,7 @@ namespace Binder.Environment
             BuildWalls();
             BindItems();
             building = binderGame.CurBuilding;
-            //cnvsGame.DataContext = building;
+            cnvsGame.DataContext = building;
             MakeAI(binderGame);
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
@@ -56,22 +74,39 @@ namespace Binder.Environment
             binderGame.Marcus.PictureName = "/Sprites/MarcusFront.png";
             imgBl.DataContext = binderGame.Marcus.PictureName;
 
+            Time = new TextBlock()
+            {
+                FontSize = 50,
+                Foreground = Brushes.Yellow,
+                FontFamily = new FontFamily("Algerian"),
+                Text = "Time"
+            };
+            Time.DataContext = binderGame;
+            Time.SetBinding(TextBlock.TextProperty, "TimeLeft");
+
+            cnvsGame.Children.Add(Time);
+            Canvas.SetLeft(Time, 518);
+            Canvas.SetTop(Time, 15);
+
+
+            //TODO: Implement Level Progression, and use abstraction for how the text on the screen will look.
+            Level = new TextBlock()
+            {
+                FontSize = 50,
+                Foreground = Brushes.Yellow,
+                FontFamily = new FontFamily("Algerian"),
+            };
+            Level.DataContext = binderGame;
+
+
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
             LimitTimer = new DispatcherTimer()
             {
-                
+                Interval = new TimeSpan(0, 0, 0, 0, 200)
             };
+
             LimitTimer.Tick += LimitTimer_Tick;
             LimitTimer.Start();
-        }
-
-        private void LimitTimer_Tick(object sender, EventArgs e)
-        {
-            TextBlock block = new TextBlock
-            {
-                FontSize = 50,
-                FontFamily = new FontFamily("Algerian"),
-            };
         }
 
         private void TimerTwo_Tick(object sender, EventArgs e)
@@ -257,7 +292,7 @@ namespace Binder.Environment
         public void MakeAI(Game game)
         {
             AI ai = new AI(10, 300000, 20);
-            ai.X = 750;
+            ai.X = 650;
             ai.Y = 400;
             Game.Environ.Add(ai);
             ai.PictureName = "/Sprites/PsiZetaFront.png";

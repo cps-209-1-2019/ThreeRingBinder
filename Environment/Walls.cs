@@ -142,7 +142,7 @@ namespace Binder.Environment
         }
         public string Serialize()
         {
-            throw new NotImplementedException();
+            return string.Format("WALLS?3,X!{0},Y!{1},WIDTH!{2},LENGTH!{3},ORIENTATION!{4}",X,Y,Width,Length,Orientation);
         }
 
         public Walls Deserialize(string obj)
@@ -163,18 +163,10 @@ namespace Binder.Environment
                         Y = int.Parse(properties[i + 1]);
                         break;
                     case "ORIENTATION":
-                        if (properties[i + 1] == "VERTICAL")
-                        {
-                            Orientation = 2;
-                        }
-                        else if (properties[i + 1] == "HORIZAONTAL")
-                        {
-                            Orientation = 1;
-                        }
-                        else
-                        {
-                            throw new ArgumentException("The orientation must be 'VERTICAL' or 'HORIZONTAL'");
-                        }
+                        Orientation = int.Parse(properties[i + 1]);
+                        break;
+                    case "WIDTH":
+                        Width = int.Parse(properties[i + 1]);
                         break;
                 }
             }
