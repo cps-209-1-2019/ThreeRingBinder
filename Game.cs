@@ -129,7 +129,7 @@ namespace Binder
                         case "CURBUILDING":
                             Building build = new Building();
                             CurBuilding = build.Deserialize(line);
-                            CurBuilding.BuildWalls(CurBuilding.Maze);
+                            CurBuilding.BuildWalls(Building.Maze);
                             break;
                         case "MARCUS":
                             Marcus = Marcus.Deserialize(line);
