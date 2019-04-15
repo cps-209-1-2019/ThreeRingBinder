@@ -52,9 +52,8 @@ namespace Binder.Environment
         }
 
         private int[] posW;
-        public int Width { get; set; }                      //Contains the thickness of the wall
-        public int Length { get; set; }                     //The number of blocks the wall will contain              
-        public int Orientation { get; set; }                //1 = Horizontal, 2 = Vertical 
+        //public int Width { get; set; }                      //Contains the thickness of the wall
+        //public int Length { get; set; }                     //The number of blocks the wall will contain              
         public List<Block> Blocks { get; set; }              //Holds the blocks that make up the wall
 
         public override int[] Position
@@ -102,12 +101,8 @@ namespace Binder.Environment
             Width = width;
             Length = length;
             Position = pos;
-            X = pos[0];
-            Y = pos[1];
 
-            Build();
-
-                        
+            Build();                        
         }
 
         //Builds a wall with respect to the Length
@@ -142,7 +137,7 @@ namespace Binder.Environment
         }
         public string Serialize()
         {
-            return string.Format("WALLS?3,X!{0},Y!{1},WIDTH!{2},LENGTH!{3},ORIENTATION!{4}",X,Y,Width,Length,Orientation);
+            return string.Format("WALLS?3,X!{0},Y!{1},WIDTH!{2},LENGTH!{3},ORIENTATION!{4}", X, Y, Width, Length,Orientation);
         }
 
         public Walls Deserialize(string obj)
