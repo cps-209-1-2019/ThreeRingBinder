@@ -32,11 +32,23 @@ namespace Binder.Environment
         TextBlock Time;
         TextBlock Level;
 
-        public GameWindow(bool cheat, int difficulty, double startTime)
+        public GameWindow(bool cheat, int difficulty, double startTime, bool doLoad)
         {
             binderGame = new Game(startTime);
             binderGame.IsCheatOn = cheat;
             Game.Difficulty = difficulty;
+            if (doLoad)
+            {
+                try
+                {
+                    binderGame.Load("gameFile.txt");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                    
+                }
+            }
             LoadGame();
         }
 
@@ -265,7 +277,7 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.C)
             {
-                binderGame.Marcus.Attack();
+                Airplane airplane = new Airplane(binderGame.Marcus);
             }
             else if (e.Key == Key.X)
             {

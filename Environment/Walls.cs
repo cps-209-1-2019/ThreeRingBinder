@@ -137,7 +137,7 @@ namespace Binder.Environment
         }
         public string Serialize()
         {
-            return string.Format("WALLS?3,X!{0},Y!{1},WIDTH!{2},LENGTH!{3},ORIENTATION!{4}", X, Y, Width, Length);
+            return string.Format("WALLS?3,X!{0},Y!{1},WIDTH!{2},LENGTH!{3}", X, Y, Width, Length);
         }
 
         public Walls Deserialize(string obj)
