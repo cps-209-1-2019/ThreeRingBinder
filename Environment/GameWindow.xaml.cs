@@ -76,7 +76,9 @@ namespace Binder.Environment
             BindItems();
             building = binderGame.CurBuilding;
             cnvsGame.DataContext = building;
-            MakeAI(binderGame);
+            MakeAI(650, 400);
+            MakeAI(200, 100);
+            MakeAI(800, 1000);
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
             timer.Tick += Timer_Tick;
@@ -361,11 +363,11 @@ namespace Binder.Environment
             }
         }
 
-        public void MakeAI(Game game)
+        public void MakeAI(int x, int y)
         {
-            AI ai = new AI(10, 5, 10);
-            ai.X = 650;
-            ai.Y = 400;
+            AI ai = new AI(5, 1, 10);
+            ai.X = x;
+            ai.Y = y;
             Game.Environ.Add(ai);
             ai.PictureName = "/Sprites/PsiZetaFront.png";
             Label label = SetObjectBinding(ai.PictureName, ai);
