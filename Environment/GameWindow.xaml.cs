@@ -14,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Windows.Threading;
+using System.IO;
 
 namespace Binder.Environment
 {
@@ -110,6 +111,11 @@ namespace Binder.Environment
 
             LimitTimer.Tick += LimitTimer_Tick;
             LimitTimer.Start();
+
+            string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
+            FillLivesRectangle(rectLifeOne, dir + "/Sprites/composureTie.png");
+            FillLivesRectangle(rectLifeTwo, dir + "/Sprites/composureTie.png");
+            FillLivesRectangle(rectLifeThree, dir + "/Sprites/composureTie.png");
         }
 
         private void TimerTwo_Tick(object sender, EventArgs e)
@@ -156,7 +162,7 @@ namespace Binder.Environment
                     foreach (InventoryItem thing in binderGame.Marcus.Inventory)
                     {
                         rectangle = GetRectangle(thing);
-                        FillRectangle(rectangle, thing);
+                        FillInventoryRectangle(rectangle, thing);
                     }
                     break;
                     }                       
@@ -167,6 +173,29 @@ namespace Binder.Environment
                     plane.Update();
                     RemoveLabel(plane);
                     Label label = SetObjectBinding(plane.PictureName, plane);
+                }
+                CheckHealth();
+            }
+        }
+
+        private void CheckHealth()
+        {
+            if (binderGame.Marcus.Health < 3)
+            {
+                RemoveLabel(rectLifeThree);
+                if (binderGame.Marcus.Health < 2)
+                {
+                    RemoveLabel(rectLifeTwo);
+                    if (binderGame.Marcus.Health < 1)
+                    {
+                        RemoveLabel(rectLifeOne);
+                    }
+                    if (binderGame.Marcus.Health == 0)
+                    {
+                        int score = binderGame.CalculateScores();
+                        GameOver endGame = new GameOver(this, false, score);
+                        endGame.Show();
+                    }
                 }
             }
         }
@@ -186,8 +215,17 @@ namespace Binder.Environment
                 }
             }
         }
+        private void FillLivesRectangle(Rectangle rectangle, string image)
+        {
+            ImageBrush img = new ImageBrush()
+            {
+                ImageSource = new BitmapImage(new Uri(image, UriKind.Relative))
 
-        private void FillRectangle(Rectangle rectangle, InventoryItem item)
+            };
+            rectangle.Fill = img;
+        }
+
+        private void FillInventoryRectangle(Rectangle rectangle, InventoryItem item)
         {
             ImageBrush img = new ImageBrush()
             {
@@ -267,11 +305,11 @@ namespace Binder.Environment
         {
             int oldCurrentItem = binderGame.currentItem;
             binderGame.currentItem = num;
-            FillRectangle(firstRectangle, binderGame.Marcus.Inventory[num]);
+            FillInventoryRectangle(firstRectangle, binderGame.Marcus.Inventory[num]);
             if (binderGame.Marcus.Inventory.Count() > oldCurrentItem)
             {
                 Rectangle rectangle = GetRectangle(binderGame.Marcus.Inventory[oldCurrentItem]);
-                FillRectangle(rectangle, binderGame.Marcus.Inventory[oldCurrentItem]);
+                FillInventoryRectangle(rectangle, binderGame.Marcus.Inventory[oldCurrentItem]);
             }
         }
 
