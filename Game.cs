@@ -175,16 +175,20 @@ namespace Binder
             item.Y = 450;
             item.isTheOne = true;
             item.Image = "/Sprites/rubberDuck.png";
+            item.Name = "duck";
             Environ.Add(item);
             InventoryItem itemTwo = new InventoryItem();
             itemTwo.X = 700;
             itemTwo.Y = 900;
             itemTwo.Image = "/Sprites/schaubJacket.png";
+            itemTwo.Name = "jacket";
             Environ.Add(itemTwo);
             InventoryItem itemThree = new InventoryItem();
             itemThree.X = 360;
             itemThree.Y = 100;
             itemThree.Image = "/Sprites/waterFountain.png";
+            itemThree.canBePickedUp = false;
+            itemThree.Name = "fountain";
             Environ.Add(itemThree);
         }
 

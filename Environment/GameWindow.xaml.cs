@@ -33,10 +33,25 @@ namespace Binder.Environment
 
         public GameWindow(bool cheat, int difficulty, double startTime)
         {
-            //NameScope.SetNameScope(this, new NameScope());
             binderGame = new Game(startTime);
             binderGame.IsCheatOn = cheat;
             Game.Difficulty = difficulty;
+            LoadGame();
+        }
+
+        private void LimitTimer_Tick(object sender, EventArgs e)
+        {            
+            binderGame.DecrTime();
+            if (binderGame.TimeLeft == "Time: 00:00")
+            {
+                LimitTimer.Stop();
+            }
+        }
+
+        private void LoadGame()
+        {
+            //NameScope.SetNameScope(this, new NameScope());
+
 
             InitializeComponent();
 
@@ -82,25 +97,16 @@ namespace Binder.Environment
                 FontFamily = new FontFamily("Algerian"),
             };
             Level.DataContext = binderGame;
-            
+
 
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
             LimitTimer = new DispatcherTimer()
             {
-               Interval = new TimeSpan(0, 0, 0, 0, 200) 
+                Interval = new TimeSpan(0, 0, 0, 0, 200)
             };
 
             LimitTimer.Tick += LimitTimer_Tick;
             LimitTimer.Start();
-        }
-
-        private void LimitTimer_Tick(object sender, EventArgs e)
-        {            
-            binderGame.DecrTime();
-            if (binderGame.TimeLeft == "Time: 00:00")
-            {
-                LimitTimer.Stop();
-            }
         }
 
         private void TimerTwo_Tick(object sender, EventArgs e)
