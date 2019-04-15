@@ -20,7 +20,7 @@ namespace Binder.Environment
             Length = 138;
             Width = 134;
             Damage = 1;
-            
+            Health = 3;
         }
         public void ChangeXFrames(int changeInX)
         {
