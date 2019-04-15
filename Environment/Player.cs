@@ -14,8 +14,8 @@ namespace Binder.Environment
         {
             Inventory = new List<InventoryItem>();
             Name = name;
-            X = 720;
-            Y = 450;
+            X = 654;
+            Y = 448;
             Length = 138;
             Width = 134;
             
@@ -194,7 +194,6 @@ namespace Binder.Environment
 
         public string Serialize()
         {
-            Inventory = new List<InventoryItem>();
             string thePlayer = "";
             string theInventory = "";
             foreach(Items items in Inventory)

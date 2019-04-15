@@ -52,9 +52,8 @@ namespace Binder.Environment
         }
 
         private int[] posW;
-        public int Width { get; set; }                      //Contains the thickness of the wall
-        public int Length { get; set; }                     //The number of blocks the wall will contain              
-        public int Orientation { get; set; }                //1 = Horizontal, 2 = Vertical 
+        //public int Width { get; set; }                      //Contains the thickness of the wall
+        //public int Length { get; set; }                     //The number of blocks the wall will contain              
         public List<Block> Blocks { get; set; }              //Holds the blocks that make up the wall
 
         public override int[] Position
@@ -102,12 +101,8 @@ namespace Binder.Environment
             Width = width;
             Length = length;
             Position = pos;
-            X = pos[0];
-            Y = pos[1];
 
-            Build();
-
-                        
+            Build();                        
         }
 
         //Builds a wall with respect to the Length
@@ -142,7 +137,7 @@ namespace Binder.Environment
         }
         public string Serialize()
         {
-            return string.Format("WALLS?2,X{0}Y{1}",X,Y);
+            return string.Format("WALLS?3,X!{0},Y!{1},WIDTH!{2},LENGTH!{3},ORIENTATION!{4}", X, Y, Width, Length,Orientation);
         }
 
         public Walls Deserialize(string obj)
@@ -163,18 +158,10 @@ namespace Binder.Environment
                         Y = int.Parse(properties[i + 1]);
                         break;
                     case "ORIENTATION":
-                        if (properties[i + 1] == "VERTICAL")
-                        {
-                            Orientation = 2;
-                        }
-                        else if (properties[i + 1] == "HORIZAONTAL")
-                        {
-                            Orientation = 1;
-                        }
-                        else
-                        {
-                            throw new ArgumentException("The orientation must be 'VERTICAL' or 'HORIZONTAL'");
-                        }
+                        Orientation = int.Parse(properties[i + 1]);
+                        break;
+                    case "WIDTH":
+                        Width = int.Parse(properties[i + 1]);
                         break;
                 }
             }
