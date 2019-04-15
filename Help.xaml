@@ -24,5 +24,7 @@
         <Button Content="Z" Width="20" Canvas.Left="184" Canvas.Top="149"/>
         <TextBlock Text="To pause the game, press" Canvas.Left="10" Canvas.Top="180"/>
         <Button Content="esc" Width="25" Canvas.Left="159" Canvas.Top="181"/>
+        <TextBlock Text="To switch between inventory items to use," Canvas.Left="10" Canvas.Top="225"/>
+        <TextBlock Text="press its corresponding number key." Canvas.Left="10" Canvas.Top="240"/>
     </Canvas>
 </Window>

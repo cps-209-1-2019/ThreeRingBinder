@@ -15,8 +15,9 @@
     </Window.Background>
     <Canvas>
         <Label Content="GAME OVER!" Foreground="DarkSlateBlue" FontSize="40" Width="230" Canvas.Left="110" Canvas.Top="55"/>
-        <Label x:Name="lblResults" Content="" Canvas.Left="170" Canvas.Top="130" FontSize="30"/>
-        <Label Content="Play Again?" FontSize="20" Width="110" Canvas.Left="170" Canvas.Top="180" Foreground="DarkRed"/>
-        <Button Height="50" Width="140" Canvas.Left="155" Canvas.Top="240" Content="New Game" x:Name="btnNewGame" Click="BtnNewGame_Click" Background="#e4c027"/>
+        <Label x:Name="lblResults" Content="" Canvas.Left="170" Canvas.Top="120" FontSize="30"/>
+        <Label x:Name="lblPoints" Canvas.Left="170" Canvas.Top="170" FontSize="30" Foreground="DarkRed"/>
+        <Label Content="Play Again?" FontSize="20" Width="110" Canvas.Left="170" Canvas.Top="250" Foreground="DarkRed"/>
+        <Button Height="50" Width="140" Canvas.Left="155" Canvas.Top="290" Content="New Game" x:Name="btnNewGame" Click="BtnNewGame_Click" Background="#e4c027"/>
     </Canvas>
 </Window>
