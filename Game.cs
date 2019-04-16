@@ -35,7 +35,7 @@ namespace Binder
             }
             set
             {
-                currLevel = "Level: " + value;
+                currLevel = "Level " + value;
                 SetProperty("CurrLevel");
             }
         }
@@ -70,7 +70,7 @@ namespace Binder
             Environ = new List<WorldObject>();
             isPaused = false;
 
-            NLevel(Difficulty);
+            NLevel(1);
 
             Environ.AddRange(CurBuilding.WallsCol);
             //StartPoint = new int[] { 0, 0 };
@@ -116,9 +116,9 @@ namespace Binder
         public void NLevel(int level)
         {
             Dictionary<int, List<int[]>> Plans = new Dictionary<int, List<int[]>>();
-            Plans[0] = Building.FAPlans;
-            Plans[1] = Building.LibPlans;
-            Plans[2] = Building.Maze;
+            Plans[1] = Building.FAPlans;
+            Plans[2] = Building.LibPlans;
+            Plans[3] = Building.Maze;
            
 
             CurBuilding = new Building();
@@ -127,16 +127,16 @@ namespace Binder
 
             switch(level){
                 case 1:
-                    CurBuilding.Name = "Finest Artists";
+                    CurBuilding.Name = "1: Finest Artists";
                     break;
                 case 2:
-                    CurBuilding.Name = "Macey's Library";
+                    CurBuilding.Name = "2: Macey's Library";
                     break;
                 case 3:
-                    CurBuilding.Name = "Menacing Maze";
+                    CurBuilding.Name = "3: Menacing Maze";
                     break;
                 default:
-                    CurBuilding.Name = "Finest Artists";
+                    CurBuilding.Name = "1: Finest Artists";
                     break;
             }
 
