@@ -38,7 +38,7 @@ After solving the riddle, move to the correct location and use the correct objec
 
 | Developer | Hours Used | Hours Remaining | Journal Link
 |---|---|---|---|
-| Day | 32 | 34.5| [Day Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Day-Journal)
+| Day | 32 | 28 | [Day Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Day-Journal)
 | Dulcio | 41 | 19 | [Dulcio Log](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Dulcio-Log)
 | Shipe | 44 | 16| [Shipe Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Shipe-Journal)
 | Tapp | 19.25 | 41.75 | [Tapp Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Tapp-Journal)
