@@ -113,6 +113,7 @@ namespace Binder.Environment
             timer.Tick += Timer_Tick;
             timer.Start();
 
+            //The timers that allow the player to move smoothly
             timerUp = new DispatcherTimer();
             timerUp.Interval = new TimeSpan(0, 0, 0, 0, 1);
             timerUp.Tick += UpTimer_Tick;
@@ -281,6 +282,8 @@ namespace Binder.Environment
                         int score = binderGame.CalculateScores();
                         GameOver endGame = new GameOver(this, false, score);
                         endGame.Show();
+                        timer.Stop();
+                        LimitTimer.Stop();
                         isGameOver = true;
                     }
                 }
