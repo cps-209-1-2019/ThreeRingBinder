@@ -94,6 +94,11 @@ namespace Binder.Environment
             }
         }
 
+
+        public Walls()
+        {
+        }
+
         //public constructor for the walls class
         public Walls(int width, int length, int[] pos)
         {
@@ -153,15 +158,20 @@ namespace Binder.Environment
                         break;
                     case "POSX":
                         X = int.Parse(properties[i + 1]);
+                        posW[0] = X;
                         break;
                     case "POSY":
                         Y = int.Parse(properties[i + 1]);
+                        posW[1] = Y;
                         break;
                     case "WIDTH":
                         Width = int.Parse(properties[i + 1]);
                         break;
+                    
                 }
             }
+
+            Build();
 
             return this;
         }
