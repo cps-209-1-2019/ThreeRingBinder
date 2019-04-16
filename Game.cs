@@ -63,14 +63,14 @@ namespace Binder
             }
         }
 
-        public Game(double startTime)
+        public Game(double startTime, int level)
         {
             timeLeft = startTime;
             Marcus = new Player("Marcus");
             Environ = new List<WorldObject>();
             isPaused = false;
 
-            NLevel(1);
+            NLevel(level);
 
             Environ.AddRange(CurBuilding.WallsCol);
             //StartPoint = new int[] { 0, 0 };

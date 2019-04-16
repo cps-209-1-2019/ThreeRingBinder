@@ -45,7 +45,7 @@ namespace Binder.Environment
         {
             InitializeComponent();
 
-            binderGame = new Game(startTime);
+            binderGame = new Game(startTime, 1);
             binderGame.IsCheatOn = cheat;
             Game.Difficulty = difficulty;
             if (doLoad)
@@ -222,7 +222,7 @@ namespace Binder.Environment
                 label.Width = 30;
                 label.Height = 30;
                 isRingShown = true;
-                
+                binderGame = new Game(180, 2);
                 LoadGame();
             }
             foreach (WorldObject wObj in Game.Environ)
