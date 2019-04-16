@@ -48,16 +48,23 @@ namespace Binder.Environment
             Game.Difficulty = difficulty;
             if (doLoad)
             {
-                try
-                {
-                    binderGame.Load("gameFile.txt");
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.ToString());
+                //try
+                //{
+                binderGame.Load("gameFile.txt");
+                //}
+                //catch (Exception e)
+                //{
+                //    MessageBox.Show(e.ToString());
                     
-                }
+                //}
             }
+            LoadGame();
+        }
+
+        public GameWindow()
+        {
+            binderGame = new Game();
+            binderGame.Load("gameFile.txt");
             LoadGame();
         }
 
@@ -114,6 +121,7 @@ namespace Binder.Environment
             timer.Tick += Timer_Tick;
             timer.Start();
 
+            //The timers that allow the player to move smoothly
             timerUp = new DispatcherTimer();
             timerUp.Interval = new TimeSpan(0, 0, 0, 0, 1);
             timerUp.Tick += UpTimer_Tick;
@@ -153,11 +161,15 @@ namespace Binder.Environment
             //TODO: Implement Level Progression, and use abstraction for how the text on the screen will look.
             Level = new TextBlock()
             {
-                FontSize = 50,
+                FontSize = 30,
                 Foreground = Brushes.Yellow,
                 FontFamily = new FontFamily("Algerian"),
             };
             Level.DataContext = binderGame;
+            Level.SetBinding(TextBlock.TextProperty, "CurrLevel");
+            cnvsGame.Children.Add(Level);
+            Canvas.SetRight(Level, 60);
+            Canvas.SetTop(Level, 65);
 
 
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
@@ -283,6 +295,8 @@ namespace Binder.Environment
                         int score = binderGame.CalculateScores();
                         GameOver endGame = new GameOver(this, false, score);
                         endGame.Show();
+                        timer.Stop();
+                        LimitTimer.Stop();
                         isGameOver = true;
                     }
                 }

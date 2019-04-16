@@ -24,6 +24,19 @@ namespace Binder
         public static int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
+        private string currLevel;
+        public string CurrLevel
+        {
+            get
+            {
+                return currLevel;
+            }
+            set
+            {
+                currLevel = "Level: " + value;
+                SetProperty("CurrLevel");
+            }
+        }
         public static bool isPaused { get; set; }    //Determines if the game is paused
         public BinderRing ring;                      //Current binder ring
         public bool isRingFound;                     //Determines if the player has found the ring
@@ -56,8 +69,9 @@ namespace Binder
             isPaused = false;
 
             CurBuilding = new Building() { Length = 2500, Width = 5464};
-            CurBuilding.BuildWalls(Building.LibPlans);
-            CurBuilding.Name = "Macey's Library";
+            CurBuilding.BuildWalls(Building.FAPlans);
+            CurBuilding.Name = "FA Building";
+            CurrLevel = CurBuilding.Name;
 
             Environ.AddRange(CurBuilding.WallsCol);
             //StartPoint = new int[] { 0, 0 };
@@ -67,6 +81,12 @@ namespace Binder
             ring.X = 700;
             ring.Y = 450;
             MakeItems();
+        }
+
+        public Game()
+        {
+            Marcus = new Player("");
+            Environ = new List<WorldObject>();
         }
 
         //Time Logic
@@ -141,9 +161,7 @@ namespace Binder
                                 {
                                     case "INVENTORYITEM":
                                         InventoryItem inventory = new InventoryItem();
-
                                         string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11]);
-
                                         Environ.Add(inventory.Deserialize(inven));
                                         break;
 
@@ -151,11 +169,13 @@ namespace Binder
                                         AI aI = new AI(0,0,0);
                                         string aiStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9]);
                                         Environ.Add(aI.Deserialize(aiStr));
-
                                         break;
 
                                     case "WALLS":
-                                        Walls walls = new Walls(0,0,new int[0]);
+                                        int[] temp = new int[2];
+                                        temp[0] = 0;
+                                        temp[1] = 0;
+                                        Walls walls = new Walls(0, 0, temp);
                                         string wallsStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9]);
                                         Environ.Add(walls.Deserialize(wallsStr));
                                         break;

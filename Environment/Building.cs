@@ -57,28 +57,37 @@ namespace Binder.Environment
         {
             bool full = false;
             
-            for(int i = 1000; i < 8000; i+= 1000)
+            for(int i = 621; i < 6210; i+= 621)
             {
                 int[] coords = null;
+                int[] rcoords = null;
+                int[] lcoords = null;
+
                 if (full == false)
                 {
-                    coords = new int[4] { -4000 + i, -1500, 1000, 69 };
+                    coords = new int[4] { -3105 + i, -1350, 567, 69};
+                    lcoords = new int[4] { -3105 + i, -783, 69, 207 };
+                    rcoords = new int[4] { -3105 + i + 138, -783, 69, 207 };
+                     
                 }
                 if(full == true)
                 {
-                    coords = new int[4] { -4000 + i, 500, 1000, 69 };
+                    coords = new int[4] { -3105 + i, 1395, 567, 69};
+                    lcoords = new int[4] { -3105 + i, 1395, 69, 207 };
+                    rcoords = new int[4] { -3105 + i + 138, 1395, 69, 207 };
                 }
                 
-                if(i + 750 >= 6000)
+                if(i + 621 >= 6210)
                 {                    
                     if(full != true)
                     {
-                        i = 750;
+                        i = 621;
                         full = true;
                     }                   
                 }
-
                 FAPlans.Add(coords);
+                FAPlans.Add(lcoords);
+                FAPlans.Add(rcoords);
             }
         }
 
@@ -143,7 +152,10 @@ namespace Binder.Environment
                         {
                             if (properties[j] == "WALLS")
                             {
-                                Walls walls = new Walls(0, 0, new int[0]);
+                                int[] temp = new int[2];
+                                temp[0] = 0;
+                                temp[1] = 0;
+                                Walls walls = new Walls(0, 0, temp);
                                 string theWalls = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", properties[j], properties[j + 1], properties[j + 2], properties[j + 3], properties[j + 4], properties[j + 5], properties[j + 6], properties[j + 7], properties[j + 8], properties[j + 9]);
                                 WallsCol.Add(walls.Deserialize(theWalls));
                             }

@@ -84,7 +84,7 @@ namespace Binder
 
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {
-            GameWindow gameWin = new GameWindow(isCheatOn, difficulty, startTime, true);
+            GameWindow gameWin = new GameWindow();
             gameWin.Show();
             this.Close();
         }
