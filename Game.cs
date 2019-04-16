@@ -56,10 +56,10 @@ namespace Binder
             isPaused = false;
 
             CurBuilding = new Building() { Length = 2500, Width = 5464};
-            CurBuilding.BuildWalls(CurBuilding.Maze);
-            CurBuilding.Name = "Maze";
+            CurBuilding.BuildWalls(Building.LibPlans);
+            CurBuilding.Name = "Macey's Library";
 
-            Environ.AddRange(Building.WallsCol);
+            Environ.AddRange(CurBuilding.WallsCol);
             //StartPoint = new int[] { 0, 0 };
 
             //StartPoint = new int[2];
@@ -129,7 +129,7 @@ namespace Binder
                         case "CURBUILDING":
                             Building build = new Building();
                             CurBuilding = build.Deserialize(line);
-                            CurBuilding.BuildWalls(CurBuilding.Maze);
+                            CurBuilding.BuildWalls(Building.Maze);
                             break;
                         case "MARCUS":
                             Marcus = Marcus.Deserialize(line);
@@ -225,6 +225,10 @@ namespace Binder
                     else if (item is Walls)
                     {
                         theItems += (item as Walls).Serialize() + ";";
+                    }
+                    else if (item is Airplane)
+                    {
+                        continue;
                     }
                     else
                     {

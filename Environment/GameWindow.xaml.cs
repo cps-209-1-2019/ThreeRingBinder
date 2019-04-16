@@ -75,12 +75,17 @@ namespace Binder.Environment
 
             InitializeComponent();
 
+            building = binderGame.CurBuilding;
+
             this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
+            
             BuildWalls();
             BindItems();
-            building = binderGame.CurBuilding;
+            
             cnvsGame.DataContext = building;
-            MakeAI(binderGame);
+            MakeAI(650, 400);
+            MakeAI(200, 100);
+            MakeAI(800, 1000);
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
             timer.Tick += Timer_Tick;
@@ -176,6 +181,12 @@ namespace Binder.Environment
                 if (wObj is AI)
                 {
                     AI ai = (AI)wObj;
+                    if (ai.Health <= 0)
+                    {
+                        RemoveLabel(ai);
+                        Game.Environ.Remove(ai);
+                        break;
+                    }
                     ai.Move(binderGame);
                     RemoveLabel(ai);
                     Label label = SetObjectBinding(ai.PictureName, ai);
@@ -209,8 +220,10 @@ namespace Binder.Environment
                 {
                     Airplane plane = (Airplane)wObj;
                     plane.Update();
-                    RemoveLabel(plane);
-                    Label label = SetObjectBinding(plane.PictureName, plane);
+                    if (plane.Destroy == true)
+                    {
+                        RemoveLabel(plane);
+                    }
                 }
                 CheckHealth();
             }
@@ -304,6 +317,10 @@ namespace Binder.Environment
             else if (e.Key == Key.C)
             {
                 Airplane airplane = new Airplane(binderGame.Marcus);
+                Game.Environ.Add(airplane);
+                Label label = SetObjectBinding(airplane.PictureName, airplane);
+                label.Width = 30;
+                label.Height = 30;
             }
             else if (e.Key == Key.X)
             {
@@ -366,7 +383,7 @@ namespace Binder.Environment
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            foreach (Walls w in Building.WallsCol)
+            foreach (Walls w in building.WallsCol)
             {
                 foreach (Block b in w.Blocks)
                 {
@@ -375,11 +392,11 @@ namespace Binder.Environment
             }
         }
 
-        public void MakeAI(Game game)
+        public void MakeAI(int x, int y)
         {
-            AI ai = new AI(10, 300000, 20);
-            ai.X = 650;
-            ai.Y = 400;
+            AI ai = new AI(5, 1, 10);
+            ai.X = x;
+            ai.Y = y;
             Game.Environ.Add(ai);
             ai.PictureName = "/Sprites/PsiZetaFront.png";
             Label label = SetObjectBinding(ai.PictureName, ai);
