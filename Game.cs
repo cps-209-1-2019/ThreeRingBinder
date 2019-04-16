@@ -24,6 +24,21 @@ namespace Binder
         public static int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
+
+        public enum Levels { Library, FA, Maze }
+        private string currLevel;
+        public string CurrLevel
+        {
+            get
+            {
+                return currLevel;
+            }
+            set
+            {
+                currLevel = "Level: " + value;
+                SetProperty("CurrLevel");
+            }
+        }
         public static bool isPaused { get; set; }    //Determines if the game is paused
         public BinderRing ring;                      //Current binder ring
         public bool isRingFound;                     //Determines if the player has found the ring
@@ -55,9 +70,7 @@ namespace Binder
             Environ = new List<WorldObject>();
             isPaused = false;
 
-            CurBuilding = new Building() { Length = 2500, Width = 5464};
-            CurBuilding.BuildWalls(Building.FAPlans);
-            CurBuilding.Name = "Macey's Library";
+            NLevel(Difficulty);
 
             Environ.AddRange(CurBuilding.WallsCol);
             //StartPoint = new int[] { 0, 0 };
@@ -97,6 +110,37 @@ namespace Binder
             }
 
             TimeLeft = "Time: 0" + min + ":" + seconds;            
+        }
+
+        //Level Logic 
+        public void NLevel(int level)
+        {
+            Dictionary<int, List<int[]>> Plans = new Dictionary<int, List<int[]>>();
+            Plans[0] = Building.FAPlans;
+            Plans[1] = Building.LibPlans;
+            Plans[2] = Building.Maze;
+           
+
+            CurBuilding = new Building();
+
+            CurBuilding.BuildWalls(Plans[level]);
+
+            switch(level){
+                case 1:
+                    CurBuilding.Name = "Finest Artists";
+                    break;
+                case 2:
+                    CurBuilding.Name = "Macey's Library";
+                    break;
+                case 3:
+                    CurBuilding.Name = "Menacing Maze";
+                    break;
+                default:
+                    CurBuilding.Name = "Finest Artists";
+                    break;
+            }
+
+            CurrLevel = CurBuilding.Name;
         }
 
         //Creaated Load method with initial loading algorithm

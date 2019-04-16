@@ -20,21 +20,25 @@ After solving the riddle, move to the correct location and use the correct objec
  * Basic serialization finished
  * All main auxilliary screens functional
  * Main artwork completed
+ * Character movements and attack
+ * AI movements and attack
+ * Object usage
+ * Basic finding the binder ring
+ * Multiple levels
 
 ## Known Issues
- * The AI player movements need to be perfected. It can sometimes move through walls
- * The objects that can be used by the player have yet to be implemented
+ * The main issue right now is the serialization. It is only partially working.
 
 
 ## Recording
 
-[Team 1: Alpha](https://youtu.be/6rzuHXgbI7w)
+[Team 1: Beta](https://youtu.be/x5cdzh1fqeA)
 
 ## Expenses
 
 | Developer | Hours Used | Hours Remaining | Journal Link
 |---|---|---|---|
-| Day | 25.5 | 34.5| [Day Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Day-Journal)
-| Dulcio | 29 | 31 | [Dulcio Log](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Dulcio-Log)
-| Shipe | 28 | 32| [Shipe Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Shipe-Journal)
-| Tapp | 14.75 | 45.15 | [Tapp Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Tapp-Journal)
+| Day | 36.5 | 23.5 | [Day Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Day-Journal)
+| Dulcio | 41 | 19 | [Dulcio Log](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Dulcio-Log)
+| Shipe | 44 | 16| [Shipe Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Shipe-Journal)
+| Tapp | 19.25 | 41.75 | [Tapp Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Tapp-Journal)
