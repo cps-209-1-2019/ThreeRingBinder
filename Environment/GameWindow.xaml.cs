@@ -43,6 +43,8 @@ namespace Binder.Environment
 
         public GameWindow(bool cheat, int difficulty, double startTime, bool doLoad)
         {
+            InitializeComponent();
+
             binderGame = new Game(startTime);
             binderGame.IsCheatOn = cheat;
             Game.Difficulty = difficulty;
@@ -101,9 +103,6 @@ namespace Binder.Environment
         private void LoadGame()
         {
             //NameScope.SetNameScope(this, new NameScope());
-            
-
-            InitializeComponent();
 
             building = binderGame.CurBuilding;
 
@@ -223,6 +222,8 @@ namespace Binder.Environment
                 label.Width = 30;
                 label.Height = 30;
                 isRingShown = true;
+                
+                LoadGame();
             }
             foreach (WorldObject wObj in Game.Environ)
             {
