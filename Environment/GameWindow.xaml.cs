@@ -159,11 +159,15 @@ namespace Binder.Environment
             //TODO: Implement Level Progression, and use abstraction for how the text on the screen will look.
             Level = new TextBlock()
             {
-                FontSize = 50,
+                FontSize = 30,
                 Foreground = Brushes.Yellow,
                 FontFamily = new FontFamily("Algerian"),
             };
             Level.DataContext = binderGame;
+            Level.SetBinding(TextBlock.TextProperty, "CurrLevel");
+            cnvsGame.Children.Add(Level);
+            Canvas.SetRight(Level, 60);
+            Canvas.SetTop(Level, 65);
 
 
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);

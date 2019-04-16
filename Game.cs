@@ -24,6 +24,19 @@ namespace Binder
         public static int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
+        private string currLevel;
+        public string CurrLevel
+        {
+            get
+            {
+                return currLevel;
+            }
+            set
+            {
+                currLevel = "Level: " + value;
+                SetProperty("CurrLevel");
+            }
+        }
         public static bool isPaused { get; set; }    //Determines if the game is paused
         public BinderRing ring;                      //Current binder ring
         public bool isRingFound;                     //Determines if the player has found the ring
@@ -57,7 +70,8 @@ namespace Binder
 
             CurBuilding = new Building() { Length = 2500, Width = 5464};
             CurBuilding.BuildWalls(Building.FAPlans);
-            CurBuilding.Name = "Macey's Library";
+            CurBuilding.Name = "FA Building";
+            CurrLevel = CurBuilding.Name;
 
             Environ.AddRange(CurBuilding.WallsCol);
             //StartPoint = new int[] { 0, 0 };
