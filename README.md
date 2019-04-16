@@ -20,15 +20,19 @@ After solving the riddle, move to the correct location and use the correct objec
  * Basic serialization finished
  * All main auxilliary screens functional
  * Main artwork completed
+ * Character movements and attack
+ * AI movements and attack
+ * Object usage
+ * Basic finding the binder ring
+ * Multiple levels
 
 ## Known Issues
- * The AI player movements need to be perfected. It can sometimes move through walls
- * The objects that can be used by the player have yet to be implemented
+ * The main issue right now is the serialization. It is only partially working.
 
 
 ## Recording
 
-[Team 1: Alpha](https://youtu.be/6rzuHXgbI7w)
+[Team 1: Beta](https://youtu.be/x5cdzh1fqeA)
 
 ## Expenses
 
