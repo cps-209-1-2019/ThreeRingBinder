@@ -37,9 +37,9 @@ namespace Binder.Environment
         TextBlock Time;
         TextBlock Level;
 
-        Rectangle rectLifeOne;
-        Rectangle rectLifeTwo;
-        Rectangle rectLifeThree;
+        //Rectangle rectLifeOne;
+        //Rectangle rectLifeTwo;
+        //Rectangle rectLifeThree;
 
         public GameWindow(bool cheat, int difficulty, double startTime, bool doLoad)
         {
@@ -77,6 +77,7 @@ namespace Binder.Environment
                 int score = binderGame.CalculateScores();
                 GameOver endGame = new GameOver(this, false, score);
                 endGame.Show();
+                timer.Stop();
             }
         }
 
@@ -112,9 +113,9 @@ namespace Binder.Environment
             BindItems();
             
             cnvsGame.DataContext = building;
-            MakeAI(650, 400);
-            MakeAI(200, 100);
-            MakeAI(800, 1000);
+            MakeAI(850, 400);
+            MakeAI(2000, 600);
+            MakeAI(800, 1500);
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
             timer.Tick += Timer_Tick;
@@ -188,19 +189,19 @@ namespace Binder.Environment
             double rectSpace = rectWid / 3;
             double rectMargin = 30;
 
-            rectLifeOne = new Rectangle() { Width = rectWid, Height = rectHeight};
-            rectLifeTwo = new Rectangle() { Width = rectWid, Height = rectHeight };
-            rectLifeThree = new Rectangle() { Width = rectWid, Height = rectHeight };
+            //rectLifeOne = new Rectangle() { Width = rectWid, Height = rectHeight};
+            //rectLifeTwo = new Rectangle() { Width = rectWid, Height = rectHeight };
+            //rectLifeThree = new Rectangle() { Width = rectWid, Height = rectHeight };
 
-            Canvas.SetLeft(rectLifeOne, rectMargin);
-            Canvas.SetTop(rectLifeOne, rectTop);
-            cnvsGame.Children.Add(rectLifeOne);
-            Canvas.SetLeft(rectLifeTwo, rectMargin + rectWid + rectSpace);
-            Canvas.SetTop(rectLifeTwo, rectTop);
-            cnvsGame.Children.Add(rectLifeTwo);
-            Canvas.SetLeft(rectLifeThree, rectMargin + 2 * rectWid + 2 * rectSpace);
-            Canvas.SetTop(rectLifeThree, rectTop);
-            cnvsGame.Children.Add(rectLifeThree);
+            //Canvas.SetLeft(rectLifeOne, rectMargin);
+            //Canvas.SetTop(rectLifeOne, rectTop);
+            //cnvsGame.Children.Add(rectLifeOne);
+            //Canvas.SetLeft(rectLifeTwo, rectMargin + rectWid + rectSpace);
+            //Canvas.SetTop(rectLifeTwo, rectTop);
+            //cnvsGame.Children.Add(rectLifeTwo);
+            //Canvas.SetLeft(rectLifeThree, rectMargin + 2 * rectWid + 2 * rectSpace);
+            //Canvas.SetTop(rectLifeThree, rectTop);
+            //cnvsGame.Children.Add(rectLifeThree);
 
             string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
             FillLivesRectangle(rectLifeOne, dir + "/Sprites/composureTie.png");
@@ -232,6 +233,7 @@ namespace Binder.Environment
                     {
                         RemoveLabel(ai);
                         Game.Environ.Remove(ai);
+                        binderGame.PsiZetaShamed++;
                         break;
                     }
                     ai.Move(binderGame);
@@ -280,13 +282,13 @@ namespace Binder.Environment
         {
             if (binderGame.Marcus.Health < 3)
             {
-                RemoveLabel(rectLifeThree);
+                rectLifeThree.Fill = null;
                 if (binderGame.Marcus.Health < 2)
                 {
-                    RemoveLabel(rectLifeTwo);
+                    rectLifeTwo.Fill = null;
                     if (binderGame.Marcus.Health < 1)
                     {
-                        RemoveLabel(rectLifeOne);
+                        rectLifeOne.Fill = null;
                     }
                     if ((binderGame.Marcus.Health == 0) && (isGameOver == false))
                     {
