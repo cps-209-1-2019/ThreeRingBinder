@@ -11,17 +11,18 @@ namespace Binder.Environment
     public class AI : MovableCharacter, ISerialization<AI> 
     {
         public bool isAttacking = false;
-        int horizCount = 0;
-        int vertCount = 0;
-        string horizDirection = "west";
-        string vertDirection = "north";
-        bool patrolVertically = false;
+        private int count = 0;
+        private bool wait;
+        private int direc;
+        public const int changeNum = 40;
         int attackTime = 10;
         public AI(int health, int damage, int speed)
         {
             Health = health;
             Damage = damage;
             Speed = speed;
+            direc = -1;
+            wait = false;
         }
 
         public void ChangeXFrames(int changeInX)
@@ -155,94 +156,29 @@ namespace Binder.Environment
                 }
             }
         }
-
-        public void PatrolVert(Game game)
-        {
-            vertCount++;
-            if (vertDirection == "north")
-            {
-                if (AIIsNotWall(0, -changeNum))
-                {
-                    Y -= changeNum;
-                    ChangeXFrames(-changeNum);
-                }
-                else
-                {
-                    Y += changeNum;
-                    horizDirection = "south";
-                    ChangeXFrames(changeNum);
-                }
-            }
-            else if (horizDirection == "south")
-            {
-                if (AIIsNotWall(0, changeNum))
-                {
-                    Y += changeNum;
-                    ChangeXFrames(changeNum);
-                }
-                else
-                {
-                    Y -= changeNum;
-                    horizDirection = "north";
-                    ChangeXFrames(-changeNum);
-                }
-            }
-            if (vertCount > 30)
-            {
-                patrolVertically = false;
-                vertCount = 0;
-            }
-        }
-        public void PatrolHoriz(Game game)
-        {
-            horizCount++;
-            if (horizDirection  == "west")
-            {
-                if  (AIIsNotWall(-changeNum, 0))
-                {
-                    X -= changeNum;
-                    ChangeYFrames(-changeNum);
-                }
-                else
-                {
-                    X += changeNum;
-                    horizDirection = "east";
-                    ChangeYFrames(changeNum);
-                }
-            }
-            else if (horizDirection == "east")
-            {
-                if (AIIsNotWall(changeNum, 0))
-                {
-                    X += changeNum;
-                    ChangeYFrames(changeNum);
-                }
-                else
-                {
-                    X -= changeNum;
-                    horizDirection = "west";
-                    ChangeYFrames(-changeNum);
-                }
-            }
-            if (horizCount > 25)
-            {
-                patrolVertically = true;
-                horizCount = 0;
-            }
-        }
         public void Patrol(Building building)
         {
-            int direc = 0;
-            vertCount++;
-            if (vertCount > 10)
+            count++;
+            if (count > 20)
             {
-                Random rand = new Random();
-                direc = rand.Next(4);
+                if (wait)
+                {
+                    wait = false;
+                    direc = -1;
+                    count = 0;
+                }
+                else
+                {
+                    Random rand = new Random();
+                    direc = rand.Next(4);
+                    wait = true;
+                    count = 0;
+                }
             }
             if (direc == 0)
             {
                 //west
-                if (AIIsNotWall(-changeNum / 2, 0))
+                if (IsNotWall(-changeNum / 2, 0))
                 {
                     X -= changeNum;
                     ChangeYFrames(-changeNum);
@@ -256,7 +192,7 @@ namespace Binder.Environment
             else if (direc == 1)
             {
                 //east
-                if (AIIsNotWall((changeNum / 2), 0))
+                if (IsNotWall((changeNum / 2), 0))
                 {
                     X += changeNum;
                     ChangeYFrames(changeNum);
@@ -270,7 +206,7 @@ namespace Binder.Environment
             else if (direc == 2)
             {
                 //north
-                if (AIIsNotWall(0, (-changeNum / 2)))
+                if (IsNotWall(0, (-changeNum / 2)))
                 {
                     Y -= changeNum;
                     ChangeXFrames(-changeNum);
@@ -284,7 +220,7 @@ namespace Binder.Environment
             else if (direc == 3)
             {
                 //south
-                if (AIIsNotWall(0, (changeNum / 2)))
+                if (IsNotWall(0, (changeNum / 2)))
                 {
                     Y += changeNum / 2;
                     ChangeXFrames(changeNum);
@@ -348,6 +284,7 @@ namespace Binder.Environment
                             if (attackTime > 10)
                             {
                                 isAttacking = true;
+                                game.Marcus.Health -= Damage;
                                 attackTime = 0;
                             }
                         }

@@ -11,6 +11,11 @@ namespace Binder.Environment
         public string Name { get; set; }
         public string Direction { get; set; }
         public List<InventoryItem> Inventory { get; set; }
+        private int howLongUp;
+        private int howLongDown;
+        private int howLongRight;
+        private int howLongLeft;
+        public const int changeNum = 5;
         public Player(string name)
         {
             Inventory = new List<InventoryItem>();
@@ -22,106 +27,126 @@ namespace Binder.Environment
             Damage = 1;
             Health = 3;
         }
+        public void ChangeYFrames(int changeInY)
+        {
+            if (changeInY > 0)
+            {
+                howLongUp = 0;
+                howLongRight = 0;
+                howLongLeft = 0;
+                Direction = "down";
+                if (howLongDown >= 0 && howLongDown < 10)
+                {
+                    PictureName = "/Sprites/MarcusFront.png";
+                }
+                else if (howLongDown >= 10 && howLongDown < 20)
+                {
+                    PictureName = "/Sprites/MarcusFront1.png";
+                }
+                else if (howLongDown >= 20 && howLongDown < 30)
+                {
+                    PictureName = "/Sprites/MarcusFront.png";
+                }
+                else if (howLongDown >= 30 && howLongDown < 40)
+                {
+                    PictureName = "/Sprites/MarcusFront2.png";
+                }
+                else
+                {
+                    howLongDown = 0;
+                }
+                howLongDown++;
+            }
+            else if (changeInY < 0)
+            {
+                howLongDown = 0;
+                howLongRight = 0;
+                howLongLeft = 0;
+                Direction = "up";
+                if (howLongUp >= 0 && howLongUp < 10)
+                {
+                    PictureName = "/Sprites/MarcusBack.png";
+                }
+                else if (howLongUp >= 10 && howLongUp < 20)
+                {
+                    PictureName = "/Sprites/MarcusBack1.png";
+                }
+                else if (howLongUp >= 20 && howLongUp < 30)
+                {
+                    PictureName = "/Sprites/MarcusBack.png";
+                }
+                else if (howLongUp >= 30 && howLongUp < 40)
+                {
+                    PictureName = "/Sprites/MarcusBack2.png";
+                }
+                else
+                {
+                    howLongUp = 0;
+                }
+                howLongUp++;
+            }
+        }
         public void ChangeXFrames(int changeInX)
         {
             if (changeInX > 0)
             {
-                Direction = "down";
-                if (front == 0)
-                {
-                    PictureName = "/Sprites/MarcusFront.png";
-                    front = 1;
-                }
-                else if (front == 1)
-                {
-                    PictureName = "/Sprites/MarcusFront1.png";
-                    front = 2;
-                }
-                else if (front == 2)
-                {
-                    PictureName = "/Sprites/MarcusFront.png";
-                    front = 3;
-                }
-                else
-                {
-                    PictureName = "/Sprites/MarcusFront2.png";
-                    front = 0;
-                }
-            }
-            else if (changeInX < 0)
-            {
-                Direction = "up";
-                if (back == 0)
-                {
-                    PictureName = "/Sprites/MarcusBack.png";
-                    back = 1;
-                }
-                else if (back == 1)
-                {
-                    PictureName = "/Sprites/MarcusBack1.png";
-                    back = 2;
-                }
-                else if (back == 20)
-                {
-                    PictureName = "/Sprites/MarcusBack.png";
-                    back = 3;
-                }
-                else
-                {
-                    PictureName = "/Sprites/MarcusBack2.png";
-                    back = 0;
-                }
-            }
-        }
-        public void ChangeYFrames(int changeInX)
-        {
-            if (changeInX > 0)
-            {
+                howLongDown = 0;
+                howLongUp = 0;
+                howLongLeft = 0;
                 Direction = "right";
-                if (right == 0)
+                if (howLongRight >= 0 && howLongRight < 10)
                 {
                     PictureName = "/Sprites/MarcusRight.png";
-                    right = 1;
                 }
-                else if (right == 1)
+                else if (howLongRight >= 10 && howLongRight < 20)
                 {
                     PictureName = "/Sprites/MarcusRight1.png";
-                    right = 2;
                 }
-                else if (right == 2)
+                else if (howLongRight >= 20 && howLongRight < 30)
                 {
                     PictureName = "/Sprites/MarcusRight.png";
-                    right = 3;
+                }
+                else if (howLongRight >= 30 && howLongRight < 40)
+                {
+                    PictureName = "/Sprites/MarcusRight2.png";
                 }
                 else
                 {
-                    PictureName = "/Sprites/MarcusRight2.png";
-                    right = 0;
+                    howLongRight = 0;
                 }
+                howLongRight++;
             }
             else if (changeInX < 0)
             {
+                howLongDown = 0;
+                howLongUp = 0;
+                howLongRight = 0;
                 Direction = "left";
-                if (left == 0)
+                if (howLongLeft >= 0 && howLongLeft < 10)
                 {
                     PictureName = "/Sprites/MarcusLeft.png";
                     left = 1;
                 }
-                else if (left == 1)
+                else if (howLongLeft >= 10 && howLongLeft < 20)
                 {
                     PictureName = "/Sprites/MarcusLeft1.png";
                     left = 2;
                 }
-                else if (left == 2)
+                else if (howLongLeft >= 20 && howLongLeft < 30)
                 {
                     PictureName = "/Sprites/MarcusLeft.png";
                     left = 3;
                 }
-                else
+                else if (howLongLeft >= 30 && howLongLeft < 40)
                 {
                     PictureName = "/Sprites/MarcusLeft2.png";
                     left = 0;
                 }
+                else
+                {
+                    howLongLeft = 0;
+                }
+                howLongLeft++;
             }
         }
         public void Enteract(Game game)
@@ -158,7 +183,7 @@ namespace Binder.Environment
                             thing.X += changeNum;
                         }
                     }
-                    ChangeYFrames(-changeNum);
+                    ChangeXFrames(-changeNum);
                 }
                 else if (direction == 'n')
                 {
@@ -169,7 +194,7 @@ namespace Binder.Environment
                             thing.Y += changeNum;
                         }
                     }
-                    ChangeXFrames(-changeNum);
+                    ChangeYFrames(-changeNum);
                 }
                 else if (direction == 'e')
                 {
@@ -180,7 +205,7 @@ namespace Binder.Environment
                             thing.X -= changeNum;
                         }
                     }
-                    ChangeYFrames(changeNum);
+                    ChangeXFrames(changeNum);
                 }
                 else if (direction == 's')
                 {
@@ -191,7 +216,7 @@ namespace Binder.Environment
                             thing.Y = thing.Y - changeNum;
                         }
                     }
-                    ChangeXFrames(changeNum);
+                    ChangeYFrames(changeNum);
                 }
             }
         }

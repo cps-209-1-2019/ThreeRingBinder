@@ -23,9 +23,14 @@ namespace Binder.Environment
     /// </summary>
     public partial class GameWindow : Window
     {
+        bool isGameOver = false;
         public Game binderGame;
         Building building;
         DispatcherTimer timer;
+        DispatcherTimer timerUp;
+        DispatcherTimer timerDown;
+        DispatcherTimer timerLeft;
+        DispatcherTimer timerRight;
         DispatcherTimer LimitTimer;
         bool isRingShown = false;
 
@@ -64,6 +69,23 @@ namespace Binder.Environment
             }
         }
 
+        private void UpTimer_Tick(object sender, EventArgs e)
+        {
+            binderGame.Marcus.Move('n', binderGame);
+        }
+        private void DownTimer_Tick(object sender, EventArgs e)
+        {
+            binderGame.Marcus.Move('s', binderGame);
+        }
+        private void LeftTimer_Tick(object sender, EventArgs e)
+        {
+            binderGame.Marcus.Move('w', binderGame);
+        }
+        private void RightTimer_Tick(object sender, EventArgs e)
+        {
+            binderGame.Marcus.Move('e', binderGame);
+        }
+
         private void LoadGame()
         {
             //NameScope.SetNameScope(this, new NameScope());
@@ -72,6 +94,7 @@ namespace Binder.Environment
             InitializeComponent();
 
             this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
+            this.KeyUp += new KeyEventHandler(CnvsGame_KeyUp);
             BuildWalls();
             BindItems();
             building = binderGame.CurBuilding;
@@ -83,6 +106,19 @@ namespace Binder.Environment
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
             timer.Tick += Timer_Tick;
             timer.Start();
+
+            timerUp = new DispatcherTimer();
+            timerUp.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            timerUp.Tick += UpTimer_Tick;
+            timerDown = new DispatcherTimer();
+            timerDown.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            timerDown.Tick += DownTimer_Tick;
+            timerLeft = new DispatcherTimer();
+            timerLeft.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            timerLeft.Tick += LeftTimer_Tick;
+            timerRight = new DispatcherTimer();
+            timerRight.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            timerRight.Tick += RightTimer_Tick;
 
             DispatcherTimer timerTwo = new DispatcherTimer();
             timerTwo.Interval = new TimeSpan(0, 0, 0, 0, 50);
@@ -212,11 +248,12 @@ namespace Binder.Environment
                     {
                         RemoveLabel(rectLifeOne);
                     }
-                    if (binderGame.Marcus.Health == 0)
+                    if ((binderGame.Marcus.Health == 0) && (isGameOver == false))
                     {
                         int score = binderGame.CalculateScores();
                         GameOver endGame = new GameOver(this, false, score);
                         endGame.Show();
+                        isGameOver = true;
                     }
                 }
             }
@@ -267,23 +304,34 @@ namespace Binder.Environment
             Game.Environ.Remove(item);
         }
 
+        private void CnvsGame_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Up)
+                timerUp.Stop();
+            if (e.Key == Key.Down)
+                timerDown.Stop();
+            if (e.Key == Key.Left)
+                timerLeft.Stop();
+            if (e.Key == Key.Right)
+                timerRight.Stop();
+        }
         private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
         {            
             if (e.Key == Key.Up)
             {
-                binderGame.Marcus.Move('n', binderGame);
+                timerUp.Start();
             }
             else if (e.Key == Key.Down)
             {
-                binderGame.Marcus.Move('s', binderGame);
+                timerDown.Start();
             }
             else if (e.Key == Key.Left)
             {
-                binderGame.Marcus.Move('w', binderGame);
+                timerLeft.Start();
             }
             else if (e.Key == Key.Right)
             {
-                binderGame.Marcus.Move('e', binderGame);
+                timerRight.Start();
             }
             else if (e.Key == Key.C)
             {
