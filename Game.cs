@@ -128,7 +128,7 @@ namespace Binder
             Environ = null;
 
             Environ.AddRange(CurBuilding.WallsCol);
-
+                
             switch (level){
                 case 1:
                     CurBuilding.Name = "1: Finest Artists";
