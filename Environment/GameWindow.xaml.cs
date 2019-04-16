@@ -45,7 +45,7 @@ namespace Binder.Environment
         {
             InitializeComponent();
 
-            binderGame = new Game(startTime);
+            binderGame = new Game(startTime, 1);
             binderGame.IsCheatOn = cheat;
             Game.Difficulty = difficulty;
             if (doLoad)
@@ -222,8 +222,11 @@ namespace Binder.Environment
                 label.Width = 30;
                 label.Height = 30;
                 isRingShown = true;
-                
+                cnvsGame.Children.Clear();
+                binderGame = new Game(180, 2);
+                MakeLevelFloors(2);
                 LoadGame();
+
             }
             foreach (WorldObject wObj in Game.Environ)
             {
@@ -508,6 +511,18 @@ namespace Binder.Environment
                 }
             }
             return rectangle;
+        }
+        private void MakeLevelFloors(int level)
+        {
+            string[] stringList = new string[3] { "/Environment/floor5.png", "/Environment/floor.jpg", "/Environment/floor5.png" };
+            
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri(stringList[level - 1], UriKind.Relative));
+            image.Height = 1250;
+            image.Width = 1966;
+            cnvsGame.Children.Add(image);
+            Canvas.SetTop(image, -19);
+            Canvas.SetLeft(image, -18);
         }
     }
 }
