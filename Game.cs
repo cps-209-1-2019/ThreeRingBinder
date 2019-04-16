@@ -72,7 +72,7 @@ namespace Binder
 
             NLevel(1);
 
-            Environ.AddRange(CurBuilding.WallsCol);
+            
             //StartPoint = new int[] { 0, 0 };
 
             //StartPoint = new int[2];
@@ -125,7 +125,11 @@ namespace Binder
 
             CurBuilding.BuildWalls(Plans[level]);
 
-            switch(level){
+            Environ = null;
+
+            Environ.AddRange(CurBuilding.WallsCol);
+
+            switch (level){
                 case 1:
                     CurBuilding.Name = "1: Finest Artists";
                     break;

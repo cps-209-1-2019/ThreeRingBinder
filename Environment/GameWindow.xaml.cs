@@ -101,7 +101,7 @@ namespace Binder.Environment
         private void LoadGame()
         {
             //NameScope.SetNameScope(this, new NameScope());
-
+            
 
             InitializeComponent();
 
