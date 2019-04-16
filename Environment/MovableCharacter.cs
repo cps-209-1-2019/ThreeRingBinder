@@ -15,7 +15,6 @@ namespace Binder.Environment
         public int Health { get; set; }
         public int Damage { get; set; }
         public int Speed { get; set; }
-        public const int changeNum = 69;
 
         public virtual void Move()
         {
