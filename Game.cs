@@ -24,6 +24,8 @@ namespace Binder
         public static int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
+
+        public enum Levels { Library, FA, Maze }
         private string currLevel;
         public string CurrLevel
         {
@@ -33,7 +35,7 @@ namespace Binder
             }
             set
             {
-                currLevel = "Level: " + value;
+                currLevel = "Level " + value;
                 SetProperty("CurrLevel");
             }
         }
@@ -68,10 +70,7 @@ namespace Binder
             Environ = new List<WorldObject>();
             isPaused = false;
 
-            CurBuilding = new Building() { Length = 2500, Width = 5464};
-            CurBuilding.BuildWalls(Building.LibPlans);
-            CurBuilding.Name = "Macey's Library";
-            CurrLevel = CurBuilding.Name;
+            NLevel(1);
 
             Environ.AddRange(CurBuilding.WallsCol);
             //StartPoint = new int[] { 0, 0 };
@@ -111,6 +110,37 @@ namespace Binder
             }
 
             TimeLeft = "Time: 0" + min + ":" + seconds;            
+        }
+
+        //Level Logic 
+        public void NLevel(int level)
+        {
+            Dictionary<int, List<int[]>> Plans = new Dictionary<int, List<int[]>>();
+            Plans[1] = Building.FAPlans;
+            Plans[2] = Building.LibPlans;
+            Plans[3] = Building.Maze;
+           
+
+            CurBuilding = new Building();
+
+            CurBuilding.BuildWalls(Plans[level]);
+
+            switch(level){
+                case 1:
+                    CurBuilding.Name = "1: Finest Artists";
+                    break;
+                case 2:
+                    CurBuilding.Name = "2: Macey's Library";
+                    break;
+                case 3:
+                    CurBuilding.Name = "3: Menacing Maze";
+                    break;
+                default:
+                    CurBuilding.Name = "1: Finest Artists";
+                    break;
+            }
+
+            CurrLevel = CurBuilding.Name;
         }
 
         //Creaated Load method with initial loading algorithm
