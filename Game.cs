@@ -66,6 +66,7 @@ namespace Binder
         public Game(double startTime, int level)
         {
             timeLeft = startTime;
+            
             Marcus = new Player("Marcus");
             Environ = new List<WorldObject>();
             isPaused = false;
