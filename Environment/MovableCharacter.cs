@@ -50,15 +50,15 @@ namespace Binder.Environment
                         return false;
             return true;
         }
-        public bool AIIsNotWall(Building building, int changeInX, int changeInY)
-        {
-            foreach (Walls walls in building.WallsCol)
-            {
-                if ((X + changeInX > walls.X) && (X + changeInX < walls.X + walls.Width))
-                    if ((Y + changeInY > walls.Y) && (Y + changeInY < walls.Y + walls.Length))
-                        return false;
-            }
-            return true;
-        }
+        //public bool AIIsNotWall(Building building, int changeInX, int changeInY)
+        //{
+        //    foreach (Walls walls in building.WallsCol)
+        //    {
+        //        if ((X + changeInX > walls.X) && (X + changeInX < walls.X + walls.Width))
+        //            if ((Y + changeInY > walls.Y) && (Y + changeInY < walls.Y + walls.Length))
+        //                return false;
+        //    }
+        //    return true;
+        //}
     }
 }
