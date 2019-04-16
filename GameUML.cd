@@ -29,6 +29,7 @@
       <HashCode>AAAAAAAEAQAAQAAAAIAAAAQIgCBAAAQAAAQAAAIAAAE=</HashCode>
       <FileName>Environment\Building.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Binder.Environment.Walls">
     <Position X="9.75" Y="0.75" Width="1.5" />
@@ -40,7 +41,7 @@
   <Class Name="Binder.Environment.AI">
     <Position X="7.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAABAAAIEAAKAIAAAAAAAAAClAAAACAAAAQgAAGAA=</HashCode>
+      <HashCode>CAAAAAAAAIAAAAAIBAAAgAAAAClAAAAEAAAAQgAAAgA=</HashCode>
       <FileName>Environment\AI.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -48,14 +49,14 @@
   <Class Name="Binder.Environment.MovableCharacter">
     <Position X="6" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAGAAJAAAAAAAAAAgAARAIAIAAAAAAEAAAAAgAA=</HashCode>
+      <HashCode>AAAACAGAAJAAAAAAAAAAAAARAIAIAAAAAAEAAAAAgAA=</HashCode>
       <FileName>Environment\MovableCharacter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Binder.Environment.Player">
     <Position X="6" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAAAAACAAAAQAACNAAAAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAIAABAAAACAAgBQAACNAAAAAAAAAAgAAAhA=</HashCode>
       <FileName>Environment\Player.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -70,8 +71,15 @@
   </Class>
   <Class Name="Binder.Game">
     <Position X="11.5" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Binder.Game.Levels" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Game.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>EBEBgIAAAAAQERgAEAQgAEQAgQEABAAAAARAABEAIQA=</HashCode>
+      <HashCode>EBEBgIAAAAAQERgAEAQgAEQAgQEABACAAARAgBEAIQA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
