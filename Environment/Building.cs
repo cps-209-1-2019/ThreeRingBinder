@@ -165,9 +165,9 @@ namespace Binder.Environment
 
             //Perimeter
             new int[4] {-3105, -1380, 69, 6210},
-            new int[4] {-3105, 1380, 69, 6210},
-            new int[4] {-3105, -1380, 2760, 69},
-            new int[4] {3105, -1380, 2760, 69},
+            new int[4] {-3105, 1962, 69, 6210},
+            new int[4] {-3105, -1380, 3342, 69},
+            new int[4] {3105, -1380, 3342, 69},
         };
 
         //Building Plans
@@ -190,9 +190,9 @@ namespace Binder.Environment
             new int[4] {-3105, 582, 69, 828},
 
             new int[4] {-2070, 720, 345, 69},
-            new int[4] {-3105, 927, 69, 1035},
-            new int[4] {-2553, 1134, 591, 69},
-            new int[4] {-2001, 1135, 591, 69}
+            new int[4] {-3105, 1065, 69, 1035},
+            new int[4] {-2553, 1272, 690, 69},
+            new int[4] {-2001, 1272, 690, 69}
         };
 
         public static List<int[]> FAPlans = new List<int[]>()
