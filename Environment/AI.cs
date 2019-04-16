@@ -178,7 +178,7 @@ namespace Binder.Environment
             if (direc == 0)
             {
                 //west
-                if (IsNotWall(-changeNum / 2, 0))
+                if (IsNotWall(building, -changeNum / 2, 0))
                 {
                     X -= changeNum;
                     ChangeYFrames(-changeNum);
@@ -192,7 +192,7 @@ namespace Binder.Environment
             else if (direc == 1)
             {
                 //east
-                if (IsNotWall((changeNum / 2), 0))
+                if (IsNotWall(building, (changeNum / 2), 0))
                 {
                     X += changeNum;
                     ChangeYFrames(changeNum);
@@ -206,7 +206,7 @@ namespace Binder.Environment
             else if (direc == 2)
             {
                 //north
-                if (IsNotWall(0, (-changeNum / 2)))
+                if (IsNotWall(building, 0, (-changeNum / 2)))
                 {
                     Y -= changeNum;
                     ChangeXFrames(-changeNum);
@@ -220,7 +220,7 @@ namespace Binder.Environment
             else if (direc == 3)
             {
                 //south
-                if (IsNotWall(0, (changeNum / 2)))
+                if (IsNotWall(building, 0, (changeNum / 2)))
                 {
                     Y += changeNum / 2;
                     ChangeXFrames(changeNum);
