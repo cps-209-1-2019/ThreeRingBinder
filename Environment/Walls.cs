@@ -110,7 +110,7 @@ namespace Binder.Environment
         {
             int max = Math.Max(Length, Width);
 
-            for(int i = 0; i < max; i+=69)
+            for(int i = 0; i <= max; i+=69)
             {
                 if(max == Width)
                 {
@@ -166,22 +166,21 @@ namespace Binder.Environment
             return this;
         }
 
-        public void ChangeBlocks(char dir, int moveNum)
-        {
-            foreach (Block block in Blocks)
-            {
-                if (dir == 'Y')
-                    block.Y += moveNum;
-                else if (dir == 'X')
-                    block.X += moveNum;
-            }
-        }
+        //public void ChangeBlocks(char dir, int moveNum)
+        //{
+        //    foreach (Block block in Blocks)
+        //    {
+        //        if (dir == 'Y')
+        //            block.Y += moveNum;
+        //        else if (dir == 'X')
+        //            block.X += moveNum;
+        //    }
+        //}
     }
 
     //Defines a class Block from which the walls will be built.
     public class Block : WorldObject
     {
-
         public Block(int[] pos)
         {
             Position = new int[2];

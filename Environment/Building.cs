@@ -15,30 +15,18 @@ namespace Binder.Environment
     public class Building : WorldObject, ISerialization<Building>
     {
         public string Name { get; set; }
-        public int Width { get; set; }
-        public int Length{ get; set; }
+        //public int Width { get; set; }
+        //public int Length{ get; set; }
 
         public Dictionary<string, Items> Collection;
-        public static List<Walls> WallsCol;
-
-        List<int[]> Perimeter = new List<int[]>()
-        {
-            //Coords Format: `x`, `y`, `l`, `w`
-
-            //Perimeter
-            new int[4] {-4000, -1500, 69, 8000},
-            new int[4] {-4000, 1468, 69, 8000},
-            new int[4] {-4000, -1500, 3000, 69},
-            new int[4] {4000, -1500, 3000, 69},
-        };
+        public List<Walls> WallsCol;
 
         public Building()
         {
-            BuildPerim(Maze);
+            
             BuildFA();
             Collection = new Dictionary<string, Items>();
             WallsCol = new List<Walls>();
-
         }
 
         //Adds the Item object in its params to the Collection
@@ -56,7 +44,8 @@ namespace Binder.Environment
         //Builds walls from the List of Coords
         public void BuildWalls(List<int[]> coords)
         {
-            foreach(int[] dt in coords)
+            BuildPerim(coords);
+            foreach (int[] dt in coords)
             {
                 int[] wcoord = new int[2] { dt[0], dt[1] };
                 Walls wall = new Walls(dt[3], dt[2], wcoord);
@@ -170,39 +159,75 @@ namespace Binder.Environment
             return this;
         }
 
+        List<int[]> Perimeter = new List<int[]>()
+        {
+            //Coords Format: `x`, `y`, `l`, `w`
 
-
-        //Building Plans
-        public List<int[]> LibPlans = new List<int[]>()
-        {            
-            //Computer Labs
-            new int[4] {-2510, 990, 260, 69},
-            new int[4] {-2289, 990, 260, 69},
-            new int[4] { -3000, 960, 69, 443}
+            //Perimeter
+            new int[4] {-3105, -1380, 69, 6210},
+            new int[4] {-3105, 1962, 69, 6210},
+            new int[4] {-3105, -1380, 3342, 69},
+            new int[4] {3105, -1380, 3342, 69},
         };
 
-        public List<int[]> FAPlans = new List<int[]>()
+        //Building Plans
+        public static List<int[]> LibPlans = new List<int[]>()
+        {            
+            //Computer Labs
+            new int[4] {-3519, -669, 69 , 897},
+            new int[4] {-2415, -669, 69, 414},
+            new int[4] { -2001, -1350, 690, 69},
+
+            new int[4] {-1794, -1005, 69, 621},
+            new int[4] {-1173, -1350, 1173, 69},
+            new int[4] {-1173, 30, 414, 69},
+
+            new int[4] {-966, -177, 69, 1380},
+            new int[4] {414, -1350, 1173, 69},
+
+            new int[4] {-3105, -315, 69, 1035},
+            new int[4] {-2070, -315, 897, 69},
+            new int[4] {-3105, 582, 69, 828},
+
+            new int[4] {-2070, 720, 345, 69},
+            new int[4] {-3105, 1065, 69, 1035},
+            new int[4] {-2553, 1272, 690, 69},
+            new int[4] {-2070, 1272, 690, 69},
+
+            new int[4] {-2070, 1548, 69, 897},
+            new int[4] {-1863, 1341, 207, 69},
+            new int[4] {-1863, 927, 138, 69},
+            new int[4] {-1863, 927, 69, 966 },
+            new int[4] {-897, 927, 621, 69},
+
+            new int[4] {-414, 1548, 69, 414},
+            new int[4] {207, 1134, 414, 69},
+            new int[4] {-414, 1134, 69, 414},
+            new int[4] {-414, 1134, 414, 69}
+        };
+
+        public static List<int[]> FAPlans = new List<int[]>()
         {
             //Rooms
             //new int[4] {-2049, -1250, 1000, 24},
-            new int[4] {-2049, 500, 1000, 69}
+            new int[4] {-2049, 500, 1000, 769}
 
         };
 
 
-        public List<int[]> Maze = new List<int[]>()
+        public static List<int[]> Maze = new List<int[]>()
         {
             new int[4] {-4000, -1100, 69, 1000},
             new int[4] {-3000, -1238, 200, 69},
             new int[4] {-3000, -1238, 69, 700},
-            new int[4] {-2300, -1238, 800, 69 },
+            new int[4] {-2300, -1238, 800, 69},
             new int[4] {-3000, -438, 69, 700},
             new int[4] {-3000, -438, 600, 69},
             new int[4] {-3000, 181, 69, 700},
 
             new int[4] {-3400, -1100, 600, 69},
             new int[4] {-3400, -800, 69, 700},
-            new int[4] {-3500, -238, 69, 500}
+            new int[4] {-3500, -238, 69, 500},
             
         };
 

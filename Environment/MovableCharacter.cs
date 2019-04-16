@@ -42,17 +42,17 @@ namespace Binder.Environment
             //    }
             //}
         }
-        public bool IsNotWall(int changeInX, int changeInY)
+        public bool IsNotWall(Building building, int changeInX, int changeInY)
         {
-            foreach (Walls wall in Building.WallsCol)
+            foreach (Walls wall in building.WallsCol)
                 if ((wall.X < (X + changeInX)) && ((wall.X + wall.Width) > (X + changeInX)))// || ((wall.X < (X + changeInX + 30)) && ((wall.X + wall.Width) > (X + changeInX + 30))))
                     if (((wall.Y < (Y + changeInY)) && ((wall.Y + wall.Length) > (Y + changeInY))) || ((wall.Y < (Y + changeInY + Length - 20)) && ((wall.Y + wall.Length) > (Y + changeInY + Length - 20))))
                         return false;
             return true;
         }
-        public bool AIIsNotWall(int changeInX, int changeInY)
+        public bool AIIsNotWall(Building building, int changeInX, int changeInY)
         {
-            foreach (Walls walls in Building.WallsCol)
+            foreach (Walls walls in building.WallsCol)
             {
                 if ((X + changeInX > walls.X) && (X + changeInX < walls.X + walls.Width))
                     if ((Y + changeInY > walls.Y) && (Y + changeInY < walls.Y + walls.Length))

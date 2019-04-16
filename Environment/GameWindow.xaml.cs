@@ -37,6 +37,10 @@ namespace Binder.Environment
         TextBlock Time;
         TextBlock Level;
 
+        Rectangle rectLifeOne;
+        Rectangle rectLifeTwo;
+        Rectangle rectLifeThree;
+
         public GameWindow(bool cheat, int difficulty, double startTime, bool doLoad)
         {
             binderGame = new Game(startTime);
@@ -93,11 +97,13 @@ namespace Binder.Environment
 
             InitializeComponent();
 
+            building = binderGame.CurBuilding;
+
             this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
             this.KeyUp += new KeyEventHandler(CnvsGame_KeyUp);
             BuildWalls();
             BindItems();
-            building = binderGame.CurBuilding;
+            
             cnvsGame.DataContext = building;
             MakeAI(650, 400);
             MakeAI(200, 100);
@@ -156,11 +162,33 @@ namespace Binder.Environment
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
             LimitTimer = new DispatcherTimer()
             {
-                Interval = new TimeSpan(0, 0, 0, 0, 200)
+                Interval = new TimeSpan(0, 0, 0, 1)
             };
 
             LimitTimer.Tick += LimitTimer_Tick;
             LimitTimer.Start();
+
+
+
+            double rectWid = 60;
+            double rectHeight = 2 * rectWid;
+            double rectTop = 20;
+            double rectSpace = rectWid / 3;
+            double rectMargin = 30;
+
+            rectLifeOne = new Rectangle() { Width = rectWid, Height = rectHeight};
+            rectLifeTwo = new Rectangle() { Width = rectWid, Height = rectHeight };
+            rectLifeThree = new Rectangle() { Width = rectWid, Height = rectHeight };
+
+            Canvas.SetLeft(rectLifeOne, rectMargin);
+            Canvas.SetTop(rectLifeOne, rectTop);
+            cnvsGame.Children.Add(rectLifeOne);
+            Canvas.SetLeft(rectLifeTwo, rectMargin + rectWid + rectSpace);
+            Canvas.SetTop(rectLifeTwo, rectTop);
+            cnvsGame.Children.Add(rectLifeTwo);
+            Canvas.SetLeft(rectLifeThree, rectMargin + 2 * rectWid + 2 * rectSpace);
+            Canvas.SetTop(rectLifeThree, rectTop);
+            cnvsGame.Children.Add(rectLifeThree);
 
             string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
             FillLivesRectangle(rectLifeOne, dir + "/Sprites/composureTie.png");
@@ -402,7 +430,7 @@ namespace Binder.Environment
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            foreach (Walls w in Building.WallsCol)
+            foreach (Walls w in building.WallsCol)
             {
                 foreach (Block b in w.Blocks)
                 {
