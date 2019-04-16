@@ -43,16 +43,23 @@ namespace Binder.Environment
             Game.Difficulty = difficulty;
             if (doLoad)
             {
-                try
-                {
-                    binderGame.Load("gameFile.txt");
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.ToString());
+                //try
+                //{
+                binderGame.Load("gameFile.txt");
+                //}
+                //catch (Exception e)
+                //{
+                //    MessageBox.Show(e.ToString());
                     
-                }
+                //}
             }
+            LoadGame();
+        }
+
+        public GameWindow()
+        {
+            binderGame = new Game();
+            binderGame.Load("gameFile.txt");
             LoadGame();
         }
 

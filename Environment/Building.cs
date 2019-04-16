@@ -143,7 +143,10 @@ namespace Binder.Environment
                         {
                             if (properties[j] == "WALLS")
                             {
-                                Walls walls = new Walls(0, 0, new int[0]);
+                                int[] temp = new int[2];
+                                temp[0] = 0;
+                                temp[1] = 0;
+                                Walls walls = new Walls(0, 0, temp);
                                 string theWalls = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", properties[j], properties[j + 1], properties[j + 2], properties[j + 3], properties[j + 4], properties[j + 5], properties[j + 6], properties[j + 7], properties[j + 8], properties[j + 9]);
                                 WallsCol.Add(walls.Deserialize(theWalls));
                             }
