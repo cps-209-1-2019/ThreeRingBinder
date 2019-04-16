@@ -123,7 +123,7 @@ namespace Binder.Environment
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
             LimitTimer = new DispatcherTimer()
             {
-                Interval = new TimeSpan(0, 0, 0, 0, 200)
+                Interval = new TimeSpan(0, 0, 0, 1)
             };
 
             LimitTimer.Tick += LimitTimer_Tick;

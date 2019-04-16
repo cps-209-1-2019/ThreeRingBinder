@@ -174,16 +174,32 @@ namespace Binder.Environment
         public static List<int[]> LibPlans = new List<int[]>()
         {            
             //Computer Labs
-            new int[4] {-4400, -1000, 69 , 897},
-            new int[4] {-3379, -1000, 69, 414},
-            new int[4] { -2965, -1500, 500, 69},
+            new int[4] {-3519, -669, 69 , 897},
+            new int[4] {-2415, -669, 69, 414},
+            new int[4] { -2001, -1350, 690, 69},
+
+            new int[4] {-1794, -1005, 69, 621},
+            new int[4] {-1173, -1350, 1173, 69},
+            new int[4] {-1173, 30, 414, 69},
+
+            new int[4] {-966, -177, 69, 1380},
+            new int[4] {414, -1350, 1173, 69},
+
+            new int[4] {-3105, -315, 69, 1035},
+            new int[4] {-2070, -315, 897, 69},
+            new int[4] {-3105, 582, 69, 828},
+
+            new int[4] {-2070, 720, 345, 69},
+            new int[4] {-3105, 927, 69, 1035},
+            new int[4] {-2553, 1134, 591, 69},
+            new int[4] {-2001, 1135, 591, 69}
         };
 
         public static List<int[]> FAPlans = new List<int[]>()
         {
             //Rooms
             //new int[4] {-2049, -1250, 1000, 24},
-            new int[4] {-2049, 500, 1000, 69}
+            new int[4] {-2049, 500, 1000, 769}
 
         };
 
@@ -201,7 +217,7 @@ namespace Binder.Environment
             new int[4] {-3400, -1100, 600, 69},
             new int[4] {-3400, -800, 69, 700},
             new int[4] {-3500, -238, 69, 500},
-            new int[4] 
+            
         };
 
         void BuildPerim(List<int[]> plans)

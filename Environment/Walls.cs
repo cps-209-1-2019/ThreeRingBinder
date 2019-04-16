@@ -110,7 +110,7 @@ namespace Binder.Environment
         {
             int max = Math.Max(Length, Width);
 
-            for(int i = 0; i < max; i+=69)
+            for(int i = 0; i <= max; i+=69)
             {
                 if(max == Width)
                 {
