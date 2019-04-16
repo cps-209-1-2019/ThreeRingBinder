@@ -56,7 +56,7 @@ namespace Binder
             isPaused = false;
 
             CurBuilding = new Building() { Length = 2500, Width = 5464};
-            CurBuilding.BuildWalls(Building.LibPlans);
+            CurBuilding.BuildWalls(Building.FAPlans);
             CurBuilding.Name = "Macey's Library";
 
             Environ.AddRange(CurBuilding.WallsCol);
