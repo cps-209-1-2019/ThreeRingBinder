@@ -14,9 +14,9 @@
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
     <Canvas>
-        <TextBlock Text="High Scores" FontSize="40" Width="210" Canvas.Left="295"/>
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="260" Width="400" Canvas.Left="200" Canvas.Top="100">
+        <TextBlock Text="High Scores" FontFamily="Haettenschweiler" FontSize="60" Foreground="#e4c027" Width="220" Canvas.Left="295" Canvas.Top="15"/>
+        <!--<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="260" Width="400" Canvas.Left="200" Canvas.Top="100">
             <TextBox x:Name="txtScores" Text="" FontSize="20"/>
-        </ScrollViewer>
+        </ScrollViewer>-->
     </Canvas>
 </Window>

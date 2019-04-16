@@ -14,10 +14,10 @@
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
     <Canvas>
-        <Label Content="YOU MADE A NEW HIGH SCORE!" FontSize="20" Width="300" Canvas.Left="50" Canvas.Top="20"/>
+        <Label Content="YOU MADE A NEW HIGH SCORE!" Foreground="#e4c027" FontFamily="Haettenschweiler" FontSize="32" Width="300" Canvas.Left="50" Canvas.Top="20"/>
         <Label x:Name="lblScore" Content="" FontSize="25"/>
-        <Label Content="Enter your name:" Canvas.Left="20" Canvas.Top="124"/>
+        <Label Content="Enter your name:" FontFamily="Haettenschweiler" FontSize="15" Canvas.Left="35" Canvas.Top="124"/>
         <TextBox x:Name="txtPlayerName" Width="150" Height="20" Canvas.Top="130" Canvas.Left="125"/>
-        <Button x:Name="btnSubmitName" Width="80" Height="35" Content="Enter" Click="BtnSubmitName_Click" Background="#e4c027" Canvas.Top="170" Canvas.Left="160"/>
+        <Button x:Name="btnSubmitName" BorderThickness="3" BorderBrush="Firebrick" Width="140" Height="50" FontFamily="Haettenschweiler" FontSize="30" Foreground="Firebrick" Content="Submit" Click="BtnSubmitName_Click" Background="#e4c027" Canvas.Top="170" Canvas.Left="130"/>
     </Canvas>
 </Window>

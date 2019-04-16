@@ -14,7 +14,7 @@
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
     <Grid>
-        <Label Content="About This Game" HorizontalAlignment="Center" FontSize="30" Foreground="DarkSalmon"/>
+        <Label Content="About This Game" FontFamily="Haettenschweiler" Foreground="#e4c027" HorizontalAlignment="Center" FontSize="40"/>
         <TextBlock xml:space="preserve">
             
             
