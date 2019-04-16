@@ -113,6 +113,19 @@ namespace Binder
             TimeLeft = "Time: 0" + min + ":" + seconds;            
         }
 
+        //Level Logic 
+        public void NLevel(int level)
+        {
+            Dictionary<int, List<int[]>> Plans = new Dictionary<int, List<int[]>>();
+            Plans[1] = Building.LibPlans;
+            Plans[2] = Building.Maze;
+            Plans[3] = Building.FAPlans;
+
+            CurBuilding = new Building();
+
+            CurBuilding.BuildWalls(Plans[level]);
+        }
+
         //Creaated Load method with initial loading algorithm
         public void Load(string filename)
         {
