@@ -156,11 +156,11 @@ namespace Binder.Environment
                     case "LENGTH":
                         Length = int.Parse(properties[i + 1]);
                         break;
-                    case "POSX":
+                    case "X":
                         X = int.Parse(properties[i + 1]);
                         posW[0] = X;
                         break;
-                    case "POSY":
+                    case "Y":
                         Y = int.Parse(properties[i + 1]);
                         posW[1] = Y;
                         break;

@@ -85,7 +85,6 @@ namespace Binder.Environment
                         full = true;
                     }                   
                 }
-
                 FAPlans.Add(coords);
                 FAPlans.Add(lcoords);
                 FAPlans.Add(rcoords);
