@@ -77,7 +77,6 @@ namespace Binder.Environment
                         full = true;
                     }                   
                 }
-
                 FAPlans.Add(coords);
             }
         }
