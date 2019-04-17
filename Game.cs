@@ -35,7 +35,7 @@ namespace Binder
             }
             set
             {
-                currLevel = "Level: " + value;
+                currLevel = "Level " + value;
                 SetProperty("CurrLevel");
             }
         }
@@ -63,16 +63,17 @@ namespace Binder
             }
         }
 
-        public Game(double startTime)
+        public Game(double startTime, int level)
         {
             timeLeft = startTime;
+            
             Marcus = new Player("Marcus");
             Environ = new List<WorldObject>();
             isPaused = false;
 
-            NLevel(Difficulty);
+            NLevel(level);
 
-            Environ.AddRange(CurBuilding.WallsCol);
+            
             //StartPoint = new int[] { 0, 0 };
 
             //StartPoint = new int[2];
@@ -116,27 +117,31 @@ namespace Binder
         public void NLevel(int level)
         {
             Dictionary<int, List<int[]>> Plans = new Dictionary<int, List<int[]>>();
-            Plans[0] = Building.FAPlans;
-            Plans[1] = Building.LibPlans;
-            Plans[2] = Building.Maze;
+            Plans[1] = Building.FAPlans;
+            Plans[2] = Building.LibPlans;
+            Plans[3] = Building.Maze;
            
 
             CurBuilding = new Building();
 
             CurBuilding.BuildWalls(Plans[level]);
 
-            switch(level){
+            Environ = null;
+
+            Environ.AddRange(CurBuilding.WallsCol);
+                
+            switch (level){
                 case 1:
-                    CurBuilding.Name = "Finest Artists";
+                    CurBuilding.Name = "1: Finest Artists";
                     break;
                 case 2:
-                    CurBuilding.Name = "Macey's Library";
+                    CurBuilding.Name = "2: Macey's Library";
                     break;
                 case 3:
-                    CurBuilding.Name = "Menacing Maze";
+                    CurBuilding.Name = "3: Menacing Maze";
                     break;
                 default:
-                    CurBuilding.Name = "Finest Artists";
+                    CurBuilding.Name = "1: Finest Artists";
                     break;
             }
 
@@ -196,8 +201,8 @@ namespace Binder
                                         break;
 
                                     case "AI":
-                                        AI aI = new AI(0,0,0);
-                                        string aiStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9]);
+                                        AI aI = new AI(0, 0, 0);
+                                        string aiStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11},{12}!{13}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11], identify[j + 12], identify[j + 13] );
                                         Environ.Add(aI.Deserialize(aiStr));
                                         break;
 

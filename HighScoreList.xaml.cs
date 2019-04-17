@@ -36,7 +36,7 @@ namespace Binder
             holder.AddHighScore(scoreTwo);
             holder.Save();
             holder.Load();
-            txtScores.Text = holder.highScoreText;
+            //txtScores.Text = holder.highScoreText;
         }
     }
 }

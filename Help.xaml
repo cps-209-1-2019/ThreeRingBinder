@@ -14,7 +14,7 @@
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
     <Canvas>
-        <Label Content="Game Help" FontSize="30" Foreground="DarkSlateBlue" Width="160" Canvas.Left="70" Canvas.Top="10"/>
+        <Label Content="Game Help" FontFamily="Haettenschweiler" FontSize="40" Foreground="#e4c027" Width="134" Canvas.Left="70" Canvas.Top="10"/>
         <TextBlock Text="To move your character, use the arrow keys." Canvas.Left="10" Canvas.Top="60"/>
         <TextBlock Text="To throw a paper airplane, press" Canvas.Left="10" Canvas.Top="90"/>
         <Button Content="C" Width="20" Canvas.Left="184" Canvas.Top="88"/>

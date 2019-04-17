@@ -23,6 +23,7 @@ namespace Binder.Environment
     /// </summary>
     public partial class GameWindow : Window
     {
+        Image imgMarcus;
         bool isGameOver = false;
         public Game binderGame;
         Building building;
@@ -37,14 +38,21 @@ namespace Binder.Environment
         TextBlock Time;
         TextBlock Level;
 
-        //Rectangle rectLifeOne;
-        //Rectangle rectLifeTwo;
-        //Rectangle rectLifeThree;
+        Rectangle rectLifeOne;
+        Rectangle rectLifeTwo;
+        Rectangle rectLifeThree;
+        Rectangle rectItemOne;
+        Rectangle rectItemTwo;
+        Rectangle rectItemThree;
+        Rectangle rectItemFour;
 
         public GameWindow(bool cheat, int difficulty, double startTime, bool doLoad)
         {
-            binderGame = new Game(startTime);
+            InitializeComponent();
+
+            binderGame = new Game(startTime, 1);
             binderGame.IsCheatOn = cheat;
+            MakeLevelFloors(1);
             Game.Difficulty = difficulty;
             if (doLoad)
             {
@@ -102,11 +110,9 @@ namespace Binder.Environment
         {
             //NameScope.SetNameScope(this, new NameScope());
 
-
-            InitializeComponent();
-
             building = binderGame.CurBuilding;
 
+            MakeMarcus();
             this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
             this.KeyUp += new KeyEventHandler(CnvsGame_KeyUp);
             BuildWalls();
@@ -141,7 +147,7 @@ namespace Binder.Environment
             timerTwo.Start();
 
             binderGame.Marcus.PictureName = "/Sprites/MarcusFront.png";
-            imgBl.DataContext = binderGame.Marcus.PictureName;
+            imgMarcus.DataContext = binderGame.Marcus.PictureName;
 
             Time = new TextBlock()
             {
@@ -181,27 +187,7 @@ namespace Binder.Environment
             LimitTimer.Tick += LimitTimer_Tick;
             LimitTimer.Start();
 
-
-
-            double rectWid = 60;
-            double rectHeight = 2 * rectWid;
-            double rectTop = 20;
-            double rectSpace = rectWid / 3;
-            double rectMargin = 30;
-
-            //rectLifeOne = new Rectangle() { Width = rectWid, Height = rectHeight};
-            //rectLifeTwo = new Rectangle() { Width = rectWid, Height = rectHeight };
-            //rectLifeThree = new Rectangle() { Width = rectWid, Height = rectHeight };
-
-            //Canvas.SetLeft(rectLifeOne, rectMargin);
-            //Canvas.SetTop(rectLifeOne, rectTop);
-            //cnvsGame.Children.Add(rectLifeOne);
-            //Canvas.SetLeft(rectLifeTwo, rectMargin + rectWid + rectSpace);
-            //Canvas.SetTop(rectLifeTwo, rectTop);
-            //cnvsGame.Children.Add(rectLifeTwo);
-            //Canvas.SetLeft(rectLifeThree, rectMargin + 2 * rectWid + 2 * rectSpace);
-            //Canvas.SetTop(rectLifeThree, rectTop);
-            //cnvsGame.Children.Add(rectLifeThree);
+            LoadRectangles();
 
             string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
             FillLivesRectangle(rectLifeOne, dir + "/Sprites/composureTie.png");
@@ -211,7 +197,7 @@ namespace Binder.Environment
 
         private void TimerTwo_Tick(object sender, EventArgs e)
         {
-            imgBl.Source = new BitmapImage(new Uri(binderGame.Marcus.PictureName, UriKind.Relative));
+            imgMarcus.Source = new BitmapImage(new Uri(binderGame.Marcus.PictureName, UriKind.Relative));
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -223,6 +209,11 @@ namespace Binder.Environment
                 label.Width = 30;
                 label.Height = 30;
                 isRingShown = true;
+                cnvsGame.Children.Clear();
+                binderGame = new Game(180, 2);
+                MakeLevelFloors(2);
+                LoadGame();
+
             }
             foreach (WorldObject wObj in Game.Environ)
             {
@@ -301,6 +292,57 @@ namespace Binder.Environment
                     }
                 }
             }
+        }
+        private void LoadRectangles()
+        {
+            Rectangle[] rectList = new Rectangle[4] { rectItemOne, rectItemTwo, rectItemThree, rectItemFour };
+            double rectWid = 60;
+            double rectHeight = 2 * rectWid;
+            double rectTop = 20;
+            double rectSpace = rectWid / 3;
+            double rectMargin = 30;
+
+            rectLifeOne = new Rectangle() { Width = rectWid, Height = rectHeight };
+            rectLifeTwo = new Rectangle() { Width = rectWid, Height = rectHeight };
+            rectLifeThree = new Rectangle() { Width = rectWid, Height = rectHeight };
+
+            Canvas.SetLeft(rectLifeOne, rectMargin);
+            Canvas.SetTop(rectLifeOne, rectTop);
+            cnvsGame.Children.Add(rectLifeOne);
+            Canvas.SetLeft(rectLifeTwo, rectMargin + rectWid + rectSpace);
+            Canvas.SetTop(rectLifeTwo, rectTop);
+            cnvsGame.Children.Add(rectLifeTwo);
+            Canvas.SetLeft(rectLifeThree, rectMargin + 2 * rectWid + 2 * rectSpace);
+            Canvas.SetTop(rectLifeThree, rectTop);
+            cnvsGame.Children.Add(rectLifeThree);
+
+            rectWid = 90;
+            rectHeight = 60;
+
+            for (int i = 0; i < 4; i++)
+            {
+                rectList[i] = new Rectangle() { Width = rectWid, Height = rectHeight };
+                cnvsGame.Children.Add(rectList[i]);
+                Canvas.SetBottom(rectList[i], rectTop);
+                Canvas.SetLeft(rectList[i], rectMargin);
+                rectMargin += 100;
+                
+            }
+            rectItemOne = rectList[0];
+            rectItemTwo = rectList[1];
+            rectItemThree = rectList[2];
+            rectItemFour = rectList[3];
+        }
+
+        private void MakeMarcus()
+        {
+            imgMarcus = new Image();
+            imgMarcus.Source = new BitmapImage(new Uri("../Sprites/MarcusFront.png", UriKind.Relative));
+            imgMarcus.Height = 138;
+            imgMarcus.Width = 134;
+            cnvsGame.Children.Add(imgMarcus);
+            Canvas.SetTop(imgMarcus, 448);
+            Canvas.SetLeft(imgMarcus, 654);
         }
 
         public void RemoveLabel(object item)
@@ -507,6 +549,18 @@ namespace Binder.Environment
                 }
             }
             return rectangle;
+        }
+        private void MakeLevelFloors(int level)
+        {
+            string[] stringList = new string[3] { "/Environment/floor5.png", "/Environment/floor5.png", "/Environment/floor5.png" };
+            
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri(stringList[level - 1], UriKind.Relative));
+            image.Height = 1250;
+            image.Width = 1966;
+            cnvsGame.Children.Add(image);
+            Canvas.SetTop(image, -19);
+            Canvas.SetLeft(image, -18);
         }
     }
 }

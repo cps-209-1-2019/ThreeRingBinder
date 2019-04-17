@@ -14,17 +14,17 @@
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
     <Canvas>
-        <Label Content="Game Paused" FontSize="30" Foreground="DarkSlateBlue" Width="190" Canvas.Left="305" Canvas.Top="40"/>
-        <Button x:Name="btnResume" Width="100" Height="35" Click="BtnResume_Click" Content="Resume" Canvas.Left="350" Canvas.Top="100" Background="Firebrick"/>
-        <Button x:Name="btnSave" Width="100" Height="35" Click="BtnSave_Click" Content="Save Game" Canvas.Left="280" Canvas.Top="150" Background="#e4c027"/>
-        <Label x:Name="lblSaved" Content="" Canvas.Left="550" Canvas.Top="100"/>
-        <Button x:Name="btnSaveQuit" Width="100" Height="35" Click="BtnSaveQuit_Click" Content="Save and Quit" Canvas.Left="420" Canvas.Top="150" Background="#e4c027"/>
-        <Button x:Name="btnHelp" Width="100" Height="35" Click="BtnHelp_Click" Content="Help" Canvas.Left="280" Canvas.Top="200" Background="#e4c027"/>
-        <Button x:Name="btnAbout" Width="100" Height="35" Click="BtnAbout_Click" Content="About Game" Canvas.Left="420" Canvas.Top="200" Background="#e4c027"/>
-        <Label Content="Current Riddle:" Canvas.Left="267" Canvas.Top="245"/>
-        <TextBlock x:Name="txtRiddle1" Width="200" Height="20" Canvas.Left="300" Canvas.Top="270" Text=""/>
-        <TextBlock x:Name="txtRiddle2" Width="200" Height="20" Canvas.Left="300" Canvas.Top="290" Text=""/>
-        <TextBlock x:Name="txtRiddle3" Width="200" Height="20" Canvas.Left="300" Canvas.Top="310" Text=""/>
-        <TextBlock x:Name="txtRiddle4" Width="200" Height="20" Canvas.Left="300" Canvas.Top="330" Text=""/>
+        <Label Content="Game Paused" FontSize="45" Foreground="#e4c027" FontFamily="Haettenschweiler" Width="190" Canvas.Left="320" Canvas.Top="40"/>
+        <Button x:Name="btnResume" FontFamily="Haettenschweiler" Foreground="#e4c027" FontSize="45" Width="180" Height="100" Click="BtnResume_Click" Content="Resume" Canvas.Left="330" Canvas.Top="150" Background="Firebrick"/>
+        <Button x:Name="btnSave" BorderThickness="3" BorderBrush="Firebrick" FontFamily="Haettenschweiler" Foreground="Firebrick" FontSize="27" Width="140" Height="50" Click="BtnSave_Click" Content="Save Game" Canvas.Left="190" Canvas.Top="150" Background="#e4c027"/>
+        <Label x:Name="lblSaved" Content="" Canvas.Left="385" Canvas.Top="105" FontFamily="Haettenschweiler" FontSize="19" />
+        <Button x:Name="btnSaveQuit" BorderThickness="3" BorderBrush="Firebrick" FontFamily="Haettenschweiler" Foreground="Firebrick" FontSize="27" Width="140" Height="50" Click="BtnSaveQuit_Click" Content="Save and Quit" Canvas.Left="510" Canvas.Top="150" Background="#e4c027"/>
+        <Button x:Name="btnHelp" BorderThickness="3" BorderBrush="Firebrick" FontFamily="Haettenschweiler" Foreground="Firebrick" FontSize="27" Width="140" Height="50" Click="BtnHelp_Click" Content="Help" Canvas.Left="190" Canvas.Top="200" Background="#e4c027"/>
+        <Button x:Name="btnAbout" BorderThickness="3" BorderBrush="Firebrick" FontFamily="Haettenschweiler" Foreground="Firebrick" FontSize="27" Width="140" Height="50" Click="BtnAbout_Click" Content="About Game" Canvas.Left="510" Canvas.Top="200" Background="#e4c027"/>
+        <Label Content="Current Riddle:" FontFamily="Haettenschweiler" Foreground="Firebrick" FontSize="20" Canvas.Left="190" Canvas.Top="255"/>
+        <TextBlock x:Name="txtRiddle1" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="270" Text=""/>
+        <TextBlock x:Name="txtRiddle2" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="290" Text=""/>
+        <TextBlock x:Name="txtRiddle3" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="310" Text=""/>
+        <TextBlock x:Name="txtRiddle4" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="330" Text=""/>
     </Canvas>
 </Window>
