@@ -128,6 +128,8 @@ namespace Binder
 
             Environ = null;
 
+            Environ = new List<WorldObject>();
+
             Environ.AddRange(CurBuilding.WallsCol);
                 
             switch (level){
