@@ -24,7 +24,7 @@ namespace Binder
         public static int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
-        public int LevelNum { get; set; }
+        public static int LevelNum { get; set; }
         //public enum Levels { Library, FA, Maze }
         private string currLevel;
         public string CurrLevel
@@ -71,12 +71,9 @@ namespace Binder
             Environ = new List<WorldObject>();
             isPaused = false;
 
-            NLevel(level);
+            LevelNum = level;
+            NLevel(LevelNum);
 
-            if (LevelNum == 1)
-            {
-
-            }
             //StartPoint = new int[] { 0, 0 };
 
             //StartPoint = new int[2];
@@ -136,9 +133,6 @@ namespace Binder
             Environ.AddRange(CurBuilding.WallsCol);
                 
             switch (level){
-                case 1:
-                    CurBuilding.Name = "1: Finest Artists";
-                    break;
                 case 2:
                     CurBuilding.Name = "2: Macey's Library";
                     break;

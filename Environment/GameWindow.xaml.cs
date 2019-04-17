@@ -102,6 +102,8 @@ namespace Binder.Environment
 
             building = binderGame.CurBuilding;
 
+            MakeLevelFloors(Game.LevelNum);
+
             MakeMarcus();
             this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
             this.KeyUp += new KeyEventHandler(CnvsGame_KeyUp);
@@ -355,7 +357,6 @@ namespace Binder.Environment
             ImageBrush img = new ImageBrush()
             {
                 ImageSource = new BitmapImage(new Uri(image, UriKind.Relative))
-
             };
             rectangle.Fill = img;
         }
@@ -364,8 +365,7 @@ namespace Binder.Environment
         {
             ImageBrush img = new ImageBrush()
             {
-                ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))
-                
+                ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))                
             };
 
             if ((binderGame.Marcus.Inventory.Count() > binderGame.currentItem) && (item == binderGame.Marcus.Inventory[binderGame.currentItem]))

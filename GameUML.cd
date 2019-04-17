@@ -72,15 +72,8 @@
   </Class>
   <Class Name="Binder.Game">
     <Position X="11.5" Y="0.75" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="Binder.Game.Levels" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Game.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>EBEBgIAAAAAQERgAEAQgAEQAgQEABACAAARAgBEAIQA=</HashCode>
+      <HashCode>EBEBgIAAAAAQERgAEAQgAEQAgQEABACABARAgBEAIQA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
