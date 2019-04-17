@@ -52,7 +52,7 @@ namespace Binder.Environment
 
             binderGame = new Game(startTime, 1);
             binderGame.IsCheatOn = cheat;
-            MakeLevelFloors(1);
+            
             Game.Difficulty = difficulty;
             LoadGame();
         }
@@ -99,6 +99,8 @@ namespace Binder.Environment
         private void LoadGame()
         {
             //NameScope.SetNameScope(this, new NameScope());
+
+            MakeLevelFloors(1);
 
             building = binderGame.CurBuilding;
 
@@ -183,7 +185,30 @@ namespace Binder.Environment
             FillLivesRectangle(rectLifeOne, dir + "/Sprites/composureTie.png");
             FillLivesRectangle(rectLifeTwo, dir + "/Sprites/composureTie.png");
             FillLivesRectangle(rectLifeThree, dir + "/Sprites/composureTie.png");
+
+            int whichRect = 1;
+            foreach (InventoryItem i in binderGame.Marcus.Inventory)
+            {
+                switch (whichRect)
+                {
+                    case 1:
+                        FillInventoryRectangle(rectItemOne, i);
+                        break;
+                    case 2:
+                        FillInventoryRectangle(rectItemTwo, i);
+                        break;
+                    case 3:
+                        FillInventoryRectangle(rectItemThree, i);
+                        break;
+                    case 4:
+                        FillInventoryRectangle(rectItemFour, i);
+                        break;                       
+                }
+                whichRect++;
+            }
+            
         }
+
 
         private void TimerTwo_Tick(object sender, EventArgs e)
         {
