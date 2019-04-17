@@ -24,8 +24,8 @@ namespace Binder
         public static int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
-
-        public enum Levels { Library, FA, Maze }
+        public int LevelNum { get; set; }
+        //public enum Levels { Library, FA, Maze }
         private string currLevel;
         public string CurrLevel
         {
@@ -73,7 +73,10 @@ namespace Binder
 
             NLevel(level);
 
-            
+            if (LevelNum == 1)
+            {
+
+            }
             //StartPoint = new int[] { 0, 0 };
 
             //StartPoint = new int[2];
@@ -308,6 +311,12 @@ namespace Binder
                 PropertyChanged(this, new PropertyChangedEventArgs(source));
             }
         }
-
+        public void MakeAI(int x, int y, int health, int damage)
+        {
+            AI ai = new AI(health, damage, 10);
+            ai.X = x;
+            ai.Y = y;
+            ai.PictureName = "/Sprites/PsiZetaFront.png";
+        }
     }
 }

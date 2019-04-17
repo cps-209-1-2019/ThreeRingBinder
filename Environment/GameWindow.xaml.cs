@@ -54,23 +54,13 @@ namespace Binder.Environment
             binderGame.IsCheatOn = cheat;
             MakeLevelFloors(1);
             Game.Difficulty = difficulty;
-            if (doLoad)
-            {
-                //try
-                //{
-                binderGame.Load("gameFile.txt");
-                //}
-                //catch (Exception e)
-                //{
-                //    MessageBox.Show(e.ToString());
-                    
-                //}
-            }
             LoadGame();
         }
 
         public GameWindow()
         {
+            InitializeComponent();
+            
             binderGame = new Game();
             binderGame.Load("gameFile.txt");
             LoadGame();

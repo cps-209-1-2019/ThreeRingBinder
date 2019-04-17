@@ -176,7 +176,7 @@ namespace Binder.Environment
             {
                 if (direction == 'w')
                 {
-                    if (IsNotWall(game.CurBuilding, -changeNum, 0))
+                    if (IsNotWall(game.CurBuilding, changeNum, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -187,7 +187,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'n')
                 {
-                    if (IsNotWall(game.CurBuilding, 0, -changeNum))
+                    if (IsNotWall(game.CurBuilding, 0, changeNum))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -198,7 +198,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'e')
                 {
-                    if (IsNotWall(game.CurBuilding, changeNum, 0))
+                    if (IsNotWall(game.CurBuilding, -changeNum, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -209,7 +209,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 's')
                 {
-                    if (IsNotWall(game.CurBuilding, 0, changeNum))
+                    if (IsNotWall(game.CurBuilding, 0, -changeNum))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
