@@ -176,7 +176,7 @@ namespace Binder.Environment
             {
                 if (direction == 'w')
                 {
-                    if (IsNotWall(game.CurBuilding, -changeNum, 0))
+                    if (IsNotWall(game.CurBuilding, changeNum, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -187,7 +187,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'n')
                 {
-                    if (IsNotWall(game.CurBuilding, 0, -changeNum))
+                    if (IsNotWall(game.CurBuilding, 0, changeNum))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -198,7 +198,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 'e')
                 {
-                    if (IsNotWall(game.CurBuilding, changeNum, 0))
+                    if (IsNotWall(game.CurBuilding, -changeNum, 0))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -209,7 +209,7 @@ namespace Binder.Environment
                 }
                 else if (direction == 's')
                 {
-                    if (IsNotWall(game.CurBuilding, 0, changeNum))
+                    if (IsNotWall(game.CurBuilding, 0, -changeNum))
                     {
                         foreach (WorldObject thing in Game.Environ)
                         {
@@ -268,7 +268,7 @@ namespace Binder.Environment
                         break;
                     case "INVENTORYITEM":
                         InventoryItem item = new InventoryItem();
-                        string itemString = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", properties[i], properties[i + 1], properties[i + 2], properties[i + 3], properties[i + 4], properties[i + 5] + properties[i + 6], properties[i + 7], properties[i + 8], properties[i + 9], properties[i + 10], properties[i + 11], properties[i + 12]);
+                        string itemString = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", properties[i], properties[i + 1], properties[i + 2], properties[i + 3], properties[i + 4], properties[i + 5], properties[i + 6], properties[i + 7], properties[i + 8], properties[i + 9], properties[i + 10], properties[i + 11]);
                         Inventory.Add(item.Deserialize(itemString));
                         i = i + 10;
                         break;

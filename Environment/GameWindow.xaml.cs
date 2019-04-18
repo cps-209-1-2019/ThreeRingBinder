@@ -52,25 +52,15 @@ namespace Binder.Environment
 
             binderGame = new Game(startTime, 1);
             binderGame.IsCheatOn = cheat;
-            MakeLevelFloors(1);
+            
             Game.Difficulty = difficulty;
-            if (doLoad)
-            {
-                //try
-                //{
-                binderGame.Load("gameFile.txt");
-                //}
-                //catch (Exception e)
-                //{
-                //    MessageBox.Show(e.ToString());
-                    
-                //}
-            }
             LoadGame();
         }
 
         public GameWindow()
         {
+            InitializeComponent();
+            
             binderGame = new Game();
             binderGame.Load("gameFile.txt");
             LoadGame();
@@ -111,6 +101,8 @@ namespace Binder.Environment
             //NameScope.SetNameScope(this, new NameScope());
 
             building = binderGame.CurBuilding;
+
+            MakeLevelFloors(binderGame.LevelNum);
 
             MakeMarcus();
             this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
@@ -193,7 +185,30 @@ namespace Binder.Environment
             FillLivesRectangle(rectLifeOne, dir + "/Sprites/composureTie.png");
             FillLivesRectangle(rectLifeTwo, dir + "/Sprites/composureTie.png");
             FillLivesRectangle(rectLifeThree, dir + "/Sprites/composureTie.png");
+
+            int whichRect = 1;
+            foreach (InventoryItem i in binderGame.Marcus.Inventory)
+            {
+                switch (whichRect)
+                {
+                    case 1:
+                        FillInventoryRectangle(rectItemOne, i);
+                        break;
+                    case 2:
+                        FillInventoryRectangle(rectItemTwo, i);
+                        break;
+                    case 3:
+                        FillInventoryRectangle(rectItemThree, i);
+                        break;
+                    case 4:
+                        FillInventoryRectangle(rectItemFour, i);
+                        break;                       
+                }
+                whichRect++;
+            }
+            
         }
+
 
         private void TimerTwo_Tick(object sender, EventArgs e)
         {
@@ -365,7 +380,6 @@ namespace Binder.Environment
             ImageBrush img = new ImageBrush()
             {
                 ImageSource = new BitmapImage(new Uri(image, UriKind.Relative))
-
             };
             rectangle.Fill = img;
         }
@@ -374,8 +388,7 @@ namespace Binder.Environment
         {
             ImageBrush img = new ImageBrush()
             {
-                ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))
-                
+                ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory().Replace("\\bin\\Debug","") + item.Image, UriKind.Relative))                
             };
 
             if ((binderGame.Marcus.Inventory.Count() > binderGame.currentItem) && (item == binderGame.Marcus.Inventory[binderGame.currentItem]))

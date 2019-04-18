@@ -17,15 +17,14 @@ namespace Binder
         public int CurrScore { get; set; }          //Keeps track of the current score as player plays
         public int HighScore { get; set; }          //Keeps track of the High Score so far
         public int Composure { get; set; }          //Keeps track of the health of the Player
-        public int Time { get; set; }               //Keeps track of the amount of time remaining
+        public double Time { get; set; }               //Keeps track of the amount of time remaining
         public int NumItems { get; set; }           //Keeps track of the number of items in players inventory
-        //public int[] StartPoint { get; set; }       //Keeps track of where the player starts and will be used to calculate where everything is positioned on the map
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public static int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
-
-        public enum Levels { Library, FA, Maze }
+        public int LevelNum { get; set; }
+        //public enum Levels { Library, FA, Maze }
         private string currLevel;
         public string CurrLevel
         {
@@ -46,7 +45,6 @@ namespace Binder
         public int currentItem = 0;                          //Shows item that currently needs to be used
         public int PsiZetaShamed = 0;
 
-        public double timeLeft;
         private string time;
         private int min = 2;
         private int sec = 60;
@@ -65,15 +63,15 @@ namespace Binder
 
         public Game(double startTime, int level)
         {
-            timeLeft = startTime;
+            Time = startTime;
             
             Marcus = new Player("Marcus");
             Environ = new List<WorldObject>();
             isPaused = false;
 
-            NLevel(level);
+            LevelNum = level;
+            NLevel(LevelNum);
 
-            
             //StartPoint = new int[] { 0, 0 };
 
             //StartPoint = new int[2];
@@ -100,6 +98,7 @@ namespace Binder
             else
             {
                 sec -= 1;
+                Time -= 1;
             }
 
             string minutes = min.ToString();
@@ -128,12 +127,11 @@ namespace Binder
 
             Environ = null;
 
+            Environ = new List<WorldObject>();
+
             Environ.AddRange(CurBuilding.WallsCol);
                 
             switch (level){
-                case 1:
-                    CurBuilding.Name = "1: Finest Artists";
-                    break;
                 case 2:
                     CurBuilding.Name = "2: Macey's Library";
                     break;
@@ -185,6 +183,9 @@ namespace Binder
                             Building build = new Building();
                             CurBuilding = build.Deserialize(line);
                             CurBuilding.BuildWalls(Building.Maze);
+                            break;
+                        case "LEVELNUM":
+                            LevelNum = int.Parse(line.Split('!')[1]);
                             break;
                         case "MARCUS":
                             Marcus = Marcus.Deserialize(line);
@@ -261,6 +262,7 @@ namespace Binder
                 wr.WriteLine("COMPOSURE!" + Composure);
                 wr.WriteLine("TIME!" + Time);
                 wr.WriteLine("NUMITEMS!" + NumItems);
+                wr.WriteLine("LEVELNUM!" + LevelNum);
                 wr.WriteLine("ISCHEATON!" + IsCheatOn.ToString().ToUpper());
                 wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
                 wr.WriteLine("MARCUS!"+ Marcus.Serialize());
@@ -296,7 +298,8 @@ namespace Binder
         }
         public int CalculateScores()
         {
-            return Convert.ToInt32((PsiZetaShamed * 200) + (timeLeft * 15));
+            CurrScore = Convert.ToInt32((PsiZetaShamed * 200) + (Time * 15));
+            return CurrScore;
         }
         protected void SetProperty(string source)
         {
@@ -306,6 +309,12 @@ namespace Binder
                 PropertyChanged(this, new PropertyChangedEventArgs(source));
             }
         }
-
+        public void MakeAI(int x, int y, int health, int damage)
+        {
+            AI ai = new AI(health, damage, 10);
+            ai.X = x;
+            ai.Y = y;
+            ai.PictureName = "/Sprites/PsiZetaFront.png";
+        }
     }
 }

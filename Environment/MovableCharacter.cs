@@ -45,9 +45,11 @@ namespace Binder.Environment
         public bool IsNotWall(Building building, int changeInX, int changeInY)
         {
             foreach (Walls wall in building.WallsCol)
-                if ((wall.X < (X + changeInX)) && ((wall.X + wall.Width) > (X + changeInX)))// || ((wall.X < (X + changeInX + 30)) && ((wall.X + wall.Width) > (X + changeInX + 30))))
-                    if (((wall.Y < (Y + changeInY)) && ((wall.Y + wall.Length) > (Y + changeInY))) || ((wall.Y < (Y + changeInY + Length - 20)) && ((wall.Y + wall.Length) > (Y + changeInY + Length - 20))))
-                        return false;
+                if (((wall.X + changeInX < X) && ((wall.X + wall.Width + changeInX) > X)) || (((wall.X + changeInX) < (X + Width)) && ((wall.X + wall.Width + changeInX) > (X + Width))))
+                    if (((wall.Y + changeInY < Y) && ((wall.Y + wall.Length + changeInY) > Y)) || ((changeInY + wall.Y < (Y + Length)) && ((changeInY + wall.Y + wall.Length) > (Y + Length))))
+                        if (((X < wall.X + changeInX) && ((X + Width) > wall.X + changeInX)) || ((X < wall.X + wall.Width + changeInX) && ((X + Width) > wall.X + wall.Width + changeInX)))
+                            if (((Y < wall.Y + changeInY) && ((Y + Length) > wall.Y + changeInY)) || ((Y < wall.Y + wall.Length + changeInY) && ((Y + Length) > wall.Y + wall.Length + changeInY)))
+                                return false;
             return true;
         }
         //public bool AIIsNotWall(Building building, int changeInX, int changeInY)
