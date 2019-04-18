@@ -146,16 +146,42 @@ namespace Binder.Environment
     //Defines the methods and actions for the Binder class
     public class BinderRing : InventoryItem, ISerialization<BinderRing>
     {
-        //Take an object and turn it into a string
         new public string Serialize()
         {
-            throw new NotImplementedException();
+            string theItem = "";
+
+            theItem = string.Format("RING?3,FOUND!{0},POSX!{1},POSY!{2},IMAGE!{3}",  Found.ToString().ToUpper(), X, Y, Image);
+
+            return theItem;
         }
 
         //Take a string and return a DecoyItem object
         new public BinderRing Deserialize(string obj)
         {
-            throw new NotImplementedException();
+            List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
+
+            Position = new int[2];
+
+            for (int i = 0; i < properties.Count; i++)
+            {
+                switch (properties[i])
+                {
+                    case "FOUND":
+                        Found = "TRUE" == properties[i + 1];
+                        break;
+                    case "POSX":
+                        X = int.Parse(properties[i + 1]);
+                        break;
+                    case "POSY":
+                        Y = int.Parse(properties[i + 1]);
+                        break;
+                    case "IMAGE":
+                        Image = properties[i + 1];
+                        break;
+                }
+            }
+
+            return this;
         }
     }
     

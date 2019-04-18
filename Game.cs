@@ -187,6 +187,10 @@ namespace Binder
                         case "LEVELNUM":
                             LevelNum = int.Parse(line.Split('!')[1]);
                             break;
+                        case "RING":
+                            BinderRing binder = new BinderRing();
+                            ring = binder.Deserialize(line);
+                            break;
                         case "MARCUS":
                             Marcus = Marcus.Deserialize(line);
                             break;
@@ -265,6 +269,7 @@ namespace Binder
                 wr.WriteLine("LEVELNUM!" + LevelNum);
                 wr.WriteLine("ISCHEATON!" + IsCheatOn.ToString().ToUpper());
                 wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
+                wr.WriteLine("RING!" + ring.Serialize());
                 wr.WriteLine("MARCUS!"+ Marcus.Serialize());
 
                 string theItems = "";
