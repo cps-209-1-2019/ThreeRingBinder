@@ -53,8 +53,6 @@ namespace Binder.Environment
         {
             if (canBePickedUp)
             {
-                string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
-                Image = dir + Image;
                 binderGame.Marcus.Inventory.Add(this);
                 if (binderGame.Marcus.Inventory.Count > 4)
                 {
