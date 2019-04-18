@@ -23,7 +23,7 @@ namespace Binder
         public static int Difficulty { get; set; }         //Holds difficulty level
         public static List<WorldObject> Environ { get; set; }
         public Building CurBuilding { get; set; }
-        public static int LevelNum { get; set; }
+        public int LevelNum { get; set; }
         //public enum Levels { Library, FA, Maze }
         private string currLevel;
         public string CurrLevel
@@ -184,6 +184,9 @@ namespace Binder
                             CurBuilding = build.Deserialize(line);
                             CurBuilding.BuildWalls(Building.Maze);
                             break;
+                        case "LEVELNUM":
+                            LevelNum = int.Parse(line.Split('!')[1]);
+                            break;
                         case "MARCUS":
                             Marcus = Marcus.Deserialize(line);
                             break;
@@ -259,6 +262,7 @@ namespace Binder
                 wr.WriteLine("COMPOSURE!" + Composure);
                 wr.WriteLine("TIME!" + Time);
                 wr.WriteLine("NUMITEMS!" + NumItems);
+                wr.WriteLine("LEVELNUM!" + LevelNum);
                 wr.WriteLine("ISCHEATON!" + IsCheatOn.ToString().ToUpper());
                 wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
                 wr.WriteLine("MARCUS!"+ Marcus.Serialize());

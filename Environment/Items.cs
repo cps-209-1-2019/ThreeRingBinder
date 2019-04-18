@@ -78,7 +78,11 @@ namespace Binder.Environment
         {
             string theItem = "";
 
-            theItem = string.Format("INVENTORYITEM?5,NAME!{0},IMAGE!{1},FOUND!{2},POSX!{3},POSY!{4}",Name.ToUpper(), Image, Found.ToString().ToUpper(), X, Y);
+            string dir = Directory.GetCurrentDirectory();
+
+            string theImage = Image.Replace(dir.Replace("\\bin\\Debug", ""), "");
+
+            theItem = string.Format("INVENTORYITEM?5,NAME!{0},IMAGE!{1},FOUND!{2},POSX!{3},POSY!{4}",Name.ToUpper(), theImage, Found.ToString().ToUpper(), X, Y);
 
             return theItem;
         }
