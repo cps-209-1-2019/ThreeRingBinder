@@ -262,13 +262,13 @@ namespace Binder.Environment
                     if (item.Found == true)
                     {
                         RemoveLabel(item);
-                    Rectangle rectangle = null;
-                    foreach (InventoryItem thing in binderGame.Marcus.Inventory)
-                    {
-                        rectangle = GetRectangle(thing);
-                        FillInventoryRectangle(rectangle, thing);
-                    }
-                    break;
+                        Rectangle rectangle = null;
+                        foreach (InventoryItem thing in binderGame.Marcus.Inventory)
+                        {
+                            rectangle = GetRectangle(thing);
+                            FillInventoryRectangle(rectangle, thing);
+                        }
+                        break;
                     }                       
                 }
                 else if (wObj is Airplane)
@@ -388,7 +388,7 @@ namespace Binder.Environment
         {
             ImageBrush img = new ImageBrush()
             {
-                ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory().Replace("\\bin\\Debug","") + item.Image, UriKind.Relative))                
+                ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))                
             };
 
             if ((binderGame.Marcus.Inventory.Count() > binderGame.currentItem) && (item == binderGame.Marcus.Inventory[binderGame.currentItem]))
