@@ -225,6 +225,7 @@ namespace Binder.Environment
                 label.Height = 30;
                 isRingShown = true;
                 cnvsGame.Children.Clear();
+                StopTimers();
                 binderGame = new Game(180, 2);
                 MakeLevelFloors(2);
                 LoadGame();
@@ -301,12 +302,20 @@ namespace Binder.Environment
                         int score = binderGame.CalculateScores();
                         GameOver endGame = new GameOver(this, false, score);
                         endGame.Show();
-                        timer.Stop();
-                        LimitTimer.Stop();
+                        StopTimers();
                         isGameOver = true;
                     }
                 }
             }
+        }
+        private void StopTimers()
+        {
+            LimitTimer.Stop();
+            timerDown.Stop();
+            timerUp.Stop();
+            timerLeft.Stop();
+            timerRight.Stop();
+            timer.Stop();
         }
         private void LoadRectangles()
         {
