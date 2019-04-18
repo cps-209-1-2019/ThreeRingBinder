@@ -439,6 +439,7 @@ namespace Binder.Environment
             else if (e.Key == Key.Escape)
             {
                 Game.isPaused = true;
+                LimitTimer.Stop();
                 Pause pauseWindow = new Pause(binderGame);
                 pauseWindow.Show();
             }

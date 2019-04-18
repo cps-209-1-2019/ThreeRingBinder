@@ -15,8 +15,29 @@
     </Window.Background>
     <Canvas>
         <TextBlock Text="High Scores" FontFamily="Haettenschweiler" FontSize="60" Foreground="#e4c027" Width="220" Canvas.Left="295" Canvas.Top="15"/>
-        <!--<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="260" Width="400" Canvas.Left="200" Canvas.Top="100">
-            <TextBox x:Name="txtScores" Text="" FontSize="20"/>
-        </ScrollViewer>-->
+        <Label Content="Player Name" Canvas.Left="155" Canvas.Top="100" FontFamily="Haettenschweiler" FontSize="25"/>
+        <Label Content="Score" Canvas.Left="495" Canvas.Top="100" FontFamily="Haettenschweiler" FontSize="25"/>
+        <TextBlock x:Name="txtNameOne" Canvas.Left="170" Canvas.Top="140" FontSize="20"/>
+        <TextBlock x:Name="txtNameTwo" Canvas.Left="170" Canvas.Top="165" FontSize="20"/>
+        <TextBlock x:Name="txtNameThree" Canvas.Left="170" Canvas.Top="190" FontSize="20"/>
+        <TextBlock x:Name="txtNameFour" Canvas.Left="170" Canvas.Top="215" FontSize="20"/>
+        <TextBlock x:Name="txtNameFive" Canvas.Left="170" Canvas.Top="240" FontSize="20"/>
+        <TextBlock x:Name="txtNameSix" Canvas.Left="170" Canvas.Top="265" FontSize="20"/>
+        <TextBlock x:Name="txtNameSeven" Canvas.Left="170" Canvas.Top="290" FontSize="20"/>
+        <TextBlock x:Name="txtNameEight" Canvas.Left="170" Canvas.Top="315" FontSize="20"/>
+        <TextBlock x:Name="txtNameNine" Canvas.Left="170" Canvas.Top="340" FontSize="20"/>
+        <TextBlock x:Name="txtNameTen" Canvas.Left="170" Canvas.Top="365" FontSize="20"/>
+
+        <TextBlock x:Name="txtScoreOne" Canvas.Left="500" Canvas.Top="140" FontSize="20"/>
+        <TextBlock x:Name="txtScoreTwo" Canvas.Left="500" Canvas.Top="165" FontSize="20"/>
+        <TextBlock x:Name="txtScoreThree" Canvas.Left="500" Canvas.Top="190" FontSize="20"/>
+        <TextBlock x:Name="txtScoreFour" Canvas.Left="500" Canvas.Top="215" FontSize="20"/>
+        <TextBlock x:Name="txtScoreFive" Canvas.Left="500" Canvas.Top="240" FontSize="20"/>
+        <TextBlock x:Name="txtScoreSix" Canvas.Left="500" Canvas.Top="265" FontSize="20"/>
+        <TextBlock x:Name="txtScoreSeven" Canvas.Left="500" Canvas.Top="290" FontSize="20"/>
+        <TextBlock x:Name="txtScoreEight" Canvas.Left="500" Canvas.Top="315" FontSize="20"/>
+        <TextBlock x:Name="txtScoreNine" Canvas.Left="500" Canvas.Top="340" FontSize="20"/>
+        <TextBlock x:Name="txtScoreTen" Canvas.Left="500" Canvas.Top="365" FontSize="20"/>
+
     </Canvas>
 </Window>

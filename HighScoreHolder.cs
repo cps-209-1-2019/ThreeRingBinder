@@ -28,7 +28,6 @@ namespace Binder
                         string scoreLine = reader.ReadLine();
                         if (scoreLine != null)
                         {
-                            highScoreText += scoreLine + "\n";
                             scoreArray = scoreLine.Split(new char[] { ' ' });
                             HighScore highScore = new HighScore(scoreArray[1], scoreArray[0]);
                             scoreList.Insert(0, highScore);
@@ -37,33 +36,39 @@ namespace Binder
                         }
 
                     }
+                    scoreList.Reverse();
+
                 }
             }
-            catch { }
+            catch
+            {
+                Console.WriteLine("Could not load high scores");
+            }
         }
 
         public void Save()
         {
             using (StreamWriter writer = new StreamWriter(filename))
+            {
+                foreach (HighScore score in scoreList)
                 {
-                    foreach (HighScore score in scoreList)
+                    if (score != null)
                     {
-                        if (score != null)
-                        {
-                            string scoreLine = score.PlayerName + " " + score.CurrentScore;
-                            writer.WriteLine(scoreLine);
-                        }
+                        string scoreLine = score.PlayerName + " " + score.CurrentScore;
+                        writer.WriteLine(scoreLine);
                     }
                 }
+            }
         }
 
         public void AddHighScore(HighScore score)
         {
             scoreList.Insert(0, score);
-            scoreList = scoreList.OrderBy(o => o.CurrentScore).ToList();
+            scoreList = scoreList.OrderBy(o => Convert.ToInt32(o.CurrentScore)).ToList();
             scoreList.Reverse();
             if (scoreList.Count() > 10)
                 scoreList.RemoveAt(10);
+            Save();
         }
     }
 }

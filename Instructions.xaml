@@ -14,7 +14,7 @@
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
     <Canvas>
-        <Label Content="Game Instructions" FontSize="30" Foreground="DarkSalmon" Width="250" Canvas.Left="275" Canvas.Top="10"/>
+        <Label Content="Game Instructions" FontSize="45" Foreground="#e4c027" FontFamily="Haettenschweiler" Width="265" Canvas.Left="268" Canvas.Top="10"/>
         <TextBlock xml:space="preserve">
             
             
@@ -32,6 +32,6 @@
             
             To learn what buttons to use, check the help screen below.           
         </TextBlock>
-        <Button x:Name="btnHelp" Width="100" Height="35" Click="BtnHelp_Click" Content="Help" Canvas.Left="350" Canvas.Top="280" Background="#e4c027"/>
+        <Button x:Name="btnHelp"  FontFamily="Haettenschweiler" BorderThickness="3" BorderBrush="Firebrick" FontSize="30" Foreground="Firebrick" Height="50" Width="140" Click="BtnHelp_Click" Content="Help" Canvas.Left="330" Canvas.Top="280" Background="#e4c027"/>
     </Canvas>
 </Window>

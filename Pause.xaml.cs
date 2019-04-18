@@ -25,6 +25,7 @@ namespace Binder
             binderGame = game;
             InitializeComponent();
             SetRiddle();
+            
         }
 
         public void SetRiddle()
