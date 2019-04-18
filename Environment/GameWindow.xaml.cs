@@ -388,7 +388,7 @@ namespace Binder.Environment
         {
             ImageBrush img = new ImageBrush()
             {
-                ImageSource = new BitmapImage(new Uri(item.Image, UriKind.Relative))                
+                ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory().Replace("\\bin\\Debug","") + item.Image, UriKind.Relative))                
             };
 
             if ((binderGame.Marcus.Inventory.Count() > binderGame.currentItem) && (item == binderGame.Marcus.Inventory[binderGame.currentItem]))
