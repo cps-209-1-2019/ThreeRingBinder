@@ -9,7 +9,8 @@
         MinHeight="450"
         MaxHeight="450"
         MinWidth="800"
-        MaxWidth="800">
+        MaxWidth="800"
+        Closed="Window_Closed">
     <Window.Background>
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
@@ -26,5 +27,6 @@
         <TextBlock x:Name="txtRiddle2" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="290" Text=""/>
         <TextBlock x:Name="txtRiddle3" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="310" Text=""/>
         <TextBlock x:Name="txtRiddle4" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="330" Text=""/>
+        <Label x:Name="lblAnswer" Canvas.Top="370" Canvas.Left="265" Content="" FontStyle="Italic"/>
     </Canvas>
 </Window>

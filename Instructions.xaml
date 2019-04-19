@@ -14,13 +14,16 @@
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
     <Canvas>
+        <Image Source="Sprites\binderRingSilver.png" Width="30" Canvas.Top="74" Canvas.Left="230"/>
+        <Image Source="Sprites\PsiZetaFront.png" Width="20" Canvas.Top="195" Canvas.Left="156"/>
+        <Image Source="Sprites\paperAirplaneRight.jpg" Width="20" Canvas.Top="255" Canvas.Left="126"/>
         <Label Content="Game Instructions" FontSize="45" Foreground="#e4c027" FontFamily="Haettenschweiler" Width="265" Canvas.Left="268" Canvas.Top="10"/>
         <TextBlock xml:space="preserve">
             
             
             
             
-            Your Goal: Find all three binder rings and assemble the legendary binder.
+            Your Goal: Find all three binder rings         and assemble the legendary binder.
             
             Roam the building in search of an object that will allow you to discover the next ring.
             Once you discover the correct object, riddles will appear, telling you where to find the ring and what object to use.
@@ -28,9 +31,10 @@
             After solving the riddles, move to the correct location and use the correct object there.
             
             But watch out! 
-            The Psi Zeta Bullfrogs will be waiting for you, ready to whip their scarves at you. To shame and stop them, throw paper airplanes at them.
+            The Psi Zeta Bullfrogs        will be waiting for you, ready to whip their scarves at you. To shame and stop them, throw 
             
-            To learn what buttons to use, check the help screen below.           
+            
+            paper airplanes         at them. To learn what buttons to use, check the help screen below.           
         </TextBlock>
         <Button x:Name="btnHelp"  FontFamily="Haettenschweiler" BorderThickness="3" BorderBrush="Firebrick" FontSize="30" Foreground="Firebrick" Height="50" Width="140" Click="BtnHelp_Click" Content="Help" Canvas.Left="330" Canvas.Top="280" Background="#e4c027"/>
     </Canvas>
