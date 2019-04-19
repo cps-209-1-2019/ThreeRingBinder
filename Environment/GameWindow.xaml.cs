@@ -508,11 +508,14 @@ namespace Binder.Environment
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            foreach (Walls w in building.WallsCol)
+            foreach (WorldObject w in Game.Environ)
             {
-                foreach (Block b in w.Blocks)
+                if (w is Walls)
                 {
-                    SetObjectBinding("/Environment/blocks.png", b);
+                    foreach (Block b in (w as Walls).Blocks)
+                    {
+                        SetObjectBinding("/Environment/blocks.png", b);
+                    }
                 }
             }
         }
