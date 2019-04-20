@@ -37,6 +37,8 @@ namespace Binder.Environment
 
         TextBlock Time;
         TextBlock Level;
+        TextBlock Score;
+        TextBlock ScoreLbl;
 
         Rectangle rectLifeOne;
         Rectangle rectLifeTwo;
@@ -52,6 +54,7 @@ namespace Binder.Environment
 
             Game.Difficulty = difficulty;
             binderGame = new Game(startTime, 1);
+            cnvsGame.DataContext = binderGame;
             binderGame.IsCheatOn = cheat;
             LoadGame();
         }
@@ -138,34 +141,7 @@ namespace Binder.Environment
             binderGame.Marcus.PictureName = "/Sprites/MarcusFront.png";
             imgMarcus.DataContext = binderGame.Marcus.PictureName;
 
-            Time = new TextBlock()
-            {
-                FontSize = 50,
-                Foreground = Brushes.Yellow,
-                FontFamily = new FontFamily("Algerian"),
-                Text = "Time"
-            };
-            Time.DataContext = binderGame;
-            Time.SetBinding(TextBlock.TextProperty, "TimeLeft");
-
-            cnvsGame.Children.Add(Time);
-            Canvas.SetLeft(Time, 518);
-            Canvas.SetTop(Time, 15);
-
-
-            //TODO: Implement Level Progression, and use abstraction for how the text on the screen will look.
-            Level = new TextBlock()
-            {
-                FontSize = 30,
-                Foreground = Brushes.Yellow,
-                FontFamily = new FontFamily("Algerian"),
-            };
-            Level.DataContext = binderGame;
-            Level.SetBinding(TextBlock.TextProperty, "CurrLevel");
-            cnvsGame.Children.Add(Level);
-            Canvas.SetRight(Level, 60);
-            Canvas.SetTop(Level, 65);
-
+            DisplayGameData();
 
             //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
             LimitTimer = new DispatcherTimer()
@@ -238,6 +214,7 @@ namespace Binder.Environment
                         RemoveLabel(ai);
                         Game.Environ.Remove(ai);
                         binderGame.PsiZetaShamed++;
+                        binderGame.CalculateScores();
                         break;
                     }
                     ai.Move(binderGame);
@@ -314,6 +291,63 @@ namespace Binder.Environment
             timerRight.Stop();
             timer.Stop();
         }
+
+        void DisplayGameData()
+        {
+            double mid = this.Width / 2;
+
+            List<TextBlock> gameData = new List<TextBlock>();
+            Time = new TextBlock()
+            {
+                FontSize = 50,
+                Foreground = Brushes.Yellow,
+                FontFamily = new FontFamily("Algerian"),
+            };
+            
+            cnvsGame.Children.Add(Time);
+            Time.DataContext = binderGame;
+            Time.SetBinding(TextBlock.TextProperty, "TimeLeft");
+            Canvas.SetLeft(Time, 30);
+            Canvas.SetTop(Time, 15);
+
+
+            //Implement Level Progression, and use abstraction for how the text on the screen will look.
+            Level = new TextBlock()
+            {
+                MinWidth = 200
+            };
+           
+            cnvsGame.Children.Add(Level);
+            Level.SetBinding(TextBlock.TextProperty, "CurrLevel");
+            Canvas.SetLeft(Level, mid - Level.MinWidth);
+            Canvas.SetTop(Level, 10);
+
+            //Set Scores in the middle
+            Score = new TextBlock();           
+            cnvsGame.Children.Add(Score);
+            Score.SetBinding(TextBlock.TextProperty, "CurrScore");
+            Canvas.SetLeft(Score, mid);
+            Canvas.SetTop(Score, 55);
+
+            ScoreLbl = new TextBlock()
+            {
+                Text = "Score: "
+            };
+            cnvsGame.Children.Add(ScoreLbl);
+            Canvas.SetLeft(ScoreLbl, mid - 150);
+            Canvas.SetTop(ScoreLbl, 55);
+
+            gameData.AddRange(new TextBlock[] { Score, Level, ScoreLbl });
+            
+            foreach(TextBlock t in gameData)
+            {
+                t.FontSize = 30;
+                t.Foreground = Brushes.Yellow;
+                t.FontFamily = new FontFamily("Algerian");
+                t.DataContext = binderGame;
+            }
+        }
+
         private void LoadRectangles()
         {
             Rectangle[] rectList = new Rectangle[4] { rectItemOne, rectItemTwo, rectItemThree, rectItemFour };
@@ -327,14 +361,14 @@ namespace Binder.Environment
             rectLifeTwo = new Rectangle() { Width = rectWid, Height = rectHeight };
             rectLifeThree = new Rectangle() { Width = rectWid, Height = rectHeight };
 
-            Canvas.SetLeft(rectLifeOne, rectMargin);
-            Canvas.SetTop(rectLifeOne, rectTop);
+            Canvas.SetRight(rectLifeOne, rectMargin);
+            Canvas.SetTop(rectLifeOne, rectTop + 10);
             cnvsGame.Children.Add(rectLifeOne);
-            Canvas.SetLeft(rectLifeTwo, rectMargin + rectWid + rectSpace);
-            Canvas.SetTop(rectLifeTwo, rectTop);
+            Canvas.SetRight(rectLifeTwo, rectMargin + rectWid + rectSpace);
+            Canvas.SetTop(rectLifeTwo, rectTop + 10);
             cnvsGame.Children.Add(rectLifeTwo);
-            Canvas.SetLeft(rectLifeThree, rectMargin + 2 * rectWid + 2 * rectSpace);
-            Canvas.SetTop(rectLifeThree, rectTop);
+            Canvas.SetRight(rectLifeThree, rectMargin + 2 * rectWid + 2 * rectSpace);
+            Canvas.SetTop(rectLifeThree, rectTop + 10);
             cnvsGame.Children.Add(rectLifeThree);
 
             rectWid = 90;

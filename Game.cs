@@ -14,7 +14,19 @@ namespace Binder
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Player Marcus { get; set; }
-        public int CurrScore { get; set; }          //Keeps track of the current score as player plays
+        private int currScore;
+        public int CurrScore
+        {
+            get
+            {
+                return currScore;
+            }
+            set
+            {
+                currScore = value;
+                SetProperty("CurrScore");
+            }
+        }         //Keeps track of the current score as player plays
         public int HighScore { get; set; }          //Keeps track of the High Score so far
         public int Composure { get; set; }          //Keeps track of the health of the Player
         public double Time { get; set; }               //Keeps track of the amount of time remaining
@@ -70,7 +82,7 @@ namespace Binder
             isPaused = false;
 
             LevelNum = level;
-            NLevel(LevelNum);
+            NLevel(3);
 
             //StartPoint = new int[] { 0, 0 };
 
