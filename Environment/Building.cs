@@ -43,7 +43,7 @@ namespace Binder.Environment
 
         //Builds walls from the List of Coords
         public void BuildWalls(List<int[]> coords)
-        {
+        { 
             BuildPerim(coords);
             foreach (int[] dt in coords)
             {
@@ -182,6 +182,14 @@ namespace Binder.Environment
             new int[4] {3105, -1380, 3342, 69},
         };
 
+        List<int[]> MazePerimeter = new List<int[]>()
+        {
+            new int[4] {-3105, -1380, 69, 6210},
+            new int[4] {-3105, 2000, 69, 6210},
+            new int[4] {-3105, -1380, 3380, 69},
+            new int[4] {3105, -1380, 3380, 69},
+        };
+
         //Building Plans
         public static List<int[]> LibPlans = new List<int[]>()
         {            
@@ -229,23 +237,45 @@ namespace Binder.Environment
 
         public static List<int[]> Maze = new List<int[]>()
         {
-            new int[4] {-4000, -1100, 69, 1000},
-            new int[4] {-3000, -1238, 200, 69},
-            new int[4] {-3000, -1238, 69, 700},
-            new int[4] {-2300, -1238, 800, 69},
-            new int[4] {-3000, -438, 69, 700},
-            new int[4] {-3000, -438, 600, 69},
-            new int[4] {-3000, 181, 69, 700},
+           new int[4] { -2829, -1380, 621, 69},  //1
+           new int[4] {-2622, -1070, 69, 690},
+           new int[4] { -1725, -1173, 276, 69 },
+           new int[4] {-1173, -1380, 1035, 69},
+           new int[4] {-759, -1173, 552, 69},    //5
 
-            new int[4] {-3400, -1100, 600, 69},
-            new int[4] {-3400, -800, 69, 700},
-            new int[4] {-3500, -238, 69, 500},
+           new int[4] {-2898, -483, 69, 621},
+           new int[4] {-3105, -1760, 69, 138},
+           new int[4] {-2277, -794, 759, 69},
+           new int[4] {-1932, -690, 69, 552},
+           new int[4] {-1932, -690, 345, 90},    //10
+
+           new int[4] {-1932, -345, 69, 759},
+           new int[4] {-2277, -35, 69, 1725},
+           new int[4] {-552, -345, 345, 69},
+           new int[4] {-552, -345, 69, 414},
+           new int[4] {-276, -138, 276, 69},   //15
+
+
+           new int[4] {-2691, -207, 483, 69},
+           new int[4] {-2691, 276, 69, 621},
+           new int[4] {-1587, 69, 138, 69},
+           new int[4] {-1587, 345, 69, 621},
+           new int[4] {-379, 138, 69, 621},   //20
+
+           //new int[4] {}
             
         };
 
         void BuildPerim(List<int[]> plans)
         {
-            plans.AddRange(Perimeter);
+            if(plans == Maze)
+            {
+                plans.AddRange(MazePerimeter);
+            }
+            else
+            {
+                plans.AddRange(Perimeter);
+            }           
         }
     }
 }
