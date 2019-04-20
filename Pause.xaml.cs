@@ -24,17 +24,21 @@ namespace Binder
         {
             binderGame = game;
             InitializeComponent();
-            SetRiddle();
-            
+            SetRiddle(game);
+
         }
 
-        public void SetRiddle()
+        public void SetRiddle(Game game)
         {
-            //if (level == 1)
+            if (game.LevelNum == 1)
             txtRiddle1.Text = "Soft and squishy, yellow and fat,";
             txtRiddle2.Text = "its sturdy frame never stays flat.";
             txtRiddle3.Text = "Metal bin, so hard and cold,";
             txtRiddle4.Text = "Spouting forth the taste of old.";
+            if (game.IsCheatOn == true)
+            {
+                lblAnswer.Content = "The answer, my dear cheater, is the water fountain";
+            }
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -62,6 +66,12 @@ namespace Binder
         }
 
         private void BtnResume_Click(object sender, RoutedEventArgs e)
+        {
+            Game.isPaused = false;
+            this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
         {
             Game.isPaused = false;
             this.Close();

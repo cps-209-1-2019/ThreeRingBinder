@@ -52,11 +52,10 @@ namespace Binder.Environment
         {
             InitializeComponent();
 
+            Game.Difficulty = difficulty;
             binderGame = new Game(startTime, 1);
             cnvsGame.DataContext = binderGame;
             binderGame.IsCheatOn = cheat;
-            
-            Game.Difficulty = difficulty;
             LoadGame();
         }
 
@@ -108,15 +107,13 @@ namespace Binder.Environment
             MakeLevelFloors(binderGame.LevelNum);
 
             MakeMarcus();
+            MakeAI();
             this.KeyDown += new KeyEventHandler(CnvsGame_KeyDown);
             this.KeyUp += new KeyEventHandler(CnvsGame_KeyUp);
             BuildWalls();
             BindItems();
             
             cnvsGame.DataContext = building;
-            MakeAI(850, 400);
-            MakeAI(2000, 600);
-            MakeAI(800, 1500);
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
             timer.Tick += Timer_Tick;
@@ -545,25 +542,30 @@ namespace Binder.Environment
         //Builds Walls with Blocks on GUI 
         public void BuildWalls()
         {
-            foreach (Walls w in building.WallsCol)
+            foreach (WorldObject w in Game.Environ)
             {
-                foreach (Block b in w.Blocks)
+                if (w is Walls)
                 {
-                    SetObjectBinding("/Environment/blocks.png", b);
+                    foreach (Block b in (w as Walls).Blocks)
+                    {
+                        SetObjectBinding("/Environment/blocks.png", b);
+                    }
                 }
             }
         }
 
-        public void MakeAI(int x, int y)
+        public void MakeAI()
         {
-            AI ai = new AI(5, 1, 10);
-            ai.X = x;
-            ai.Y = y;
-            Game.Environ.Add(ai);
-            ai.PictureName = "/Sprites/PsiZetaFront.png";
-            Label label = SetObjectBinding(ai.PictureName, ai);
-            label.Width = 120;
-            label.Height = 120;
+            foreach (WorldObject wObj in Game.Environ)
+            {
+                if (wObj is AI)
+                {
+                    AI ai = (AI)wObj;
+                    Label label = SetObjectBinding(ai.PictureName, ai);
+                    label.Width = 120;
+                    label.Height = 120;
+                }
+            }
         }
         public Label SetObjectBinding(string uri, object b)
         {

@@ -91,6 +91,7 @@ namespace Binder
             ring.X = 700;
             ring.Y = 450;
             MakeItems();
+            MakeAIPerLevel();
         }
 
         public Game()
@@ -213,7 +214,7 @@ namespace Binder
                                 {
                                     case "INVENTORYITEM":
                                         InventoryItem inventory = new InventoryItem();
-                                        string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11]);
+                                        string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11},{12}!{13}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11], identify[j + 12], identify[j + 13]);
                                         Environ.Add(inventory.Deserialize(inven));
                                         break;
 
@@ -326,12 +327,53 @@ namespace Binder
                 PropertyChanged(this, new PropertyChangedEventArgs(source));
             }
         }
+        public void MakeAIPerLevel()
+        {
+            if (LevelNum == 1)
+            {
+                MakeAI(850, 400, 3, 1);
+                MakeAI(2000, 600, 3, 1);
+                MakeAI(800, 1500, 3, 1);
+            }
+            else if (LevelNum == 2)
+            {
+                MakeAI(850, 400, 3, 1);
+                MakeAI(2000, 600, 3, 1);
+                MakeAI(800, 1500, 3, 1);
+            }
+            else if (LevelNum == 3)
+            {
+                MakeAI(850, 400, 3, 1);
+                MakeAI(2000, 600, 3, 1);
+                MakeAI(800, 1500, 3, 1);
+            }
+        }
         public void MakeAI(int x, int y, int health, int damage)
         {
-            AI ai = new AI(health, damage, 10);
-            ai.X = x;
-            ai.Y = y;
-            ai.PictureName = "/Sprites/PsiZetaFront.png";
+            if (Difficulty == 1)
+            {
+                AI ai = new AI(health, damage, 10);
+                ai.X = x;
+                ai.Y = y;
+                ai.PictureName = "/Sprites/PsiZetaFront.png";
+                Game.Environ.Add(ai);
+            }
+            else if (Difficulty == 2)
+            {
+                AI ai = new AI(health, (damage * 2), 10);
+                ai.X = x;
+                ai.Y = y;
+                ai.PictureName = "/Sprites/PsiZetaFront.png";
+                Game.Environ.Add(ai);
+            }
+            else if (Difficulty == 3)
+            {
+                AI ai = new AI((health * 2), (damage * 2), 10);
+                ai.X = x;
+                ai.Y = y;
+                ai.PictureName = "/Sprites/PsiZetaFront.png";
+                Game.Environ.Add(ai);
+            }
         }
     }
 }

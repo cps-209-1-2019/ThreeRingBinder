@@ -294,12 +294,6 @@ namespace Binder.Environment
                 }
                 else
                 {
-                    //if (patrolVertically)
-                    //    PatrolVert(game);
-                    //else
-                    //{
-                    //    PatrolHoriz(game);
-                    //} 
                     Patrol(game.CurBuilding);
                 }
             }
