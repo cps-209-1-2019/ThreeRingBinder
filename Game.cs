@@ -356,15 +356,11 @@ namespace Binder
         {
 
             /*
-             * proposal to simplify this method
+             * maybe just have the line 
              * 
-             * AI ai = new AI( (health * (Difficulty - 1)), (damage * Difficulty), 10);
-             * ai.X = x;
-             * ai.Y = y;
-             * ai.PictureName = "/Sprites/PsiZetaFront.png";
-             * Game.Environ.Add(ai);
+             * AI ai = new AI(parameters here);
              * 
-             * that should cover everything that you have in the if statements without needing the if statements
+             * in the "if" statment. cause everythign after that line is the same for each "if" statement
              */
 
 
