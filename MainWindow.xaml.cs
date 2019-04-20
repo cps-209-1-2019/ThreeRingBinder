@@ -52,10 +52,10 @@ namespace Binder
             if (isLoaded) {
                 difficulty = Convert.ToInt32(sldrDifficulty.Value);
                 if (difficulty == 1)
-                    {
-                        startTime = 360;
-                        lblDifficulty.Content = "Underclassman";
-                    }
+                {
+                    startTime = 360;
+                    lblDifficulty.Content = "Underclassman";
+                }
                 else if (difficulty == 2)
                 {
                     startTime = 280;

@@ -186,6 +186,15 @@ namespace Binder
                         case "TIME":
                             Time = int.Parse(line.Split('!')[1]);
                             break;
+                        case "TIMELEFT":
+                            TimeLeft = line.Split('!')[1];
+                            break;
+                        case "SEC":
+                            sec = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "MIN":
+                            min = int.Parse(line.Split('!')[1]);
+                            break;
                         case "DIFFICULTY":
                             Difficulty = int.Parse(line.Split('!')[1]);
                             break;
@@ -281,6 +290,9 @@ namespace Binder
                 wr.WriteLine("HIGHSCORE!" + HighScore);
                 wr.WriteLine("COMPOSURE!" + Composure);
                 wr.WriteLine("TIME!" + Time);
+                wr.WriteLine("TIMELEFT!" + TimeLeft);
+                wr.WriteLine("MIN!" + min);
+                wr.WriteLine("SEC!" + sec);
                 wr.WriteLine("NUMITEMS!" + NumItems);
                 wr.WriteLine("LEVELNUM!" + LevelNum);
                 wr.WriteLine("CURRLEVEL!" + currLevel);
@@ -362,9 +374,6 @@ namespace Binder
              * 
              * in the "if" statment. cause everythign after that line is the same for each "if" statement
              */
-
-
-
 
             if (Difficulty == 1)
             {
