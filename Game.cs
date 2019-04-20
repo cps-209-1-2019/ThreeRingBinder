@@ -188,6 +188,9 @@ namespace Binder
                         case "LEVELNUM":
                             LevelNum = int.Parse(line.Split('!')[1]);
                             break;
+                        case "CURRLEVEL":
+                            currLevel = line.Split('!')[1];
+                            break;
                         case "RING":
                             BinderRing binder = new BinderRing();
                             ring = binder.Deserialize(line);
@@ -268,6 +271,7 @@ namespace Binder
                 wr.WriteLine("TIME!" + Time);
                 wr.WriteLine("NUMITEMS!" + NumItems);
                 wr.WriteLine("LEVELNUM!" + LevelNum);
+                wr.WriteLine("CURRLEVEL!" + currLevel);
                 wr.WriteLine("ISCHEATON!" + IsCheatOn.ToString().ToUpper());
                 wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
                 wr.WriteLine("RING!" + ring.Serialize());
@@ -338,6 +342,22 @@ namespace Binder
         }
         public void MakeAI(int x, int y, int health, int damage)
         {
+
+            /*
+             * proposal to simplify this method
+             * 
+             * AI ai = new AI( (health * (Difficulty - 1)), (damage * Difficulty), 10);
+             * ai.X = x;
+             * ai.Y = y;
+             * ai.PictureName = "/Sprites/PsiZetaFront.png";
+             * Game.Environ.Add(ai);
+             * 
+             * that should cover everything that you have in the if statements without needing the if statements
+             */
+
+
+
+
             if (Difficulty == 1)
             {
                 AI ai = new AI(health, damage, 10);
