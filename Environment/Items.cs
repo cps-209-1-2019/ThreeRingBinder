@@ -80,7 +80,7 @@ namespace Binder.Environment
 
             string theImage = Image.Replace(dir.Replace("\\bin\\Debug", ""), "");
 
-            theItem = string.Format("INVENTORYITEM?5,NAME!{0},IMAGE!{1},FOUND!{2},POSX!{3},POSY!{4},CANBEPICKEDUP!{5}",Name.ToUpper(), theImage, Found.ToString().ToUpper(), X, Y, canBePickedUp.ToString().ToUpper());
+            theItem = string.Format("INVENTORYITEM?5,NAME!{0},IMAGE!{1},FOUND!{2},POSX!{3},POSY!{4},CANBEPICKEDUP!{5},ISTHEONE!{6}",Name.ToUpper(), theImage, Found.ToString().ToUpper(), X, Y, canBePickedUp.ToString().ToUpper(), isTheOne.ToString().ToUpper());
 
             return theItem;
         }
@@ -113,6 +113,9 @@ namespace Binder.Environment
                         break;
                     case "CANBEPICKEDUP":
                         canBePickedUp = "TRUE" == properties[i + 1];
+                        break;
+                    case "ISTHEONE":
+                        isTheOne = "TRUE" == properties[i + 1];
                         break;
                 }
             }
