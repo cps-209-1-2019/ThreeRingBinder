@@ -83,7 +83,7 @@ namespace Binder
             isPaused = false;
 
             LevelNum = level;
-            NLevel(3);
+            NLevel(LevelNum);
 
             //StartPoint = new int[] { 0, 0 };
 
