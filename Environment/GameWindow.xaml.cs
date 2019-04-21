@@ -26,6 +26,8 @@ namespace Binder.Environment
         Image imgMarcus;
         bool isGameOver = false;
         public Game binderGame;
+        bool isCheatOn = false;
+
         Building building;
         DispatcherTimer timer;
         DispatcherTimer timerUp;
@@ -52,6 +54,7 @@ namespace Binder.Environment
         {
             InitializeComponent();
 
+            isCheatOn = cheat;
             Game.Difficulty = difficulty;
             binderGame = new Game(startTime, 1);
             cnvsGame.DataContext = binderGame;
@@ -192,44 +195,15 @@ namespace Binder.Environment
         {
             if ((binderGame.isRingFound == true) && (isRingShown == false))
             {
-                MessageBox.Show("You Found the Ring!");
-                Label label = SetObjectBinding("/Sprites/binderRingSilver.png", binderGame.ring);
-                label.Width = 30;
-                label.Height = 30;
-                isRingShown = true;
-                cnvsGame.Children.Clear();
-                StopTimers();
-                binderGame = new Game(180, 2);
-                MakeLevelFloors(2);
-                LoadGame();
-
+                StartNewLevel();
             }
             foreach (WorldObject wObj in Game.Environ)
             {
                 if (wObj is AI)
                 {
-                    AI ai = (AI)wObj;
-                    if (ai.Health <= 0)
-                    {
-                        RemoveLabel(ai);
-                        Game.Environ.Remove(ai);
-                        binderGame.PsiZetaShamed++;
-                        binderGame.CalculateScores();
+                    bool shouldBreak = MoveAI(wObj);
+                    if (shouldBreak)
                         break;
-                    }
-                    ai.Move(binderGame);
-                    RemoveLabel(ai);
-                    Label label = SetObjectBinding(ai.PictureName, ai);
-                    if (ai.PictureName.Contains("Whip"))
-                    {
-                        label.Width = 180;
-                        label.Height = 180;
-                    }
-                    else
-                    {
-                        label.Width = 120;
-                        label.Height = 120;
-                    }
                 }
                 else if (wObj is InventoryItem)
                 {
@@ -290,6 +264,49 @@ namespace Binder.Environment
             timerLeft.Stop();
             timerRight.Stop();
             timer.Stop();
+        }
+
+        private void StartNewLevel()
+        {
+            MessageBox.Show("You Found the Ring!");
+            Label label = SetObjectBinding("/Sprites/binderRingSilver.png", binderGame.ring);
+            label.Width = 30;
+            label.Height = 30;
+            isRingShown = true;
+            cnvsGame.Children.Clear();
+            StopTimers();
+            binderGame = new Game(180, 2);
+            binderGame.IsCheatOn = isCheatOn;
+            MakeLevelFloors(2);
+            LoadGame();
+        }
+
+        private bool MoveAI(object wObj)
+        {
+
+            AI ai = (AI)wObj;
+            if (ai.Health <= 0)
+            {
+                RemoveLabel(ai);
+                Game.Environ.Remove(ai);
+                binderGame.PsiZetaShamed++;
+                binderGame.CalculateScores();
+                return true;
+            }
+            ai.Move(binderGame);
+            RemoveLabel(ai);
+            Label label = SetObjectBinding(ai.PictureName, ai);
+            if (ai.PictureName.Contains("Whip"))
+            {
+                label.Width = 180;
+                label.Height = 180;
+            }
+            else
+            {
+                label.Width = 120;
+                label.Height = 120;
+            }
+            return false;
         }
 
         void DisplayGameData()

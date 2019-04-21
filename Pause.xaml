@@ -27,6 +27,6 @@
         <TextBlock x:Name="txtRiddle2" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="290" Text=""/>
         <TextBlock x:Name="txtRiddle3" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="310" Text=""/>
         <TextBlock x:Name="txtRiddle4" FontFamily="Bahnschrift Light" Width="200" Height="20" Canvas.Left="300" Canvas.Top="330" Text=""/>
-        <Label x:Name="lblAnswer" Canvas.Top="370" Canvas.Left="265" Content="" FontStyle="Italic"/>
+        <Label x:Name="lblAnswer" Canvas.Top="370" Canvas.Left="250" Content="" FontStyle="Italic"/>
     </Canvas>
 </Window>
