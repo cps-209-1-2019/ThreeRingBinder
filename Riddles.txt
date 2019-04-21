@@ -1,7 +1,7 @@
 
 please save por favor
 
-
+Library
 duck:
 Soft and squishy, yellow and fat,
 Its sturdy frame never stays flat.
@@ -9,3 +9,26 @@ Its sturdy frame never stays flat.
 water fountain:
 Metal bin, so hard and cold,
 Spouting forth the taste of old.
+
+
+Maze
+compass:
+Spinning needle, round and round,
+When it stops, your way is found.
+
+flag pole:
+Round the metal, up to the skies
+A colored fabric on breezes flies
+
+
+FA
+trumpet:
+gold and silver, ringing true
+but only when the soft wind blew
+
+bulletin board:
+Cork and color, needle and note
+Find an event to float your boat.
+
+1 hr
+
