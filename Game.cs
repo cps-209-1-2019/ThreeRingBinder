@@ -38,6 +38,7 @@ namespace Binder
         public int LevelNum { get; set; }
         //public enum Levels { Library, FA, Maze }
         private string currLevel;
+        public bool isPauseScreenShown = false;
         public string CurrLevel
         {
             get

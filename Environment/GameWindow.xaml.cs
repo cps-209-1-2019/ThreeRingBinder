@@ -491,10 +491,14 @@ namespace Binder.Environment
             }
             else if (e.Key == Key.Escape)
             {
-                Game.isPaused = true;
-                LimitTimer.Stop();
-                Pause pauseWindow = new Pause(binderGame);
-                pauseWindow.Show();
+                if (binderGame.isPauseScreenShown == false)
+                {
+                    Game.isPaused = true;
+                    LimitTimer.Stop();
+                    Pause pauseWindow = new Pause(binderGame);
+                    pauseWindow.Show();
+                    binderGame.isPauseScreenShown = true;
+                }
             }
             else if (e.Key == Key.D1)
             {
