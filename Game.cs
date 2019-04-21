@@ -38,6 +38,7 @@ namespace Binder
         public int LevelNum { get; set; }
         //public enum Levels { Library, FA, Maze }
         private string currLevel;
+        public bool isPauseScreenShown = false;
         public string CurrLevel
         {
             get
@@ -186,6 +187,15 @@ namespace Binder
                         case "TIME":
                             Time = int.Parse(line.Split('!')[1]);
                             break;
+                        case "TIMELEFT":
+                            TimeLeft = line.Split('!')[1];
+                            break;
+                        case "SEC":
+                            sec = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "MIN":
+                            min = int.Parse(line.Split('!')[1]);
+                            break;
                         case "DIFFICULTY":
                             Difficulty = int.Parse(line.Split('!')[1]);
                             break;
@@ -199,6 +209,9 @@ namespace Binder
                             break;
                         case "LEVELNUM":
                             LevelNum = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "CURRLEVEL":
+                            currLevel = line.Split('!')[1];
                             break;
                         case "RING":
                             BinderRing binder = new BinderRing();
@@ -214,7 +227,7 @@ namespace Binder
                                 {
                                     case "INVENTORYITEM":
                                         InventoryItem inventory = new InventoryItem();
-                                        string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11},{12}!{13}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11], identify[j + 12], identify[j + 13]);
+                                        string inven = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11},{12}!{13},{14}!{15}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11], identify[j + 12], identify[j + 13], identify[j + 14], identify[j + 15]);
                                         Environ.Add(inventory.Deserialize(inven));
                                         break;
 
@@ -278,8 +291,12 @@ namespace Binder
                 wr.WriteLine("HIGHSCORE!" + HighScore);
                 wr.WriteLine("COMPOSURE!" + Composure);
                 wr.WriteLine("TIME!" + Time);
+                wr.WriteLine("TIMELEFT!" + TimeLeft);
+                wr.WriteLine("MIN!" + min);
+                wr.WriteLine("SEC!" + sec);
                 wr.WriteLine("NUMITEMS!" + NumItems);
                 wr.WriteLine("LEVELNUM!" + LevelNum);
+                wr.WriteLine("CURRLEVEL!" + currLevel);
                 wr.WriteLine("ISCHEATON!" + IsCheatOn.ToString().ToUpper());
                 wr.WriteLine("CURBUILDING!" + CurBuilding.Serialize());
                 wr.WriteLine("RING!" + ring.Serialize());
@@ -350,6 +367,15 @@ namespace Binder
         }
         public void MakeAI(int x, int y, int health, int damage)
         {
+
+            /*
+             * maybe just have the line 
+             * 
+             * AI ai = new AI(parameters here);
+             * 
+             * in the "if" statment. cause everythign after that line is the same for each "if" statement
+             */
+
             if (Difficulty == 1)
             {
                 AI ai = new AI(health, damage, 10);
