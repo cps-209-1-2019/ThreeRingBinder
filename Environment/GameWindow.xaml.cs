@@ -27,6 +27,7 @@ namespace Binder.Environment
         bool isGameOver = false;
         public Game binderGame;
         bool isCheatOn = false;
+        bool isPressed = false;
 
         Building building;
         DispatcherTimer timer;
@@ -71,6 +72,7 @@ namespace Binder.Environment
             LoadGame();
         }
 
+        //Checks if the time is up
         private void LimitTimer_Tick(object sender, EventArgs e)
         {            
             binderGame.DecrTime();
@@ -84,23 +86,31 @@ namespace Binder.Environment
             }
         }
 
+        //Moves marcus up
         private void UpTimer_Tick(object sender, EventArgs e)
         {
             binderGame.Marcus.Move('n', binderGame);
         }
+
+        //Moves marcus down
         private void DownTimer_Tick(object sender, EventArgs e)
         {
             binderGame.Marcus.Move('s', binderGame);
         }
+
+        //Moves marcus left
         private void LeftTimer_Tick(object sender, EventArgs e)
         {
             binderGame.Marcus.Move('w', binderGame);
         }
+
+        //Moves marcus right
         private void RightTimer_Tick(object sender, EventArgs e)
         {
             binderGame.Marcus.Move('e', binderGame);
         }
 
+        //Loads a new game screen
         private void LoadGame()
         {
             //NameScope.SetNameScope(this, new NameScope());
@@ -146,7 +156,6 @@ namespace Binder.Environment
 
             DisplayGameData();
 
-            //SetObjectBinding(binderGame.Marcus.PictureName, binderGame.Marcus);
             LimitTimer = new DispatcherTimer()
             {
                 Interval = new TimeSpan(0, 0, 0, 1)
@@ -185,12 +194,13 @@ namespace Binder.Environment
             
         }
 
-
+        //Sets new image for Marcus
         private void TimerTwo_Tick(object sender, EventArgs e)
         {
             imgMarcus.Source = new BitmapImage(new Uri(binderGame.Marcus.PictureName, UriKind.Relative));
         }
 
+        //Checks for updates in model
         private void Timer_Tick(object sender, EventArgs e)
         {
             if ((binderGame.isRingFound == true) && (isRingShown == false))
@@ -233,6 +243,7 @@ namespace Binder.Environment
             }
         }
 
+        //Reloads the health label
         private void CheckHealth()
         {
             if (binderGame.Marcus.Health < 3)
@@ -256,6 +267,8 @@ namespace Binder.Environment
                 }
             }
         }
+
+        //Stops all timers
         private void StopTimers()
         {
             LimitTimer.Stop();
@@ -266,6 +279,7 @@ namespace Binder.Environment
             timer.Stop();
         }
 
+        //Reloads a new level
         private void StartNewLevel()
         {
             MessageBox.Show("You Found the Ring!");
@@ -281,6 +295,7 @@ namespace Binder.Environment
             LoadGame();
         }
 
+        //Moves the AI corresponding to `wObj`
         private bool MoveAI(object wObj)
         {
 
@@ -309,6 +324,7 @@ namespace Binder.Environment
             return false;
         }
 
+        //Puts game information on the screen
         void DisplayGameData()
         {
             double mid = this.Width / 2;
@@ -365,6 +381,7 @@ namespace Binder.Environment
             }
         }
 
+        //Puts new rectangles on the canvas
         private void LoadRectangles()
         {
             Rectangle[] rectList = new Rectangle[4] { rectItemOne, rectItemTwo, rectItemThree, rectItemFour };
@@ -406,6 +423,7 @@ namespace Binder.Environment
             rectItemFour = rectList[3];
         }
 
+        //Sets image binding to Marcus
         private void MakeMarcus()
         {
             imgMarcus = new Image();
@@ -417,6 +435,7 @@ namespace Binder.Environment
             Canvas.SetLeft(imgMarcus, 654);
         }
 
+        //Removes the label corresponding to `item`
         public void RemoveLabel(object item)
         {
             foreach (object thing in cnvsGame.Children)
@@ -432,6 +451,8 @@ namespace Binder.Environment
                 }
             }
         }
+
+        //Fills `rectangle` with `image`
         private void FillLivesRectangle(Rectangle rectangle, string image)
         {
             ImageBrush img = new ImageBrush()
@@ -441,6 +462,7 @@ namespace Binder.Environment
             rectangle.Fill = img;
         }
 
+        //Fills `rectangle` with the image of `item`
         private void FillInventoryRectangle(Rectangle rectangle, InventoryItem item)
         {
             ImageBrush img = new ImageBrush()
@@ -460,8 +482,10 @@ namespace Binder.Environment
             Game.Environ.Remove(item);
         }
 
+        //Stops the timer when a KeyUp event is fired
         private void CnvsGame_KeyUp(object sender, KeyEventArgs e)
         {
+            isPressed = false;
             if (e.Key == Key.Up)
                 timerUp.Stop();
             if (e.Key == Key.Down)
@@ -471,71 +495,85 @@ namespace Binder.Environment
             if (e.Key == Key.Right)
                 timerRight.Stop();
         }
-        private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
-        {            
-            if (e.Key == Key.Up)
-            {
-                timerUp.Start();
-            }
-            else if (e.Key == Key.Down)
-            {
-                timerDown.Start();
-            }
-            else if (e.Key == Key.Left)
-            {
-                timerLeft.Start();
-            }
-            else if (e.Key == Key.Right)
-            {
-                timerRight.Start();
-            }
-            else if (e.Key == Key.C)
-            {
-                Airplane airplane = new Airplane(binderGame.Marcus);
-                Game.Environ.Add(airplane);
-                Label label = SetObjectBinding(airplane.PictureName, airplane);
-                label.Width = 30;
-                label.Height = 30;
-            }
-            else if (e.Key == Key.X)
-            {
-                binderGame.Marcus.Enteract(binderGame);
-            }
-            else if (e.Key == Key.Z)
-            {
-                if (binderGame.Marcus.Inventory.Count() > binderGame.currentItem)
-                    binderGame.Marcus.Inventory[binderGame.currentItem].Use(binderGame);
-            }
-            else if (e.Key == Key.Escape)
-            {
-                if (binderGame.isPauseScreenShown == false)
-                {
-                    Game.isPaused = true;
-                    LimitTimer.Stop();
-                    Pause pauseWindow = new Pause(binderGame);
-                    pauseWindow.Show();
-                    binderGame.isPauseScreenShown = true;
-                }
-            }
-            else if (e.Key == Key.D1)
-            {
-                ResetRectangles(rectItemOne, 0);
-            }
-            else if (e.Key == Key.D2)
-            {
-                ResetRectangles(rectItemTwo, 1);
-            }
-            else if (e.Key == Key.D3)
-            {
-                ResetRectangles(rectItemThree, 2);
-            }
-            else if (e.Key == Key.D4)
-            {
-                ResetRectangles(rectItemFour, 3);
-            }
 
+        //Determines action based on the button pushed
+        private void CnvsGame_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (isPressed == false)
+            {
+                if (e.Key == Key.Up)
+                {
+                    timerUp.Start();
+                }
+                else if (e.Key == Key.Down)
+                {
+                    timerDown.Start();
+                }
+                else if (e.Key == Key.Left)
+                {
+                    timerLeft.Start();
+                }
+                else if (e.Key == Key.Right)
+                {
+                    timerRight.Start();
+                }
+                else if (e.Key == Key.C)
+                {
+                    Airplane airplane = new Airplane(binderGame.Marcus);
+                    Game.Environ.Add(airplane);
+                    try
+                    {
+                        Label label = SetObjectBinding(airplane.PictureName, airplane);
+                        label.Width = 30;
+                        label.Height = 30;
+                    }
+                    catch
+                    {
+                        isPressed = true;
+                    }
+                }
+                else if (e.Key == Key.X)
+                {
+                    binderGame.Marcus.Enteract(binderGame);
+                }
+                else if (e.Key == Key.Z)
+                {
+                    if (binderGame.Marcus.Inventory.Count() > binderGame.currentItem)
+                        binderGame.Marcus.Inventory[binderGame.currentItem].Use(binderGame);
+                }
+                else if (e.Key == Key.Escape)
+                {
+                    if (binderGame.isPauseScreenShown == false)
+                    {
+                        Game.isPaused = true;
+                        LimitTimer.Stop();
+                        Pause pauseWindow = new Pause(binderGame);
+                        pauseWindow.Show();
+                        binderGame.isPauseScreenShown = true;
+                    }
+                }
+                else if (e.Key == Key.D1)
+                {
+                    ResetRectangles(rectItemOne, 0);
+                }
+                else if (e.Key == Key.D2)
+                {
+                    ResetRectangles(rectItemTwo, 1);
+                }
+                else if (e.Key == Key.D3)
+                {
+                    ResetRectangles(rectItemThree, 2);
+                }
+                else if (e.Key == Key.D4)
+                {
+                    ResetRectangles(rectItemFour, 3);
+                }
+                isPressed = true;
+            }
+    
         }
 
+        //Resets the filling of the `num`th rectangle `firstRectangle`
         public void ResetRectangles(Rectangle firstRectangle, int num)
         {
             int oldCurrentItem = binderGame.currentItem;
@@ -548,6 +586,7 @@ namespace Binder.Environment
             }
         }
 
+        //Binds a label to an InventoryItem
         public void BindItems()
         {
             foreach (object thing in Game.Environ)
@@ -575,6 +614,7 @@ namespace Binder.Environment
             }
         }
 
+        //Sets label binding for each AI in the model
         public void MakeAI()
         {
             foreach (WorldObject wObj in Game.Environ)
@@ -588,6 +628,8 @@ namespace Binder.Environment
                 }
             }
         }
+
+        //Sets label binding to a model object `b` with image `uri`; returns the label
         public Label SetObjectBinding(string uri, object b)
         {
             Image img = new Image()
@@ -608,6 +650,8 @@ namespace Binder.Environment
             cnvsGame.Children.Add(block);
             return block;
         }
+
+        //Finds and returns the rectangle that corresponds to the position of `thing`
         public Rectangle GetRectangle(InventoryItem thing)
         {
             Rectangle rectangle = null;
@@ -630,6 +674,8 @@ namespace Binder.Environment
             }
             return rectangle;
         }
+
+        //Sets binding for the floor depending on the level
         private void MakeLevelFloors(int level)
         {
             string[] stringList = new string[3] { "/Environment/floor5.png", "/Environment/floor5.png", "/Environment/floor5.png" };
