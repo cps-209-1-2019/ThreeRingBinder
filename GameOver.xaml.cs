@@ -27,15 +27,17 @@ namespace Binder.Environment
             if (isGameWon)
             {
                 lblResults.Content = "You Win!";
-                ImageBrush img = new ImageBrush()
+                Image img = new Image()
                 {
-                    ImageSource = new BitmapImage(new Uri("/Sprites/completeBinder.png", UriKind.Relative))
+                    Source = new BitmapImage(new Uri("/Sprites/completeBinder.png", UriKind.Relative))
                 };
-                Label label = new Label();
-                label.Content = img;
+                Label label = new Label()
+                {
+                    Content = img
+                };
                 label.Width = 60;
                 Canvas.SetLeft(label, 195);
-                Canvas.SetTop(label, 200);
+                Canvas.SetTop(label, 205);
                 CnvsGameOver.Children.Add(label);
             }
             else
