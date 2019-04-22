@@ -49,7 +49,14 @@ namespace Binder.Environment
             {
                 NewHighScore newScore = new NewHighScore(score);
                 newScore.Show();
+                newScore.Topmost = true;
             }
+        }
+
+        private void BtnEndGame_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            gameWindow.Close();
         }
     }
 }

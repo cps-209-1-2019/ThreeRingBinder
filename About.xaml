@@ -13,17 +13,15 @@
     <Window.Background>
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
-    <Grid>
-        <Label Content="About This Game" FontFamily="Haettenschweiler" Foreground="#e4c027" HorizontalAlignment="Center" FontSize="40"/>
-        <TextBlock xml:space="preserve">
+    <Canvas>
+        <Label Content="About This Game" FontFamily="Haettenschweiler" Foreground="#e4c027" Width="215" FontSize="40" Canvas.Left="293"/>
+        <TextBlock xml:space="preserve" FontFamily="Baskerville Old Face" FontSize="14" Canvas.Left="40">
             
             
                 At Bill John's University, a legend has passed the ears of every student, professor, and staff member
             who has set foot on the campus. The legend tells of a binder that gives its owner the ability to perfectly 
             recall any knowledge put into it. Recently, a student has discovered what may be the first piece of the 
-            binder. After all, when you went from being a C student to an A student after picking up a clip ring you 
-            needed for some Heritage of Peoples notecards, you realized that the legend may be true after all. Using a 
-            clue derived from the ring, you begin your search for the other two rings and the binder itself. 
+            binder.  Using a clue derived from the ring, you begin your search for the other two rings and the binder itself. 
             
                 But you must hurry and be careful, because the Gamma Psi Zeta Bullfrogs have heard word of your discovery
             and they want it for themselves. Be on the lookout for their trademark aqua-orange scarf. In Legend of the
@@ -31,16 +29,14 @@
             reveal a piece of the binder. You have been given a riddle that cryptically explains where you can find 
             the piece. 
             But you're against the clock. You still need time to study, and Psi Zeta members are looking for the piece 
-            as well."
-            
-            Good Luck!
-            
-            Designers:
-                Zachary Day
-                Melchisedek Dulcio
-                Zachary Tapp
-                Colten Shipe
-            
+            as well."            
         </TextBlock>
-    </Grid>
+        <Label Content="Good Luck!" Foreground="Firebrick" FontSize="20" FontFamily="Baskerville Old Face" Width="110" Canvas.Top="240" Canvas.Left="345"/>
+        <Label Content="Game Designers:" Canvas.Top="260" Canvas.Left="35" Foreground="Firebrick"/>
+        <Label Content="Zachary Tapp, Melchisedek Dulcio" Canvas.Top="280" Canvas.Left="45" FontSize="16" FontFamily="Haettenschweiler"/>
+        <Label Content="Game Serialization and Artwork:" Canvas.Top="310" Canvas.Left="35" Foreground="Firebrick"/>
+        <Label Content="Zachary Day" Canvas.Top="330" Canvas.Left="45" FontSize="16" FontFamily="Haettenschweiler"/>
+        <Label Content="Auxilliary Screens and High Scores:" Canvas.Top="350" Canvas.Left="35" Foreground="Firebrick"/>
+        <Label Content="Colten Shipe" Canvas.Top="370" Canvas.Left="45" FontSize="16" FontFamily="Haettenschweiler"/>
+    </Canvas>
 </Window>

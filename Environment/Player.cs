@@ -166,7 +166,21 @@ namespace Binder.Environment
             }
             if (itemToPickUp != null)
             {
-                itemToPickUp.PickUp(game);
+                PickUp(game, itemToPickUp);
+            }
+        }
+
+        //Sets found to true to say that the player has picked up item.
+        public void PickUp(Game binderGame, InventoryItem item)
+        {
+            if (item.canBePickedUp)
+            {
+                binderGame.Marcus.Inventory.Add(item);
+                if (binderGame.Marcus.Inventory.Count > 4)
+                {
+                    binderGame.Marcus.Inventory.RemoveAt(4);
+                }
+                item.Found = true;
             }
         }
 
