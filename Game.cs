@@ -259,7 +259,7 @@ namespace Binder
                                         break;
 
                                     case "AI":
-                                        AI aI = new AI(0, 0, 0);
+                                        AI aI = new AI(0, 0, 0, 0, 0);
                                         string aiStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11},{12}!{13}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11], identify[j + 12], identify[j + 13] );
                                         Environ.Add(aI.Deserialize(aiStr));
                                         break;
@@ -524,57 +524,42 @@ namespace Binder
         {
             if (LevelNum == 1)
             {
-                MakeAI(850, 400, 3, 1);
+                MakeAI(1050, 400, 3, 1);
                 MakeAI(2000, 600, 3, 1);
                 MakeAI(800, 1500, 3, 1);
             }
             else if (LevelNum == 2)
             {
-                MakeAI(850, 400, 3, 1);
-                MakeAI(2000, 600, 3, 1);
-                MakeAI(800, 1500, 3, 1);
+                MakeAI(850, -600, 3, 1);
+                MakeAI(-20, 1000, 3, 1);
+                MakeAI(-1200, 500, 3, 1);
             }
             else if (LevelNum == 3)
             {
-                MakeAI(850, 400, 3, 1);
-                MakeAI(2000, 600, 3, 1);
-                MakeAI(800, 1500, 3, 1);
+                MakeAI(-2000, -900, 3, 1);
+                MakeAI(-2500, 1000, 3, 1);
+                MakeAI(2000, 100, 3, 1);
+                MakeAI(3000, -1300, 3, 1);
+                MakeAI(0, 1500, 3, 1);
+                MakeAI(0, -100, 3, 1);
             }
         }
         public void MakeAI(int x, int y, int health, int damage)
         {
-
-            /*
-             * maybe just have the line 
-             * 
-             * AI ai = new AI(parameters here);
-             * 
-             * in the "if" statment. cause everythign after that line is the same for each "if" statement
-             */
-
             if (Difficulty == 1)
             {
-                AI ai = new AI(health, damage, 10);
-                ai.X = x;
-                ai.Y = y;
-                ai.PictureName = "/Sprites/PsiZetaFront.png";
-                Game.Environ.Add(ai);
+                AI ai = new AI(health, damage, 5, x, y);
+                Environ.Add(ai);
             }
             else if (Difficulty == 2)
             {
-                AI ai = new AI(health, (damage * 2), 10);
-                ai.X = x;
-                ai.Y = y;
-                ai.PictureName = "/Sprites/PsiZetaFront.png";
-                Game.Environ.Add(ai);
+                AI ai = new AI(health, (damage * 2), 5, x, y);
+                Environ.Add(ai);
             }
             else if (Difficulty == 3)
             {
-                AI ai = new AI((health * 2), (damage * 2), 10);
-                ai.X = x;
-                ai.Y = y;
-                ai.PictureName = "/Sprites/PsiZetaFront.png";
-                Game.Environ.Add(ai);
+                AI ai = new AI((health * 2), (damage * 2), 5, x, y);
+                Environ.Add(ai);
             }
         }
     }
