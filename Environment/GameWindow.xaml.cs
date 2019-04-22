@@ -36,6 +36,7 @@ namespace Binder.Environment
         DispatcherTimer timerLeft;
         DispatcherTimer timerRight;
         DispatcherTimer LimitTimer;
+        //DispatcherTimer MusicTimer;
         bool isRingShown = false;
 
         TextBlock Time;
@@ -164,6 +165,13 @@ namespace Binder.Environment
             LimitTimer.Tick += LimitTimer_Tick;
             LimitTimer.Start();
 
+            //MusicTimer = new DispatcherTimer()
+            //{
+            //    Interval = new TimeSpan(0, 0, 0, 1),
+            //};
+            //MusicTimer.Tick += MusicTimer_Tick;
+            //MusicTimer.Start();
+
             LoadRectangles();
 
             string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
@@ -190,9 +198,16 @@ namespace Binder.Environment
                         break;                       
                 }
                 whichRect++;
-            }
-            
+            }            
         }
+
+        //private void MusicTimer_Tick(object sender, EventArgs e)
+        //{
+        //    if(isGameOver == false)
+        //    {
+        //        binderGame.Play("GamePlay.wav");
+        //    }
+        //}
 
         //Sets new image for Marcus
         private void TimerTwo_Tick(object sender, EventArgs e)
@@ -220,6 +235,7 @@ namespace Binder.Environment
                     InventoryItem item = (InventoryItem)wObj;
                     if (item.Found == true)
                     {
+                        binderGame.Play("inventory.wav");
                         RemoveLabel(item);
                         Rectangle rectangle = null;
                         foreach (InventoryItem thing in binderGame.Marcus.Inventory)
@@ -263,6 +279,8 @@ namespace Binder.Environment
                         GameOver endGame = new GameOver(this, false, score);
                         endGame.Show();
                         StopTimers();
+
+                        binderGame.Play("defeated.wav");
                         isGameOver = true;
                     }
                 }
@@ -272,12 +290,13 @@ namespace Binder.Environment
         //Stops all timers
         private void StopTimers()
         {
+             //MusicTimer.Stop();
             LimitTimer.Stop();
             timerDown.Stop();
             timerUp.Stop();
             timerLeft.Stop();
             timerRight.Stop();
-            timer.Stop();
+            timer.Stop();            
         }
 
         //Reloads a new level
@@ -314,6 +333,7 @@ namespace Binder.Environment
             if (ai.Health <= 0)
             {
                 RemoveLabel(ai);
+                binderGame.Play("No.wav");
                 Game.Environ.Remove(ai);
                 binderGame.PsiZetaShamed++;
                 binderGame.CalculateScores(false);
@@ -324,6 +344,7 @@ namespace Binder.Environment
             Label label = SetObjectBinding(ai.PictureName, ai);
             if (ai.PictureName.Contains("Whip"))
             {
+                binderGame.Play("whiplash.wav");
                 label.Width = 180;
                 label.Height = 180;
             }
@@ -547,6 +568,7 @@ namespace Binder.Environment
                 else if (e.Key == Key.X)
                 {
                     binderGame.Marcus.Enteract(binderGame);
+                    //binderGame.Play("inventory.wav");
                 }
                 else if (e.Key == Key.Z)
                 {
@@ -706,6 +728,13 @@ namespace Binder.Environment
             cnvsGame.Children.Add(image);
             Canvas.SetTop(image, -19);
             Canvas.SetLeft(image, -18);
+        }
+
+        private void Play(string sound)
+        {
+            MediaPlayer player = new MediaPlayer();
+            player.Open(new Uri(System.IO.Path.GetFullPath(sound)));
+            player.Play();
         }
     }
 }
