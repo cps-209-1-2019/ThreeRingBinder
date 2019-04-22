@@ -76,7 +76,7 @@ namespace Binder.Environment
         private void LimitTimer_Tick(object sender, EventArgs e)
         {            
             binderGame.DecrTime();
-            if (binderGame.TimeLeft == "Time: 00:00")
+            if (binderGame.Time == 0)
             {
                 LimitTimer.Stop();
                 int score = binderGame.CalculateScores();
