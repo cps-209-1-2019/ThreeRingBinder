@@ -233,6 +233,11 @@
     <Content Include="No.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Sprites\completeBinder.png" />
+    <Resource Include="Sprites\drSchaub.png" />
+    <Resource Include="Sprites\ignominy.png" />
+    <Resource Include="Sprites\incompleteBinder.png" />
+    <Resource Include="Sprites\laptop.png" />
     <Content Include="whip.flac" />
     <Content Include="whiplash.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
