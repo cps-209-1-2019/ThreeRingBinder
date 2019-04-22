@@ -248,7 +248,9 @@
     <Resource Include="Environment\floor5.png" />
     <Resource Include="Environment\bush.png" />
     <Resource Include="Screen.PNG" />
-    <Content Include="Sounds\GamePlay.mp3" />
+    <Content Include="Sounds\GamePlay.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sounds\paperHit.wav" />
   </ItemGroup>
   <ItemGroup />

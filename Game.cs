@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Binder.Environment;
 using System.IO;  //added IO using statement - ZD
 using System.ComponentModel;
+using System.Media;
 
 namespace Binder
 {
     public class Game: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        SoundPlayer soundPlayer;
 
         public Player Marcus { get; set; }
         private int currScore;
@@ -77,6 +80,14 @@ namespace Binder
         public Game(double startTime, int level)
         {
             Time = startTime;
+            if(Time == 0)
+            {
+                min = 0;
+            }
+            else
+            {
+                min = (int)Time / 60 - 1;
+            }           
             
             Marcus = new Player("Marcus");
             Environ = new List<WorldObject>();
@@ -93,6 +104,8 @@ namespace Binder
             ring.Y = 450;
             MakeItems();
             MakeAIPerLevel();
+
+            Play("/Sounds/GamePlay.mp3");
         }
 
         public Game()
@@ -124,6 +137,13 @@ namespace Binder
             }
 
             TimeLeft = "Time: 0" + min + ":" + seconds;            
+        }
+
+        //Plays the sound from the source passed in its parameters.
+        public void Play(string sound)
+        {
+            soundPlayer = new SoundPlayer(sound);
+            //soundPlayer.Play();
         }
 
         //Level Logic 
