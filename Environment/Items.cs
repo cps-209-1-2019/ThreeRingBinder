@@ -40,19 +40,6 @@ namespace Binder.Environment
     {
         public bool canBePickedUp = true;
         public bool isTheOne = false;
-        //Sets found to true to say that the player has picked up item.
-        public void PickUp(Game binderGame)
-        {
-            if (canBePickedUp)
-            {
-                binderGame.Marcus.Inventory.Add(this);
-                if (binderGame.Marcus.Inventory.Count > 4)
-                {
-                    binderGame.Marcus.Inventory.RemoveAt(4);
-                }
-                Found = true;
-            }
-        }
 
         //Provides ability to use the object
         public void Use(Game game)
@@ -118,7 +105,7 @@ namespace Binder.Environment
 
     public class DecoyItem: Items, ISerialization<DecoyItem>
     {
-        public int Strength { get; set; }           //
+        public int Strength { get; set; }
 
         public void DecrHealth()
         {
