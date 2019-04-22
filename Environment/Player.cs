@@ -175,7 +175,7 @@ namespace Binder.Environment
         {
             if (item.canBePickedUp)
             {
-                binderGame.Marcus.Inventory.Add(item);
+                binderGame.Marcus.Inventory.Insert(0, item);
                 if (binderGame.Marcus.Inventory.Count > 4)
                 {
                     binderGame.Marcus.Inventory.RemoveAt(4);

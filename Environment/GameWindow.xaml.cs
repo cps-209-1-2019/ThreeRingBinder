@@ -709,7 +709,13 @@ namespace Binder.Environment
                     else if (binderGame.Marcus.Inventory.Count() >= 4)
                     {
                         if (thing == binderGame.Marcus.Inventory[3])
-                            rectangle = rectItemFour;
+                        {
+                            rectangle = rectItemFour;                           
+                        }
+                        else if (thing == binderGame.Marcus.Inventory[4])
+                        {
+
+                        }
                     }
                 }
             }
