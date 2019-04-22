@@ -102,7 +102,7 @@ namespace Binder
             ring = new BinderRing();
             ring.X = 700;
             ring.Y = 450;
-            MakeItems();
+            MakeItems(level);
             MakeAIPerLevel();
 
             //Play("/Sounds/GamePlay.mp3");
@@ -277,28 +277,174 @@ namespace Binder
         }
 
         //Instantiate InventoryItems
-        public void MakeItems()
+        public void MakeItems(int level)
         {
+            if (level == 1) {
             InventoryItem item = new InventoryItem();
-            item.X = 800;
-            item.Y = 450;
-            item.isTheOne = true;
-            item.Image = "/Sprites/rubberDuck.png";
-            item.Name = "duck";
-            Environ.Add(item);
-            InventoryItem itemTwo = new InventoryItem();
-            itemTwo.X = 700;
-            itemTwo.Y = 900;
-            itemTwo.Image = "/Sprites/schaubJacket.png";
-            itemTwo.Name = "jacket";
-            Environ.Add(itemTwo);
-            InventoryItem itemThree = new InventoryItem();
-            itemThree.X = 360;
-            itemThree.Y = 100;
-            itemThree.Image = "/Sprites/waterFountain.png";
-            itemThree.canBePickedUp = false;
-            itemThree.Name = "fountain";
-            Environ.Add(itemThree);
+                item.X = 800;
+                item.Y = 450;
+                item.Image = "/Sprites/guitar.png";
+                item.Name = "duck";
+                Environ.Add(item);
+                InventoryItem itemTwo = new InventoryItem();
+                itemTwo.X = 700;
+                itemTwo.Y = 900;
+                itemTwo.Image = "/Sprites/schaubJacket.png";
+                itemTwo.Name = "jacket";
+                Environ.Add(itemTwo);
+                InventoryItem itemThree = new InventoryItem();
+                itemThree.X = 360;
+                itemThree.Y = 100;
+                itemThree.Image = "/Sprites/flag.png";
+                itemThree.canBePickedUp = false;
+                itemThree.Name = "flag";
+                Environ.Add(itemThree);
+                InventoryItem itemFour = new InventoryItem();
+                itemFour.X = 1000;
+                itemFour.Y = 100;
+                itemFour.Image = "/Sprites/pencil.png";
+                itemFour.Name = "pencil";
+                Environ.Add(itemFour);
+                InventoryItem itemFive = new InventoryItem();
+                itemFive.X = 560;
+                itemFive.Y = 270;
+                itemFive.Image = "/Sprites/printer.png";
+                itemFive.canBePickedUp = false;
+                itemFive.Name = "printer";
+                Environ.Add(itemFive);
+                InventoryItem itemSix = new InventoryItem();
+                itemSix.X = 460;
+                itemSix.Y = 270;
+                itemSix.Image = "/Sprites/chair.png";
+                itemSix.Name = "chair";
+                Environ.Add(itemSix);
+                InventoryItem itemSeven = new InventoryItem();
+                itemSeven.X = 760;
+                itemSeven.Y = 270;
+                itemSeven.isTheOne = true;
+                itemSeven.Image = "/Sprites/trumpet.png";
+                itemSeven.Name = "trumpet";
+                Environ.Add(itemSeven);
+                InventoryItem itemEight = new InventoryItem();
+                itemEight.X = 560;
+                itemEight.Y = 270;
+                itemEight.canBePickedUp = false;
+                itemEight.Image = "/Sprites/bulletinBoard.png";
+                itemEight.Name = "bulletin board";
+                Environ.Add(itemEight);
+            }
+            else if (level == 2)
+            {
+                InventoryItem item = new InventoryItem();
+                item.X = 800;
+                item.Y = 450;
+                item.isTheOne = true;
+                item.Image = "/Sprites/Bible.png";
+                item.Name = "Bible";
+                Environ.Add(item);
+                InventoryItem itemTwo = new InventoryItem();
+                itemTwo.X = 700;
+                itemTwo.Y = 900;
+                itemTwo.Image = "/Sprites/schaubJacket.png";
+                itemTwo.Name = "jacket";
+                Environ.Add(itemTwo);
+                InventoryItem itemThree = new InventoryItem();
+                itemThree.X = 360;
+                itemThree.Y = 100;
+                itemThree.Image = "/Sprites/table.png";
+                itemThree.canBePickedUp = false;
+                itemThree.Name = "table";
+                Environ.Add(itemThree);
+                InventoryItem itemFour = new InventoryItem();
+                itemFour.X = 1000;
+                itemFour.Y = 100;
+                itemFour.Image = "/Sprites/bookshelf.png";
+                itemFour.canBePickedUp = true;
+                itemFour.Name = "pencil";
+                Environ.Add(itemFour);
+                InventoryItem itemFive = new InventoryItem();
+                itemFive.X = 560;
+                itemFive.Y = 270;
+                itemFive.Image = "/Sprites/backpack.png";
+                itemFive.Name = "backpack";
+                Environ.Add(itemFive);
+                InventoryItem itemSix = new InventoryItem();
+                itemSix.X = 560;
+                itemSix.Y = 270;
+                itemSix.Image = "/Sprites/chair.png";
+                itemSix.Name = "chair";
+                Environ.Add(itemSix);
+                InventoryItem itemSeven = new InventoryItem();
+                itemSeven.X = 560;
+                itemSeven.Y = 200;
+                itemSeven.isTheOne = true;
+                itemSeven.Image = "/Sprites/rubberDuck.png";
+                itemSeven.Name = "duck";
+                Environ.Add(itemSeven);
+                InventoryItem itemEight = new InventoryItem();
+                itemEight.X = 560;
+                itemEight.Y = 270;
+                itemEight.Image = "/Sprites/waterFountain.png";
+                itemEight.canBePickedUp = false;
+                itemEight.Name = "water fountain";
+                Environ.Add(itemEight);
+            }
+            else if (level == 3)
+            {
+                InventoryItem item = new InventoryItem();
+                item.X = 800;
+                item.Y = 450;
+                item.isTheOne = true;
+                item.Image = "/Sprites/Bible.png";
+                item.Name = "Bible";
+                Environ.Add(item);
+                InventoryItem itemTwo = new InventoryItem();
+                itemTwo.X = 700;
+                itemTwo.Y = 900;
+                itemTwo.Image = "/Sprites/schaubJacket.png";
+                itemTwo.Name = "jacket";
+                Environ.Add(itemTwo);
+                InventoryItem itemThree = new InventoryItem();
+                itemThree.X = 360;
+                itemThree.Y = 100;
+                itemThree.Image = "/Sprites/clock.png";
+                itemThree.canBePickedUp = false;
+                itemThree.Name = "clock";
+                Environ.Add(itemThree);
+                InventoryItem itemFour = new InventoryItem();
+                itemFour.X = 1000;
+                itemFour.Y = 100;
+                itemFour.isTheOne = true;
+                itemFour.Image = "/Sprites/compass.png";
+                itemFour.Name = "compass";
+                Environ.Add(itemFour);
+                InventoryItem itemFive = new InventoryItem();
+                itemFive.X = 560;
+                itemFive.Y = 270;
+                itemFive.Image = "/Sprites/phone.png";
+                itemFive.Name = "phone";
+                Environ.Add(itemFive);
+                InventoryItem itemSix = new InventoryItem();
+                itemSix.X = 560;
+                itemSix.Y = 270;
+                itemSix.Image = "/Sprites/chair.png";
+                itemSix.canBePickedUp = true;
+                itemSix.Name = "chair";
+                Environ.Add(itemSix);
+                InventoryItem itemSeven = new InventoryItem();
+                itemSeven.X = 560;
+                itemSeven.Y = 270;
+                itemSeven.Image = "/Sprites/backpack.png";
+                itemSeven.Name = "backpack";
+                Environ.Add(itemSeven);
+                InventoryItem itemEight = new InventoryItem();
+                itemEight.X = 560;
+                itemEight.Y = 270;
+                itemEight.Image = "/Sprites/flag.png";
+                itemEight.canBePickedUp = false;
+                itemEight.Name = "water fountain";
+                Environ.Add(itemEight);
+            }
         }
 
         //Created Save method with initial saving algorithm
@@ -351,9 +497,12 @@ namespace Binder
                 wr.WriteLine("END");
             }
         }
-        public int CalculateScores()
+        public int CalculateScores(bool includeTime)
         {
-            CurrScore = Convert.ToInt32((PsiZetaShamed * 200) + (Time * 15));
+            if (includeTime)
+                CurrScore = Convert.ToInt32((PsiZetaShamed * 200) + (Time * 15));
+            else
+                CurrScore = Convert.ToInt32((PsiZetaShamed * 200));
             return CurrScore;
         }
         protected void SetProperty(string source)
