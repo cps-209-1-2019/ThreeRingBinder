@@ -105,7 +105,7 @@ namespace Binder
             MakeItems();
             MakeAIPerLevel();
 
-            Play("/Sounds/GamePlay.mp3");
+            //Play("/Sounds/GamePlay.mp3");
         }
 
         public Game()
@@ -143,7 +143,7 @@ namespace Binder
         public void Play(string sound)
         {
             soundPlayer = new SoundPlayer(sound);
-            //soundPlayer.Play();
+            soundPlayer.Play();
         }
 
         //Level Logic 

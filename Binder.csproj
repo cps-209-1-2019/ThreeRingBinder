@@ -200,6 +200,22 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Sprites\backpack.png" />
+    <Resource Include="Sprites\Bible.png" />
+    <Resource Include="Sprites\bookshelf.png" />
+    <Resource Include="Sprites\bulletinBoard.png" />
+    <Resource Include="Sprites\chair.png" />
+    <Resource Include="Sprites\clock.png" />
+    <Resource Include="Sprites\compass.png" />
+    <Resource Include="Sprites\flag.png" />
+    <Resource Include="Sprites\guitar.png" />
+    <Resource Include="Sprites\mouse.png" />
+    <Resource Include="Sprites\pencil.png" />
+    <Resource Include="Sprites\phone.png" />
+    <Resource Include="Sprites\piano.png" />
+    <Resource Include="Sprites\printer.png" />
+    <Resource Include="Sprites\table.png" />
+    <Resource Include="Sprites\trumpet.png" />
     <Resource Include="Sprites\waterFountain.png" />
     <Resource Include="Sprites\rubberDuck.png" />
     <Resource Include="Sprites\composureTie.png" />
@@ -248,10 +264,15 @@
     <Resource Include="Environment\floor5.png" />
     <Resource Include="Environment\bush.png" />
     <Resource Include="Screen.PNG" />
+    <Content Include="paperHit.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sounds\GamePlay.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sounds\paperHit.wav" />
+    <Content Include="Sounds\paperHit.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
