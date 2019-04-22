@@ -234,7 +234,7 @@ namespace Binder.Environment
                 {
                     Airplane plane = (Airplane)wObj;
                     plane.Update();
-                    //binderGame.Play("paperHit.wav");
+                    
                     if (plane.Destroy == true)
                     {
                         RemoveLabel(plane);
@@ -520,6 +520,7 @@ namespace Binder.Environment
                 }
                 else if (e.Key == Key.C)
                 {
+                    binderGame.Play("paperHit.wav");
                     Airplane airplane = new Airplane(binderGame.Marcus);
                     Game.Environ.Add(airplane);
                     try
