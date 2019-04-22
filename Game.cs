@@ -14,7 +14,7 @@ namespace Binder
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        SoundPlayer soundPlayer;
+        //SoundPlayer soundPlayer;
 
         public Player Marcus { get; set; }
         private int currScore;
@@ -105,7 +105,7 @@ namespace Binder
             MakeItems();
             MakeAIPerLevel();
 
-            //Play("/Sounds/GamePlay.mp3");
+            Play("GamePlay.wav");
         }
 
         public Game()
@@ -142,8 +142,15 @@ namespace Binder
         //Plays the sound from the source passed in its parameters.
         public void Play(string sound)
         {
-            soundPlayer = new SoundPlayer(sound);
-            soundPlayer.Play();
+            SoundPlayer soundPlayer = new SoundPlayer(sound);
+            if (sound == "GamePlay.wav")
+            {
+                //Task.Run(() => soundPlayer.PlaySync());
+            }
+            else
+            {
+                soundPlayer.Play();
+            }         
         }
 
         //Level Logic 
