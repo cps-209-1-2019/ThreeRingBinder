@@ -19,5 +19,6 @@
         <Label x:Name="lblPoints" FontFamily="Haettenschweiler" Canvas.Left="170" Canvas.Top="170" FontSize="30" Foreground="Firebrick"/>
         <Label Content="Play Again?" FontFamily="Haettenschweiler" FontSize="22" Width="90" Canvas.Left="180" Canvas.Top="250" Foreground="Firebrick"/>
         <Button FontFamily="Haettenschweiler" BorderThickness="3" BorderBrush="Firebrick" FontSize="30" Foreground="Firebrick" Height="50" Width="140" Canvas.Left="155" Canvas.Top="290" Content="New Game" x:Name="btnNewGame" Click="BtnNewGame_Click" Background="#e4c027"/>
+        <Button FontFamily="Haettenschweiler" BorderThickness="3" BorderBrush="Firebrick" FontSize="30" Foreground="Firebrick" Height="50" Width="140" Canvas.Left="155" Canvas.Top="350" Content="No Thanks" x:Name="btnEndGame" Click="BtnEndGame_Click" Background="#e4c027"/>
     </Canvas>
 </Window>
