@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Binder.Environment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,13 @@ namespace Binder
     public partial class Pause : Window
     {
         Game binderGame;
-        public Pause(Game game)
+        GameWindow window;
+        public Pause(Game game, GameWindow gameWindow)
         {
             binderGame = game;
             InitializeComponent();
             SetRiddle();
-
+            window = gameWindow;
         }
 
         public void SetRiddle()
@@ -76,7 +78,10 @@ namespace Binder
         private void BtnSaveQuit_Click(object sender, RoutedEventArgs e)
         {
             binderGame.Save("gameFile.txt");
-            Application.Current.Shutdown();
+            this.Close();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            window.Close();
         }
 
         private void BtnHelp_Click(object sender, RoutedEventArgs e)

@@ -38,6 +38,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>completebinder_otE_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.11.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>packages\NUnit.3.11.0\lib\net45\nunit.framework.dll</HintPath>
@@ -217,6 +220,23 @@
     <Resource Include="Sprites\printer.png" />
     <Resource Include="Sprites\table.png" />
     <Resource Include="Sprites\trumpet.png" />
+    <Resource Include="completebinder_otE_icon.ico" />
+    <Content Include="defeated.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GamePlay.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="inventory.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="No.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="whip.flac" />
+    <Content Include="whiplash.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Sprites\waterFountain.png" />
     <Resource Include="Sprites\rubberDuck.png" />
     <Resource Include="Sprites\composureTie.png" />
@@ -265,10 +285,10 @@
     <Resource Include="Environment\floor5.png" />
     <Resource Include="Environment\bush.png" />
     <Resource Include="Screen.PNG" />
-    <Content Include="paperHit.wav">
+    <Content Include="GamePlay.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sounds\GamePlay.mp3">
+    <Content Include="paperHit.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Sounds\paperHit.wav">
