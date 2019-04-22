@@ -200,6 +200,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Sprites\coffeeMachine.png" />
     <Resource Include="Sprites\backpack.png" />
     <Resource Include="Sprites\Bible.png" />
     <Resource Include="Sprites\bookshelf.png" />
