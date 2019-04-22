@@ -291,7 +291,7 @@ namespace Binder
                 item.X = 800;
                 item.Y = 450;
                 item.Image = "/Sprites/guitar.png";
-                item.Name = "duck";
+                item.Name = "guitar";
                 Environ.Add(item);
                 InventoryItem itemTwo = new InventoryItem();
                 itemTwo.X = 700;
@@ -366,11 +366,11 @@ namespace Binder
                 itemFour.X = 1000;
                 itemFour.Y = 100;
                 itemFour.Image = "/Sprites/bookshelf.png";
-                itemFour.canBePickedUp = true;
+                itemFour.canBePickedUp = false;
                 itemFour.Name = "pencil";
                 Environ.Add(itemFour);
                 InventoryItem itemFive = new InventoryItem();
-                itemFive.X = 560;
+                itemFive.X = 460;
                 itemFive.Y = 270;
                 itemFive.Image = "/Sprites/backpack.png";
                 itemFive.Name = "backpack";
