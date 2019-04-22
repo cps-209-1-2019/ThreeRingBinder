@@ -14,15 +14,17 @@ namespace Binder.Environment
         private int count = 0;
         private bool wait;
         private int direc;
-        public const int changeNum = 5;
         int attackTime = 100;
-        public AI(int health, int damage, int speed)
+        public AI(int health, int damage, int speed, int x, int y)
         {
             Health = health;
             Damage = damage;
             Speed = speed;
+            X = x;
+            Y = y;
             direc = -1;
             wait = false;
+            PictureName = "/Sprites/PsiZetaFront.png";
         }
 
         public void ChangeYFrames(int changeInY, Game game)
@@ -196,57 +198,57 @@ namespace Binder.Environment
             if (direc == 0)
             {
                 //west
-                if (IsNotWall(game.CurBuilding, -changeNum / 2, 0))
+                if (IsNotWall(game.CurBuilding, -Speed / 2, 0))
                 {
-                    X -= changeNum;
-                    ChangeXFrames(-changeNum, game);
+                    X -= Speed;
+                    ChangeXFrames(-Speed, game);
                 }
                 else
                 {
-                    X += changeNum;
-                    ChangeXFrames(changeNum, game);
+                    X += Speed;
+                    ChangeXFrames(Speed, game);
                 }
             }
             else if (direc == 1)
             {
                 //east
-                if (IsNotWall(game.CurBuilding, (changeNum / 2), 0))
+                if (IsNotWall(game.CurBuilding, (Speed / 2), 0))
                 {
-                    X += changeNum;
-                    ChangeXFrames(changeNum, game);
+                    X += Speed;
+                    ChangeXFrames(Speed, game);
                 }
                 else
                 {
-                    X -= changeNum;
-                    ChangeXFrames(-changeNum, game);
+                    X -= Speed;
+                    ChangeXFrames(-Speed, game);
                 }
             }
             else if (direc == 2)
             {
                 //north
-                if (IsNotWall(game.CurBuilding, 0, (-changeNum / 2)))
+                if (IsNotWall(game.CurBuilding, 0, (-Speed / 2)))
                 {
-                    Y -= changeNum;
-                    ChangeYFrames(-changeNum, game);
+                    Y -= Speed;
+                    ChangeYFrames(-Speed, game);
                 }
                 else
                 {
-                    Y += changeNum;
-                    ChangeYFrames(changeNum, game);
+                    Y += Speed;
+                    ChangeYFrames(Speed, game);
                 }
             }
             else if (direc == 3)
             {
                 //south
-                if (IsNotWall(game.CurBuilding, 0, (changeNum / 2)))
+                if (IsNotWall(game.CurBuilding, 0, (Speed / 2)))
                 {
-                    Y += changeNum / 2;
-                    ChangeYFrames(changeNum, game);
+                    Y += Speed / 2;
+                    ChangeYFrames(Speed, game);
                 }
                 else
                 {
-                    Y -= changeNum / 2;
-                    ChangeYFrames(-changeNum, game);
+                    Y -= Speed / 2;
+                    ChangeYFrames(-Speed, game);
                 }
             }
         }
@@ -255,34 +257,34 @@ namespace Binder.Environment
         {
             if (game.Marcus.X < X)
             {
-                if (IsNotWall(game.CurBuilding, (-changeNum / 2), 0))
+                if (IsNotWall(game.CurBuilding, (-Speed / 2), 0))
                 {
-                    X -= changeNum / 2;
-                    ChangeXFrames(-changeNum / 2, game);
+                    X -= Speed / 2;
+                    ChangeXFrames(-Speed / 2, game);
                 }
             }
             else if (game.Marcus.X > X)
             {
-                if (IsNotWall(game.CurBuilding, (changeNum / 2), 0))
+                if (IsNotWall(game.CurBuilding, (Speed / 2), 0))
                 {
-                    X += changeNum / 2;
-                    ChangeXFrames(changeNum / 2, game);
+                    X += Speed / 2;
+                    ChangeXFrames(Speed / 2, game);
                 }
             }
             if (game.Marcus.Y < Y)
             {
-                if (IsNotWall(game.CurBuilding, 0, (-changeNum / 2)))
+                if (IsNotWall(game.CurBuilding, 0, (-Speed / 2)))
                 {
-                    Y -= changeNum / 2;
-                    ChangeYFrames(-changeNum / 2, game);
+                    Y -= Speed / 2;
+                    ChangeYFrames(-Speed / 2, game);
                 }
             }
             else if (game.Marcus.Y > Y)
             {
-                if (IsNotWall(game.CurBuilding,0, (changeNum / 2)))
+                if (IsNotWall(game.CurBuilding,0, (Speed / 2)))
                 {
-                    Y += changeNum / 2;
-                    ChangeYFrames(changeNum / 2, game);
+                    Y += Speed / 2;
+                    ChangeYFrames(Speed / 2, game);
                 }
             }
         }

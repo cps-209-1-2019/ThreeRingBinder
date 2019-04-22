@@ -238,6 +238,10 @@
     <Resource Include="Sprites\ignominy.png" />
     <Resource Include="Sprites\incompleteBinder.png" />
     <Resource Include="Sprites\laptop.png" />
+    <Resource Include="Sprites\drMcGee.png" />
+    <Resource Include="Sprites\omega.png" />
+    <Resource Include="Sprites\PhiBeta.png" />
+    <Resource Include="Sprites\stevieP.png" />
     <Content Include="whip.flac" />
     <Content Include="whiplash.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
