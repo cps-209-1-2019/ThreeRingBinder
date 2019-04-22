@@ -248,10 +248,15 @@
     <Resource Include="Environment\floor5.png" />
     <Resource Include="Environment\bush.png" />
     <Resource Include="Screen.PNG" />
+    <Content Include="paperHit.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sounds\GamePlay.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sounds\paperHit.wav" />
+    <Content Include="Sounds\paperHit.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

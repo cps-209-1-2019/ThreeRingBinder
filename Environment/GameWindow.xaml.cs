@@ -234,6 +234,7 @@ namespace Binder.Environment
                 {
                     Airplane plane = (Airplane)wObj;
                     plane.Update();
+                    //binderGame.Play("paperHit.wav");
                     if (plane.Destroy == true)
                     {
                         RemoveLabel(plane);
