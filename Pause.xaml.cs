@@ -64,7 +64,7 @@ namespace Binder
                 txtRiddle4.Text = "Find an event to float your boat.";
                 if (binderGame.IsCheatOn == true)
                 {
-                    lblAnswer.Content = "The answer, my dear cheater, is the trumpet with the bulletin board.";
+                    lblAnswer.Content = "The answer, my dear cheater, is the bulletin board with the trumpet.";
                 }
             }
         }
