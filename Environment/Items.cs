@@ -20,14 +20,7 @@ namespace Binder.Environment
         public string Image { get; set; }
         public bool Found { get; set; }
 
-        //public Items(string name, string image, int[] pos)
-        //{
-        //    Name = name;
-        //    Image = image;
-        //    Position = pos;
-        //}
-
-        //Returns the string for the GUI to display
+        
         public string Show()
         {
             return Image;
@@ -41,7 +34,6 @@ namespace Binder.Environment
 
             return theItem;
         }
-        //public abstract Items Deserialize();
     }
 
     public class InventoryItem: Items, ISerialization<InventoryItem>
