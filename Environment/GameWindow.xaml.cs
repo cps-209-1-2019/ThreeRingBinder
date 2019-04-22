@@ -80,7 +80,7 @@ namespace Binder.Environment
             if (binderGame.Time == 0)
             {
                 LimitTimer.Stop();
-                int score = binderGame.CalculateScores();
+                int score = binderGame.CalculateScores(true);
                 GameOver endGame = new GameOver(this, false, score);
                 endGame.Show();
                 timer.Stop();
@@ -275,7 +275,7 @@ namespace Binder.Environment
                     }
                     if ((binderGame.Marcus.Health == 0) && (isGameOver == false))
                     {
-                        int score = binderGame.CalculateScores();
+                        int score = binderGame.CalculateScores(true);
                         GameOver endGame = new GameOver(this, false, score);
                         endGame.Show();
                         StopTimers();
@@ -302,17 +302,27 @@ namespace Binder.Environment
         //Reloads a new level
         private void StartNewLevel()
         {
-            MessageBox.Show("You Found the Ring!");
-            Label label = SetObjectBinding("/Sprites/binderRingSilver.png", binderGame.ring);
-            label.Width = 30;
-            label.Height = 30;
-            isRingShown = true;
-            cnvsGame.Children.Clear();
-            StopTimers();
-            binderGame = new Game(180, 2);
-            binderGame.IsCheatOn = isCheatOn;
-            MakeLevelFloors(2);
-            LoadGame();
+            int level = binderGame.LevelNum + 1;
+            if (level == 4)
+            {
+                int points = binderGame.CalculateScores(true);
+                GameOver gameOver = new GameOver(this, true, points);
+            }
+            else
+            {
+                MessageBox.Show("You Found the Ring!");
+                Label label = SetObjectBinding("/Sprites/binderRingSilver.png", binderGame.ring);
+                label.Width = 30;
+                label.Height = 30;
+                isRingShown = true;
+                cnvsGame.Children.Clear();
+                StopTimers();
+                binderGame = new Game(180, level);
+                binderGame.IsCheatOn = isCheatOn;
+                MakeLevelFloors(level);
+                LoadGame();
+                isRingShown = false;
+            }
         }
 
         //Moves the AI corresponding to `wObj`
@@ -326,7 +336,7 @@ namespace Binder.Environment
                 binderGame.Play("No.wav");
                 Game.Environ.Remove(ai);
                 binderGame.PsiZetaShamed++;
-                binderGame.CalculateScores();
+                binderGame.CalculateScores(false);
                 return true;
             }
             ai.Move(binderGame);
@@ -571,7 +581,7 @@ namespace Binder.Environment
                     {
                         Game.isPaused = true;
                         LimitTimer.Stop();
-                        Pause pauseWindow = new Pause(binderGame);
+                        Pause pauseWindow = new Pause(binderGame, this);
                         pauseWindow.Show();
                         binderGame.isPauseScreenShown = true;
                     }
@@ -618,7 +628,14 @@ namespace Binder.Environment
                 if (thing is InventoryItem)
                 {
                     InventoryItem item = (InventoryItem)thing;
-                    SetObjectBinding(item.Image, thing);
+                    try
+                    {
+                        SetObjectBinding(item.Image, thing);
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("Could not load item");
+                    }
                 }
             }
         }
