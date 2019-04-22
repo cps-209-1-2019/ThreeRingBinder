@@ -13,7 +13,7 @@
     <Window.Background>
         <ImageBrush ImageSource="Screen.PNG"/>
     </Window.Background>
-    <Canvas>
+    <Canvas x:Name="CnvsGameOver">
         <Label Content="GAME OVER!" FontFamily="Haettenschweiler" FontSize="60" Foreground="#e4c027" Width="230" Canvas.Left="110" Canvas.Top="55"/>
         <Label x:Name="lblResults" Content="" Canvas.Left="170" Canvas.Top="120" FontSize="30"/>
         <Label x:Name="lblPoints" FontFamily="Haettenschweiler" Canvas.Left="170" Canvas.Top="170" FontSize="30" Foreground="Firebrick"/>

@@ -303,12 +303,14 @@ namespace Binder.Environment
         private void StartNewLevel()
         {
             int level = binderGame.LevelNum + 1;
-            if (level == 4)
+            if ((level == 4) && (isGameOver == false))
             {
                 int points = binderGame.CalculateScores(true);
                 GameOver gameOver = new GameOver(this, true, points);
+                gameOver.Show();
+                isGameOver = true;
             }
-            else
+            else if (isGameOver == false)
             {
                 MessageBox.Show("You Found the Ring!");
                 Label label = SetObjectBinding("/Sprites/binderRingSilver.png", binderGame.ring);
