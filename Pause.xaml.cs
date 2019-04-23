@@ -101,6 +101,7 @@ namespace Binder
             Game.isPaused = false;
             this.Close();
             binderGame.isPauseScreenShown = false;
+            window.LimitTimer.Start();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -108,6 +109,7 @@ namespace Binder
             Game.isPaused = false;
             this.Close();
             binderGame.isPauseScreenShown = false;
+            window.LimitTimer.Start();
         }
     }
 }

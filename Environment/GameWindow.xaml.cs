@@ -35,7 +35,7 @@ namespace Binder.Environment
         DispatcherTimer timerDown;
         DispatcherTimer timerLeft;
         DispatcherTimer timerRight;
-        DispatcherTimer LimitTimer;
+        public DispatcherTimer LimitTimer;
         //DispatcherTimer MusicTimer;
         bool isRingShown = false;
 
