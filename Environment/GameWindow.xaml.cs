@@ -52,6 +52,8 @@ namespace Binder.Environment
         Rectangle rectItemThree;
         Rectangle rectItemFour;
 
+        MediaPlayer BMusic;
+
         public GameWindow(bool cheat, int difficulty, double startTime, bool doLoad)
         {
             InitializeComponent();
@@ -62,6 +64,8 @@ namespace Binder.Environment
             cnvsGame.DataContext = binderGame;
             binderGame.IsCheatOn = cheat;
             LoadGame();
+
+            Play();
         }
 
         public GameWindow()
@@ -80,6 +84,7 @@ namespace Binder.Environment
             if (binderGame.Time == 0)
             {
                 LimitTimer.Stop();
+                binderGame.Play("timeUp.wav");
                 int score = binderGame.CalculateScores(true);
                 GameOver endGame = new GameOver(this, false, score);
                 endGame.Show();
@@ -290,13 +295,13 @@ namespace Binder.Environment
         //Stops all timers
         private void StopTimers()
         {
-             //MusicTimer.Stop();
-            LimitTimer.Stop();
+            //MusicTimer.Stop();
+            timer.Stop();
             timerDown.Stop();
             timerUp.Stop();
             timerLeft.Stop();
             timerRight.Stop();
-            timer.Stop();            
+            LimitTimer.Stop();
         }
 
         //Reloads a new level
@@ -306,11 +311,13 @@ namespace Binder.Environment
             if (level == 4)
             {
                 int points = binderGame.CalculateScores(true);
+                binderGame.Play("GameWon.wav");
                 GameOver gameOver = new GameOver(this, true, points);
             }
             else
             {
                 MessageBox.Show("You Found the Ring!");
+                binderGame.Play("trumpets.wav");
                 Label label = SetObjectBinding("/Sprites/binderRingSilver.png", binderGame.ring);
                 label.Width = 30;
                 label.Height = 30;
@@ -730,11 +737,11 @@ namespace Binder.Environment
             Canvas.SetLeft(image, -18);
         }
 
-        private void Play(string sound)
+        private void Play()
         {
-            MediaPlayer player = new MediaPlayer();
-            player.Open(new Uri(System.IO.Path.GetFullPath(sound)));
-            player.Play();
+            BMusic = new MediaPlayer();
+            BMusic.Open(new System.Uri(@"pack://application:,,,/Resources/GamePlay.wav"));
+            BMusic.Play();
         }
     }
 }

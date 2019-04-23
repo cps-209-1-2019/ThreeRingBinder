@@ -45,7 +45,7 @@ namespace Binder.Environment
             HighScoreHolder holder = new HighScoreHolder();
             holder.Load();
             int index = holder.scoreList.Count() - 1;
-            if ((index != -1) && score > Convert.ToInt32(holder.scoreList[index].CurrentScore))
+            if (((index != -1) && score > Convert.ToInt32(holder.scoreList[index].CurrentScore)) || (holder.scoreList.Count() == 0))
             {
                 NewHighScore newScore = new NewHighScore(score);
                 newScore.Show();
