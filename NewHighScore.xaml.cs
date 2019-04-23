@@ -1,4 +1,8 @@
-﻿using System;
+﻿//---------------------------------------------------------------------------------------------
+//File:   NewHighScore.xaml.cs
+//Desc:   Creates New High Score screen
+//---------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

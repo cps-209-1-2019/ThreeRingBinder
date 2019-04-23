@@ -1,4 +1,8 @@
-﻿using System;
+﻿//---------------------------------------------------------------------------------------------
+//File:   About.xaml.cs
+//Desc:   Creates About screen
+//---------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

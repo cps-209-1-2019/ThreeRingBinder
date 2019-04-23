@@ -1,4 +1,8 @@
-﻿using System;
+﻿//---------------------------------------------------------------------------------------------
+//File:   MainWindow.xaml.cs
+//Desc:   Creates Title screen and provides links to new game and other screens
+//---------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,6 +43,7 @@ namespace Binder
             this.Close();
         }
 
+        //Turns cheat mode on and off
         private void BtnCheat_Click(object sender, RoutedEventArgs e)
         {
             if (isCheatOn)
@@ -47,6 +52,7 @@ namespace Binder
                 isCheatOn = true;
         }
 
+        //Modifies difficulty level and slider
         private void SldrDifficulty_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (isLoaded) {
@@ -70,18 +76,21 @@ namespace Binder
             isLoaded = true;
         }
 
+        //Opens instructions screen
         private void Instruction_Click(object sender, RoutedEventArgs e)
         {
             Instructions instructions = new Instructions();
             instructions.Show();
         }
 
+        //Opens High Score List screen
         private void BtnHighScores_Click(object sender, RoutedEventArgs e)
         {
             HighScoreList highScoreList = new HighScoreList();
             highScoreList.Show();
         }
 
+        //Loads previous saved game
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {
             GameWindow gameWin = new GameWindow();

@@ -1,4 +1,8 @@
-﻿using System;
+﻿//---------------------------------------------------------------------------------------------
+//File:   Help.xaml.cs
+//Desc:   Creates Help screen
+//---------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +26,6 @@ namespace Binder
         public Help()
         {
             InitializeComponent();
-        }
-
-        private void BtnInstructions_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

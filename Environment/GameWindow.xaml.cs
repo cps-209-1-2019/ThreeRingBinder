@@ -1,4 +1,8 @@
-﻿using System;
+﻿//---------------------------------------------------------------------------------------------
+//File:   GameWindow.xaml.cs
+//Desc:   Updates Game Window based on changes in the Model
+//---------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +40,6 @@ namespace Binder.Environment
         DispatcherTimer timerLeft;
         DispatcherTimer timerRight;
         public DispatcherTimer LimitTimer;
-        //DispatcherTimer MusicTimer;
         bool isRingShown = false;
 
         TextBlock Time;
@@ -170,13 +173,6 @@ namespace Binder.Environment
             LimitTimer.Tick += LimitTimer_Tick;
             LimitTimer.Start();
 
-            //MusicTimer = new DispatcherTimer()
-            //{
-            //    Interval = new TimeSpan(0, 0, 0, 1),
-            //};
-            //MusicTimer.Tick += MusicTimer_Tick;
-            //MusicTimer.Start();
-
             LoadRectangles();
 
             string dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug", "");
@@ -205,14 +201,6 @@ namespace Binder.Environment
                 whichRect++;
             }            
         }
-
-        //private void MusicTimer_Tick(object sender, EventArgs e)
-        //{
-        //    if(isGameOver == false)
-        //    {
-        //        binderGame.Play("GamePlay.wav");
-        //    }
-        //}
 
         //Sets new image for Marcus
         private void TimerTwo_Tick(object sender, EventArgs e)
@@ -745,6 +733,7 @@ namespace Binder.Environment
             Canvas.SetLeft(image, -18);
         }
 
+        //Plays music
         private void Play()
         {
             BMusic = new MediaPlayer();

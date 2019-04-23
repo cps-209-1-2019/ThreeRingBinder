@@ -1,4 +1,8 @@
-﻿using System;
+﻿//---------------------------------------------------------------------------------------------
+//File:   GameOver.xaml.cs
+//Desc:   Creates Game Over screen
+//---------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +51,7 @@ namespace Binder.Environment
             CheckHighScore(points);
         }
 
+        //Closes game window and opens title screen
         private void BtnNewGame_Click(object sender, RoutedEventArgs e)
         {
             MainWindow title = new MainWindow();
@@ -54,6 +59,8 @@ namespace Binder.Environment
             this.Close();
             gameWindow.Close();
         }
+
+        //Adds `score` if it is a high score
         private void CheckHighScore(int score)
         {
             HighScoreHolder holder = new HighScoreHolder();
@@ -67,6 +74,7 @@ namespace Binder.Environment
             }
         }
 
+        //Closes the game window
         private void BtnEndGame_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

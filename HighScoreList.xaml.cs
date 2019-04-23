@@ -1,4 +1,8 @@
-﻿using System;
+﻿//---------------------------------------------------------------------------------------------
+//File:   HighScoreList.xaml.cs
+//Desc:   Creates High Score screen and lists high scores
+//---------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +40,6 @@ namespace Binder
         {         
             HighScoreHolder holder = new HighScoreHolder();
             holder.Load();
-            //holder.AddHighScore(new HighScore("3", "r"));
             for (int i = 0; i < holder.scoreList.Count(); i++)
             {
                 string colon = ":     ";
