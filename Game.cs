@@ -322,7 +322,7 @@ namespace Binder
                 itemSix.Name = "chair";
                 Environ.Add(itemSix);
                 InventoryItem itemSeven = new InventoryItem();
-                itemSeven.X = 0;
+                itemSeven.X = -100;
                 itemSeven.Y = -1200;
                 itemSeven.isTheOne = true;
                 itemSeven.Image = "/Sprites/trumpet.png";
@@ -418,7 +418,6 @@ namespace Binder
                 itemTen.X = -1000;
                 itemTen.Y = 100;
                 itemTen.Image = "/Sprites/mouse.png";
-                itemTen.canBePickedUp = false;
                 itemTen.Name = "mouse";
                 Environ.Add(itemTen);
                 InventoryItem itemEleven = new InventoryItem();
@@ -480,9 +479,9 @@ namespace Binder
                 itemSeven.Name = "backpack";
                 Environ.Add(itemSeven);
                 InventoryItem itemEight = new InventoryItem();
-                itemEight.X = -1060;
+                itemEight.X = -1400;
                 itemEight.Y = 220;
-                itemEight.Image = "/Sprites/flag.png";
+                itemEight.Image = "/Sprites/waterFountain.png";
                 itemEight.canBePickedUp = false;
                 itemEight.Name = "water fountain";
                 Environ.Add(itemEight);
@@ -502,7 +501,7 @@ namespace Binder
                 Environ.Add(item10);
                 InventoryItem itemEleven = new InventoryItem();
                 itemEleven.X = 3000;
-                itemEleven.Y = -1000;
+                itemEleven.Y = -1200;
                 itemEleven.Image = "/Sprites/drSchaub.png";
                 itemEleven.canBePickedUp = true;
                 itemEleven.Name = "drSchaub";
@@ -510,7 +509,7 @@ namespace Binder
 
                 InventoryItem item12 = new InventoryItem();
                 item12.X = -1080;
-                item12.Y = 700;
+                item12.Y = -700;
                 item12.Image = "/Sprites/piano.png";
                 item12.canBePickedUp = false;
                 item12.Name = "piano";
@@ -520,7 +519,6 @@ namespace Binder
                 item13.X = -1100;
                 item13.Y = 500;
                 item13.Image = "/Sprites/drMcGee.png";
-                item13.canBePickedUp = false;
                 item13.Name = "drMcGee";
                 Environ.Add(item13);
             }
