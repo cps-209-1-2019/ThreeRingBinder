@@ -33,6 +33,9 @@ After solving the riddle, move to the correct location and use the correct objec
 ## Known Issues
  * The main issue currently is the IsNotWall method. It does not properly detect a wall.
  * AI lives and movements need to be debugged.
+ * Save is throwing an error
+ * Object placement needs tweaking
+ * Timer and scoring needs work
  
 
 
