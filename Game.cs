@@ -480,7 +480,7 @@ namespace Binder
                 Environ.Add(itemSeven);
                 InventoryItem itemEight = new InventoryItem();
                 itemEight.X = -1400;
-                itemEight.Y = 220;
+                itemEight.Y = 170;
                 itemEight.Image = "/Sprites/waterFountain.png";
                 itemEight.canBePickedUp = false;
                 itemEight.Name = "water fountain";
