@@ -41,7 +41,7 @@ After solving the riddle, move to the correct location and use the correct objec
 
 ## Recording
 
-[Team 1: Beta](https://youtu.be/x5cdzh1fqeA)
+[Team 1: Releaase Candidate](https://youtu.be/5TFgGF30EnI)
 
 ## Expenses
 
