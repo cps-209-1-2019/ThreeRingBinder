@@ -286,7 +286,7 @@ namespace Binder
                 InventoryItem item = new InventoryItem();
                 item.X = 800;
                 item.Y = 450;
-            InventoryItem item = new InventoryItem();
+                InventoryItem itemOne = new InventoryItem();
                 item.X = -2700;
                 item.Y = -900;
                 item.Image = "/Sprites/guitar.png";
@@ -345,6 +345,13 @@ namespace Binder
                 itemNine.Image = "/Sprites/piano.png";
                 itemNine.Name = "piano";
                 Environ.Add(itemNine);
+                InventoryItem item10 = new InventoryItem();
+                itemNine.X = 1600;
+                itemNine.Y = 1670;
+                itemNine.canBePickedUp = false;
+                itemNine.Image = "/Sprites/coffeeMachine.png";
+                itemNine.Name = "Coffee Machine";
+                Environ.Add(item10);
             }
             else if (level == 2)
             {
@@ -406,23 +413,23 @@ namespace Binder
                 InventoryItem itemNine = new InventoryItem();
                 itemNine.X = -2000;
                 itemNine.Y = 100;
-                itemNine.Image = "/Sprites/bookshelf.png";
+                itemNine.Image = "/Sprites/pencil.png";
                 itemNine.canBePickedUp = false;
                 itemNine.Name = "pencil";
                 Environ.Add(itemNine);
                 InventoryItem itemTen = new InventoryItem();
                 itemTen.X = -1000;
                 itemTen.Y = 100;
-                itemTen.Image = "/Sprites/bookshelf.png";
+                itemTen.Image = "/Sprites/mouse.png";
                 itemTen.canBePickedUp = false;
-                itemTen.Name = "pencil";
+                itemTen.Name = "mouse";
                 Environ.Add(itemTen);
                 InventoryItem itemEleven = new InventoryItem();
                 itemEleven.X = -1000;
                 itemEleven.Y = -700;
-                itemEleven.Image = "/Sprites/bookshelf.png";
+                itemEleven.Image = "/Sprites/piano.png";
                 itemEleven.canBePickedUp = false;
-                itemEleven.Name = "pencil";
+                itemEleven.Name = "piano";
                 Environ.Add(itemEleven);
             }
             else if (level == 3)
@@ -489,6 +496,36 @@ namespace Binder
                 itemNine.Image = "/Sprites/flag.png";
                 itemNine.Name = "flag";
                 Environ.Add(itemNine);
+                InventoryItem item10 = new InventoryItem();
+                item10.X = -1300;
+                item10.Y = -77;
+                item10.Image = "/Sprites/laptop.png";
+                item10.canBePickedUp = false;
+                item10.Name = "laptop";
+                Environ.Add(item10);
+                InventoryItem itemEleven = new InventoryItem();
+                itemEleven.X = 3000;
+                itemEleven.Y = -1000;
+                itemEleven.Image = "/Sprites/drSchaub.png";
+                itemEleven.canBePickedUp = true;
+                itemEleven.Name = "drSchaub";
+                Environ.Add(itemEleven);
+
+                InventoryItem item12 = new InventoryItem();
+                item12.X = -1080;
+                item12.Y = 700;
+                item12.Image = "/Sprites/piano.png";
+                item12.canBePickedUp = false;
+                item12.Name = "piano";
+                Environ.Add(item12);
+
+                InventoryItem item13 = new InventoryItem();
+                item13.X = -1100;
+                item13.Y = 500;
+                item13.Image = "/Sprites/drMcGee.png";
+                item13.canBePickedUp = false;
+                item13.Name = "drMcGee";
+                Environ.Add(item13);
             }
         }
 

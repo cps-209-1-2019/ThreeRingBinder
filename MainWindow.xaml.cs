@@ -21,7 +21,7 @@ namespace Binder
     /// </summary>
     public partial class MainWindow : Window
     {
-        double startTime = 60;
+        double startTime = 360;
         bool isCheatOn = false;
         int difficulty = 1;
         bool isLoaded = false;

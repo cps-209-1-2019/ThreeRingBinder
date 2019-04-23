@@ -168,6 +168,16 @@ namespace Binder.Environment
         {
             if (item.canBePickedUp)
             {
+                if(item.Name == "drSchaub")
+                {
+                    item.PictureName = "/Sprites/ignominy.png";
+                    Health -= 1;
+                }
+                if(item.Name == "drMcGee")
+                {
+                    item.PictureName = "/Sprites/composureTie.png";
+                    Health += 1;
+                }
                 binderGame.Marcus.Inventory.Insert(0, item);
                 if (binderGame.Marcus.Inventory.Count > 4)
                 {
