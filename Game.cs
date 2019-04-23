@@ -343,11 +343,11 @@ namespace Binder
                 itemNine.Name = "piano";
                 Environ.Add(itemNine);
                 InventoryItem item10 = new InventoryItem();
-                itemNine.X = 1600;
-                itemNine.Y = 1670;
-                itemNine.canBePickedUp = false;
-                itemNine.Image = "/Sprites/coffeeMachine.png";
-                itemNine.Name = "Coffee Machine";
+                item10.X = 1600;
+                item10.Y = 1670;
+                item10.canBePickedUp = false;
+                item10.Image = "/Sprites/coffeeMachine.png";
+                item10.Name = "Coffee Machine";
                 Environ.Add(item10);
             }
             else if (level == 2)
@@ -554,6 +554,10 @@ namespace Binder
                     if (item is AI)
                     {
                         theItems += (item as AI).Serialize() + ";";
+                    }
+                    else if (item is BinderRing)
+                    {
+                        theItems += (item as BinderRing).Serialize() + ";";
                     }
                     else if (item is InventoryItem)
                     {

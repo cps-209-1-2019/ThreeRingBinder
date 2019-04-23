@@ -53,10 +53,9 @@ namespace Binder.Environment
         //Turn the object into a string
         new public string Serialize()
         {
-            string theItem = "";
+            string theItem;
 
             string dir = Directory.GetCurrentDirectory();
-
             string theImage = Image.Replace(dir.Replace("\\bin\\Debug", ""), "");
 
             theItem = string.Format("INVENTORYITEM?5,NAME!{0},IMAGE!{1},FOUND!{2},POSX!{3},POSY!{4},CANBEPICKEDUP!{5},ISTHEONE!{6}",Name.ToUpper(), theImage, Found.ToString().ToUpper(), X, Y, canBePickedUp.ToString().ToUpper(), isTheOne.ToString().ToUpper());
@@ -79,7 +78,14 @@ namespace Binder.Environment
                         Name = properties[i + 1];
                         break;
                     case "IMAGE":
-                        Image = properties[i + 1];
+                        if(properties[i + 1] == "null")
+                        {
+                            Image = properties[i + 1];
+                        }
+                        else
+                        {
+                            Image = "\\Sprites\\binderRingSilver.png";
+                        }
                         break;
                     case "FOUND":
                         Found = "TRUE" == properties[i + 1];
