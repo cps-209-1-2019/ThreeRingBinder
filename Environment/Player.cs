@@ -11,10 +11,7 @@ namespace Binder.Environment
         public string Name { get; set; }
         public string Direction { get; set; }
         public List<InventoryItem> Inventory { get; set; }
-        private int howLongUp;
-        private int howLongDown;
-        private int howLongRight;
-        private int howLongLeft;
+        
         public const int changeNum = 5;
         public Player(string name)
         {
@@ -125,22 +122,18 @@ namespace Binder.Environment
                 if (howLongLeft >= 0 && howLongLeft < 10)
                 {
                     PictureName = "/Sprites/MarcusLeft.png";
-                    left = 1;
                 }
                 else if (howLongLeft >= 10 && howLongLeft < 20)
                 {
                     PictureName = "/Sprites/MarcusLeft1.png";
-                    left = 2;
                 }
                 else if (howLongLeft >= 20 && howLongLeft < 30)
                 {
                     PictureName = "/Sprites/MarcusLeft.png";
-                    left = 3;
                 }
                 else if (howLongLeft >= 30 && howLongLeft < 40)
                 {
                     PictureName = "/Sprites/MarcusLeft2.png";
-                    left = 0;
                 }
                 else
                 {
@@ -175,7 +168,7 @@ namespace Binder.Environment
         {
             if (item.canBePickedUp)
             {
-                binderGame.Marcus.Inventory.Add(item);
+                binderGame.Marcus.Inventory.Insert(0, item);
                 if (binderGame.Marcus.Inventory.Count > 4)
                 {
                     binderGame.Marcus.Inventory.RemoveAt(4);
@@ -328,26 +321,26 @@ namespace Binder.Environment
         {
             if (Direction == "up")
             {
-                Y -= 69;
-                Hit(0, -69);
+                Y -= 5;
+                Hit(0, -5);
             }
             if (Direction == "down")
             {
-                Y += 69;
-                Hit(0, 69);
+                Y += 5;
+                Hit(0, 5);
             }
             if (Direction == "right")
             {
-                X += 69;
-                Hit(69, 0);
+                X += 5;
+                Hit(5, 0);
             }
             if (Direction == "left")
             {
-                X -= 69;
-                Hit(-69, 0);
+                X -= 5;
+                Hit(-5, 0);
             }
             Stage++;
-            if (Stage > 4)
+            if (Stage > 58)
             {
                 Destroy = true;
             }

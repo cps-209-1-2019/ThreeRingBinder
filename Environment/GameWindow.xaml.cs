@@ -134,7 +134,7 @@ namespace Binder.Environment
             
             cnvsGame.DataContext = building;
             timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 200);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             timer.Tick += Timer_Tick;
             timer.Start();
 
@@ -308,13 +308,15 @@ namespace Binder.Environment
         private void StartNewLevel()
         {
             int level = binderGame.LevelNum + 1;
-            if (level == 4)
+            if ((level == 4) && (isGameOver == false))
             {
                 int points = binderGame.CalculateScores(true);
                 binderGame.Play("GameWon.wav");
                 GameOver gameOver = new GameOver(this, true, points);
+                gameOver.Show();
+                isGameOver = true;
             }
-            else
+            else if (isGameOver == false)
             {
                 MessageBox.Show("You Found the Ring!");
                 binderGame.Play("trumpets.wav");
@@ -716,7 +718,13 @@ namespace Binder.Environment
                     else if (binderGame.Marcus.Inventory.Count() >= 4)
                     {
                         if (thing == binderGame.Marcus.Inventory[3])
-                            rectangle = rectItemFour;
+                        {
+                            rectangle = rectItemFour;                           
+                        }
+                        else if (thing == binderGame.Marcus.Inventory[4])
+                        {
+
+                        }
                     }
                 }
             }

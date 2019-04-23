@@ -14,149 +14,169 @@ namespace Binder.Environment
         private int count = 0;
         private bool wait;
         private int direc;
-        public const int changeNum = 40;
-        int attackTime = 10;
-        public AI(int health, int damage, int speed)
+        int attackTime = 100;
+        public AI(int health, int damage, int speed, int x, int y)
         {
             Health = health;
             Damage = damage;
             Speed = speed;
+            X = x;
+            Y = y;
             direc = -1;
             wait = false;
+            PictureName = "/Sprites/PsiZetaFront.png";
         }
 
-        public void ChangeXFrames(int changeInX)
+        public void ChangeYFrames(int changeInY, Game game)
         {
-            if (changeInX > 0)
+            if (changeInY > 0)
             {
+                howLongUp = 0;
+                howLongRight = 0;
+                howLongLeft = 0;
                 if (isAttacking)
                 {
                     PictureName = "/Sprites/PsiZetaFrontWhip.png";
+                    game.Marcus.Health -= Damage;
                     isAttacking = false;
                 }
-                else if (attackTime > 5)
+                else if (attackTime > 10)
                 {
-                    if (front == 0)
+                    if (howLongDown >= 0 && howLongDown < 10)
                     {
                         PictureName = "/Sprites/PsiZetaFront.png";
-                        front = 1;
                     }
-                    else if (front == 1)
+                    else if (howLongDown >= 10 && howLongDown < 20)
                     {
                         PictureName = "/Sprites/PsiZetaFront1.png";
-                        front = 2;
                     }
-                    else if (front == 2)
+                    else if (howLongDown >= 20 && howLongDown < 30)
                     {
                         PictureName = "/Sprites/PsiZetaFront.png";
-                        front = 3;
+                    }
+                    else if (howLongDown >= 30 && howLongDown < 40)
+                    {
+                        PictureName = "/Sprites/PsiZetaFront2.png";
                     }
                     else
                     {
-                        PictureName = "/Sprites/PsiZetaFront2.png";
-                        front = 0;
+                        howLongDown = 0;
                     }
                 }
+                howLongDown++;
             }
-            else if (changeInX < 0)
+            else if (changeInY < 0)
             {
+                howLongDown = 0;
+                howLongRight = 0;
+                howLongLeft = 0;
                 if (isAttacking)
                 {
                     PictureName = "/Sprites/PsiZetaBackWhip.png";
+                    game.Marcus.Health -= Damage;
                     isAttacking = false;
                 }
-                else if (attackTime > 5)
+                else if (attackTime > 10)
                 {
-                    if (back == 0)
+                    if (howLongUp >= 0 && howLongUp < 10)
                     {
                         PictureName = "/Sprites/PsiZetaBack.png";
-                        back = 1;
                     }
-                    else if (back == 1)
+                    else if (howLongUp >= 10 && howLongUp < 20)
                     {
                         PictureName = "/Sprites/PsiZetaBack1.png";
-                        back = 2;
                     }
-                    else if (back == 20)
+                    else if (howLongUp >= 20 && howLongUp < 30)
                     {
                         PictureName = "/Sprites/PsiZetaBack.png";
-                        back = 3;
+                    }
+                    else if (howLongUp >= 30 && howLongUp < 40)
+                    {
+                        PictureName = "/Sprites/PsiZetaBack2.png";
                     }
                     else
                     {
-                        PictureName = "/Sprites/PsiZetaBack2.png";
-                        back = 0;
+                        howLongUp = 0;
                     }
                 }
             }
         }
-        public void ChangeYFrames(int changeInX)
+        public void ChangeXFrames(int changeInX, Game game)
         {
             if (changeInX > 0)
             {
+                howLongDown = 0;
+                howLongUp = 0;
+                howLongLeft = 0;
                 if (isAttacking)
                 {
                     PictureName = "/Sprites/PsiZetaRightWhip.png";
+                    game.Marcus.Health -= Damage;
                     isAttacking = false;
                 }
-                else if (attackTime > 5)
+                else if (attackTime > 10)
                 {
-                    if (right == 0)
+                    if (howLongRight >= 0 && howLongRight < 10)
                     {
                         PictureName = "/Sprites/PsiZetaRight.png";
-                        right = 1;
                     }
-                    else if (right == 1)
+                    else if (howLongRight >= 10 && howLongRight < 20)
                     {
                         PictureName = "/Sprites/PsiZetaRight1.png";
-                        right = 2;
                     }
-                    else if (right == 2)
+                    else if (howLongRight >= 20 && howLongRight < 30)
                     {
                         PictureName = "/Sprites/PsiZetaRight.png";
-                        right = 3;
+                    }
+                    else if (howLongRight >= 30 && howLongRight < 40)
+                    {
+                        PictureName = "/Sprites/PsiZetaRight2.png";
                     }
                     else
                     {
-                        PictureName = "/Sprites/PsiZetaRight2.png";
-                        right = 0;
+                        howLongRight = 0;
                     }
                 }
 
             }
             else if (changeInX < 0)
             {
+                howLongDown = 0;
+                howLongUp = 0;
+                howLongRight = 0;
                 if (isAttacking)
                 {
                     PictureName = "/Sprites/PsiZetaLeftWhip.png";
+                    game.Marcus.Health -= Damage;
                     isAttacking = false;
                 }
-                else if (attackTime > 5)
+                else if (attackTime > 10)
                 {
-                    if (left == 0)
+                    if (howLongLeft >= 0 && howLongLeft < 10)
                     {
                         PictureName = "/Sprites/PsiZetaLeft.png";
-                        left = 1;
                     }
-                    else if (left == 1)
+                    else if (howLongLeft >= 10 && howLongLeft < 20)
                     {
                         PictureName = "/Sprites/PsiZetaLeft1.png";
-                        left = 2;
                     }
-                    else if (left == 20)
+                    else if (howLongLeft >= 20 && howLongLeft < 30)
                     {
                         PictureName = "/Sprites/PsiZetaLeft.png";
-                        left = 3;
+                    }
+                    else if (howLongLeft >= 30 && howLongLeft < 40)
+                    {
+                        PictureName = "/Sprites/PsiZetaLeft2.png";
                     }
                     else
                     {
-                        PictureName = "/Sprites/PsiZetaLeft2.png";
-                        left = 0;
+                        howLongLeft = 0;
                     }
+                    howLongLeft++;
                 }
             }
         }
-        public void Patrol(Building building)
+        public void Patrol(Game game)
         {
             count++;
             if (count > 20)
@@ -178,57 +198,57 @@ namespace Binder.Environment
             if (direc == 0)
             {
                 //west
-                if (IsNotWall(building, -changeNum / 2, 0))
+                if (IsNotWall(game.CurBuilding, -Speed / 2, 0))
                 {
-                    X -= changeNum;
-                    ChangeYFrames(-changeNum);
+                    X -= Speed;
+                    ChangeXFrames(-Speed, game);
                 }
                 else
                 {
-                    X += changeNum;
-                    ChangeYFrames(changeNum);
+                    X += Speed;
+                    ChangeXFrames(Speed, game);
                 }
             }
             else if (direc == 1)
             {
                 //east
-                if (IsNotWall(building, (changeNum / 2), 0))
+                if (IsNotWall(game.CurBuilding, (Speed / 2), 0))
                 {
-                    X += changeNum;
-                    ChangeYFrames(changeNum);
+                    X += Speed;
+                    ChangeXFrames(Speed, game);
                 }
                 else
                 {
-                    X -= changeNum;
-                    ChangeYFrames(-changeNum);
+                    X -= Speed;
+                    ChangeXFrames(-Speed, game);
                 }
             }
             else if (direc == 2)
             {
                 //north
-                if (IsNotWall(building, 0, (-changeNum / 2)))
+                if (IsNotWall(game.CurBuilding, 0, (-Speed / 2)))
                 {
-                    Y -= changeNum;
-                    ChangeXFrames(-changeNum);
+                    Y -= Speed;
+                    ChangeYFrames(-Speed, game);
                 }
                 else
                 {
-                    Y += changeNum;
-                    ChangeXFrames(changeNum);
+                    Y += Speed;
+                    ChangeYFrames(Speed, game);
                 }
             }
             else if (direc == 3)
             {
                 //south
-                if (IsNotWall(building, 0, (changeNum / 2)))
+                if (IsNotWall(game.CurBuilding, 0, (Speed / 2)))
                 {
-                    Y += changeNum / 2;
-                    ChangeXFrames(changeNum);
+                    Y += Speed / 2;
+                    ChangeYFrames(Speed, game);
                 }
                 else
                 {
-                    Y -= changeNum / 2;
-                    ChangeXFrames(-changeNum);
+                    Y -= Speed / 2;
+                    ChangeYFrames(-Speed, game);
                 }
             }
         }
@@ -237,34 +257,34 @@ namespace Binder.Environment
         {
             if (game.Marcus.X < X)
             {
-                if (IsNotWall(game.CurBuilding, (-changeNum / 2), 0))
+                if (IsNotWall(game.CurBuilding, (-Speed / 2), 0))
                 {
-                    X -= changeNum / 2;
-                    ChangeYFrames(-changeNum / 2);
+                    X -= Speed / 2;
+                    ChangeXFrames(-Speed / 2, game);
                 }
             }
             else if (game.Marcus.X > X)
             {
-                if (IsNotWall(game.CurBuilding, (changeNum / 2), 0))
+                if (IsNotWall(game.CurBuilding, (Speed / 2), 0))
                 {
-                    X += changeNum / 2;
-                    ChangeYFrames(changeNum / 2);
+                    X += Speed / 2;
+                    ChangeXFrames(Speed / 2, game);
                 }
             }
             if (game.Marcus.Y < Y)
             {
-                if (IsNotWall(game.CurBuilding, 0, (-changeNum / 2)))
+                if (IsNotWall(game.CurBuilding, 0, (-Speed / 2)))
                 {
-                    Y -= changeNum / 2;
-                    ChangeXFrames(-changeNum / 2);
+                    Y -= Speed / 2;
+                    ChangeYFrames(-Speed / 2, game);
                 }
             }
             else if (game.Marcus.Y > Y)
             {
-                if (IsNotWall(game.CurBuilding,0, (changeNum / 2)))
+                if (IsNotWall(game.CurBuilding,0, (Speed / 2)))
                 {
-                    Y += changeNum / 2;
-                    ChangeXFrames(changeNum / 2);
+                    Y += Speed / 2;
+                    ChangeYFrames(Speed / 2, game);
                 }
             }
         }
@@ -281,20 +301,19 @@ namespace Binder.Environment
                         if (game.IsCheatOn != true)
                         {
                             attackTime++;
-                            if (attackTime > 10)
+                            if (attackTime > 100)
                             {
                                 isAttacking = true;
-                                game.Marcus.Health -= Damage;
                                 attackTime = 0;
                             }
                         }
                     }
                     else
-                        attackTime = 10;
+                        attackTime = 100;
                 }
                 else
                 {
-                    Patrol(game.CurBuilding);
+                    Patrol(game);
                 }
             }
         }

@@ -102,6 +102,7 @@ namespace Binder
             ring = new BinderRing();
             ring.X = 700;
             ring.Y = 450;
+            Environ.Add(ring);
             MakeItems(level);
             MakeAIPerLevel();
 
@@ -252,7 +253,7 @@ namespace Binder
                                         break;
 
                                     case "AI":
-                                        AI aI = new AI(0, 0, 0);
+                                        AI aI = new AI(0, 0, 0, 0, 0);
                                         string aiStr = string.Format("{0}?{1},{2}!{3},{4}!{5},{6}!{7},{8}!{9},{10}!{11},{12}!{13}", identify[j], identify[j + 1], identify[j + 2], identify[j + 3], identify[j + 4], identify[j + 5], identify[j + 6], identify[j + 7], identify[j + 8], identify[j + 9], identify[j + 10], identify[j + 11], identify[j + 12], identify[j + 13] );
                                         Environ.Add(aI.Deserialize(aiStr));
                                         break;
@@ -280,6 +281,11 @@ namespace Binder
         public void MakeItems(int level)
         {
             if (level == 1) {
+                ring.X = 2060;
+                ring.Y = -1070;
+                InventoryItem item = new InventoryItem();
+                item.X = 800;
+                item.Y = 450;
             InventoryItem item = new InventoryItem();
                 item.X = -2700;
                 item.Y = -900;
@@ -301,7 +307,7 @@ namespace Binder
                 Environ.Add(itemThree);
                 InventoryItem itemFour = new InventoryItem();
                 itemFour.X = 1000;
-                itemFour.Y = 10;
+                itemFour.Y = -560;
                 itemFour.Image = "/Sprites/pencil.png";
                 itemFour.Name = "pencil";
                 Environ.Add(itemFour);
@@ -313,8 +319,8 @@ namespace Binder
                 itemFive.Name = "printer";
                 Environ.Add(itemFive);
                 InventoryItem itemSix = new InventoryItem();
-                itemSix.X = -2800;
-                itemSix.Y = 1150;
+                itemSix.X = -1660;
+                itemSix.Y = -1170;
                 itemSix.Image = "/Sprites/chair.png";
                 itemSix.Name = "chair";
                 Environ.Add(itemSix);
@@ -326,18 +332,27 @@ namespace Binder
                 itemSeven.Name = "trumpet";
                 Environ.Add(itemSeven);
                 InventoryItem itemEight = new InventoryItem();
-                itemEight.X = 0;
-                itemEight.Y = 450;
+                itemEight.X = 2060;
+                itemEight.Y = -1070;
                 itemEight.canBePickedUp = false;
                 itemEight.Image = "/Sprites/bulletinBoard.png";
                 itemEight.Name = "bulletin board";
                 Environ.Add(itemEight);
+                InventoryItem itemNine = new InventoryItem();
+                itemNine.X = 160;
+                itemNine.Y = 1670;
+                itemNine.canBePickedUp = false;
+                itemNine.Image = "/Sprites/piano.png";
+                itemNine.Name = "piano";
+                Environ.Add(itemNine);
             }
             else if (level == 2)
             {
+                ring.X = -3000;
+                ring.Y = -1200;
                 InventoryItem item = new InventoryItem();
-                item.X = 800;
-                item.Y = 450;
+                item.X = 200;
+                item.Y = -1200;
                 item.isTheOne = true;
                 item.Image = "/Sprites/Bible.png";
                 item.Name = "Bible";
@@ -349,7 +364,7 @@ namespace Binder
                 itemTwo.Name = "jacket";
                 Environ.Add(itemTwo);
                 InventoryItem itemThree = new InventoryItem();
-                itemThree.X = 1500;
+                itemThree.X = 60;
                 itemThree.Y = 100;
                 itemThree.Image = "/Sprites/table.png";
                 itemThree.canBePickedUp = false;
@@ -359,7 +374,7 @@ namespace Binder
                 itemFour.X = 2000;
                 itemFour.Y = -1200;
                 itemFour.Image = "/Sprites/bookshelf.png";
-                itemFour.canBePickedUp = true;
+                itemFour.canBePickedUp = false;
                 itemFour.Name = "pencil";
                 Environ.Add(itemFour);
                 InventoryItem itemFive = new InventoryItem();
@@ -375,22 +390,45 @@ namespace Binder
                 itemSix.Name = "chair";
                 Environ.Add(itemSix);
                 InventoryItem itemSeven = new InventoryItem();
-                itemSeven.X = 700;
-                itemSeven.Y = 300;
+                itemSeven.X = 800;
+                itemSeven.Y = -500;
                 itemSeven.isTheOne = true;
                 itemSeven.Image = "/Sprites/rubberDuck.png";
                 itemSeven.Name = "duck";
                 Environ.Add(itemSeven);
                 InventoryItem itemEight = new InventoryItem();
-                itemEight.X = -1500;
-                itemEight.Y = 1000;
+                itemEight.X = -3000;
+                itemEight.Y = -1200;
                 itemEight.Image = "/Sprites/waterFountain.png";
                 itemEight.canBePickedUp = false;
                 itemEight.Name = "water fountain";
                 Environ.Add(itemEight);
+                InventoryItem itemNine = new InventoryItem();
+                itemNine.X = -2000;
+                itemNine.Y = 100;
+                itemNine.Image = "/Sprites/bookshelf.png";
+                itemNine.canBePickedUp = false;
+                itemNine.Name = "pencil";
+                Environ.Add(itemNine);
+                InventoryItem itemTen = new InventoryItem();
+                itemTen.X = -1000;
+                itemTen.Y = 100;
+                itemTen.Image = "/Sprites/bookshelf.png";
+                itemTen.canBePickedUp = false;
+                itemTen.Name = "pencil";
+                Environ.Add(itemTen);
+                InventoryItem itemEleven = new InventoryItem();
+                itemEleven.X = -1000;
+                itemEleven.Y = -700;
+                itemEleven.Image = "/Sprites/bookshelf.png";
+                itemEleven.canBePickedUp = false;
+                itemEleven.Name = "pencil";
+                Environ.Add(itemEleven);
             }
             else if (level == 3)
             {
+                ring.X = 2060;
+                ring.Y = -1070;
                 InventoryItem item = new InventoryItem();
                 item.X = -3000;
                 item.Y = -1280;
@@ -399,8 +437,8 @@ namespace Binder
                 item.Name = "Bible";
                 Environ.Add(item);
                 InventoryItem itemTwo = new InventoryItem();
-                itemTwo.X = 3000;
-                itemTwo.Y = -1280;
+                itemTwo.X = -3000;
+                itemTwo.Y = 900;
                 itemTwo.Image = "/Sprites/schaubJacket.png";
                 itemTwo.Name = "jacket";
                 Environ.Add(itemTwo);
@@ -425,8 +463,8 @@ namespace Binder
                 itemFive.Name = "phone";
                 Environ.Add(itemFive);
                 InventoryItem itemSix = new InventoryItem();
-                itemSix.X = 700;
-                itemSix.Y = 1500;
+                itemSix.X = 2560;
+                itemSix.Y = -1070;
                 itemSix.Image = "/Sprites/chair.png";
                 itemSix.canBePickedUp = true;
                 itemSix.Name = "chair";
@@ -438,12 +476,19 @@ namespace Binder
                 itemSeven.Name = "backpack";
                 Environ.Add(itemSeven);
                 InventoryItem itemEight = new InventoryItem();
-                itemEight.X = -3000;
-                itemEight.Y = 500;
+                itemEight.X = -1060;
+                itemEight.Y = 220;
                 itemEight.Image = "/Sprites/flag.png";
                 itemEight.canBePickedUp = false;
                 itemEight.Name = "water fountain";
                 Environ.Add(itemEight);
+                InventoryItem itemNine = new InventoryItem();
+                itemNine.X = 2060;
+                itemNine.Y = -1070;
+                itemNine.canBePickedUp = false;
+                itemNine.Image = "/Sprites/flag.png";
+                itemNine.Name = "flag";
+                Environ.Add(itemNine);
             }
         }
 
@@ -517,57 +562,45 @@ namespace Binder
         {
             if (LevelNum == 1)
             {
-                MakeAI(850, 400, 3, 1);
+                MakeAI(1050, 400, 3, 1);
                 MakeAI(2000, 600, 3, 1);
                 MakeAI(800, 1500, 3, 1);
             }
             else if (LevelNum == 2)
             {
-                MakeAI(850, 400, 3, 1);
-                MakeAI(2000, 600, 3, 1);
-                MakeAI(800, 1500, 3, 1);
+                MakeAI(850, -600, 3, 1);
+                MakeAI(-20, 1000, 3, 1);
+                MakeAI(-1200, 500, 3, 1);
+                MakeAI(20, -1000, 3, 1);
+                MakeAI(1200, -500, 3, 1);
             }
             else if (LevelNum == 3)
             {
-                MakeAI(850, 400, 3, 1);
-                MakeAI(2000, 600, 3, 1);
-                MakeAI(800, 1500, 3, 1);
+                MakeAI(-2000, -900, 3, 1);
+                MakeAI(-2500, 1000, 3, 1);
+                MakeAI(2000, 100, 3, 1);
+                MakeAI(3000, -1300, 3, 1);
+                MakeAI(0, 1500, 5, 1);
+                MakeAI(0, -100, 3, 1);
+                MakeAI(-500, 850, 3, 1);
             }
         }
         public void MakeAI(int x, int y, int health, int damage)
         {
-
-            /*
-             * maybe just have the line 
-             * 
-             * AI ai = new AI(parameters here);
-             * 
-             * in the "if" statment. cause everythign after that line is the same for each "if" statement
-             */
-
             if (Difficulty == 1)
             {
-                AI ai = new AI(health, damage, 10);
-                ai.X = x;
-                ai.Y = y;
-                ai.PictureName = "/Sprites/PsiZetaFront.png";
-                Game.Environ.Add(ai);
+                AI ai = new AI(health, damage, 5, x, y);
+                Environ.Add(ai);
             }
             else if (Difficulty == 2)
             {
-                AI ai = new AI(health, (damage * 2), 10);
-                ai.X = x;
-                ai.Y = y;
-                ai.PictureName = "/Sprites/PsiZetaFront.png";
-                Game.Environ.Add(ai);
+                AI ai = new AI(health, (damage * 2), 5, x, y);
+                Environ.Add(ai);
             }
             else if (Difficulty == 3)
             {
-                AI ai = new AI((health * 2), (damage * 2), 10);
-                ai.X = x;
-                ai.Y = y;
-                ai.PictureName = "/Sprites/PsiZetaFront.png";
-                Game.Environ.Add(ai);
+                AI ai = new AI((health * 2), (damage * 2), 5, x, y);
+                Environ.Add(ai);
             }
         }
     }

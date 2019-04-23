@@ -17,6 +17,7 @@
         <Image Source="Sprites\binderRingSilver.png" Width="30" Canvas.Top="74" Canvas.Left="252"/>
         <Image Source="Sprites\PsiZetaFront.png" Width="20" Canvas.Top="195" Canvas.Left="171"/>
         <Image Source="Sprites\paperAirplaneRight.jpg" Width="20" Canvas.Top="255" Canvas.Left="133"/>
+        <Image Source="Sprites\completeBinder.png" Width="40" Canvas.Top="70" Canvas.Left="483"/>
         <Label Content="Game Instructions" FontSize="45" Foreground="#e4c027" FontFamily="Haettenschweiler" Width="265" Canvas.Left="268" Canvas.Top="10"/>
         <TextBlock xml:space="preserve" FontFamily="Baskerville Old Face" FontSize="14">
             

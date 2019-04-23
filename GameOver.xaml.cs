@@ -25,7 +25,21 @@ namespace Binder.Environment
             gameWindow = window;
             InitializeComponent();
             if (isGameWon)
+            {
                 lblResults.Content = "You Win!";
+                Image img = new Image()
+                {
+                    Source = new BitmapImage(new Uri("/Sprites/completeBinder.png", UriKind.Relative))
+                };
+                Label label = new Label()
+                {
+                    Content = img
+                };
+                label.Width = 60;
+                Canvas.SetLeft(label, 195);
+                Canvas.SetTop(label, 205);
+                CnvsGameOver.Children.Add(label);
+            }
             else
                 lblResults.Content = "You lost";
             Game.isPaused = true;
