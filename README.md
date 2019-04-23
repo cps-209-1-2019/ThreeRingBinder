@@ -4,8 +4,6 @@ Welcome to the _Legend of the Three Ring Binder_ repository.
 ## Instructions
 Use the arrow keys to move around. 
 
-Instructions for the final game:
-
 Your Goal: Find all three binder rings and assemble the legendary binder.
 
 Roam the building in search of an object that will allow you to discover the next ring.
@@ -25,9 +23,11 @@ After solving the riddle, move to the correct location and use the correct objec
  * Object usage
  * Basic finding the binder ring
  * Multiple levels
+ * Full Load/Save
+ * Sound Effects
 
 ## Known Issues
- * The main issue right now is the serialization. It is only partially working.
+ * Player can still travel through walls
 
 
 ## Recording
@@ -38,7 +38,7 @@ After solving the riddle, move to the correct location and use the correct objec
 
 | Developer | Hours Used | Hours Remaining | Journal Link
 |---|---|---|---|
-| Day | 36.5 | 23.5 | [Day Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Day-Journal)
+| Day | 50 | 10 | [Day Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Day-Journal)
 | Dulcio | 41 | 19 | [Dulcio Log](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Dulcio-Log)
 | Shipe | 44 | 16| [Shipe Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Shipe-Journal)
 | Tapp | 19.25 | 41.75 | [Tapp Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Tapp-Journal)
