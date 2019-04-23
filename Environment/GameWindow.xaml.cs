@@ -306,6 +306,7 @@ namespace Binder.Environment
             }
             else if (isGameOver == false)
             {
+                int saveScore = binderGame.CurrScore;
                 MessageBox.Show("You Found the Ring!");
                 binderGame.Play("trumpets.wav");
                 Label label = SetObjectBinding("/Sprites/binderRingSilver.png", binderGame.ring);
@@ -315,6 +316,7 @@ namespace Binder.Environment
                 cnvsGame.Children.Clear();
                 StopTimers();
                 binderGame = new Game(180, level);
+                binderGame.CurrScore = saveScore;
                 binderGame.IsCheatOn = isCheatOn;
                 MakeLevelFloors(level);
                 LoadGame();
