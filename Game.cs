@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Binder.Environment;
-using System.IO;  //added IO using statement - ZD
+using System.IO;
 using System.ComponentModel;
 using System.Media;
 
@@ -586,7 +586,7 @@ namespace Binder
                 CurrScore = Convert.ToInt32((PsiZetaShamed * 200) + (Time * 15));
             else
                 CurrScore = Convert.ToInt32((PsiZetaShamed * 200));
-            return CurrScore;
+            return CurrScore + HighScore;
         }
         protected void SetProperty(string source)
         {
