@@ -284,9 +284,6 @@ namespace Binder
                 ring.X = 2060;
                 ring.Y = -1070;
                 InventoryItem item = new InventoryItem();
-                item.X = 800;
-                item.Y = 450;
-                InventoryItem itemOne = new InventoryItem();
                 item.X = -2700;
                 item.Y = -900;
                 item.Image = "/Sprites/guitar.png";
