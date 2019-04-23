@@ -575,6 +575,8 @@ namespace Binder
                 MakeAI(850, -600, 3, 1);
                 MakeAI(-20, 1000, 3, 1);
                 MakeAI(-1200, 500, 3, 1);
+                MakeAI(20, -1000, 3, 1);
+                MakeAI(1200, -500, 3, 1);
             }
             else if (LevelNum == 3)
             {
@@ -582,8 +584,9 @@ namespace Binder
                 MakeAI(-2500, 1000, 3, 1);
                 MakeAI(2000, 100, 3, 1);
                 MakeAI(3000, -1300, 3, 1);
-                MakeAI(0, 1500, 3, 1);
+                MakeAI(0, 1500, 5, 1);
                 MakeAI(0, -100, 3, 1);
+                MakeAI(-500, 850, 3, 1);
             }
         }
         public void MakeAI(int x, int y, int health, int damage)
