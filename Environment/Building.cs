@@ -14,31 +14,15 @@ namespace Binder.Environment
     //Added public accessibility modifier - Day
     public class Building : WorldObject, ISerialization<Building>
     {
-        public string Name { get; set; }
-        //public int Width { get; set; }
-        //public int Length{ get; set; }
+        
+        public string Name { get; set; }            //Holds the name of the building to Display
 
-        public Dictionary<string, Items> Collection;
-        public List<Walls> WallsCol;
+        public List<Walls> WallsCol;                //Holds the collection of Walls
 
         public Building()
-        {
-            
+        {            
             BuildFA();
-            Collection = new Dictionary<string, Items>();
             WallsCol = new List<Walls>();
-        }
-
-        //Adds the Item object in its params to the Collection
-        public void AddItem(Items item)
-        {
-            Collection[item.Name] = item;
-        }
-
-        //Removes an item object from the Collection of items in the Building
-        public void RmvItm(Items item)
-        {
-            Collection.Remove(item.Name);
         }
 
         //Builds walls from the List of Coords
@@ -53,6 +37,7 @@ namespace Binder.Environment
             }
         }
 
+        //
         void BuildFA()
         {
             bool full = false;
@@ -171,6 +156,9 @@ namespace Binder.Environment
             return this;
         }
 
+        //Building Plans
+
+        //Perimeter for the other Building Plans
         List<int[]> Perimeter = new List<int[]>()
         {
             //Coords Format: `x`, `y`, `l`, `w`
@@ -182,6 +170,7 @@ namespace Binder.Environment
             new int[4] {3105, -1380, 3342, 69},
         };
 
+        //Perimeter for the Menacing Maze
         List<int[]> MazePerimeter = new List<int[]>()
         {
             new int[4] {-3105, -1380, 69, 6210},
@@ -190,7 +179,6 @@ namespace Binder.Environment
             new int[4] {3105, -1380, 4278, 69},
         };
 
-        //Building Plans
         public static List<int[]> LibPlans = new List<int[]>()
         {            
             //Computer Labs
@@ -226,15 +214,11 @@ namespace Binder.Environment
             new int[4] {-414, 1134, 414, 69}
         };
 
+        //Holds coords for the Finest Artists Walls
         public static List<int[]> FAPlans = new List<int[]>()
-        {
-            //Rooms
-            //new int[4] {-2049, -1250, 1000, 24},
-            new int[4] {-2049, 500, 1000, 769}
+        {        };
 
-        };
-
-
+        //Holds coords for the Menacing Maze
         public static List<int[]> Maze = new List<int[]>()
         {
            new int[4] { -2829, -1380, 621, 69},  //1
@@ -272,8 +256,7 @@ namespace Binder.Environment
            new int[4] {-1869, 690, 69, 138},
            new int[4] {-1587, 1104, 69, 966},
            new int[4] {-897, 622, 207, 69},
-           new int[4] {-1242, 832, 69, 552}, //30
-           
+           new int[4] {-1242, 832, 69, 552}, //30           
 
            new int[4] {-2829, 1380, 69, 1931},
            new int[4] {-2898, 1725, 69, 207},
@@ -326,6 +309,7 @@ namespace Binder.Environment
             
         };
 
+        //Adds the Perimeter of to the Building Plan passed in its perimeters.
         void BuildPerim(List<int[]> plans)
         {
             if(plans == Maze)
