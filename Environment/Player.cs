@@ -259,7 +259,7 @@ namespace Binder.Environment
         }
 
 
-
+        //Turns the Player object into a string
         public string Serialize()
         {
             string thePlayer = "";
@@ -270,12 +270,12 @@ namespace Binder.Environment
                 theInventory += inv.Serialize() + ";";
             }
 
-
             thePlayer = string.Format("PLAYER?5,NAME!{0},HEALTH!{1},DAMAGE!{2},SPEED!{3},POSX!{4},POSY!{5},INVENTORY#{6}!{7}", Name, Health, Damage, Speed, X, Y, Inventory.Count, theInventory);
 
             return thePlayer;
         }
-
+        
+        //Fills a Player object with data from a string
         public Player Deserialize(string obj)
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));

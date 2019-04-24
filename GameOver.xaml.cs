@@ -23,7 +23,7 @@ namespace Binder.Environment
     /// </summary>
     public partial class GameOver : Window
     {
-        GameWindow gameWindow;
+        GameWindow gameWindow;          //holds a reference to the current game window
         public GameOver(GameWindow window, bool isGameWon, int points)
         {
             gameWindow = window;
@@ -43,12 +43,12 @@ namespace Binder.Environment
                 Canvas.SetLeft(label, 195);
                 Canvas.SetTop(label, 205);
                 CnvsGameOver.Children.Add(label);
+                CheckHighScore(points);
             }
             else
                 lblResults.Content = "You lost";
             Game.isPaused = true;
             lblPoints.Content = points + " Points!";
-            CheckHighScore(points);
         }
 
         //Closes game window and opens title screen

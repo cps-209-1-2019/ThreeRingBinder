@@ -23,8 +23,8 @@ namespace Binder
     /// </summary>
     public partial class HighScoreList : Window
     {
-        TextBlock[] textBlocksNames;
-        TextBlock[] textBlocksScores;
+        TextBlock[] textBlocksNames;   //Holds all the name textblocks
+        TextBlock[] textBlocksScores;  //Holds all the score textblocks
         public HighScoreList()
         {
 

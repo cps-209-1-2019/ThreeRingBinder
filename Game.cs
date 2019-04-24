@@ -14,10 +14,10 @@ namespace Binder
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        SoundPlayer BSoundPlayer;
+        SoundPlayer BSoundPlayer;       //Holds current sound
 
-        public Player Marcus { get; set; }
-        private int currScore;
+        public Player Marcus { get; set; }      //Holds the instance of the player
+        private int currScore;                  
         public int CurrScore
         {
             get
@@ -36,12 +36,12 @@ namespace Binder
         public int NumItems { get; set; }           //Keeps track of the number of items in players inventory
         public bool IsCheatOn { get; set; }         //Determines whether or not the cheat mode should be on
         public static int Difficulty { get; set; }         //Holds difficulty level
-        public static List<WorldObject> Environ { get; set; }
-        public Building CurBuilding { get; set; }
-        public int LevelNum { get; set; }
-        //public enum Levels { Library, FA, Maze }
+        public static List<WorldObject> Environ { get; set; }    //Holds current game objects
+        public Building CurBuilding { get; set; }          //Holds the current building reference
+        public int LevelNum { get; set; }                  //Holds the current level number
+        public bool isPauseScreenShown = false;            //Tells whether the pause screen is currently shown
+
         private string currLevel;
-        public bool isPauseScreenShown = false;
         public string CurrLevel
         {
             get
@@ -53,17 +53,16 @@ namespace Binder
                 currLevel = "Level " + value;
                 SetProperty("CurrLevel");
             }
-        }
+        }                                            //Holds information on the current level
         public static bool isPaused { get; set; }    //Determines if the game is paused
         public BinderRing ring;                      //Current binder ring
         public bool isRingFound;                     //Determines if the player has found the ring
         public static List<InventoryItem> itemsHeld = new List<InventoryItem>();   //Items currently held by the player
-        public int currentItem = 0;                          //Shows item that currently needs to be used
-        public int PsiZetaShamed = 0;
-
+        public int currentItem = 0;                  //Shows item that currently needs to be used
+        public int PsiZetaShamed = 0;                //Holds number of AI characters that have been defeated 
+        private int min = 2;                         //Gives number of starting minutes
+        private int sec = 60;                        //Gives number of starting seconds
         private string time;
-        private int min = 2;
-        private int sec = 60;
         public string TimeLeft
         {
             get
@@ -75,7 +74,7 @@ namespace Binder
                 time = value;
                 SetProperty("TimeLeft");
             }
-        }
+        }                                           //Holds current remaining time
 
         public Game(double startTime, int level)
         {
@@ -96,9 +95,6 @@ namespace Binder
             LevelNum = level;
             NLevel(LevelNum);
 
-            //StartPoint = new int[] { 0, 0 };
-
-            //StartPoint = new int[2];
             ring = new BinderRing();
             ring.X = 700;
             ring.Y = 450;
@@ -345,7 +341,7 @@ namespace Binder
                 Environ.Add(itemNine);
                 InventoryItem item10 = new InventoryItem();
                 item10.X = 1600;
-                item10.Y = 1670;
+                item10.Y = 1600;
                 item10.canBePickedUp = false;
                 item10.Image = "/Sprites/coffeeMachine.png";
                 item10.Name = "Coffee Machine";

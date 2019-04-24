@@ -99,29 +99,6 @@ namespace Binder.Environment
             }
             return this;
         }
-
-    }
-
-    public class DecoyItem: Items, ISerialization<DecoyItem>
-    {
-        public int Strength { get; set; }
-
-        public void DecrHealth()
-        {
-
-        }
-
-        //Turn the object into a string
-        public string Serialize()
-        {
-            throw new NotImplementedException();
-        }
-
-        //Take a string and return a DecoyItem object
-        public DecoyItem Deserialize(string obj)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     //Defines the methods and actions for the Binder class
