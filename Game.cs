@@ -397,7 +397,7 @@ namespace Binder
                 itemFour.Y = -1200;
                 itemFour.Image = "/Sprites/bookshelf.png";
                 itemFour.canBePickedUp = false;
-                itemFour.Name = "pencil";
+                itemFour.Name = "bookshelf";
                 Environ.Add(itemFour);
                 InventoryItem itemFive = new InventoryItem();
                 itemFive.X = -100;
@@ -426,7 +426,7 @@ namespace Binder
                 itemEight.Name = "water fountain";
                 Environ.Add(itemEight);
                 InventoryItem itemNine = new InventoryItem();
-                itemNine.X = -2000;
+                itemNine.X = -2150;
                 itemNine.Y = 100;
                 itemNine.Image = "/Sprites/pencil.png";
                 itemNine.canBePickedUp = false;
@@ -491,7 +491,7 @@ namespace Binder
                 itemSix.Name = "chair";
                 Environ.Add(itemSix);
                 InventoryItem itemSeven = new InventoryItem();
-                itemSeven.X = 2500;
+                itemSeven.X = 2700;
                 itemSeven.Y = -680;
                 itemSeven.Image = "/Sprites/backpack.png";
                 itemSeven.Name = "backpack";
@@ -505,7 +505,7 @@ namespace Binder
                 Environ.Add(itemEight);
                 InventoryItem itemNine = new InventoryItem();
                 itemNine.X = 2060;
-                itemNine.Y = -1070;
+                itemNine.Y = -970;
                 itemNine.canBePickedUp = false;
                 itemNine.Image = "/Sprites/flag.png";
                 itemNine.Name = "flag";
@@ -514,7 +514,6 @@ namespace Binder
                 item10.X = -1300;
                 item10.Y = -77;
                 item10.Image = "/Sprites/laptop.png";
-                item10.canBePickedUp = false;
                 item10.Name = "laptop";
                 Environ.Add(item10);
                 InventoryItem itemEleven = new InventoryItem();
@@ -620,27 +619,27 @@ namespace Binder
         {
             if (LevelNum == 1)
             {
-                MakeAI(1050, 400, 3, 1);
-                MakeAI(2000, 600, 3, 1);
-                MakeAI(800, 1500, 3, 1);
+                MakeAI(1050, 400, 2, 1);
+                MakeAI(2000, 600, 2, 1);
+                MakeAI(800, 1600, 2, 1);
             }
             else if (LevelNum == 2)
             {
-                MakeAI(850, -600, 3, 1);
-                MakeAI(-20, 1000, 3, 1);
-                MakeAI(-1200, 500, 3, 1);
-                MakeAI(20, -1000, 3, 1);
+                MakeAI(850, -600, 2, 1);
+                MakeAI(-20, 1000, 2, 1);
+                MakeAI(-1200, 500, 2, 1);
+                MakeAI(20, -1000, 2, 1);
                 MakeAI(1200, -500, 3, 1);
             }
             else if (LevelNum == 3)
             {
-                MakeAI(-2000, -900, 3, 1);
-                MakeAI(-2500, 1000, 3, 1);
-                MakeAI(2000, 100, 3, 1);
+                MakeAI(-2000, -900, 2, 1);
+                MakeAI(-2500, 1000, 2, 1);
+                MakeAI(2000, 100, 2, 1);
                 MakeAI(3000, -1300, 3, 1);
                 MakeAI(0, 1500, 5, 1);
-                MakeAI(0, -100, 3, 1);
-                MakeAI(-500, 850, 3, 1);
+                MakeAI(0, -100, 2, 1);
+                MakeAI(-500, 850, 2, 1);
             }
         }
         public void MakeAI(int x, int y, int health, int damage)
@@ -652,12 +651,12 @@ namespace Binder
             }
             else if (Difficulty == 2)
             {
-                AI ai = new AI(health, (damage * 2), 5, x, y);
+                AI ai = new AI(health * 2, damage, 5, x, y);
                 Environ.Add(ai);
             }
             else if (Difficulty == 3)
             {
-                AI ai = new AI((health * 2), (damage * 2), 5, x, y);
+                AI ai = new AI((health * 3), (damage * 2), 5, x, y);
                 Environ.Add(ai);
             }
         }
