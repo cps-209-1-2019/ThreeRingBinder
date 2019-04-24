@@ -14,7 +14,7 @@ namespace Binder
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        SoundPlayer BSoundPlayer;       //Holds current sound
+        SoundPlayer BSoundPlayer;       //Holds Reference to SoundPlayer object
 
         public Player Marcus { get; set; }      //Holds the instance of the player
         private int currScore;                  
@@ -42,7 +42,7 @@ namespace Binder
         public bool isPauseScreenShown = false;            //Tells whether the pause screen is currently shown
 
         private string currLevel;
-        public string CurrLevel
+        public string CurrLevel                        //Holds information on the current level
         {
             get
             {
@@ -53,7 +53,7 @@ namespace Binder
                 currLevel = "Level " + value;
                 SetProperty("CurrLevel");
             }
-        }                                            //Holds information on the current level
+        }                                            
         public static bool isPaused { get; set; }    //Determines if the game is paused
         public BinderRing ring;                      //Current binder ring
         public bool isRingFound;                     //Determines if the player has found the ring
@@ -63,7 +63,8 @@ namespace Binder
         private int min = 2;                         //Gives number of starting minutes
         private int sec = 60;                        //Gives number of starting seconds
         private string time;
-        public string TimeLeft
+        public string TimeLeft                       //Holds current remaining time display
+
         {
             get
             {
@@ -74,8 +75,7 @@ namespace Binder
                 time = value;
                 SetProperty("TimeLeft");
             }
-        }                                           //Holds current remaining time
-
+        }                                         
         public Game(double startTime, int level)
         {
             Time = startTime;
@@ -102,7 +102,7 @@ namespace Binder
             MakeItems(level);
             MakeAIPerLevel();
 
-            //Play("GamePlay.wav");
+            Play("GamePlay.wav");
         }
 
         public Game()
@@ -143,7 +143,7 @@ namespace Binder
             BSoundPlayer.Play();                   
         }
 
-        //Level Logic 
+        //Creates new level based the number in params
         public void NLevel(int level)
         {
             Dictionary<int, List<int[]>> Plans = new Dictionary<int, List<int[]>>();
@@ -534,6 +534,7 @@ namespace Binder
                 wr.WriteLine("TIMELEFT!" + TimeLeft);
                 wr.WriteLine("MIN!" + min);
                 wr.WriteLine("SEC!" + sec);
+                wr.WriteLine("DIFFICULTY!" + Difficulty);
                 wr.WriteLine("NUMITEMS!" + NumItems);
                 wr.WriteLine("LEVELNUM!" + LevelNum);
                 wr.WriteLine("CURRLEVEL!" + currLevel);

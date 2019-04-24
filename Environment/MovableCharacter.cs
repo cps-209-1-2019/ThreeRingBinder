@@ -1,4 +1,9 @@
-﻿using System;
+﻿//--------------------------------------------------------------------------------------------
+//File:   MovableCharacter.cs
+//Desc:   This class contains logic that applies to both AI and Player.
+//---------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
