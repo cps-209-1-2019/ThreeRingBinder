@@ -24,8 +24,8 @@ namespace Binder
     /// </summary>
     public partial class Pause : Window
     {
-        Game binderGame;
-        GameWindow window;
+        Game binderGame;      //Holds a reference to the current Game
+        GameWindow window;    //Holds a reference to the current Game Window
         public Pause(Game game, GameWindow gameWindow)
         {
             binderGame = game;
@@ -85,8 +85,7 @@ namespace Binder
         {
             binderGame.Save("gameFile.txt");
             this.Close();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            Application.Current.Shutdown();
             window.Close();
         }
 
