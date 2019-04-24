@@ -108,7 +108,7 @@ namespace Binder.Environment
         {
             string theItem = "";
 
-            theItem = string.Format("RING?3,FOUND!{0},POSX!{1},POSY!{2},IMAGE!{3}",  Found.ToString().ToUpper(), X, Y, Image);
+            theItem = string.Format("RING?4,FOUND!{0},POSX!{1},POSY!{2},IMAGE!{3}",  Found.ToString().ToUpper(), X, Y, Image);
 
             return theItem;
         }

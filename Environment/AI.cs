@@ -205,7 +205,7 @@ namespace Binder.Environment
             if (direc == 0)
             {
                 //west
-                if (IsNotWall(game.CurBuilding, -Speed / 2, 0))
+                if (IsNotWall(Game.Environ, -Speed / 2, 0))
                 {
                     X -= Speed;
                     ChangeXFrames(-Speed, game);
@@ -219,7 +219,7 @@ namespace Binder.Environment
             else if (direc == 1)
             {
                 //east
-                if (IsNotWall(game.CurBuilding, (Speed / 2), 0))
+                if (IsNotWall(Game.Environ, (Speed / 2), 0))
                 {
                     X += Speed;
                     ChangeXFrames(Speed, game);
@@ -233,7 +233,7 @@ namespace Binder.Environment
             else if (direc == 2)
             {
                 //north
-                if (IsNotWall(game.CurBuilding, 0, (-Speed / 2)))
+                if (IsNotWall(Game.Environ, 0, (-Speed / 2)))
                 {
                     Y -= Speed;
                     ChangeYFrames(-Speed, game);
@@ -247,7 +247,7 @@ namespace Binder.Environment
             else if (direc == 3)
             {
                 //south
-                if (IsNotWall(game.CurBuilding, 0, (Speed / 2)))
+                if (IsNotWall(Game.Environ, 0, (Speed / 2)))
                 {
                     Y += Speed / 2;
                     ChangeYFrames(Speed, game);
@@ -264,7 +264,7 @@ namespace Binder.Environment
         {
             if (game.Marcus.X < X)
             {
-                if (IsNotWall(game.CurBuilding, (-Speed / 2), 0))
+                if (IsNotWall(Game.Environ, (-Speed / 2), 0))
                 {
                     X -= Speed / 2;
                     ChangeXFrames(-Speed / 2, game);
@@ -272,7 +272,7 @@ namespace Binder.Environment
             }
             else if (game.Marcus.X > X)
             {
-                if (IsNotWall(game.CurBuilding, (Speed / 2), 0))
+                if (IsNotWall(Game.Environ, (Speed / 2), 0))
                 {
                     X += Speed / 2;
                     ChangeXFrames(Speed / 2, game);
@@ -280,7 +280,7 @@ namespace Binder.Environment
             }
             if (game.Marcus.Y < Y)
             {
-                if (IsNotWall(game.CurBuilding, 0, (-Speed / 2)))
+                if (IsNotWall(Game.Environ, 0, (-Speed / 2)))
                 {
                     Y -= Speed / 2;
                     ChangeYFrames(-Speed / 2, game);
@@ -288,7 +288,7 @@ namespace Binder.Environment
             }
             else if (game.Marcus.Y > Y)
             {
-                if (IsNotWall(game.CurBuilding,0, (Speed / 2)))
+                if (IsNotWall(Game.Environ,0, (Speed / 2)))
                 {
                     Y += Speed / 2;
                     ChangeYFrames(Speed / 2, game);
