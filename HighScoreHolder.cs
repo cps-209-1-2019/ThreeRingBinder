@@ -1,4 +1,9 @@
-﻿using NUnit.Framework;
+﻿//--------------------------------------------------------------------------------------------
+//File:   HighScoreHolder.cs
+//Desc:   This class contains logic for the loading and saving high scores.
+//---------------------------------------------------------------------------------------------
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
