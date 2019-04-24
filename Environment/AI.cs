@@ -27,6 +27,8 @@ namespace Binder.Environment
             Speed = speed;
             X = x;
             Y = y;
+            Width = 120;
+            Length = 120;
             direc = -1;
             wait = false;
             PictureName = "/Sprites/PsiZetaFront.png";

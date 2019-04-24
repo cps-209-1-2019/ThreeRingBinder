@@ -68,8 +68,6 @@ namespace Binder.Environment
             cnvsGame.DataContext = binderGame;
             binderGame.IsCheatOn = cheat;
             LoadGame();
-
-            Play();
         }
 
         public GameWindow()
@@ -569,7 +567,6 @@ namespace Binder.Environment
                 else if (e.Key == Key.X)
                 {
                     binderGame.Marcus.Enteract(binderGame);
-                    //binderGame.Play("inventory.wav");
                 }
                 else if (e.Key == Key.Z)
                 {
@@ -726,23 +723,15 @@ namespace Binder.Environment
         //Sets binding for the floor depending on the level
         private void MakeLevelFloors(int level)
         {
-            string[] stringList = new string[3] { "/Environment/floor5.png", "/Environment/floor5.png", "/Environment/floor5.png" };
+            string[] stringList = new string[1] {"/Environment/floor5.png"};
             
             Image image = new Image();
-            image.Source = new BitmapImage(new Uri(stringList[level - 1], UriKind.Relative));
+            image.Source = new BitmapImage(new Uri(stringList[0], UriKind.Relative));
             image.Height = 1250;
             image.Width = 1966;
             cnvsGame.Children.Add(image);
             Canvas.SetTop(image, -19);
             Canvas.SetLeft(image, -18);
-        }
-
-        //Plays music
-        private void Play()
-        {
-            BMusic = new MediaPlayer();
-            BMusic.Open(new System.Uri(@"pack://application:,,,/Resources/GamePlay.wav"));
-            BMusic.Play();
         }
     }
 }
