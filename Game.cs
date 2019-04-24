@@ -345,7 +345,7 @@ namespace Binder
                 Environ.Add(itemNine);
                 InventoryItem item10 = new InventoryItem();
                 item10.X = 1600;
-                item10.Y = 1670;
+                item10.Y = 1600;
                 item10.canBePickedUp = false;
                 item10.Image = "/Sprites/coffeeMachine.png";
                 item10.Name = "Coffee Machine";
