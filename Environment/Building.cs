@@ -92,7 +92,7 @@ namespace Binder.Environment
         }
 
 
-        //Turn the object into a string
+        //Turn the Building object into a string
         public string Serialize()
         {
             string theBuild = "";
