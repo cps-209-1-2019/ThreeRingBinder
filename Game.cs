@@ -534,6 +534,7 @@ namespace Binder
                 wr.WriteLine("TIMELEFT!" + TimeLeft);
                 wr.WriteLine("MIN!" + min);
                 wr.WriteLine("SEC!" + sec);
+                wr.WriteLine("DIFFICULTY!" + Difficulty);
                 wr.WriteLine("NUMITEMS!" + NumItems);
                 wr.WriteLine("LEVELNUM!" + LevelNum);
                 wr.WriteLine("CURRLEVEL!" + currLevel);
