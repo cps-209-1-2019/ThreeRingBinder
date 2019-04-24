@@ -23,7 +23,7 @@ namespace Binder
     /// </summary>
     public partial class NewHighScore : Window
     {
-        string newHighScore;
+        string newHighScore;      //holds the new high score
         public NewHighScore(int score)
         {
             InitializeComponent();
