@@ -381,7 +381,7 @@ namespace Binder.Environment
             {
                 if (thing is Walls || thing is AI)
                 {
-                    if ((thing.X < (X + changeInX)) && ((thing.X + thing.Width) > (X + changeInX)))// || ((wall.X < (X + changeInX + 30)) && ((wall.X + wall.Width) > (X + changeInX + 30))))
+                    if ((thing.X < (X + changeInX)) && ((thing.X + thing.Width) > (X + changeInX)) || ((thing.X < (X + changeInX + 30)) && ((thing.X + thing.Width) > (X + changeInX + 30))))
                     {
                         if (((thing.Y < (Y + changeInY)) && ((thing.Y + thing.Length) > (Y + changeInY))) || ((thing.Y < (Y + changeInY + Length - 20)) && ((thing.Y + thing.Length) > (Y + changeInY + Length - 20))))
                         {
