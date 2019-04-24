@@ -381,7 +381,7 @@ namespace Binder
                 itemFour.Y = -1200;
                 itemFour.Image = "/Sprites/bookshelf.png";
                 itemFour.canBePickedUp = false;
-                itemFour.Name = "pencil";
+                itemFour.Name = "bookshelf";
                 Environ.Add(itemFour);
                 InventoryItem itemFive = new InventoryItem();
                 itemFive.X = -100;
@@ -410,7 +410,7 @@ namespace Binder
                 itemEight.Name = "water fountain";
                 Environ.Add(itemEight);
                 InventoryItem itemNine = new InventoryItem();
-                itemNine.X = -2000;
+                itemNine.X = -2150;
                 itemNine.Y = 100;
                 itemNine.Image = "/Sprites/pencil.png";
                 itemNine.canBePickedUp = false;
@@ -475,7 +475,7 @@ namespace Binder
                 itemSix.Name = "chair";
                 Environ.Add(itemSix);
                 InventoryItem itemSeven = new InventoryItem();
-                itemSeven.X = 2500;
+                itemSeven.X = 2700;
                 itemSeven.Y = -680;
                 itemSeven.Image = "/Sprites/backpack.png";
                 itemSeven.Name = "backpack";
@@ -489,7 +489,7 @@ namespace Binder
                 Environ.Add(itemEight);
                 InventoryItem itemNine = new InventoryItem();
                 itemNine.X = 2060;
-                itemNine.Y = -1070;
+                itemNine.Y = -970;
                 itemNine.canBePickedUp = false;
                 itemNine.Image = "/Sprites/flag.png";
                 itemNine.Name = "flag";
@@ -498,7 +498,6 @@ namespace Binder
                 item10.X = -1300;
                 item10.Y = -77;
                 item10.Image = "/Sprites/laptop.png";
-                item10.canBePickedUp = false;
                 item10.Name = "laptop";
                 Environ.Add(item10);
                 InventoryItem itemEleven = new InventoryItem();
