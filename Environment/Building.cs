@@ -37,7 +37,7 @@ namespace Binder.Environment
             }
         }
 
-        //
+        //Builds the FA plans
         void BuildFA()
         {
             bool full = false;
