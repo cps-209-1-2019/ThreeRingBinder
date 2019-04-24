@@ -37,7 +37,7 @@ namespace Binder.Environment
             }
         }
 
-        //
+        //Builds the FA plans
         void BuildFA()
         {
             bool full = false;
@@ -77,25 +77,19 @@ namespace Binder.Environment
         }
 
 
-        //Turn the object into a string
+        //Turn the Building object into a string
         public string Serialize()
         {
             string theBuild = "";
-            string theCollection = "";
             string theWalls = "";
             
-            //foreach (string key in Collection.Keys)
-            //{ 
-            //    theCollection += key + ":" + Collection[key].Serialize() + ";"; 
-            //}
-
             foreach(Walls walls in WallsCol)
             {
                 theWalls += walls.Serialize() + ";";
             }
 
 
-            theBuild = string.Format("BUILDING?3,WIDTH!{0},LENGTH!{1},COLLECTION#{2}!{3}ENDLIST,WALLSCOL#{4}!ENDLIST", Width, Length, theCollection, WallsCol.Count, theWalls);
+            theBuild = string.Format("BUILDING?3,WIDTH!{0},LENGTH!{1},WALLSCOL#{2}!{3}ENDLIST", Width, Length, WallsCol.Count, theWalls);
 
             return theBuild;
         }

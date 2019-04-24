@@ -62,11 +62,15 @@ namespace Binder.Environment
                 b.Y += y;
             }
         }
+
+        //Turns the Walls object into a string
         public string Serialize()
         {
             return string.Format("WALLS?3,X!{0},Y!{1},WIDTH!{2},LENGTH!{3}", X, Y, Width, Length);
         }
 
+
+        //Takes a string and populates a Walls object
         public Walls Deserialize(string obj)
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));

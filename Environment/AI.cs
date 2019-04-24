@@ -318,11 +318,13 @@ namespace Binder.Environment
             }
         }
 
+        //Turns the AI object into a string
         public string Serialize()
         {
             return string.Format("AI?6,HEALTH!{0},DAMAGE!{1},SPEED!{2},X!{3},Y!{4},PICTURENAME!{5}", Health, Damage, Speed, X, Y, PictureName);
         }
 
+        //Updates an AI object using a string
         public AI Deserialize(string obj)
         {
             List<string> properties = new List<string>(obj.Split(',', '!', '#', ':', '?', ';'));
