@@ -248,6 +248,8 @@ namespace Binder.Environment
                     if (plane.Destroy == true)
                     {
                         RemoveLabel(plane);
+                        Game.Environ.Remove(plane);
+                        break;
                     }
                 }
                 CheckHealth();
