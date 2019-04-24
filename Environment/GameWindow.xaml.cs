@@ -85,7 +85,7 @@ namespace Binder.Environment
         private void LimitTimer_Tick(object sender, EventArgs e)
         {            
             binderGame.DecrTime();
-            if (binderGame.Time == 0)
+            if (binderGame.Time == 0 || binderGame.TimeLeft == "Time: 00:00")
             {
                 LimitTimer.Stop();
                 binderGame.Play("timeUp.wav");

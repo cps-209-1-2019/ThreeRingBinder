@@ -233,6 +233,7 @@ namespace Binder
                         case "RING":
                             BinderRing binder = new BinderRing();
                             ring = binder.Deserialize(line);
+                            Environ.Add(ring);
                             break;
                         case "MARCUS":
                             Marcus = Marcus.Deserialize(line);

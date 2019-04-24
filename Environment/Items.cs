@@ -78,14 +78,7 @@ namespace Binder.Environment
                         Name = properties[i + 1];
                         break;
                     case "IMAGE":
-                        if(properties[i + 1] == "null")
-                        {
-                            Image = properties[i + 1];
-                        }
-                        else
-                        {
-                            Image = "\\Sprites\\binderRingSilver.png";
-                        }
+                        Image = properties[i + 1];
                         break;
                     case "FOUND":
                         Found = "TRUE" == properties[i + 1];
