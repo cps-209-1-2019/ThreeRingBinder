@@ -41,7 +41,7 @@ After solving the riddle, move to the correct location and use the correct objec
 
 ## Recording
 
-[Team 1: Release Candidate](https://youtu.be/5TFgGF30EnI)
+[Team 1: Final Release](https://www.youtube.com/watch?v=ZG5efqRsjtg&feature=youtu.be)
 
 ## Expenses
 
