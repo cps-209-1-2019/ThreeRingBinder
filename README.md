@@ -28,15 +28,7 @@ After solving the riddle, move to the correct location and use the correct objec
  * Multiple levels
  * Game objects placed
  * High Scores finished
- 
-
-## Known Issues
- * The main issue currently is the IsNotWall method. It does not properly detect a wall.
- * AI lives and movements need to be debugged.
- * Save is throwing an error
- * Object placement needs tweaking
- * Timer and scoring needs work
- 
+  
 
 
 ## Recording
@@ -47,7 +39,7 @@ After solving the riddle, move to the correct location and use the correct objec
 
 | Developer | Hours Used | Hours Remaining | Journal Link
 |---|---|---|---|
-| Day | 50 | 10 | [Day Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Day-Journal)
+| Day | 55 | 10 | [Day Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Day-Journal)
 | Dulcio | 58 | 2 | [Dulcio Log](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Dulcio-Log)
-| Shipe | 55 | 5| [Shipe Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Shipe-Journal)
+| Shipe | 59 | 5| [Shipe Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Shipe-Journal)
 | Tapp | 24.25 | 35.75 | [Tapp Journal](https://github.com/cps-209-1-2019/ThreeRingBinder/wiki/Tapp-Journal)
