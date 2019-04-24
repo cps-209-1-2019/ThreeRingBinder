@@ -601,27 +601,27 @@ namespace Binder
         {
             if (LevelNum == 1)
             {
-                MakeAI(1050, 400, 3, 1);
-                MakeAI(2000, 600, 3, 1);
-                MakeAI(800, 1500, 3, 1);
+                MakeAI(1050, 400, 2, 1);
+                MakeAI(2000, 600, 2, 1);
+                MakeAI(800, 1600, 2, 1);
             }
             else if (LevelNum == 2)
             {
-                MakeAI(850, -600, 3, 1);
-                MakeAI(-20, 1000, 3, 1);
-                MakeAI(-1200, 500, 3, 1);
-                MakeAI(20, -1000, 3, 1);
+                MakeAI(850, -600, 2, 1);
+                MakeAI(-20, 1000, 2, 1);
+                MakeAI(-1200, 500, 2, 1);
+                MakeAI(20, -1000, 2, 1);
                 MakeAI(1200, -500, 3, 1);
             }
             else if (LevelNum == 3)
             {
-                MakeAI(-2000, -900, 3, 1);
-                MakeAI(-2500, 1000, 3, 1);
-                MakeAI(2000, 100, 3, 1);
+                MakeAI(-2000, -900, 2, 1);
+                MakeAI(-2500, 1000, 2, 1);
+                MakeAI(2000, 100, 2, 1);
                 MakeAI(3000, -1300, 3, 1);
                 MakeAI(0, 1500, 5, 1);
-                MakeAI(0, -100, 3, 1);
-                MakeAI(-500, 850, 3, 1);
+                MakeAI(0, -100, 2, 1);
+                MakeAI(-500, 850, 2, 1);
             }
         }
         public void MakeAI(int x, int y, int health, int damage)
@@ -633,12 +633,12 @@ namespace Binder
             }
             else if (Difficulty == 2)
             {
-                AI ai = new AI(health, (damage * 2), 5, x, y);
+                AI ai = new AI(health * 2, damage, 5, x, y);
                 Environ.Add(ai);
             }
             else if (Difficulty == 3)
             {
-                AI ai = new AI((health * 2), (damage * 2), 5, x, y);
+                AI ai = new AI((health * 3), (damage * 2), 5, x, y);
                 Environ.Add(ai);
             }
         }
