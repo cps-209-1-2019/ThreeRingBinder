@@ -12,88 +12,9 @@ using System.Threading.Tasks;
 
 namespace Binder.Environment
 {
-    //Added public accessibility - Day
     public class Walls: WorldObject, ISerialization<Walls>
-    {
-        private int x;
-        private int y;
-
-        public override int X {
-            get
-            {
-                return x;
-            }
-            set
-            {
-                int xtemp = x;
-                x = value;
-
-                int xChanged = x - xtemp;
-                UpdateBlocks(xChanged, 0);
-                SetProperty("X");
-            }
-        }
-        public override int Y
-        {
-            get
-            {
-                return y;
-
-            }
-            set
-            {
-                int yTemp = y;
-                y = value;
-
-                int yChanged = y - yTemp;
-                UpdateBlocks(0, yChanged);
-                SetProperty("Y");
-            }
-        }
-
-        private int[] posW;
-        //public int Width { get; set; }                      //Contains the thickness of the wall
-        //public int Length { get; set; }                     //The number of blocks the wall will contain              
+    {             
         public List<Block> Blocks { get; set; }              //Holds the blocks that make up the wall
-
-        public override int[] Position
-        {
-            get
-            {
-                return posW;
-            }
-            set
-            {
-                int x = 0;
-                int y = 0;
-
-                if (posW != null)
-                {
-                    x = posW[0];
-                    y = posW[1];
-                }                
-
-                posW = value;
-                SetProperty("Position");
-                X = posW[0];
-                Y = posW[1];
-
-                //foreach(Block b in Blocks)
-                //{
-                //    if(x != posW[0])
-                //    {
-                //        int xChanged = posW[0] - x;
-                //        b.X += xChanged;
-                //    }
-                //    if(y != posW[1])
-                //    {
-                //        int yChanged = posW[1] - y;
-                //        b.Y += yChanged;
-                //    }
-                //}
-            }
-        }
-
 
         public Walls()
         {
@@ -105,7 +26,8 @@ namespace Binder.Environment
             Blocks = new List<Block>();
             Width = width;
             Length = length;
-            Position = pos;
+            X = pos[0];
+            Y = pos[1];
 
             Build();                        
         }
@@ -132,7 +54,7 @@ namespace Binder.Environment
             }
         }
 
-        void UpdateBlocks(int x, int y)
+        public void UpdateBlocks(int x, int y)
         {
             foreach(Block b in Blocks)
             {
@@ -158,11 +80,9 @@ namespace Binder.Environment
                         break;
                     case "X":
                         X = int.Parse(properties[i + 1]);
-                        posW[0] = X;
                         break;
                     case "Y":
                         Y = int.Parse(properties[i + 1]);
-                        posW[1] = Y;
                         break;
                     case "WIDTH":
                         Width = int.Parse(properties[i + 1]);
@@ -175,17 +95,6 @@ namespace Binder.Environment
 
             return this;
         }
-
-        //public void ChangeBlocks(char dir, int moveNum)
-        //{
-        //    foreach (Block block in Blocks)
-        //    {
-        //        if (dir == 'Y')
-        //            block.Y += moveNum;
-        //        else if (dir == 'X')
-        //            block.X += moveNum;
-        //    }
-        //}
     }
 
     //Defines a class Block from which the walls will be built.
@@ -193,17 +102,8 @@ namespace Binder.Environment
     {
         public Block(int[] pos)
         {
-            Position = new int[2];
-            Position[0] = pos[0];
-            Position[1] = pos[1];
-
             X = pos[0];
             Y = pos[1];
-        }
-        //Detects whether the player is close or not
-        public void Detect()
-        {
-
         }
     }
 }

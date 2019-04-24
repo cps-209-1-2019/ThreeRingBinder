@@ -198,6 +198,11 @@ namespace Binder.Environment
                         foreach (WorldObject thing in Game.Environ)
                         {
                             thing.X += changeNum;
+                            if (thing is Walls)
+                            {
+                                Walls wall = (Walls)thing;
+                                wall.UpdateBlocks(changeNum, 0);
+                            }
                         }
                     }
                     ChangeXFrames(-changeNum);
@@ -209,6 +214,11 @@ namespace Binder.Environment
                         foreach (WorldObject thing in Game.Environ)
                         {
                             thing.Y += changeNum;
+                            if (thing is Walls)
+                            {
+                                Walls wall = (Walls)thing;
+                                wall.UpdateBlocks(0, changeNum);
+                            }
                         }
                     }
                     ChangeYFrames(-changeNum);
@@ -220,6 +230,11 @@ namespace Binder.Environment
                         foreach (WorldObject thing in Game.Environ)
                         {
                             thing.X -= changeNum;
+                            if (thing is Walls)
+                            {
+                                Walls wall = (Walls)thing;
+                                wall.UpdateBlocks(-changeNum, 0);
+                            }
                         }
                     }
                     ChangeXFrames(changeNum);
@@ -231,6 +246,11 @@ namespace Binder.Environment
                         foreach (WorldObject thing in Game.Environ)
                         {
                             thing.Y = thing.Y - changeNum;
+                            if (thing is Walls)
+                            {
+                                Walls wall = (Walls)thing;
+                                wall.UpdateBlocks(0, -changeNum);
+                            }
                         }
                     }
                     ChangeYFrames(changeNum);
@@ -372,18 +392,6 @@ namespace Binder.Environment
                                 ai.Health -= Damage;
                             }
                         }
-                    }
-                }
-                //This AI code might be a little better
-                if (thing is AI)
-                {
-                    if ((100 * 100) > ((thing.X - X) * (thing.X - X)) + ((thing.Y -Y) * (thing.Y -Y))) { 
-                    //if ((thing.X + thing.Width + 50 > X) && (thing.X - 50 < X)) {
-                      //  if ((thing.Y + thing.Length + 100 > Y) && (thing.Y - 100 < Y)) {
-                            Destroy = true;
-                            AI ai = (AI)thing;
-                            ai.Health -= Damage;
-                        //}
                     }
                 }
             }
