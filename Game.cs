@@ -580,7 +580,7 @@ namespace Binder
             if (includeTime)
                 CurrScore = Convert.ToInt32((PsiZetaShamed * 200) + (Time * 15));
             else
-                CurrScore += Convert.ToInt32((PsiZetaShamed * 200));
+                CurrScore = Convert.ToInt32((PsiZetaShamed * 200));
             return CurrScore + HighScore;
         }
         protected void SetProperty(string source)
