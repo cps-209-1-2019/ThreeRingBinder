@@ -27,35 +27,36 @@ namespace Binder.Environment
     /// </summary>
     public partial class GameWindow : Window
     {
-        Image imgMarcus;
-        bool isGameOver = false;
-        public Game binderGame;
-        bool isCheatOn = false;
-        bool isPressed = false;
+        Image imgMarcus;             //Holds the current image for Marcus
+        bool isGameOver = false;     //Allows the file to know when the game has ended
+        public Game binderGame;      //Holds a reference to the current Game
+        bool isCheatOn = false;      //Holds a reference to whether or not cheat is on
+        bool isPressed = false;      //Tells whether or not a key has already been processed
 
-        Building building;
-        DispatcherTimer timer;
-        DispatcherTimer timerUp;
-        DispatcherTimer timerDown;
-        DispatcherTimer timerLeft;
-        DispatcherTimer timerRight;
-        public DispatcherTimer LimitTimer;
-        bool isRingShown = false;
+        Building building;           //Holds a reference to the Building class
+        DispatcherTimer timer;       //Main game timer; processes Model changes
+        DispatcherTimer timerUp;     //Fires when the up key is pressed
+        DispatcherTimer timerDown;   //Fires when the down key is pressed
+        DispatcherTimer timerLeft;   //Fires when the left key is pressed
+        DispatcherTimer timerRight;  //Fires when the right key is pressed
+        public DispatcherTimer LimitTimer;   //Checks whether or not the game is over
+        bool isRingShown = false;    //Determines whether or not the ring is already shown
 
-        TextBlock Time;
-        TextBlock Level;
-        TextBlock Score;
+        TextBlock Time;              //Holds the current remaining time
+        TextBlock Level;             //Holds the level information
+        TextBlock Score;             //Holds the current score
         TextBlock ScoreLbl;
 
-        Rectangle rectLifeOne;
-        Rectangle rectLifeTwo;
-        Rectangle rectLifeThree;
-        Rectangle rectItemOne;
-        Rectangle rectItemTwo;
-        Rectangle rectItemThree;
-        Rectangle rectItemFour;
+        Rectangle rectLifeOne;       //Holds a tie to denote a life; tie is removed once life is lost
+        Rectangle rectLifeTwo;       //Holds a tie to denote a life; tie is removed once life is lost
+        Rectangle rectLifeThree;     //Holds a tie to denote a life; tie is removed once life is lost
 
-        MediaPlayer BMusic;
+        Rectangle rectItemOne;       //Holds an item in Marcus' inventory
+        Rectangle rectItemTwo;       //Holds an item in Marcus' inventory
+        Rectangle rectItemThree;     //Holds an item in Marcus' inventory
+        Rectangle rectItemFour;      //Holds an item in Marcus' inventory
+
+        MediaPlayer BMusic;          //Holds the current song
 
         public GameWindow(bool cheat, int difficulty, double startTime, bool doLoad)
         {
