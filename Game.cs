@@ -46,6 +46,19 @@ namespace Binder
         public int LevelNum { get; set; }                  //Holds the current level number
         public bool isPauseScreenShown = false;            //Tells whether the pause screen is currently shown
 
+        private int totalScore;
+        public int TotalScore {
+            get
+            {
+                return totalScore;
+            }
+            set
+            {
+                totalScore = value;
+                SetProperty("TotalScore");
+            }
+        }
+
         private string currLevel;
         public string CurrLevel                        //Holds information on the current level
         {
@@ -199,6 +212,9 @@ namespace Binder
                             break;
                         case "HIGHSCORE":
                             HighScore = int.Parse(line.Split('!')[1]);
+                            break;
+                        case "TOTALSCORE":
+                            TotalScore = int.Parse(line.Split('!')[1]);
                             break;
                         case "COMPOSURE":
                             Composure = int.Parse(line.Split('!')[1]);
@@ -533,6 +549,7 @@ namespace Binder
                 wr.WriteLine("BEGIN");
                 wr.WriteLine("CURRSCORE!" + CurrScore);
                 wr.WriteLine("HIGHSCORE!" + HighScore);
+                wr.WriteLine("TOTALSCORE!" + TotalScore);
                 wr.WriteLine("COMPOSURE!" + Composure);
                 wr.WriteLine("TIME!" + Time);
                 wr.WriteLine("TIMELEFT!" + TimeLeft);
@@ -586,7 +603,9 @@ namespace Binder
                 CurrScore = Convert.ToInt32((PsiZetaShamed * 200) + (Time * 15));
             else
                 CurrScore = Convert.ToInt32((PsiZetaShamed * 200));
-            return CurrScore + HighScore;
+
+            TotalScore = CurrScore + HighScore;
+            return TotalScore;
         }
         protected void SetProperty(string source)
         {

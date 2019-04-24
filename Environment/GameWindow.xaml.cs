@@ -319,6 +319,7 @@ namespace Binder.Environment
                 binderGame = new Game(180, level);
                 binderGame.HighScore = saveScore;
                 binderGame.CurrScore = saveScore;
+                binderGame.TotalScore = saveScore;
                 binderGame.IsCheatOn = isCheatOn;
                 MakeLevelFloors(level);
                 LoadGame();
@@ -391,7 +392,7 @@ namespace Binder.Environment
             //Set Scores in the middle
             Score = new TextBlock();           
             cnvsGame.Children.Add(Score);
-            Score.SetBinding(TextBlock.TextProperty, "CurrScore");
+            Score.SetBinding(TextBlock.TextProperty, "TotalScore");
             Canvas.SetLeft(Score, mid);
             Canvas.SetTop(Score, 55);
 
