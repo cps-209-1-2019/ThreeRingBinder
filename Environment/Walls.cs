@@ -54,6 +54,7 @@ namespace Binder.Environment
             }
         }
 
+        //Updates the Blocks with the changes in x and y
         public void UpdateBlocks(int x, int y)
         {
             foreach(Block b in Blocks)
